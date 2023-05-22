@@ -1,38 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# [ BIKE FINDER ] 따릉이 파인더
 
-First, run the development server:
+###### 따릉이 파인더는 서울시 공공자전거 대여소 정보 API를 활용하여 서울시 자전거 대여소의 위치, 대여 가능한 자전거 수 등의 정보를 제공하는 반응형 웹 페이지입니다. 사용자 주변의 자전거 대여소 위치와 대여 가능한 자전거의 수를 쉽게 확인할 수 있으며, 자전거 이용 활성화에 기여하는 것을 목적으로 한 개인 프로젝트입니다 🤓
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 개발 스택
+    - Front-end: Next.js, React.js, TypeScript
+    - Back-end: Node.js, GraphQL
+    - Database: Firebase
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 프로젝트 목표
+    - 사용자가 쉽게 서울시 자전거 대여소 정보를 검색하고 확인할 수 있도록 한다.
+    - 사용자가 대여 가능한 자전거 수를 쉽게 파악할 수 있도록 한다.
+    - 사용자가 자전거 대여/반납을 위한 예약/결제 기능을 제공한다.
+    - 모바일 및 데스크톱에서 쉽게 접근할 수 있는 반응형 웹을 구현한다.
+    - Firebase를 사용하여 데이터베이스를 구축한다.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 프로젝트 기능
+    - 프로젝트가 시작되면 추가 될 예정입니다.
+    
