@@ -1,11 +1,34 @@
 import { css } from "@emotion/react";
 
 export const GlobalStyle = css`
+  // 100, 300, 400, 500, 700
+  @font-face {
+    font-family: "SpoqaHanSansNeo";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "EnjoyStories";
+    font-weight: 300;
+    font-style: normal;
+    src: url("https://cdn.jsdelivr.net/gh/webfontworld/tvn/EnjoyStoriesLight.ttf")
+      format("truetype");
+  }
+
   * {
-    font-family: "NotoSans400", Menlo, Courier, monospace;
-    font-size: 16px;
     margin: 0;
     box-sizing: border-box;
+  }
+  body {
+    font-family: "SpoqaHanSansNeo", Arial, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #333333;
+  }
+  em {
+    font-style: normal;
   }
   ul {
     margin: 0;
