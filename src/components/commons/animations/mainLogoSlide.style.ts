@@ -1,18 +1,35 @@
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 
-export const Wrapper = styled.div`
-  height: 122px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+const textLoop = keyframes`
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
 `;
-export const Container = styled.div`
-  width: 1080px;
-  margin: 0 auto;
-`;
+export const FlowContainer = styled.div`
+  .flow-text {
+    display: flex;
+    flex: 0 0 auto;
+    overflow: hidden;
+    transition: 0.3s;
+  }
 
-export const Contents = styled.div``;
+  .flow-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 122px;
 
-export const Logo = styled.div`
-  display: inline-block;
+    animation: ${({ isActive }) =>
+      isActive ? `${textLoop} 10s linear` : "none"};
+    animation: ${textLoop} 10s linear;
+
+    img {
+      padding: 0 50px;
+      height: 29px;
+    }
+  }
 `;

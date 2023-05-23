@@ -1,5 +1,5 @@
-import React from "react";
-import { Contents } from "./mainLogoSlide.style";
+import React, { Fragment, useState } from "react";
+import * as S from "./mainLogoSlide.style";
 
 export default function Animation01UI() {
   const COMPANY_LIST = [
@@ -9,5 +9,46 @@ export default function Animation01UI() {
     { name_ko: "알톤", name_en: "alton" },
   ];
 
-  return <Contents></Contents>;
+  const [isFirstDivVisible, setIsFirstDivVisible] = useState(true);
+  const [reset, setReset] = useState(false);
+
+  const handleAnimationEnd = () => {
+    setIsFirstDivVisible(false);
+    setReset(true);
+  };
+
+  return (
+    <S.FlowContainer isActive={reset}>
+      <div className="flow-text">
+        <div className="flow-wrap" onAnimationEnd={handleAnimationEnd}>
+          {[...Array(2)].map((_, iteration) => (
+            <Fragment key={iteration}>
+              {COMPANY_LIST.map((el: any, index: any) => (
+                <Fragment key={index}>
+                  <img
+                    src={`/images/company/${el.name_en}.svg`}
+                    alt={el.name_en}
+                  />
+                </Fragment>
+              ))}
+            </Fragment>
+          ))}
+        </div>
+        <div className="flow-wrap">
+          {[...Array(2)].map((_, iteration) => (
+            <Fragment key={iteration}>
+              {COMPANY_LIST.map((el: any, index: any) => (
+                <Fragment key={index}>
+                  <img
+                    src={`/images/company/${el.name_en}.svg`}
+                    alt={el.name_en}
+                  />
+                </Fragment>
+              ))}
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </S.FlowContainer>
+  );
 }
