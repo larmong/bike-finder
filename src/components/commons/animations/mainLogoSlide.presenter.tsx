@@ -9,46 +9,37 @@ export default function Animation01UI() {
     { name_ko: "알톤", name_en: "alton" },
   ];
 
-  const [isFirstDivVisible, setIsFirstDivVisible] = useState(true);
-  const [reset, setReset] = useState(false);
+  const [isFirstDivVisible, setIsFirstDivVisible] = useState<boolean>(true);
 
   const handleAnimationEnd = () => {
     setIsFirstDivVisible(false);
-    setReset(true);
   };
 
   return (
-    <S.FlowContainer isActive={reset}>
-      <div className="flow-text">
-        <div className="flow-wrap" onAnimationEnd={handleAnimationEnd}>
-          {[...Array(2)].map((_, iteration) => (
-            <Fragment key={iteration}>
-              {COMPANY_LIST.map((el: any, index: any) => (
-                <Fragment key={index}>
-                  <img
-                    src={`/images/company/${el.name_en}.svg`}
-                    alt={el.name_en}
-                  />
-                </Fragment>
-              ))}
-            </Fragment>
-          ))}
-        </div>
-        <div className="flow-wrap">
-          {[...Array(2)].map((_, iteration) => (
-            <Fragment key={iteration}>
-              {COMPANY_LIST.map((el: any, index: any) => (
-                <Fragment key={index}>
-                  <img
-                    src={`/images/company/${el.name_en}.svg`}
-                    alt={el.name_en}
-                  />
-                </Fragment>
-              ))}
-            </Fragment>
-          ))}
-        </div>
-      </div>
-    </S.FlowContainer>
+    <S.Wrapper>
+      <S.FlowContainer>
+        {[...Array(2)].map((_, iteration) => (
+          <S.FlowContents
+            key={iteration}
+            onAnimationEnd={handleAnimationEnd}
+            isActive={isFirstDivVisible}
+          >
+            {[...Array(5)].map((_, index) => (
+              <Fragment key={index}>
+                {COMPANY_LIST.map((el: any, companyIndex: any) => (
+                  <Fragment key={companyIndex}>
+                    <S.Logo
+                      src={`/images/company/${el.name_en}.svg`}
+                      alt={el.name_en}
+                    />
+                  </Fragment>
+                ))}
+              </Fragment>
+            ))}
+          </S.FlowContents>
+        ))}
+      </S.FlowContainer>
+      <S.FlowGradient />
+    </S.Wrapper>
   );
 }
