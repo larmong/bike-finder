@@ -50,4 +50,5 @@ export const FlowGradient = styled.div`
     rgba(255, 255, 255, 0) 49.96%,
     #ffffff 79.69%
   );
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.02);
 `;

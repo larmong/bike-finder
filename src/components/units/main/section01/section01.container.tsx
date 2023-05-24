@@ -1,7 +1,7 @@
-import * as S from "./section1.style";
+import * as S from "./section01.style";
 import Animation01 from "../../../commons/animations/animation01/animation01.container";
 
-export default function Section1UI() {
+export default function Section01() {
   return (
     <>
       <S.Wrapper>
