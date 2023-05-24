@@ -29,7 +29,7 @@ export const FlowContents = styled.div`
   animation: ${(props) =>
     props.isActive
       ? css`
-          ${textLoop} 80s linear infinite
+          ${textLoop} 100s linear infinite
         `
       : "none"};
 `;
