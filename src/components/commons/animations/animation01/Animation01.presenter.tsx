@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import * as S from "./animation01.style";
-import { IPropsAnimation01 } from "./animation01.types";
+import * as S from "./Animation01.style";
+import { IPropsAnimation01 } from "./Animation01.types";
 
 export default function Animation01UI(props: IPropsAnimation01) {
   return (

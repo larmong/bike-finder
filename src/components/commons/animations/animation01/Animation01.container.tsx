@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Animation01UI from "./animation01.presenter";
+import Animation01UI from "./Animation01.presenter";
 
 export default function Animation() {
   const COMPANY_LIST = [

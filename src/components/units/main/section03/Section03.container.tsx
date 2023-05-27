@@ -1,4 +1,4 @@
-import * as S from "./section03.style";
+import * as S from "./Section03.style";
 import {
   MdDock,
   MdCorporateFare,

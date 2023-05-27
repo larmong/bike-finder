@@ -1,4 +1,4 @@
-import * as S from "./section02.style";
+import * as S from "./Section02.style";
 
 export default function Section02() {
   return (
