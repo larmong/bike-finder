@@ -4,7 +4,6 @@ export const SectionTitle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 55px;
 `;
 export const TitleIcon = styled.div`
   svg {
@@ -14,7 +13,7 @@ export const TitleIcon = styled.div`
   }
 `;
 export const Title = styled.h3`
-  margin: 10px 0 20px 0;
+  margin: 20px 0 10px 0;
   font-weight: 700;
   font-size: 40px;
   line-height: 50px;

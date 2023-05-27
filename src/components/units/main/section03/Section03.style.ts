@@ -18,6 +18,7 @@ export const Section = styled.div`
 `;
 
 export const Contents = styled.div`
+  margin-top: 55px;
   display: flex;
   gap: 150px;
   align-items: center;

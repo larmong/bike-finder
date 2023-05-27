@@ -18,6 +18,7 @@ export const Section = styled.div`
 
 export const Contents = styled.div`
   margin-top: 80px;
+
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -25,8 +26,8 @@ export const Contents = styled.div`
 export const Cont = styled.div`
   display: flex;
   flex-direction: column;
-  width: 332px;
-  height: 463px;
+  width: 510px;
+  height: 480px;
   background: #ffffff;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
   border-radius: 24px;
@@ -34,24 +35,24 @@ export const Cont = styled.div`
 
 export const ContImg = styled.img`
   overflow: hidden;
-  height: 310px;
+  height: 297px;
   width: 100%;
 `;
 
 export const ContText = styled.div`
-  padding: 20px 30px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 `;
 export const ContTitle = styled.p`
   font-weight: 700;
-  font-size: 20px;
-  line-height: 25px;
+  font-size: 30px;
+  line-height: 38px;
 `;
 export const ContDsc = styled.span`
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 25px;
   text-align: justify;
 `;
