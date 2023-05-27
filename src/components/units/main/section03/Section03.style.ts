@@ -1,18 +1,20 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  padding: 130px 0;
+`;
 
 export const Container = styled.div`
+  width: 1080px;
+  margin: 0 auto;
   height: 100%;
 `;
 
 export const Section = styled.div`
-  padding: 130px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 55px;
+  justify-content: space-between;
 `;
 
 export const Contents = styled.div`

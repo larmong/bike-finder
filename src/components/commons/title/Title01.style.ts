@@ -4,6 +4,7 @@ export const SectionTitle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 55px;
 `;
 export const TitleIcon = styled.div`
   svg {
