@@ -1,10 +1,11 @@
 import * as S from "./Section03.style";
+import Title01 from "../../../commons/title/Title01.container";
 import {
-  MdDock,
   MdCorporateFare,
   MdAir,
   MdFilterHdr,
   MdGamepad,
+  MdPark,
 } from "react-icons/md";
 
 export default function Section03() {
@@ -30,21 +31,21 @@ export default function Section03() {
       dsc: "지역 내 곳곳에 스테이션을 배치하여 어디에서나 이동의 편리성 증진을 실현합니다.",
     },
   ];
+  const titleData = {
+    icon: <MdPark />,
+    title: "지구를 지키는 따릉이",
+    dsc: "현재 서울 시민 3명중 1명이 따릉이를 이용하고 있다는 사실을 알고 계시나요?\n2022년 따릉이 이용에 따른 누적 탄소 저감량은 약 1,968t에 달한다는 통계가 나왔어요!",
+  };
 
   return (
     <S.Wrapper>
       <S.Container>
         <S.Section>
-          <S.TitleGroup>
-            <S.TitleIcon />
-            <S.Title>지구를 지키는 따릉이</S.Title>
-            <S.TitleDsc>
-              현재 서울 시민 3명중 1명이 따릉이를 이용하고 있다는 사실을 알고
-              계시나요?
-              <br /> 2022년 따릉이 이용에 따른 누적 탄소 저감량은 약 1,968t에
-              달한다는 통계가 나왔어요!
-            </S.TitleDsc>
-          </S.TitleGroup>
+          <Title01
+            icon={titleData.icon}
+            title={titleData.title}
+            dsc={titleData.dsc}
+          />
           <S.Contents>
             <S.ContLeft>
               {contents.map((item, index) => (
