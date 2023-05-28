@@ -18,7 +18,6 @@ export const Section = styled.div`
 
 export const Contents = styled.div`
   margin-top: 80px;
-
   width: 100%;
   display: flex;
   justify-content: space-between;
