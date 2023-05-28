@@ -26,8 +26,27 @@ export const Nav = styled.nav`
   display: flex;
   gap: 50px;
 `;
+
 export const Menu = styled.span`
+  position: relative;
   cursor: pointer;
+  &:before {
+    transition: 0.35s;
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 3px;
+    background: #0d8f68;
+  }
+  &:hover {
+    &:before {
+      width: 110%;
+    }
+  }
 `;
 
 // 버튼
