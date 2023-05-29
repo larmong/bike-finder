@@ -1,5 +1,4 @@
 import * as S from "./Section03.style";
-import Title01 from "../../../commons/title/Title01.container";
 import {
   MdCorporateFare,
   MdAir,
@@ -7,6 +6,7 @@ import {
   MdGamepad,
   MdPark,
 } from "react-icons/md";
+import Title01 from "../../../commons/titles/title01/Title01.container";
 
 export default function Section03() {
   const contents = [

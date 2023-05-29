@@ -1,3 +1,3 @@
-export default function insurance() {
+export default function Insurance() {
   return <>insurance</>;
 }

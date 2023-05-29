@@ -1,3 +1,3 @@
-export default function use() {
+export default function UsePage() {
   return <>use</>;
 }

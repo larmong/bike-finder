@@ -16,9 +16,3 @@ export default function Title01(props: IPropsTitle01) {
     </S.SectionTitle>
   );
 }
-
-// const titleData = {
-//   icon: <아이콘 />,
-//   title: "타이틀",
-//   dsc: "설명",
-// };

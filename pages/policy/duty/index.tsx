@@ -1,3 +1,3 @@
-export default function duty() {
+export default function DutyPage() {
   return <>duty</>;
 }

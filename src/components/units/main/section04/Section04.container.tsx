@@ -1,5 +1,5 @@
 import * as S from "./Section04.style";
-import Title01 from "../../../commons/title/Title01.container";
+import Title01 from "../../../commons/titles/title01/Title01.container";
 import { MdDock } from "react-icons/md";
 
 export default function Section04() {

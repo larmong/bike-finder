@@ -1,3 +1,3 @@
-export default function helped() {
+export default function HelpedPage() {
   return <>helped</>;
 }

@@ -1,5 +1,5 @@
 import * as S from "./Section05.style";
-import Title01 from "../../../commons/title/Title01.container";
+import Title01 from "../../../commons/titles/title01/Title01.container";
 import { MdDirectionsBike } from "react-icons/md";
 
 export default function Section05() {

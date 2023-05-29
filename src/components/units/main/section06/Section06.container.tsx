@@ -1,5 +1,5 @@
 import * as S from "./Section06.style";
-import Title01 from "../../../commons/title/Title01.container";
+import Title01 from "../../../commons/titles/title01/Title01.container";
 import Animation02 from "../../../commons/animations/animation02/Animation02.container";
 
 export default function Section06() {
