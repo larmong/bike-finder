@@ -1,12 +1,15 @@
 import Header from "../../components/commons/layout/header/Header.container";
 import Footer from "../../components/commons/layout/footer/Footer.container";
-import Main from "../../../pages";
 
-export default function Layout() {
+interface ILayoutProps {
+  children: JSX.Element;
+}
+
+export default function Layout(props: ILayoutProps) {
   return (
     <>
       <Header></Header>
-      <Main></Main>
+      <div>{props.children}</div>
       <Footer></Footer>
     </>
   );

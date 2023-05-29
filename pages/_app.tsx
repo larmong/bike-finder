@@ -1,9 +1,10 @@
-import Head from "next/head";
-import Layout from "../src/commons/layout";
-import { Global } from "@emotion/react";
+import { AppProps } from "next/app";
 import { GlobalStyle } from "../src/commons/style/global.style";
+import { Global } from "@emotion/react";
+import Layout from "../src/commons/layout";
+import Head from "next/head";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
