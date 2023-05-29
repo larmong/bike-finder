@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Animation01UI from "./Animation01.presenter";
 
-export default function Animation() {
+export default function Animation01() {
   const COMPANY_LIST = [
     { name_ko: "삼성", name_en: "samsung" },
     { name_ko: "우리은행", name_en: "wooribank" },
