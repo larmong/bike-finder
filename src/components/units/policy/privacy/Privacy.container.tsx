@@ -10,9 +10,9 @@ import {
 } from "firebase/firestore";
 
 export default function Privacy() {
-  const [fetchPolicy, setFetchPolicy] = useState<string>("");
+  const [fetchPrivacy, setFetchPrivacy] = useState<string>("");
   useEffect(() => {
-    const getPolicyData = async () => {
+    const getPrivacyData = async () => {
       try {
         const data = await query(
           collection(db, "policy"),
@@ -24,17 +24,17 @@ export default function Privacy() {
           id: doc.id,
         }));
 
-        setFetchPolicy(result[0].data);
+        setFetchPrivacy(result[0].data);
       } catch (error) {
         console.error(error);
       }
     };
-    getPolicyData();
+    getPrivacyData();
   }, []);
 
   return (
     <S.Wrapper>
-      <S.Text>{fetchPolicy}</S.Text>
+      <S.Text>{fetchPrivacy}</S.Text>
       <S.Table01>
         {/* 일반회원 */}
         <S.TableItem01 className="t-head">
