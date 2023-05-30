@@ -54,27 +54,27 @@ export const TableItem01 = styled.p`
   }
 
   // 일반회원
-  &:nth-child(1) {
+  &:nth-of-type(1) {
     grid-column: 1 / 2;
     grid-row: 1 / 5;
   }
-  &:nth-child(2) {
+  &:nth-of-type(2) {
     grid-column: 2 / 3;
     grid-row: 1 / 3;
   }
 
   // 만 13세 회원
-  &:nth-child(9) {
+  &:nth-of-type(9) {
     grid-column: 1 / 2;
     grid-row: 5 / 8;
   }
 
   // SNS 회원
-  &:nth-child(16) {
+  &:nth-of-type(16) {
     grid-column: 1 / 2;
     grid-row: 8 / 12;
   }
-  &:nth-child(21) {
+  &:nth-of-type(21) {
     grid-column: 2 / 3;
     grid-row: 10 / 12;
   }
@@ -111,18 +111,18 @@ export const TableItem02 = styled.p`
     background: #f9f9f9;
   }
 
-  &:nth-child(6) {
+  &:nth-of-type(6) {
     grid-column: 1 / 2;
     grid-row: 2 / 5;
   }
-  &:nth-child(7) {
+  &:nth-of-type(7) {
     grid-column: 2 / 3;
     grid-row: 2 / 5;
   }
-  &:nth-child(11) {
+  &:nth-of-type(11) {
     grid-row: 3 / 4;
   }
-  &:nth-child(14) {
+  &:nth-of-type(14) {
     grid-row: 4 / 5;
   }
 `;

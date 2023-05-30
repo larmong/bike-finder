@@ -15,7 +15,9 @@ export const BoardHead = styled.div`
   border-top: 1px solid #999999;
   border-bottom: 1px solid #999999;
 `;
-export const BoardBodyWrapper = styled.div``;
+export const BoardBodyWrapper = styled.div`
+  border-bottom: 1px solid #999999;
+`;
 export const BoardBody = styled.div`
   display: grid;
   align-items: center;

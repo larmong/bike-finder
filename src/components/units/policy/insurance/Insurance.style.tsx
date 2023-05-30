@@ -86,10 +86,10 @@ export const TableItem02 = styled.p`
     font-size: 12px;
   }
 
-  &:nth-child(10) {
+  &:nth-of-type(10) {
     grid-column: 1 / 4;
   }
-  &:nth-child(17) {
+  &:nth-of-type(17) {
     grid-column: 1 / 4;
   }
 `;
