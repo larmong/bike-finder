@@ -6,7 +6,7 @@ export default function Helped() {
   return (
     <S.Wrapper>
       <Search01 />
-      <Board01 />
+      {/*<Board01 />*/}
     </S.Wrapper>
   );
 }
