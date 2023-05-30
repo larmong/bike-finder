@@ -23,9 +23,7 @@ export default function Use() {
           ...doc.data(),
           id: doc.id,
         }));
-        const dataReplace = result[0].data;
-
-        setFetchUse(dataReplace);
+        setFetchUse(result[0].data);
       } catch (error) {
         console.error(error);
       }
