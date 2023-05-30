@@ -5,6 +5,7 @@ import Use from "../../src/components/units/policy/use/Use.container";
 import Privacy from "../../src/components/units/policy/privacy/Privacy.container";
 import Duty from "../../src/components/units/policy/duty/Duty.container";
 import Insurance from "../../src/components/units/policy/insurance/Insurance.container";
+import Helped from "../../src/components/units/policy/helped/Helped.container";
 
 export default function Policy(props) {
   const TAB_MENUS = [
@@ -45,6 +46,8 @@ export default function Policy(props) {
               <Duty />
             ) : "" || props.pathname === "insurance" ? (
               <Insurance />
+            ) : "" || props.pathname === "helped" ? (
+              <Helped />
             ) : (
               ""
             )}
