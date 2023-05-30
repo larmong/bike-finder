@@ -3,6 +3,7 @@ import Title02 from "../../src/components/commons/titles/title02/Title02.contain
 import Tab01 from "../../src/components/commons/tabs/tab01/Tab01.container";
 import Use from "../../src/components/units/policy/use/Use.container";
 import Privacy from "../../src/components/units/policy/privacy/Privacy.container";
+import Duty from "../../src/components/units/policy/duty/Duty.container";
 
 export default function Policy(props) {
   const TAB_MENUS = [
@@ -39,6 +40,8 @@ export default function Policy(props) {
               <Use />
             ) : "" || props.pathname === "privacy" ? (
               <Privacy />
+            ) : "" || props.pathname === "duty" ? (
+              <Duty />
             ) : (
               ""
             )}
