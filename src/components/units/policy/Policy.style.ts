@@ -13,3 +13,5 @@ export const Container = styled.div`
 export const Contents = styled.div`
   padding: 0 20px;
 `;
+
+export const Content = styled.div``;
