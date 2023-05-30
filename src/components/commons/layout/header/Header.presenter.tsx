@@ -23,7 +23,7 @@ export default function HeaderUI(props: IHeaderUI) {
   ];
 
   return (
-    <S.Header>
+    <S.Header isActive={router.pathname === "/"}>
       <S.Container>
         <S.Wrapper>
           <S.Logo onClick={() => router.push("/")}></S.Logo>
