@@ -11,6 +11,7 @@ export default function Tab01UI(props: IPropsTab01) {
           className={props.pathname === `/${el.route}` ? "target" : ""}
           id={el.route}
           onClick={props.onClickMoveToTabMenus}
+          tabWidth={props.tabWidth}
         >
           {el.name}
         </S.Manus>

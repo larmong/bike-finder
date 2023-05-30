@@ -1,7 +1,6 @@
 import * as S from "../../src/components/units/policy/Policy.style";
 import Title02 from "../../src/components/commons/titles/title02/Title02.container";
 import Tab01 from "../../src/components/commons/tabs/tab01/Tab01.container";
-import UsePage from "./use";
 import Use from "../../src/components/units/policy/use/Use.container";
 
 export default function Policy(props) {
@@ -38,7 +37,7 @@ export default function Policy(props) {
       <S.Container>
         <Title02 title={props.title} />
         <S.Contents>
-          <Tab01 TAB_MENUS={TAB_MENUS} />
+          <Tab01 TAB_MENUS={TAB_MENUS} tabWidth="170px" />
           <S.Content>{props.pathname === "use" ? <Use /> : ""}</S.Content>
         </S.Contents>
       </S.Container>

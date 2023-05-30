@@ -5,7 +5,7 @@ export const Tab = styled.ul`
   display: flex;
 `;
 export const Manus = styled.li`
-  width: 150px;
+  width: ${(props) => props.tabWidth};
   display: flex;
   align-items: center;
   justify-content: center;

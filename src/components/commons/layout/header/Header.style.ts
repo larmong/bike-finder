@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 export const Header = styled.header`
   width: 100%;
   height: 100px;
-  //background: #f9fafa;
-  //background: #ffffff;
   background: ${(props) => (props.isActive ? "#f9fafa" : "#ffffff")};
 `;
 export const Wrapper = styled.div`
