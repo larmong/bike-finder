@@ -26,7 +26,6 @@ export const BoardBody = styled.div`
   font-size: 16px;
   line-height: 20px;
 `;
-
 export const BoardItem = styled.span`
   padding: 0 40px;
   white-space: nowrap;

@@ -15,7 +15,7 @@ export const Manus = styled.li`
   line-height: 20px;
   color: #999999;
   cursor: pointer;
-  &:first-child {
+  &:first-of-type {
     margin-left: 0;
   }
   &.target {

@@ -21,7 +21,6 @@ export default function Board01() {
         }));
 
         setFetchHelped(result);
-        console.log(result);
       } catch (error) {
         console.error(error);
       }

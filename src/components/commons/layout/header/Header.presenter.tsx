@@ -8,11 +8,11 @@ export default function HeaderUI(props: IHeaderUI) {
 
   let HEADER_MENUS: any;
   HEADER_MENUS = [
-    { name: "따릉이", route: "/" },
-    { name: "대여소조회", route: "/station" },
-    { name: "이용권구매", route: "/ticket" },
-    { name: "안전수칙", route: "/safety" },
-    { name: "시민센터", route: "/citizen" },
+    { name: "따릉이", route: "" },
+    { name: "대여소조회", route: "station" },
+    { name: "이용권구매", route: "ticket" },
+    { name: "안전수칙", route: "safety" },
+    { name: "시민센터", route: "citizen" },
   ];
 
   // accessToken \없을때 (비회원)

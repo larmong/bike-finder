@@ -35,7 +35,8 @@ export const BoardCont = styled.div`
   padding: 30px 20px;
   background: #fafafa;
   display: flex;
-  border-top: 1px solid #e9e9e9;
+  border-bottom: 1px solid #e9e9e9;
+
   svg {
     width: 30px;
     height: 30px;

@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const Header = styled.header`
   width: 100%;
   height: 100px;
+  border-bottom: ${(props) => (props.isActive ? "none" : "1px solid #e9e9e9")};
   background: ${(props) => (props.isActive ? "#f9fafa" : "#ffffff")};
 `;
 export const Wrapper = styled.div`
