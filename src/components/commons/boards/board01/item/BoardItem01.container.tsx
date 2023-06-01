@@ -1,6 +1,10 @@
 import * as S from "./BoardItem01.style";
 import { useState } from "react";
-import { MdArrowForwardIos, MdQuestionAnswer } from "react-icons/md";
+import {
+  MdArrowForwardIos,
+  MdQuestionAnswer,
+  MdContactSupport,
+} from "react-icons/md";
 import { IPropsBoardItem01 } from "../Board01.types";
 
 export default function BoardItem01(props: IPropsBoardItem01) {
@@ -12,7 +16,10 @@ export default function BoardItem01(props: IPropsBoardItem01) {
   return (
     <>
       <S.BoardTitle onClick={onClickOpenItem}>
-        <S.BoardItem>{props.title}</S.BoardItem>
+        <S.BoardItem>
+          {props.titleIcon ? "" : <MdContactSupport />}
+          {props.title}
+        </S.BoardItem>
         <S.BoardIcon className={item ? "open" : ""}>
           <MdArrowForwardIos />
         </S.BoardIcon>
@@ -20,14 +27,18 @@ export default function BoardItem01(props: IPropsBoardItem01) {
       {item ? (
         <S.BoardCont>
           <MdQuestionAnswer />
-          <S.BoardContText>
-            <span>도움주신분</span>
-            {props.company} <br />
-            <span>날짜</span>
-            {props.date} <br />
-            <br />
-            {props.content}
-          </S.BoardContText>
+          {props.titleIcon ? (
+            <S.BoardContText>
+              <span>도움주신분</span>
+              {props.company} <br />
+              <span>날짜</span>
+              {props.date} <br />
+              <br />
+              {props.content}
+            </S.BoardContText>
+          ) : (
+            <S.BoardContText>{props.content}</S.BoardContText>
+          )}
         </S.BoardCont>
       ) : (
         <></>

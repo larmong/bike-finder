@@ -9,7 +9,11 @@ export default function InquiryPage(props) {
       <S.Container>
         <Title02 title="문의하기" />
         <S.Contents>
-          {props.pathname === "faq" ? <Faq /> : <Inquiry />}
+          {props.pathname === "faq" ? (
+            <Faq faqType={props.faqType} />
+          ) : (
+            <Inquiry />
+          )}
         </S.Contents>
       </S.Container>
     </S.Wrapper>

@@ -10,10 +10,19 @@ export const BoardTitle = styled.div`
 `;
 
 export const BoardItem = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 5px;
   padding: 0 40px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  svg {
+    width: 25px;
+    height: 25px;
+    padding-bottom: 2px;
+  }
 `;
 
 export const BoardIcon = styled.div`
@@ -21,11 +30,11 @@ export const BoardIcon = styled.div`
   display: inline-block;
   text-align: center;
   svg {
-    rotate: -90deg;
+    rotate: 90deg;
   }
   &.open {
     svg {
-      rotate: 90deg;
+      rotate: -90deg;
     }
   }
 `;
@@ -48,12 +57,14 @@ export const BoardCont = styled.div`
 `;
 
 export const BoardContText = styled.div`
+  width: calc(100% - 30px);
   background: #fafafa;
   margin-left: 10px;
   margin-top: 2px;
   font-size: 16px;
   line-height: 30px;
   color: #777;
+  white-space: pre-wrap;
   span {
     display: inline-block;
     font-weight: 700;

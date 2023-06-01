@@ -18,7 +18,7 @@ export const BoardHead = styled.div`
 `;
 
 export const BoardBodyWrapper = styled.div`
-  border-bottom: 1px solid #999999;
+  border-bottom: ${(props) => (props.isHead ? "1px solid #999999" : "none")};
 `;
 
 export const BoardBody = styled.div`
