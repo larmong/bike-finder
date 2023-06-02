@@ -22,9 +22,17 @@ export const MenuCardIcon = styled.div`
   border-radius: 50%;
   border: ${(props) =>
     props.isType ? "3px solid #ffffff" : "3px solid #333333"};
+
   svg {
     width: 30px;
     height: 30px;
+    color: ${(props) => (props.isType ? "#ffffff" : "#333333")};
+  }
+`;
+export const MenuCardIconTicket = styled.div`
+  svg {
+    width: 60px;
+    height: 60px;
     color: ${(props) => (props.isType ? "#ffffff" : "#333333")};
   }
 `;

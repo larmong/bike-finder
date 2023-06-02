@@ -8,6 +8,7 @@ interface ILayoutProps {
 
 const Page = styled.div`
   min-height: calc(100vh - 495px);
+  height: auto;
 `;
 
 export default function Layout(props: ILayoutProps) {

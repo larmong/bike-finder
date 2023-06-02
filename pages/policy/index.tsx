@@ -40,16 +40,16 @@ export default function Policy(props) {
           <S.Content>
             {props.pathname === "use" ? (
               <Use />
-            ) : "" || props.pathname === "privacy" ? (
+            ) : props.pathname === "privacy" ? (
               <Privacy />
-            ) : "" || props.pathname === "duty" ? (
+            ) : props.pathname === "duty" ? (
               <Duty />
-            ) : "" || props.pathname === "insurance" ? (
+            ) : props.pathname === "insurance" ? (
               <Insurance />
-            ) : "" || props.pathname === "helped" ? (
+            ) : props.pathname === "helped" ? (
               <Helped />
             ) : (
-              ""
+              <></>
             )}
           </S.Content>
         </S.Contents>
