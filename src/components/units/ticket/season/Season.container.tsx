@@ -1,5 +1,10 @@
 import * as S from "./Season.style";
+import { useState } from "react";
+import { getPrice } from "../../../commons/utils/utils";
 import Radio01 from "../../../commons/inputs/radio/radio01/Radio01.container";
+import Input01 from "../../../commons/inputs/input/input01/Input01.container";
+import PaymentInfo from "../item/paymentInfo/PaymentInfo.container";
+import Button01 from "../../../commons/buttons/button01/Button01.container";
 
 export default function Season() {
   const TICKET_TYPE = [
@@ -36,6 +41,28 @@ export default function Season() {
       price: 40000,
     },
   ];
+
+  const [userMileage, setUserMileage] = useState(1000);
+  const [value, setValue] = useState<number>(null);
+
+  const onChangeValue = (event) => {
+    setValue(event.target.value);
+    console.log(value);
+  };
+
+  const [ticketPrice, setTicketPrice] = useState(0);
+
+  const onClickButton = () => {
+    // >>>>>>>>>>> 결제하기 버튼 유효성검사 <<<<<<<<<<
+    // 1. 이용권이 선택됐는지
+    // 2. 마일리지를 사용 할 경우 유저가 갖고있는 마일리지보다 많은지 + 결제금액보다 사용 마일리지가 많은지 확인
+    // 3 .결제할때 체크박스 모두 체크됐는지 확인
+    // >>>>>>>>>>> 모두 통과되면 결제하는 페이지로 이동 <<<<<<<<<<
+  };
+  const onClickTicket = () => {
+    // 이용권 선택(클릭)하면 금액이 setTicketPrice 에 저장됨
+  };
+
   return (
     <S.Wrapper>
       <S.Notice>
@@ -61,33 +88,26 @@ export default function Season() {
           </S.SectionGroup>
           <S.SectionGroup>
             <S.SectionTitle>마일리지 사용</S.SectionTitle>
-            <input
-              type="text"
-              placeholder="최소 100마일리지 부터 사용 가능합니다."
+            <Input01
+              onChangeValue={onChangeValue}
+              valueData={value}
+              placeholderData="최소 100마일리지 부터 사용 가능합니다."
             />
-            <div>총 보유 마일리지 0</div>
+            <S.MileageGroup>
+              총 보유 마일리지 <span>{getPrice(userMileage)}</span>
+            </S.MileageGroup>
           </S.SectionGroup>
         </S.ContentLeft>
         <S.ContentRight>
           <S.SectionGroup>
             <S.SectionTitle>결제 금액</S.SectionTitle>
-            <div>
-              이용권 <span>40,000원</span>
-            </div>
-            <div>
-              마일리지 <span>0원</span>
-            </div>
-            <div>
-              추가요금자동결제, 환불규정, 이용약관에 동의하며 결제를 진행합니다.
-              만 13세 미만의 미성년자가 서비스를 이용하는 경우, 사고 발생 시
-              보험 적용을 받을 수 없는 등의 불이익을 받으실 수 있습니다. (만
-              15세 미만의 경우 상법 제732조에 의거하여 사망 보험 적용 불가)
-            </div>
-            <div>
-              총 결제금액 <span>40,000원</span>
-            </div>
+            <PaymentInfo ticketPrice={ticketPrice} mileage={value} />
           </S.SectionGroup>
-          <button>결제하기</button>
+          <S.TotalWrapper>
+            <p>총 결제금액</p>
+            <span>{getPrice(ticketPrice - value)}원</span>
+          </S.TotalWrapper>
+          <Button01 onClickButton={onClickButton} btnText="결제하기" />
         </S.ContentRight>
       </S.Content>
     </S.Wrapper>
