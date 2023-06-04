@@ -19,7 +19,7 @@ export const Notice = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Contents = styled.div`
   display: flex;
   justify-content: space-between;
   > div {

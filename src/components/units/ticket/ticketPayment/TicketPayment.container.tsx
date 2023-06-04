@@ -1,49 +1,15 @@
-import * as S from "./Season.style";
+import * as S from "./TicketPayment.style";
 import { useState } from "react";
 import { getPrice } from "../../../commons/utils/utils";
-import Radio01 from "../../../commons/inputs/radio/radio01/Radio01.container";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
-import PaymentInfo from "../item/paymentInfo/PaymentInfo.container";
+import Radio01 from "../../../commons/inputs/radio/radio01/Radio01.container";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
+import PaymentInfo from "../item/paymentInfo/PaymentInfo.container";
 
-export default function Season() {
-  const TICKET_TYPE = [
-    {
-      name: "7일(1시간권)",
-      price: 3000,
-    },
-    {
-      name: "30일(1시간권)",
-      price: 5000,
-    },
-    {
-      name: "180일(1시간권)",
-      price: 15000,
-    },
-    {
-      name: "365일(1시간권)",
-      price: 30000,
-    },
-    {
-      name: "7일(2시간권)",
-      price: 4000,
-    },
-    {
-      name: "30일(2시간권)",
-      price: 7000,
-    },
-    {
-      name: "180일(2시간권)",
-      price: 20000,
-    },
-    {
-      name: "365일(2시간권)",
-      price: 40000,
-    },
-  ];
-
+export default function TicketPayment(props) {
+  console.log(props.pathname);
   const [userMileage, setUserMileage] = useState(1000);
-  const [value, setValue] = useState<number>(null);
+  const [value, setValue] = useState<number | undefined>(undefined);
 
   const onChangeValue = (event) => {
     setValue(event.target.value);
@@ -80,36 +46,52 @@ export default function Season() {
         · 추가요금은 이용권 결제수단으로 자동결제됩니다.
         <br />
       </S.Notice>
-      <S.Content>
+      <S.Contents>
         <S.ContentLeft>
           <S.SectionGroup>
             <S.SectionTitle>정기권 종류</S.SectionTitle>
-            <Radio01 radioData={TICKET_TYPE} radioName="SeasonTicket" />
-          </S.SectionGroup>
-          <S.SectionGroup>
-            <S.SectionTitle>마일리지 사용</S.SectionTitle>
-            <Input01
-              onChangeValue={onChangeValue}
-              valueData={value}
-              placeholderData="최소 100마일리지 부터 사용 가능합니다."
+            <Radio01
+              radioData={props.ticketData}
+              radioName={`${props.pathname}Ticket`}
             />
-            <S.MileageGroup>
-              총 보유 마일리지 <span>{getPrice(userMileage)}</span>
-            </S.MileageGroup>
           </S.SectionGroup>
+          {props.pathname === "season" ? (
+            <S.SectionGroup>
+              <S.SectionTitle>마일리지 사용</S.SectionTitle>
+              <Input01
+                onChangeValue={onChangeValue}
+                valueData={value}
+                placeholderData="최소 100마일리지 부터 사용 가능합니다."
+              />
+              <S.MileageGroup>
+                총 보유 마일리지 <span>{getPrice(userMileage)}</span>
+              </S.MileageGroup>
+            </S.SectionGroup>
+          ) : (
+            ""
+          )}
         </S.ContentLeft>
         <S.ContentRight>
           <S.SectionGroup>
             <S.SectionTitle>결제 금액</S.SectionTitle>
-            <PaymentInfo ticketPrice={ticketPrice} mileage={value} />
+            <PaymentInfo
+              pathname={props.pathname}
+              ticketPrice={ticketPrice}
+              mileage={value}
+            />
           </S.SectionGroup>
           <S.TotalWrapper>
             <p>총 결제금액</p>
-            <span>{getPrice(ticketPrice - value)}원</span>
+            <span>
+              {getPrice(
+                value === undefined ? ticketPrice : ticketPrice - value
+              )}
+              원
+            </span>
           </S.TotalWrapper>
           <Button01 onClickButton={onClickButton} btnText="결제하기" />
         </S.ContentRight>
-      </S.Content>
+      </S.Contents>
     </S.Wrapper>
   );
 }

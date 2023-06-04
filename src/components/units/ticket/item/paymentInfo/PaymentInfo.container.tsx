@@ -24,10 +24,14 @@ export default function PaymentInfo(props) {
           <p>이용권</p>
           <span>{props.ticketPrice}원</span>
         </ListItem>
-        <ListItem>
-          <p>마일리지</p>
-          <span>{props.mileage === null ? 0 : props.mileage}원</span>
-        </ListItem>
+        {props.pathname === "season" ? (
+          <ListItem>
+            <p>마일리지</p>
+            <span>{props.mileage === undefined ? 0 : props.mileage}원</span>
+          </ListItem>
+        ) : (
+          ""
+        )}
       </PaymentList>
       <CbWrapper>
         <Checkbox02 checkboxData={CbList} />

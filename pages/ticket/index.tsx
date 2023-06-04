@@ -1,12 +1,13 @@
 import * as S from "../../src/components/units/ticket/Ticket.style";
 import Title02 from "../../src/components/commons/titles/title02/Title02.container";
-import Day from "../../src/components/units/ticket/day/Day.container";
-import Season from "../../src/components/units/ticket/season/Season.container";
+import Day from "../../src/components/units/ticket/ticketPayment/day/Day.container";
+import Season from "../../src/components/units/ticket/ticketPayment/season/Season.container";
 import Ticket from "../../src/components/units/ticket/Ticket.container";
-import DayGift from "../../src/components/units/ticket/day-gift/DayGift.container";
-import SeasonGift from "../../src/components/units/ticket/season-gift/SeasonGift.container";
+import DayGift from "../../src/components/units/ticket/ticketPayment/day-gift/DayGift.container";
+import SeasonGift from "../../src/components/units/ticket/ticketPayment/season-gift/SeasonGift.container";
 import Tab01 from "../../src/components/commons/tabs/tab01/Tab01.container";
 import { useRouter } from "next/router";
+import TicketPayment from "../../src/components/units/ticket/ticketPayment/TicketPayment.container";
 
 export default function TicketPage(props) {
   const router = useRouter();
@@ -29,6 +30,50 @@ export default function TicketPage(props) {
       route: "ticket/day-gift",
     },
   ];
+  const SEASON_TICKET_TYPE = [
+    {
+      name: "7일(1시간권)",
+      price: 3000,
+    },
+    {
+      name: "30일(1시간권)",
+      price: 5000,
+    },
+    {
+      name: "180일(1시간권)",
+      price: 15000,
+    },
+    {
+      name: "365일(1시간권)",
+      price: 30000,
+    },
+    {
+      name: "7일(2시간권)",
+      price: 4000,
+    },
+    {
+      name: "30일(2시간권)",
+      price: 7000,
+    },
+    {
+      name: "180일(2시간권)",
+      price: 20000,
+    },
+    {
+      name: "365일(2시간권)",
+      price: 40000,
+    },
+  ];
+  const DAY_TICKET_TYPE = [
+    {
+      name: "일일 회원(1시간권)",
+      price: 1000,
+    },
+    {
+      name: "일일 회원(2시간권)",
+      price: 2000,
+    },
+  ];
 
   return (
     <S.Wrapper>
@@ -40,14 +85,16 @@ export default function TicketPage(props) {
           ) : (
             <Tab01 TAB_MENUS={TAB_MENUS} tabWidth="140px" />
           )}
-          {props.pathname === "season" ? (
-            <Season />
-          ) : props.pathname === "day" ? (
-            <Day />
-          ) : props.pathname === "season-gift" ? (
-            <SeasonGift />
-          ) : props.pathname === "day-gift" ? (
-            <DayGift />
+          {props.pathname === "season" || props.pathname === "season-gift" ? (
+            <TicketPayment
+              pathname={props.pathname}
+              ticketData={SEASON_TICKET_TYPE}
+            />
+          ) : props.pathname === "day" || props.pathname === "day-gift" ? (
+            <TicketPayment
+              pathname={props.pathname}
+              ticketData={DAY_TICKET_TYPE}
+            />
           ) : (
             <Ticket />
           )}

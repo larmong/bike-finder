@@ -14,7 +14,7 @@ export const ListItem = styled.li`
   p {
     position: relative;
     display: inline-block;
-    width: 60px;
+    width: 80px;
     font-weight: 700;
     letter-spacing: -0.07em;
     &:after {
