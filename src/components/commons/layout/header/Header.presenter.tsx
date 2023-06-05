@@ -12,7 +12,7 @@ export default function HeaderUI(props: IHeaderUI) {
     { name: "이용권구매", route: "ticket" },
     { name: "문의하기", route: "inquiry" },
     { name: "안전수칙", route: "safety" },
-    { name: "시민센터", route: "citizen" },
+    { name: "시민센터", route: "citizen/notice" },
   ];
 
   // accessToken \없을때 (비회원)
