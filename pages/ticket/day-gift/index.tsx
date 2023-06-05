@@ -1,5 +1,5 @@
 import TicketPage from "../index";
 
-export default function DayGiftPage() {
+export default function DayGift() {
   return <TicketPage pathname="day-gift" />;
 }

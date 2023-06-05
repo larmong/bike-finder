@@ -1,10 +1,6 @@
 import * as S from "../../src/components/units/ticket/Ticket.style";
 import Title02 from "../../src/components/commons/titles/title02/Title02.container";
-import Day from "../../src/components/units/ticket/ticketPayment/day/Day.container";
-import Season from "../../src/components/units/ticket/ticketPayment/season/Season.container";
 import Ticket from "../../src/components/units/ticket/Ticket.container";
-import DayGift from "../../src/components/units/ticket/ticketPayment/day-gift/DayGift.container";
-import SeasonGift from "../../src/components/units/ticket/ticketPayment/season-gift/SeasonGift.container";
 import Tab01 from "../../src/components/commons/tabs/tab01/Tab01.container";
 import { useRouter } from "next/router";
 import TicketPayment from "../../src/components/units/ticket/ticketPayment/TicketPayment.container";
@@ -64,6 +60,7 @@ export default function TicketPage(props) {
       price: 40000,
     },
   ];
+
   const DAY_TICKET_TYPE = [
     {
       name: "일일 회원(1시간권)",

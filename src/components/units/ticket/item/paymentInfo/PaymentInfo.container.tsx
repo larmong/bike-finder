@@ -1,5 +1,6 @@
 import { CbWrapper, ListItem, PaymentList } from "./PaymentInfo.style";
 import Checkbox02 from "../../../../commons/inputs/checkbox/checkbox02/Checkbox02.contaienr";
+import { getPrice } from "../../../../commons/utils/utils";
 
 export default function PaymentInfo(props) {
   const CbList = [
@@ -27,7 +28,12 @@ export default function PaymentInfo(props) {
         {props.pathname === "season" ? (
           <ListItem>
             <p>마일리지</p>
-            <span>{props.mileage === undefined ? 0 : props.mileage}원</span>
+            <span>
+              {props.mileage === undefined || props.mileage === ""
+                ? 0
+                : getPrice(props.mileage)}
+              원
+            </span>
           </ListItem>
         ) : (
           ""

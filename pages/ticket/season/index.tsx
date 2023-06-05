@@ -1,5 +1,5 @@
 import TicketPage from "../index";
 
-export default function SeasonPage() {
+export default function Season() {
   return <TicketPage pathname="season" />;
 }

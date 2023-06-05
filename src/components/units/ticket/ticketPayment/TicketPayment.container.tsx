@@ -7,16 +7,17 @@ import Button01 from "../../../commons/buttons/button01/Button01.container";
 import PaymentInfo from "../item/paymentInfo/PaymentInfo.container";
 
 export default function TicketPayment(props) {
-  console.log(props.pathname);
   const [userMileage, setUserMileage] = useState(1000);
   const [value, setValue] = useState<number | undefined>(undefined);
+  const [ticketPrice, setTicketPrice] = useState(0);
 
-  const onChangeValue = (event) => {
+  const onChangeMileageValue = (event) => {
     setValue(event.target.value);
-    console.log(value);
   };
 
-  const [ticketPrice, setTicketPrice] = useState(0);
+  const onClickTicketType = (ticketNum) => {
+    setTicketPrice(Number(ticketNum));
+  };
 
   const onClickButton = () => {
     // >>>>>>>>>>> 결제하기 버튼 유효성검사 <<<<<<<<<<
@@ -24,9 +25,6 @@ export default function TicketPayment(props) {
     // 2. 마일리지를 사용 할 경우 유저가 갖고있는 마일리지보다 많은지 + 결제금액보다 사용 마일리지가 많은지 확인
     // 3 .결제할때 체크박스 모두 체크됐는지 확인
     // >>>>>>>>>>> 모두 통과되면 결제하는 페이지로 이동 <<<<<<<<<<
-  };
-  const onClickTicket = () => {
-    // 이용권 선택(클릭)하면 금액이 setTicketPrice 에 저장됨
   };
 
   return (
@@ -49,8 +47,14 @@ export default function TicketPayment(props) {
       <S.Contents>
         <S.ContentLeft>
           <S.SectionGroup>
-            <S.SectionTitle>정기권 종류</S.SectionTitle>
+            <S.SectionTitle>
+              {props.pathname === "season" || props.pathname === "season-gift"
+                ? "정기권"
+                : "일일권"}
+              &nbsp;종류
+            </S.SectionTitle>
             <Radio01
+              onClickRadio={onClickTicketType}
               radioData={props.ticketData}
               radioName={`${props.pathname}Ticket`}
             />
@@ -59,7 +63,7 @@ export default function TicketPayment(props) {
             <S.SectionGroup>
               <S.SectionTitle>마일리지 사용</S.SectionTitle>
               <Input01
-                onChangeValue={onChangeValue}
+                onChangeValue={onChangeMileageValue}
                 valueData={value}
                 placeholderData="최소 100마일리지 부터 사용 가능합니다."
               />
