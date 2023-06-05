@@ -9,14 +9,14 @@ export const Wrapper = styled.div`
   gap: 50px;
 `;
 
-export const InfoGroup = styled.div`
+export const CitizenGroup = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
 `;
 
-export const InfoTitle = styled.p`
+export const CitizenTitle = styled.p`
   font-weight: 700;
   font-size: 24px;
   line-height: 30px;
