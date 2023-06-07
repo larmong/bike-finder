@@ -11,7 +11,7 @@ export default function Pagination01UI(props: IPropsPagination01UI) {
       <S.PageBtn>
         {new Array(10).fill(1).map(
           (_, index) =>
-            props.lastPage >= index + props.startPage && (
+            props.totalPages >= index + props.startPage && (
               <S.Page
                 key={index + props.startPage}
                 id={String(index + props.startPage)}

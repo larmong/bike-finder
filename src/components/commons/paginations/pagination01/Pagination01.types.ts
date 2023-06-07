@@ -5,14 +5,16 @@ export interface IIsActive {
 }
 
 export interface IPropsPagination01 {
-  noticeLength;
+  noticeLength: number;
+  pageSize: number;
+  handlePageChange: (event: number) => void;
 }
 
 export interface IPropsPagination01UI {
-  startPage: number;
-  lastPage: number;
   nowPage: number;
+  startPage: number;
+  totalPages: number;
   onClickPagination: (event: MouseEvent<HTMLElement>) => void;
-  onClickNextPage: () => void;
   onClickPrevPage: () => void;
+  onClickNextPage: () => void;
 }

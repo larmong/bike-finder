@@ -1,31 +1,36 @@
 import Pagination01UI from "./Pagination01.presenter";
-import { MouseEvent, useEffect, useState } from "react";
+import { MouseEvent, useState } from "react";
+import { IPropsPagination01 } from "./Pagination01.types";
 
-export default function Pagination01(props) {
-  const [startPage, setStartPage] = useState(1);
-  const [nowPage, setNowPage] = useState(1);
-  const [lastPage, setLastPage] = useState(0);
+export default function Pagination01(props: IPropsPagination01) {
+  const [startPage, setStartPage] = useState<number>(1);
+  const [nowPage, setNowPage] = useState<number>(1);
+  const totalPages: number = Math.ceil(props.noticeLength / props.pageSize);
 
-  useEffect(() => {
-    // 총 게시물 수 => 총 페이지네이션 수
-    if (props.noticeLength % 10 === 0) {
-      setLastPage(props.noticeLength / 10);
-    } else {
-      setLastPage((props.noticeLength - (props.noticeLength % 10)) / 10 + 1);
+  const onClickPagination = (event: MouseEvent<HTMLElement>) => {
+    const selectedPage: number = Number(event.currentTarget.id);
+    props.handlePageChange(selectedPage);
+    setNowPage(selectedPage);
+  };
+
+  const onClickPrevPage = () => {
+    if (nowPage > 1) {
+      props.handlePageChange(nowPage - 1);
+      setNowPage(nowPage - 1);
     }
-  });
-
-  const onClickPagination = (event: MouseEvent<HTMLElement>) => {};
-
-  const onClickPrevPage = () => {};
-
-  const onClickNextPage = () => {};
+  };
+  const onClickNextPage = () => {
+    if (nowPage < totalPages) {
+      props.handlePageChange(nowPage + 1);
+      setNowPage(nowPage + 1);
+    }
+  };
 
   return (
     <Pagination01UI
-      startPage={startPage}
       nowPage={nowPage}
-      lastPage={lastPage}
+      startPage={startPage}
+      totalPages={totalPages}
       onClickPagination={onClickPagination}
       onClickPrevPage={onClickPrevPage}
       onClickNextPage={onClickNextPage}

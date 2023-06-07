@@ -7,7 +7,18 @@ import Pagination01 from "../../paginations/pagination01/Pagination01.container"
 
 export default function Board02UI(props) {
   const [fetchNotice, setFetchNotice] = useState<IFetchNotice[]>([]);
-  const noticeLength: Number = fetchNotice.length; // 총 게시물 수
+  const noticeLength: Number = fetchNotice.length;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 10;
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const paginatedNotice = fetchNotice.slice(startIndex, endIndex);
+
+  const handlePageChange = (selectedPage) => {
+    setCurrentPage(selectedPage);
+    console.log(currentPage);
+  };
 
   useEffect(() => {
     const getNoticeData = async () => {
@@ -50,7 +61,7 @@ export default function Board02UI(props) {
         <S.BoardItem>날짜</S.BoardItem>
       </S.BoardHead>
       <S.BoardBody>
-        {fetchNotice?.map((el) =>
+        {paginatedNotice?.map((el) =>
           el.top === true ? (
             <S.BoardItemWrapper key={el.id}>
               <S.NoticeBoardItem className="board-item-left">
@@ -69,7 +80,11 @@ export default function Board02UI(props) {
           )
         )}
       </S.BoardBody>
-      <Pagination01 noticeLength={noticeLength} />
+      <Pagination01
+        noticeLength={noticeLength}
+        pageSize={pageSize}
+        handlePageChange={handlePageChange}
+      />
     </S.Board>
   );
 }
