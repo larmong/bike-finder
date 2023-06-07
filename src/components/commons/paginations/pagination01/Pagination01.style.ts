@@ -5,6 +5,7 @@ export const Pagination = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 25px;
 `;
 export const PageBtn = styled.div`
   display: flex;
@@ -12,36 +13,36 @@ export const PageBtn = styled.div`
 `;
 
 export const Page = styled.span`
-  width: auto;
   display: flex;
-  line-height: 20px;
-  text-align: center;
+  align-items: center;
   justify-content: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 3px;
+  color: ${(props: IIsActive) => (props.isActive ? "#ffffff" : "#666666")};
+  background: ${(props: IIsActive) => (props.isActive ? "#0D8F68" : "#ffffff")};
   cursor: pointer;
-  font-size: ${(props: IIsActive) => (props.isActive ? "17px" : "16px")};
-  font-weight: ${(props: IIsActive) => (props.isActive ? "700" : "400")};
-  color: ${(props: IIsActive) => (props.isActive ? "#ffd600" : "#4f4f4f")};
-  margin: ${(props: IIsActive) =>
-    props.isActive ? "-2px 10px 0 10px" : "-1px 10px 0 10px"};
-  text-decoration-line: ${(props: IIsActive) =>
-    props.isActive ? "underline" : "none"};
 `;
 
 export const PageNextBtn = styled.button`
-  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px;
+  margin: 0 5px;
+  color: #666666;
+  svg {
+    width: 15px;
+    height: 15px;
+  }
 `;
 export const PagePrevBtn = styled.button`
-  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px;
+  margin: 0 5px;
+  color: #666666;
+  svg {
+    width: 15px;
+    height: 15px;
+  }
 `;

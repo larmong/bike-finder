@@ -1,8 +1,8 @@
 import * as S from "./Pagination01.style";
-import { Pagination01UIProps } from "./Pagination01.types";
+import { IPropsPagination01UI } from "./Pagination01.types";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 
-export default function Pagination01UI(props: Pagination01UIProps) {
+export default function Pagination01UI(props: IPropsPagination01UI) {
   return (
     <S.Pagination>
       <S.PagePrevBtn onClick={props.onClickPrevPage}>

@@ -4,11 +4,11 @@ export interface IIsActive {
   isActive?: boolean;
 }
 
-export interface IPagination01Props {
-  totalPage?: number;
+export interface IPropsPagination01 {
+  noticeLength;
 }
 
-export interface Pagination01UIProps {
+export interface IPropsPagination01UI {
   startPage: number;
   lastPage: number;
   nowPage: number;
