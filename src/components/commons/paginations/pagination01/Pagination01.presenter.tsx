@@ -9,7 +9,7 @@ export default function Pagination01UI(props: IPropsPagination01UI) {
         <MdArrowBackIosNew />
       </S.PagePrevBtn>
       <S.PageBtn>
-        {new Array(10).fill(1).map(
+        {new Array(5).fill(1).map(
           (_, index) =>
             props.totalPages >= index + props.startPage && (
               <S.Page
