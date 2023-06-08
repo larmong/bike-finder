@@ -37,8 +37,12 @@ export default function HeaderUI(props: IHeaderUI) {
             ))}
           </S.Nav>
           <S.BtnGroup>
-            <S.HeaderBtnLine>{HEADER_BTN[0].name}</S.HeaderBtnLine>
-            <S.HeaderBtn>{HEADER_BTN[1].name}</S.HeaderBtn>
+            <S.HeaderBtnLine onClick={() => router.push(HEADER_BTN[0].route)}>
+              {HEADER_BTN[0].name}
+            </S.HeaderBtnLine>
+            <S.HeaderBtn onClick={() => router.push(HEADER_BTN[1].route)}>
+              {HEADER_BTN[1].name}
+            </S.HeaderBtn>
           </S.BtnGroup>
         </S.Wrapper>
       </S.Container>

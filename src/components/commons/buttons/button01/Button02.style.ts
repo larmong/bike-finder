@@ -6,12 +6,12 @@ export const DefaultBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
+  width: ${(props) => props.btnWidth};
   height: 50px;
   background: #0d8f68;
   border-radius: 5px;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 25px;
   letter-spacing: -0.07em;
   color: #ffffff;

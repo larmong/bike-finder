@@ -63,6 +63,7 @@ export default function TicketPayment(props) {
             <S.SectionGroup>
               <S.SectionTitle>마일리지 사용</S.SectionTitle>
               <Input01
+                inputType="text"
                 onChangeValue={onChangeMileageValue}
                 valueData={value}
                 placeholderData="최소 100마일리지 부터 사용 가능합니다."
@@ -93,7 +94,11 @@ export default function TicketPayment(props) {
               원
             </span>
           </S.TotalWrapper>
-          <Button01 onClickButton={onClickButton} btnText="결제하기" />
+          <Button01
+            onClickButton={onClickButton}
+            btnWidth="200px"
+            btnText="결제하기"
+          />
         </S.ContentRight>
       </S.Contents>
     </S.Wrapper>

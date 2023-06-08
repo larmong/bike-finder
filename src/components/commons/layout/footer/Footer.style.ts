@@ -5,6 +5,7 @@ export const Footer = styled.footer`
   height: 361px;
   background: #455062;
   padding: 65px 0;
+  display: ${(props) => (props.isActive ? "none" : "block")};
 `;
 export const Wrapper = styled.div`
   display: flex;

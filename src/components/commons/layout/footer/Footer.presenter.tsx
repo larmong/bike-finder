@@ -1,8 +1,13 @@
 import * as S from "./Footer.style";
 import { IFooterUI } from "./Footer.types";
 import { Fragment } from "react";
+import { useRouter } from "next/router";
 
 export default function FooterUI(props: IFooterUI) {
+  const router = useRouter();
+  console.log(router.pathname);
+  console.log(router.pathname === "/login");
+
   let FOOTER_MENUS: any;
   FOOTER_MENUS = [
     { name: "이용약관", route: "/policy/use" },
@@ -11,7 +16,6 @@ export default function FooterUI(props: IFooterUI) {
     { name: "보험안내", route: "/policy/insurance" },
     { name: "도움주신분", route: "/policy/helped" },
   ];
-
   let SNS_MENUS: any;
   SNS_MENUS = [
     {
@@ -25,7 +29,7 @@ export default function FooterUI(props: IFooterUI) {
     },
   ];
   return (
-    <S.Footer>
+    <S.Footer isActive={router.pathname === "/login"}>
       <S.Container>
         <S.Wrapper>
           <S.Menus>
