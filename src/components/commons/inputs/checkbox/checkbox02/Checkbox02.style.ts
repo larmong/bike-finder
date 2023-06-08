@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 export const Checkbox = styled.input`
   display: none;
   & + label {
+    cursor: pointer;
     width: 16px;
     height: 16px;
     background-size: cover;

@@ -2,9 +2,14 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+export const CheckboxWrapper = styled.div`
+  display: flex;
   gap: 8px;
   align-items: center;
-  margin: 0 auto;
 `;
 
 export const Checkbox = styled.input`
@@ -24,16 +29,22 @@ export const Checkbox = styled.input`
     border: 2px solid #0d8f68;
   }
 `;
-export const CheckboxName = styled.span`
-  width: calc(100% - 24px);
-  font-weight: 400;
+export const CheckboxName = styled.p`
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+`;
+
+export const Essential = styled.em`
+  margin: 0 5px 0 0;
+  font-weight: 700;
+  color: ${(props) => (props.isEssential ? "#DC1919" : "#333333")};
+`;
+
+export const Detail = styled.em`
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: 700;
   font-size: 14px;
-  line-height: 23px;
-  margin-top: 3px;
-  em {
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: -0.05em;
-    color: #999999;
-  }
+  color: #666666;
 `;

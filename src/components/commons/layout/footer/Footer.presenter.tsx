@@ -5,8 +5,6 @@ import { useRouter } from "next/router";
 
 export default function FooterUI(props: IFooterUI) {
   const router = useRouter();
-  console.log(router.pathname);
-  console.log(router.pathname === "/login");
 
   let FOOTER_MENUS: any;
   FOOTER_MENUS = [
