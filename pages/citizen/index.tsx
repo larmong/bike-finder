@@ -5,6 +5,7 @@ import Charges from "../../src/components/units/citizen/charges/Charges.containe
 import Info from "../../src/components/units/citizen/info/Info.container";
 import Notice from "../../src/components/units/citizen/notice/Notice.container";
 import Ranking from "../../src/components/units/citizen/ranking/Ranking.container";
+import NoticeDetail from "../../src/components/units/citizen/notice/detail/NoticeDetail.container";
 
 export default function Citizen(props) {
   const TAB_MENUS = [
@@ -31,10 +32,16 @@ export default function Citizen(props) {
       <S.Container>
         <Title02 title={props.title} />
         <S.Contents>
-          <Tab01 TAB_MENUS={TAB_MENUS} tabWidth="170px" />
+          {props.pathname === "noticeDetail" ? (
+            ""
+          ) : (
+            <Tab01 TAB_MENUS={TAB_MENUS} tabWidth="170px" />
+          )}
           <S.Content>
             {props.pathname === "notice" ? (
               <Notice />
+            ) : props.pathname === "noticeDetail" ? (
+              <NoticeDetail />
             ) : props.pathname === "charges" ? (
               <Charges />
             ) : props.pathname === "info" ? (

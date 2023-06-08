@@ -15,14 +15,18 @@ export default function Board02UI(props: IPropsBoard02UI) {
             <S.BoardItemWrapper key={el.id}>
               <S.NoticeBoardItem className="board-item-left">
                 <em>공지</em>
-                <span>{el.title}</span>
+                <span id={el.id} onClick={props.onClickBoardDetail}>
+                  {el.title}
+                </span>
               </S.NoticeBoardItem>
               <S.NoticeBoardItem>{el.date}</S.NoticeBoardItem>
             </S.BoardItemWrapper>
           ) : (
             <S.BoardItemWrapper key={el.id}>
               <S.BoardItem className="board-item-left">
-                <span>{el.title}</span>
+                <span id={el.id} onClick={props.onClickBoardDetail}>
+                  {el.title}
+                </span>
               </S.BoardItem>
               <S.BoardItem>{el.date}</S.BoardItem>
             </S.BoardItemWrapper>
