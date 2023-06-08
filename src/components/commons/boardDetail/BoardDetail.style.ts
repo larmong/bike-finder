@@ -42,6 +42,7 @@ export const BoardDate = styled.p`
 `;
 
 export const DetailBody = styled.div`
+  line-height: 25px;
   white-space: pre-wrap;
   padding: 50px 20px;
   color: #666666;
