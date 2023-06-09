@@ -10,5 +10,7 @@ export default function Minor() {
   // useEffect(() => {});
 
   console.log(terms);
-  return <>{terms ? <UserAuth /> : <Terms setTerms={setTerms} />}</>;
+  return (
+    <>{terms && userAuth ? <UserAuth /> : <Terms setTerms={setTerms} />}</>
+  );
 }
