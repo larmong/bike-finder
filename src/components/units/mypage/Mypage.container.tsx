@@ -37,16 +37,18 @@ export default function MyPageUI(props) {
           pathname={props.pathname}
           onClickMoveToTabMenus={onClickMoveToTabMenus}
         />
+        <S.Contents>
+          {props.pathname === "userInfo" ? (
+            <UserInfo tab={props.tab} />
+          ) : props.pathname === "userPayment" ? (
+            <UserPayment tab={props.tab} />
+          ) : props.pathname === "userUse" ? (
+            <UserUse tab={props.tab} />
+          ) : (
+            ""
+          )}
+        </S.Contents>
       </S.Container>
-      {props.pathname === "userInfo" ? (
-        <UserInfo />
-      ) : props.pathname === "userPayment" ? (
-        <UserPayment />
-      ) : props.pathname === "userUse" ? (
-        <UserUse />
-      ) : (
-        ""
-      )}
     </S.Wrapper>
   );
 }

@@ -8,3 +8,6 @@ export const Container = styled.div`
   width: 1080px;
   margin: 0 auto;
 `;
+export const Contents = styled.div`
+  margin-top: 60px;
+`;
