@@ -3,7 +3,7 @@ import { Checkbox, CheckboxName, Wrapper } from "./Checkbox01.style";
 export default function Checkbox01(props) {
   return (
     <Wrapper>
-      <Checkbox type="checkbox" id="check1" />
+      <Checkbox type="checkbox" id="check1" onClick={props.onClickCb} />
       <label htmlFor="check1"></label>
       <CheckboxName>
         {props.CheckboxCont}

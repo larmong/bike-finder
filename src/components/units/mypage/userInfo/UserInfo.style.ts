@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div``;
-export const Contents = styled.div`
-  margin-top: 40px;
-`;
+export const Contents = styled.div``;
 
 export const UserInfo = styled.div`
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   gap: 30px;
