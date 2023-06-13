@@ -4,8 +4,11 @@ import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import { MdDoubleArrow } from "react-icons/md";
+import { useRouter } from "next/router";
 
 export default function UserAuth(props) {
+  const router = useRouter();
+
   const [userName, setUserName] = useState<number | undefined>(undefined);
   const [userBirth, setUserBirth] = useState<number | undefined>(undefined);
 
@@ -32,10 +35,21 @@ export default function UserAuth(props) {
         <MdDoubleArrow />
         <span>정보입력</span>
       </S.Progress>
-      <S.Notice>
-        · 만 13세는 새싹 따릉이 회원가입 후 이용하실 수 있습니다.
-        <br />· 허위사항을 기재할 시 불이익을 받으실 수 있습니다.
-      </S.Notice>
+      {router.pathname === "/join/minor" ? (
+        <S.Notice>
+          · 만 13세는 새싹 따릉이 회원가입 후 이용하실 수 있습니다.
+          <br />· 허위사항을 기재할 시 불이익을 받으실 수 있습니다.
+        </S.Notice>
+      ) : (
+        <S.Notice>
+          · 회원가입은 만 14세 이상만 가능합니다.
+          <br />
+          · 허위사항을 기재할 시 불이익을 받으실 수 있습니다.
+          <br />· 만 14세 미만의 경우 서울 자전거 규정에 따라 서비스를 이용할 수
+          없습니다.
+        </S.Notice>
+      )}
+
       <S.InputGroup>
         <S.InputItem>
           <S.InputTitle>
@@ -72,7 +86,12 @@ export default function UserAuth(props) {
           />
         </S.InputItem>
       </S.InputGroup>
-      <Checkbox01 CheckboxCont="만 13세 이하 입니다." />
+      {router.pathname === "/join/minor" ? (
+        <Checkbox01 CheckboxCont="만 13세 이하 입니다." />
+      ) : (
+        <Checkbox01 CheckboxCont="만 14세 이상 입니다." />
+      )}
+
       <Button01 onClickButton={onClickButton} btnWidth="200px" btnText="다음" />
     </>
   );

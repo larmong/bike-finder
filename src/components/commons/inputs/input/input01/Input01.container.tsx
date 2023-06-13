@@ -5,7 +5,7 @@ export default function Input01(props) {
     <InputText
       type={props.inputType}
       btnWidth={props.btnWidth}
-      value={props.valueData || ""}
+      defaultValue={props.valueData || ""}
       onChange={props.onChangeValue}
       placeholder={props.placeholderData}
     />

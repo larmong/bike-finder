@@ -35,7 +35,7 @@ export const Menu = styled.div`
   &:last-child::after {
     content: none;
   }
-  &:nth-child(2) {
+  &:nth-of-type(2) {
     color: #fff;
     font-weight: 700;
   }
@@ -69,7 +69,7 @@ export const Info = styled.div`
         font-weight: 700;
         display: inline-block;
         margin-right: 5px;
-        &:nth-child(2n) {
+        &:nth-of-type(2n) {
           margin-left: 10px;
         }
       }
