@@ -1,16 +1,11 @@
 import * as S from "./UserInfo.style";
 import Tab01 from "../../../commons/tabs/tab01/Tab01.container";
-import { useRouter } from "next/router";
 import UserInfoCard from "./card/UserInfoCard.container";
 import UserInfoFaq from "./faq/UserInfoFaq.container";
 import RentalPw from "./rentalPw/RentalPw.container";
 import Secession from "./secession/Secession.container";
 
 export default function UserInfo(props) {
-  const router = useRouter();
-  console.log(router.pathname);
-  console.log(props.tab);
-
   const TAB_MENUS = [
     {
       name: "개인정보",
