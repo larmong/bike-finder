@@ -1,8 +1,8 @@
 import * as S from "./UserInfoCard.style";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import Checkbox01 from "../../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import Button01 from "../../../../commons/buttons/button01/Button01.container";
-import {useState} from "react";
 
 export default function UserInfoCard() {
   const router = useRouter();
