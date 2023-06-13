@@ -7,6 +7,8 @@ import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../../../../commons/libraries/firebase/firebase.config";
 
 export default function Notice() {
+  const BOARD_TABLE_TITLE = ["제목", "날짜"];
+  const boardTableColumns = "1fr 185px";
   const [fetchNotice, setFetchNotice] = useState<IFetchNotice[]>([]);
 
   useEffect(() => {
@@ -46,7 +48,11 @@ export default function Notice() {
   return (
     <S.Wrapper>
       <Search01 />
-      <Board02 boardData={fetchNotice} />
+      <Board02
+        BOARD_TABLE_TITLE={BOARD_TABLE_TITLE}
+        boardTableColumns={boardTableColumns}
+        boardData={fetchNotice}
+      />
     </S.Wrapper>
   );
 }

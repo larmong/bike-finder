@@ -1,8 +1,8 @@
-import Board02UI from "./Board02.presenter";
+import Board03UI from "./Board03.presenter";
 import { MouseEvent, useState } from "react";
 import { useRouter } from "next/router";
 
-export default function Board02(props) {
+export default function Board03(props) {
   const router = useRouter();
 
   const noticeLength: number = props.boardData.length;
@@ -10,25 +10,21 @@ export default function Board02(props) {
   const pageSize = 10;
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
-  const paginatedNotice = props.boardData.slice(startIndex, endIndex);
+  const paginatedData = props.boardData.slice(startIndex, endIndex);
 
   const handlePageChange = (selectedPage) => {
     setCurrentPage(selectedPage);
   };
 
-  const onClickBoardDetail = (event: MouseEvent<HTMLElement>) => {
-    router.push(`notice/${event.currentTarget.id}`);
-  };
-
   return (
-    <Board02UI
+    <Board03UI
       BOARD_TABLE_TITLE={props.BOARD_TABLE_TITLE}
       boardTableColumns={props.boardTableColumns}
-      paginatedNotice={paginatedNotice}
+      paginatedData={paginatedData}
       noticeLength={noticeLength}
       pageSize={pageSize}
       handlePageChange={handlePageChange}
-      onClickBoardDetail={onClickBoardDetail}
+      onClickBoardDetail={props.onClickBoardDetail}
     />
   );
 }

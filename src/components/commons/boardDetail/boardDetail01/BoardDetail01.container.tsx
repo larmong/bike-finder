@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import * as S from "./BoardDetail.style";
+import * as S from "./BoardDetail01.style";
 import { MdArrowBackIosNew } from "react-icons/md";
-import { IPropsBoardDetail } from "./BoardDetail.types";
+import { IPropsBoardDetail } from "./BoardDetail01.types";
 
-export default function BoardDetail(props: IPropsBoardDetail) {
+export default function BoardDetail01(props: IPropsBoardDetail) {
   const router = useRouter();
 
   return (

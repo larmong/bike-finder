@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import {
   collection,
   documentId,
@@ -8,10 +7,11 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { IFetchBoard } from "../../../../commons/boardDetail/boardDetail01/BoardDetail01.types";
-import BoardDetail01 from "../../../../commons/boardDetail/boardDetail01/BoardDetail01.container";
+import { db } from "../../../../../../commons/libraries/firebase/firebase.config";
+import BoardDetail02 from "../../../../../commons/boardDetail/boardDetail02/BoardDetail02.container";
+import { IFetchBoard } from "../../../../../commons/boardDetail/boardDetail02/BoardDetail02.types";
 
-export default function NoticeDetail() {
+export default function FaqDetail() {
   const router = useRouter();
   const boardId: string = String(router.query._id);
   const [fetchBoard, setFetchBoard] = useState<IFetchBoard>();
@@ -20,7 +20,7 @@ export default function NoticeDetail() {
     if (boardId) {
       const getBoard = async () => {
         const data = await query(
-          collection(db, "notice"),
+          collection(db, "faq"),
           where(documentId(), "==", boardId)
         );
         const getBoard = await getDocs(data);
@@ -35,5 +35,5 @@ export default function NoticeDetail() {
     }
   }, [boardId]);
 
-  return <BoardDetail01 fetchBoard={fetchBoard} />;
+  return <BoardDetail02 fetchBoard={fetchBoard} />;
 }

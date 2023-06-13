@@ -7,6 +7,7 @@ import Secession from "./secession/Secession.container";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import { useState } from "react";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
+import FaqDetail from "./faq/detail/FaqDetail.container";
 
 export default function UserInfo(props) {
   const TAB_MENUS = [
@@ -48,7 +49,11 @@ export default function UserInfo(props) {
 
   return (
     <S.Wrapper>
-      <Tab01 TAB_MENUS={TAB_MENUS} tabWidth="140px" />
+      {props.tab === "faqDetail" ? (
+        ""
+      ) : (
+        <Tab01 TAB_MENUS={TAB_MENUS} tabWidth="140px" />
+      )}
       <S.Contents>
         {props.tab === "card" ? (
           <UserInfoCard />
@@ -56,6 +61,8 @@ export default function UserInfo(props) {
           <RentalPw />
         ) : props.tab === "faq" ? (
           <UserInfoFaq />
+        ) : props.tab === "faqDetail" ? (
+          <FaqDetail />
         ) : props.tab === "secession" ? (
           <Secession />
         ) : (

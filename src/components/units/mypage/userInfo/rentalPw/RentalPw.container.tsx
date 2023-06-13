@@ -1,5 +1,4 @@
 import * as S from "./RentalPw.style";
-import Input01 from "../../../../commons/inputs/input/input01/Input01.container";
 import Button01 from "../../../../commons/buttons/button01/Button01.container";
 
 export default function RentalPw() {

@@ -5,9 +5,10 @@ import { IPropsBoard02UI } from "./Board02.types";
 export default function Board02UI(props: IPropsBoard02UI) {
   return (
     <S.Board>
-      <S.BoardHead>
-        <S.BoardItem>제목</S.BoardItem>
-        <S.BoardItem>날짜</S.BoardItem>
+      <S.BoardHead isColumns={props.boardTableColumns}>
+        {props.BOARD_TABLE_TITLE.map((el, index) => (
+          <S.BoardItem key={index}>{el}</S.BoardItem>
+        ))}
       </S.BoardHead>
       <S.BoardBody>
         {props.paginatedNotice?.map((el) =>
