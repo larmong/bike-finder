@@ -1,12 +1,13 @@
-import * as S from "./IdInquiry.style";
+import * as S from "./PwInquiry.style";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { MdCheckCircle } from "react-icons/md";
 import Title02 from "../../commons/titles/title02/Title02.container";
 import Input01 from "../../commons/inputs/input/input01/Input01.container";
 import Button01 from "../../commons/buttons/button01/Button01.container";
+import { BtnGroup, Icon, Message } from "../join/joinSuccess/JoinSuccess.style";
 
-export default function IdInquiry() {
+export default function PwInquiry() {
   const router = useRouter();
 
   const [userName, setUserName] = useState<number | undefined>(undefined);
@@ -20,8 +21,12 @@ export default function IdInquiry() {
   };
 
   const [userAuth, setUserAuth] = useState(false);
+  const [userPwChange, setUserPwChange] = useState(false);
   const onClickMoveToSuccess = () => {
     setUserAuth(true);
+  };
+  const onClickMoveToPwChange = () => {
+    setUserPwChange(true);
   };
 
   const onClickMoveToMain = () => {
@@ -34,14 +39,12 @@ export default function IdInquiry() {
   return (
     <S.Wrapper>
       <S.Container>
-        <Title02 title="아이디 찾기" />
-        {!userAuth ? (
+        <Title02 title="비밀번호 변경" />
+        {!userAuth && !userPwChange ? (
           <S.Contents>
             <S.InputGroup>
               <S.InputItem>
-                <S.InputTitle>
-                  이&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;름
-                </S.InputTitle>
+                <S.InputTitle>아&nbsp;&nbsp;이&nbsp;&nbsp;디</S.InputTitle>
                 <Input01
                   inputType="text"
                   onChangeValue={onChangeUserName}
@@ -68,18 +71,52 @@ export default function IdInquiry() {
             <Button01
               onClickButton={onClickMoveToSuccess}
               btnWidth="200px"
-              btnText="아이디 찾기"
+              btnText="비밀번호 변경"
             />
           </S.Contents>
-        ) : (
+        ) : userAuth && !userPwChange ? (
           <S.SuccessContents>
             <S.Icon>
               <MdCheckCircle />
             </S.Icon>
-            <S.Message>
-              회원님의 아이디는 <span>lar****</span> 입니다.
-            </S.Message>
+            <S.Message>변경하실 비밀번호를 입력해 주세요.</S.Message>
+            <S.InputGroup>
+              <S.InputItem>
+                <S.InputTitle>비밀번호</S.InputTitle>
+                <Input01
+                  inputType="text"
+                  onChangeValue={onChangeUserBirth}
+                  valueData={userBirth}
+                />
+              </S.InputItem>
+              <S.InputItem>
+                <S.InputTitle>
+                  비밀번호
+                  <br />
+                  확인
+                </S.InputTitle>
+                <Input01
+                  inputType="text"
+                  onChangeValue={onChangeUserBirth}
+                  valueData={userBirth}
+                />
+              </S.InputItem>
+            </S.InputGroup>
             <S.BtnGroup>
+              <Button01
+                onClickButton={onClickMoveToPwChange}
+                btnWidth="200px"
+                btnText="비밀번호 변경"
+              />
+            </S.BtnGroup>
+          </S.SuccessContents>
+        ) : (
+          <S.SuccessContents>
+            <Icon>
+              <MdCheckCircle />
+            </Icon>
+            <Message>비밀번호 변경이 완료되었습니다.</Message>
+            <BtnGroup>
               <Button01
                 btnClass="line"
                 onClickButton={onClickMoveToMain}
@@ -91,7 +128,7 @@ export default function IdInquiry() {
                 btnWidth="200px"
                 btnText="로그인"
               />
-            </S.BtnGroup>
+            </BtnGroup>
           </S.SuccessContents>
         )}
       </S.Container>
