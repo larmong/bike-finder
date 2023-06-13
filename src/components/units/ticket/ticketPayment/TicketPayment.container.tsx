@@ -5,8 +5,12 @@ import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Radio01 from "../../../commons/inputs/radio/radio01/Radio01.container";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import PaymentInfo from "../item/paymentInfo/PaymentInfo.container";
+import { MdError } from "react-icons/md";
+import { useRouter } from "next/router";
 
 export default function TicketPayment(props) {
+  const router = useRouter();
+
   const [userMileage, setUserMileage] = useState(1000);
   const [value, setValue] = useState<number | undefined>(undefined);
   const [ticketPrice, setTicketPrice] = useState(0);
@@ -29,6 +33,10 @@ export default function TicketPayment(props) {
 
   return (
     <S.Wrapper>
+      <S.PassGuide onClick={() => router.push("/citizen/charges")}>
+        <MdError />
+        <span>이용권 사용안내</span>
+      </S.PassGuide>
       <S.Notice>
         · 1회 1매씩 구매가 가능합니다.
         <br />
