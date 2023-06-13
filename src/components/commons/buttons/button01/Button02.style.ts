@@ -15,4 +15,10 @@ export const DefaultBtn = styled.button`
   line-height: 25px;
   letter-spacing: -0.07em;
   color: #ffffff;
+
+  &.line {
+    color: #0d8f68;
+    background: #ffffff;
+    border: 1px solid #0d8f68;
+  }
 `;

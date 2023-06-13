@@ -2,6 +2,7 @@ import Terms from "../terms/Terms.container";
 import { useState } from "react";
 import UserAuth from "../userAuth/UserAuth.container";
 import Membership from "../membership/Membership.container";
+import JoinSuccess from "../joinSuccess/JoinSuccess.container";
 
 export default function Minor() {
   const [progress, setProgress] = useState<boolean>(false);
@@ -17,7 +18,7 @@ export default function Minor() {
       ) : terms && userAuth && !joinSuccess ? (
         <Membership setJoinSuccess={setJoinSuccess} />
       ) : terms && userAuth && joinSuccess ? (
-        "" // 회원가입 성공 페이지
+        <JoinSuccess />
       ) : (
         <Terms setTerms={setTerms} />
       )}

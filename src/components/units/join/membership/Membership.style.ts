@@ -54,9 +54,4 @@ export const TableItem01 = styled.p`
       color: red;
     }
   }
-
-  //&:nth-of-type(2) {
-  //  grid-column: 2 / 5;
-  //  grid-row: 1 / 2;
-  //}
 `;
