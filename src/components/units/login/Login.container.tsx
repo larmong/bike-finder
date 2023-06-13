@@ -10,8 +10,8 @@ export default function Login() {
   const AUTH_LIST = ["google", "apple", "facebook", "twitter"];
   const MENU_LIST = [
     { name: "회원가입", route: "join" },
-    { name: "아이디 찾기", route: "/" },
-    { name: "비밀번호 변경", route: "/" },
+    { name: "아이디 찾기", route: "idInquiry" },
+    { name: "비밀번호 변경", route: "pwInquiry" },
   ];
 
   const [userId, setUserId] = useState<number | undefined>(undefined);
