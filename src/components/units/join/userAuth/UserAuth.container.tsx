@@ -1,9 +1,9 @@
-import { MdDoubleArrow } from "react-icons/md";
-import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
-import Button01 from "../../../commons/buttons/button01/Button01.container";
 import * as S from "./UserAuth.style";
-import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import { useState } from "react";
+import Input01 from "../../../commons/inputs/input/input01/Input01.container";
+import Button01 from "../../../commons/buttons/button01/Button01.container";
+import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
+import { MdDoubleArrow } from "react-icons/md";
 
 export default function UserAuth(props) {
   const [userName, setUserName] = useState<number | undefined>(undefined);
@@ -20,7 +20,7 @@ export default function UserAuth(props) {
 
   const onClickButton = () => {
     // 약관 동의 모두 됐으면,
-    props.setTerms(true);
+    props.setUserAuth(true);
   };
 
   return (
