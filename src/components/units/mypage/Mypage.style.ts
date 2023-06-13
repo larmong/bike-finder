@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
+  min-height: calc(100vh - 625px);
   width: 1080px;
   margin: 0 auto;
 `;
