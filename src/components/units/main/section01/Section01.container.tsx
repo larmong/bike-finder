@@ -1,7 +1,10 @@
 import * as S from "./Section01.style";
 import Animation01 from "../../../commons/animations/animation01/Animation01.container";
+import { useRouter } from "next/router";
 
 export default function Section01() {
+  const router = useRouter();
+
   return (
     <>
       <S.Wrapper>
@@ -19,8 +22,14 @@ export default function Section01() {
                 </span>
               </S.Text>
               <S.BtnGroup>
-                <S.HeaderBtn>대여/반납 방법</S.HeaderBtn>
-                <S.HeaderBtnLine>이용요금안내</S.HeaderBtnLine>
+                <S.HeaderBtn onClick={() => router.push("/citizen/info")}>
+                  대여/반납 방법
+                </S.HeaderBtn>
+                <S.HeaderBtnLine
+                  onClick={() => router.push("/citizen/charges")}
+                >
+                  이용요금안내
+                </S.HeaderBtnLine>
               </S.BtnGroup>
             </S.BannerLeft>
             <S.BannerRight></S.BannerRight>
