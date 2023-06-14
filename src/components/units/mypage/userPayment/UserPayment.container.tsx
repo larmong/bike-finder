@@ -8,7 +8,6 @@ import Tab01 from "../../../commons/tabs/tab01/Tab01.container";
 import Billing from "./billing/Billing.container";
 import Method from "./method/Method.container";
 import Refund from "./refund/Refund.container";
-import Radio02 from "../../../commons/inputs/radio/radio02/Radio02.container";
 import Board04 from "../../../commons/boards/board04/Board04.container";
 import { IFetchBoard } from "../../../commons/boards/board04/Board04.types";
 
