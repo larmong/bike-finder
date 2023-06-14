@@ -36,7 +36,7 @@ export default function Method() {
       checkedState: false,
     },
     {
-      id: 5,
+      id: 6,
       name: "티머니결제",
       checkedState: false,
     },

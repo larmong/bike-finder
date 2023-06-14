@@ -85,26 +85,31 @@ export default function UserPayment(props) {
   const PAYMENT_DATE_TYPE = [
     {
       id: 0,
+      name: "전체",
+      checkedState: true,
+    },
+    {
+      id: 1,
       name: "1주일",
       checkedState: false,
     },
     {
-      id: 1,
+      id: 2,
       name: "1개월",
       checkedState: false,
     },
     {
-      id: 2,
+      id: 3,
       name: "3개월",
       checkedState: false,
     },
     {
-      id: 3,
+      id: 4,
       name: "6개월",
       checkedState: false,
     },
     {
-      id: 4,
+      id: 5,
       name: "직접입력",
       checkedState: false,
     },
