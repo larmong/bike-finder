@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+export type IRadioDataClick = (radioNum: number) => void;
 
 export interface IPropsRadio02 {
   radioData: IRadioData[];
@@ -10,8 +10,4 @@ export interface IRadioData {
   id: number;
   name: string;
   checkedState: boolean;
-}
-
-export interface IRadioDataClick {
-  onClickRadio: (event: MouseEvent<HTMLElement>) => void;
 }

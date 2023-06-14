@@ -150,10 +150,15 @@ export default function UserPayment(props) {
   return (
     <S.Wrapper>
       <Tab01 TAB_MENUS={TAB_MENUS} tabWidth="140px" />
-      <S.RefundGuide onClick={() => router.push("/citizen/charges")}>
-        <MdError />
-        <span>환불규정 안내</span>
-      </S.RefundGuide>
+      {props.tab === "method" ? (
+        ""
+      ) : (
+        <S.RefundGuide onClick={() => router.push("/citizen/charges")}>
+          <MdError />
+          <span>환불규정 안내</span>
+        </S.RefundGuide>
+      )}
+
       <S.Contents>
         {props.tab === "billing" ? (
           <Billing />

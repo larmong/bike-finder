@@ -45,8 +45,8 @@ export default function Ranking() {
     },
   ];
   const [rankingNum, setRankingNum] = useState(0);
-  const onClickTicketType = (rankingNum) => {
-    setRankingNum(Number(rankingNum));
+  const onClickTicketType = (radioNum: number) => {
+    setRankingNum(Number(radioNum));
   };
 
   // 나의 정보(주간/월간)
