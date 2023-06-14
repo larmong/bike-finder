@@ -1,7 +1,7 @@
 import * as S from "./UserInfoFaq.style";
 import { MouseEvent, useEffect, useState } from "react";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import Search01 from "../../../../commons/searches/search01/Search01.contaienr";
 import Board03 from "../../../../commons/boards/board03/Board03.container";
 import { useRouter } from "next/router";
@@ -24,6 +24,7 @@ export default function UserInfoFaq() {
       try {
         const data = await query(
           collection(db, "faq"),
+          where("userId", "==", "larmong"),
           orderBy("date", "desc")
         );
         const getData = await getDocs(data);

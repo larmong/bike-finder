@@ -1,13 +1,13 @@
-import { DefaultBtn } from "./Button01.style";
+import { SmallBtn } from "./Button02.style";
 
-export default function Button01(props) {
+export default function Button02(props) {
   return (
-    <DefaultBtn
+    <SmallBtn
       onClick={props.onClickButton}
       btnWidth={props.btnWidth}
       className={props.btnClass}
     >
       {props.btnText}
-    </DefaultBtn>
+    </SmallBtn>
   );
 }
