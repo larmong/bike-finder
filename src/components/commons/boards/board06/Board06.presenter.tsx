@@ -8,7 +8,7 @@ export default function Board06UI(props: IPropsBoard06UI) {
   return (
     <S.Wrapper>
       <S.Search>
-        <S.SearchHead>결제수단</S.SearchHead>
+        <S.SearchHead>신청일자</S.SearchHead>
         <S.SearchBody>
           <Radio02
             onClickRadio={props.onClickSearchType}
