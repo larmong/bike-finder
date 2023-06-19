@@ -1,10 +1,16 @@
 import * as S from "./Login.style";
+import { useRecoilState } from "recoil";
+import { accessTokenState } from "../../../commons/store";
+import { firebaseApp } from "../../../commons/libraries/firebase/firebase.config";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Input01 from "../../commons/inputs/input/input01/Input01.container";
 import Button01 from "../../commons/buttons/button01/Button01.container";
 
 export default function Login() {
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+
   const router = useRouter();
 
   const AUTH_LIST = ["google", "apple", "facebook", "twitter"];
@@ -14,18 +20,34 @@ export default function Login() {
     { name: "비밀번호 변경", route: "pwInquiry" },
   ];
 
-  const [userId, setUserId] = useState<number | undefined>(undefined);
-  const [userPw, serUserPw] = useState<number | undefined>(undefined);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const onChangeUserId = (event) => {
-    setUserId(event.target.value);
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
   };
-  const onChangeUserPw = (event) => {
-    serUserPw(event.target.value);
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
   };
 
-  const onClickButton = () => {
-    // 로그인기능
+  const onClickLogin = async () => {
+    try {
+      const auth = getAuth(firebaseApp);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      setAccessToken(await user.getIdToken());
+      console.log(await user.getIdToken());
+
+      router.push("/");
+    } catch (error) {
+      alert("아이디 또는 비밀번호를 확인해주세요!");
+      console.error(error);
+    }
   };
 
   return (
@@ -35,14 +57,14 @@ export default function Login() {
         <S.InputGroup>
           <Input01
             inputType="text"
-            onChangeValue={onChangeUserId}
-            valueData={userId}
+            onChangeValue={onChangeEmail}
+            valueData={email}
             placeholderData="아이디를 입력해주세요."
           />
           <Input01
             inputType="password"
-            onChangeValue={onChangeUserPw}
-            valueData={userPw}
+            onChangeValue={onChangePassword}
+            valueData={password}
             placeholderData="비밀번호를 입력해주세요."
           />
         </S.InputGroup>
@@ -61,7 +83,7 @@ export default function Login() {
           ))}
         </S.AuthGroup>
         <Button01
-          onClickButton={onClickButton}
+          onClickButton={onClickLogin}
           btnWidth="100%"
           btnText="로그인"
         />

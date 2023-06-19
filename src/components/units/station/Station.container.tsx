@@ -1,4 +1,4 @@
-import * as S from "./Station.tyles";
+import * as S from "./Station.style";
 import Title02 from "../../commons/titles/title02/Title02.container";
 import { useEffect } from "react";
 

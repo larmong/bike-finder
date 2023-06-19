@@ -15,12 +15,15 @@ export default function HeaderUI(props: IHeaderUI) {
     { name: "시민센터", route: "citizen/notice" },
   ];
 
-  // accessToken \없을때 (비회원)
   let HEADER_BTN: any;
-  HEADER_BTN = [
-    { name: "로그인", route: "/login" },
-    { name: "회원가입", route: "/join" },
-  ];
+  props.accessToken === ""
+    ? (HEADER_BTN = [
+        { name: "로그인", route: "/login", type: "" },
+        { name: "회원가입", route: "/join", type: "line" },
+      ])
+    : (HEADER_BTN = [
+        { name: "마이페이지", route: "/mypage/userInfo", type: "" },
+      ]);
 
   return (
     <S.Header isActive={router.pathname === "/"}>
@@ -37,12 +40,15 @@ export default function HeaderUI(props: IHeaderUI) {
             ))}
           </S.Nav>
           <S.BtnGroup>
-            <S.HeaderBtnLine onClick={() => router.push(HEADER_BTN[0].route)}>
-              {HEADER_BTN[0].name}
-            </S.HeaderBtnLine>
-            <S.HeaderBtn onClick={() => router.push(HEADER_BTN[1].route)}>
-              {HEADER_BTN[1].name}
-            </S.HeaderBtn>
+            {HEADER_BTN.map((el, index) => (
+              <S.HeaderBtn
+                key={index}
+                className={el.type}
+                onClick={() => router.push(el.route)}
+              >
+                {el.name}
+              </S.HeaderBtn>
+            ))}
           </S.BtnGroup>
         </S.Wrapper>
       </S.Container>

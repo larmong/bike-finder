@@ -53,6 +53,7 @@ export const Menu = styled.span`
 // 버튼
 export const BtnGroup = styled.div`
   display: flex;
+  align-items: center;
   gap: 20px;
 `;
 export const HeaderBtn = styled.button`
@@ -65,17 +66,14 @@ export const HeaderBtn = styled.button`
   border-radius: 5px;
   letter-spacing: 0.02em;
   color: #ffffff;
-`;
-export const HeaderBtnLine = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90px;
-  height: 36px;
-  border: 1px solid #0d8f68;
-  border-radius: 5px;
-  letter-spacing: 0.02em;
-  color: #0d8f68;
+
+  &.line {
+    background: none;
+    border: 1px solid #0d8f68;
+    border-radius: 5px;
+    letter-spacing: 0.02em;
+    color: #0d8f68;
+  }
 `;
 
 // TODO: 유지보수 쉽도록 공통 Container 만들기
