@@ -1,30 +1,47 @@
 import * as S from "./Station.tyles";
 import Title02 from "../../commons/titles/title02/Title02.container";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
 
 export default function Station() {
+  const [location, setLocation] = useState([]);
+  const [isMapLoaded, setIsMapLoaded] = useState(false);
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
       "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=cac58bf014bb232f01fb4c8b9d4357c3";
     document.head.appendChild(script);
-    script.onload = () => {
-      window.kakao.maps.load(function () {
-        const container = document.getElementById("map"); // 지도를 담을 영역의 DOM 레퍼런스
-        const options = {
-          //지도를 생성할 때 필요한 기본 옵션
-          center: new window.kakao.maps.LatLng(37.556944, 126.923855), // 지도의 중심좌표.
-          level: 3, //지도의 레벨(확대, 축소 정도)
-        };
 
-        const map = new window.kakao.maps.Map(container, options); // 지도 생성 및 객체 리턴
+    if ("geolocation" in navigator) {
+      /* 위치정보 사용 가능 */
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLocation([position.coords.latitude, position.coords.longitude]);
       });
+    } else {
+      /* 위치정보 사용 불가능 */
+      setLocation([37.556944, 126.923855]);
+    }
+
+    script.onload = () => {
+      if (location.length > 0 && !isMapLoaded) {
+        setIsMapLoaded(true);
+
+        window.kakao.maps.load(() => {
+          const container = document.getElementById("map");
+          const options = {
+            center: new window.kakao.maps.LatLng(location[0], location[1]),
+            level: 3,
+          };
+
+          const map = new window.kakao.maps.Map(container, options);
+        });
+      }
     };
-  }, []);
+  }, [location, isMapLoaded]);
 
   return (
     <S.Wrapper>
