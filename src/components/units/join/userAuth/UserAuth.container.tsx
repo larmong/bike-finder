@@ -1,29 +1,44 @@
 import * as S from "./UserAuth.style";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import { MdDoubleArrow } from "react-icons/md";
 import { useRouter } from "next/router";
+import {
+  CustomMouseEvent,
+  IUserInfo,
+} from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.types";
 
 export default function UserAuth(props) {
   const router = useRouter();
 
-  const [userName, setUserName] = useState<number | undefined>(undefined);
-  const [userBirth, setUserBirth] = useState<number | undefined>(undefined);
+  const [checkBox, setCheckBox] = useState<boolean>(false);
+  const [userInfo, setUserInfo] = useState<IUserInfo>({
+    name: "",
+    birth: undefined,
+    phone: undefined,
+    authNum: undefined,
+  });
 
-  const onChangeUserName = (event) => {
-    setUserName(event.target.value);
-  };
-  const onChangeUserBirth = (event) => {
-    setUserBirth(event.target.value);
+  const onChangeUserAuth = (event: ChangeEvent<HTMLInputElement>) => {
+    setUserInfo({
+      ...userInfo,
+      [event.target.id]: event.target.value,
+    });
   };
 
-  // 약관 all 동의 기능
+  const onClickCb = (event: CustomMouseEvent) => {
+    const target = event.currentTarget as HTMLInputElement;
+    setCheckBox(target.checked);
+  };
 
   const onClickButton = () => {
-    // 약관 동의 모두 됐으면,
-    props.setUserAuth(true);
+    // 약관동의 && 인증번호
+    if (checkBox) {
+      console.log(userInfo);
+      props.setUserAuth(true);
+    }
   };
 
   return (
@@ -57,39 +72,43 @@ export default function UserAuth(props) {
           </S.InputTitle>
           <Input01
             inputType="text"
-            onChangeValue={onChangeUserName}
-            valueData={userName}
+            onChangeValue={onChangeUserAuth}
+            valueData={userInfo.name}
+            inputId="name"
           />
         </S.InputItem>
         <S.InputItem>
           <S.InputTitle>생년월일</S.InputTitle>
           <Input01
             inputType="text"
-            onChangeValue={onChangeUserBirth}
-            valueData={userBirth}
+            onChangeValue={onChangeUserAuth}
+            valueData={userInfo.birth}
+            inputId="birth"
           />
         </S.InputItem>
         <S.InputItem>
           <S.InputTitle>휴&nbsp;&nbsp;대&nbsp;&nbsp;폰</S.InputTitle>
           <Input01
             inputType="text"
-            onChangeValue={onChangeUserBirth}
-            valueData={userBirth}
+            onChangeValue={onChangeUserAuth}
+            valueData={userInfo.phone}
+            inputId="phone"
           />
         </S.InputItem>
         <S.InputItem>
           <S.InputTitle>인증번호</S.InputTitle>
           <Input01
             inputType="text"
-            onChangeValue={onChangeUserBirth}
-            valueData={userBirth}
+            onChangeValue={onChangeUserAuth}
+            valueData={userInfo.authNum}
+            inputId="authNum"
           />
         </S.InputItem>
       </S.InputGroup>
       {router.pathname === "/join/minor" ? (
-        <Checkbox01 CheckboxCont="만 13세 이하 입니다." />
+        <Checkbox01 CheckboxCont="만 13세 이하 입니다." onClickCb={onClickCb} />
       ) : (
-        <Checkbox01 CheckboxCont="만 14세 이상 입니다." />
+        <Checkbox01 CheckboxCont="만 14세 이상 입니다." onClickCb={onClickCb} />
       )}
 
       <Button01 onClickButton={onClickButton} btnWidth="200px" btnText="다음" />

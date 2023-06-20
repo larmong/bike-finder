@@ -1,6 +1,7 @@
 import { Checkbox, CheckboxName, Wrapper } from "./Checkbox01.style";
+import { IPropsCheckbox01 } from "./Checkbox01.types";
 
-export default function Checkbox01(props) {
+export default function Checkbox01(props: IPropsCheckbox01) {
   return (
     <Wrapper>
       <Checkbox type="checkbox" id="check1" onClick={props.onClickCb} />
