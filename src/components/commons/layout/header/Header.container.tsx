@@ -1,21 +1,31 @@
 import HeaderUI from "./Header.presenter";
 import { useRouter } from "next/router";
-import { MouseEvent } from "react";
-import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../../commons/store";
+import { MouseEvent, useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
+import { firebaseApp } from "../../../../commons/libraries/firebase/firebase.config";
 
 export default function Header() {
-  const [accessToken] = useRecoilState(accessTokenState);
+  const [loginCheck, setLoginCheck] = useState(false);
   const router = useRouter();
 
   const onClickMoveToMenus = (event: MouseEvent<HTMLElement>) => {
     router.push(`/${event.currentTarget.id}`);
   };
 
+  useEffect(() => {
+    const auth = getAuth(firebaseApp);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user.accessToken) {
+        setLoginCheck(true);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
-    <HeaderUI
-      onClickMoveToMenus={onClickMoveToMenus}
-      accessToken={accessToken}
-    />
+    <HeaderUI onClickMoveToMenus={onClickMoveToMenus} loginCheck={loginCheck} />
   );
 }

@@ -16,13 +16,14 @@ export default function HeaderUI(props: IHeaderUI) {
   ];
 
   let HEADER_BTN: any;
-  props.accessToken === ""
+  props.loginCheck
     ? (HEADER_BTN = [
-        { name: "로그인", route: "/login", type: "" },
-        { name: "회원가입", route: "/join", type: "line" },
+        { name: "마이페이지", route: "/mypage/userInfo", type: "" },
+        { name: "로그아웃", route: "/", type: "line" },
       ])
     : (HEADER_BTN = [
-        { name: "마이페이지", route: "/mypage/userInfo", type: "" },
+        { name: "로그인", route: "/login", type: "" },
+        { name: "회원가입", route: "/join", type: "line" },
       ]);
 
   return (
