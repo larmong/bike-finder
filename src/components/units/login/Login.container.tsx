@@ -9,7 +9,7 @@ import {
   GithubAuthProvider,
   FacebookAuthProvider,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import LoginUI from "./Login.presenter";
 
@@ -21,7 +21,7 @@ export default function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const onChangeLogin = (name) => (event) => {
+  const onChangeLogin = (name) => (event: ChangeEvent<HTMLInputElement>) => {
     if (name === "email") {
       setEmail(event.target.value);
     } else if (name === "password") {
@@ -48,8 +48,7 @@ export default function Login() {
     router.push(`/${route}`);
   };
 
-  const onClickLoginSocial = async (event) => {
-    console.log(event.currentTarget.id);
+  const onClickLoginSocial = async (event: MouseEvent<HTMLElement>) => {
     const {
       currentTarget: { id },
     } = event;
@@ -84,10 +83,10 @@ export default function Login() {
     <LoginUI
       email={email}
       password={password}
-      onChangeLogin={onChangeLogin}
       onClickLogin={onClickLogin}
-      onClickLoginSocial={onClickLoginSocial}
       onClickMoveToLoginMenu={onClickMoveToLoginMenu}
+      onChangeLogin={onChangeLogin}
+      onClickLoginSocial={onClickLoginSocial}
     />
   );
 }
