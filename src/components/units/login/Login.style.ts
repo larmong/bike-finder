@@ -2,9 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   background: #f9fafa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 100px 0;
   min-height: calc(100vh - 100px);
 `;
 export const LoginWrapper = styled.div`
@@ -14,7 +12,7 @@ export const LoginWrapper = styled.div`
   gap: 35px;
   width: 450px;
   padding: 50px 30px;
-  margin-bottom: 200px;
+  margin: 0 auto;
 
   background: #ffffff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);

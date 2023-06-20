@@ -7,8 +7,9 @@ import Button01 from "../../../commons/buttons/button01/Button01.container";
 import PaymentInfo from "../item/paymentInfo/PaymentInfo.container";
 import { MdError } from "react-icons/md";
 import { useRouter } from "next/router";
+import { LoginCheck } from "../../../commons/hocs/loginCheck";
 
-export default function TicketPayment(props) {
+function TicketPayment(props) {
   const router = useRouter();
 
   const [userMileage, setUserMileage] = useState(1000);
@@ -112,3 +113,5 @@ export default function TicketPayment(props) {
     </S.Wrapper>
   );
 }
+
+export default LoginCheck(TicketPayment);
