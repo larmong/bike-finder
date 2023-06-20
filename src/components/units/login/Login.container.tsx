@@ -70,7 +70,6 @@ export default function Login() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        alert("이미 로그인되어있습니다!");
         router.push("/");
       }
     });
