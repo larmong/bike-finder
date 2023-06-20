@@ -19,7 +19,7 @@ export default function HeaderUI(props: IHeaderUI) {
   props.loginCheck
     ? (HEADER_BTN = [
         { name: "마이페이지", route: "/mypage/userInfo", type: "" },
-        { name: "로그아웃", route: "/", type: "line" },
+        { name: "로그아웃", route: "_logout", type: "line" },
       ])
     : (HEADER_BTN = [
         { name: "로그인", route: "/login", type: "" },
@@ -45,7 +45,7 @@ export default function HeaderUI(props: IHeaderUI) {
               <S.HeaderBtn
                 key={index}
                 className={el.type}
-                onClick={() => router.push(el.route)}
+                onClick={props.onClickHeaderBtn(el.route)}
               >
                 {el.name}
               </S.HeaderBtn>

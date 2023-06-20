@@ -1,8 +1,7 @@
 import HeaderUI from "./Header.presenter";
 import { useRouter } from "next/router";
 import { MouseEvent, useEffect, useState } from "react";
-import { getAuth } from "firebase/auth";
-import { firebaseApp } from "../../../../commons/libraries/firebase/firebase.config";
+import { authService } from "../../../../commons/libraries/firebase/firebase.config";
 
 export default function Header() {
   const [loginCheck, setLoginCheck] = useState(false);
@@ -12,9 +11,18 @@ export default function Header() {
     router.push(`/${event.currentTarget.id}`);
   };
 
+  const onClickHeaderBtn = (route: string) => () => {
+    if (route === "_logout") {
+      alert("로그아웃 하시겠습니까?");
+      authService.signOut();
+      setLoginCheck(false);
+    } else {
+      router.push(route);
+    }
+  };
+
   useEffect(() => {
-    const auth = getAuth(firebaseApp);
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = authService.onAuthStateChanged((user) => {
       if (user) {
         setLoginCheck(true);
       }
@@ -23,9 +31,13 @@ export default function Header() {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [loginCheck]);
 
   return (
-    <HeaderUI onClickMoveToMenus={onClickMoveToMenus} loginCheck={loginCheck} />
+    <HeaderUI
+      onClickMoveToMenus={onClickMoveToMenus}
+      onClickHeaderBtn={onClickHeaderBtn}
+      loginCheck={loginCheck}
+    />
   );
 }

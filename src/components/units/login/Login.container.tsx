@@ -1,8 +1,7 @@
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/store";
-import { firebaseApp } from "../../../commons/libraries/firebase/firebase.config";
+import { authService } from "../../../commons/libraries/firebase/firebase.config";
 import {
-  getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
@@ -15,36 +14,36 @@ import LoginUI from "./Login.presenter";
 
 export default function Login() {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
-  const auth = getAuth(firebaseApp);
   const router = useRouter();
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const onChangeLogin = (name) => (event: ChangeEvent<HTMLInputElement>) => {
-    if (name === "email") {
-      setEmail(event.target.value);
-    } else if (name === "password") {
-      setPassword(event.target.id);
-    }
-  };
+  const onChangeLogin =
+    (name: string) => (event: ChangeEvent<HTMLInputElement>) => {
+      if (name === "email") {
+        setEmail(event.target.value);
+      } else if (name === "password") {
+        setPassword(event.target.value);
+      }
+    };
 
   const onClickLogin = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(
-        auth,
+        authService,
         email,
         password
       );
       const user = userCredential.user;
       setAccessToken(await user.getIdToken());
-      router.push("/mypage/userInfo");
+      router.push("/");
     } catch (error) {
       alert("아이디 또는 비밀번호를 확인해주세요!");
     }
   };
 
-  const onClickMoveToLoginMenu = (route) => () => {
+  const onClickMoveToLoginMenu = (route: string) => () => {
     router.push(`/${route}`);
   };
 
@@ -53,7 +52,11 @@ export default function Login() {
       currentTarget: { id },
     } = event;
 
-    let provider;
+    let provider:
+      | GoogleAuthProvider
+      | GithubAuthProvider
+      | FacebookAuthProvider
+      | undefined;
     if (id === "google") {
       provider = new GoogleAuthProvider();
     } else if (id === "github") {
@@ -63,12 +66,12 @@ export default function Login() {
     }
 
     try {
-      await signInWithPopup(auth, provider);
+      if (provider !== undefined) await signInWithPopup(authService, provider);
     } catch (error) {}
   };
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = authService.onAuthStateChanged((user) => {
       if (user) {
         router.push("/");
       }
