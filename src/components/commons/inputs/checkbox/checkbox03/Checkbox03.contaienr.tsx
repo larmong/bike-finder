@@ -4,11 +4,12 @@ import {useRouter} from "next/router";
 export default function Checkbox03(props) {
   const router = useRouter()
 
+
   return (
     <Wrapper>
       {props.checkboxData.map((el, index) => (
         <CheckboxWrapper key={index}>
-          <Checkbox type="checkbox" id={`${el.name}cb${index}`} />
+          <Checkbox type="checkbox" id={`${el.name}cb${index}`} checked={el.state} onChange={props.onChangeCheckbox(index)} />
           <label htmlFor={`${el.name}cb${index}`}></label>
           <CheckboxName>
             <Essential isEssential={el.essential}>
