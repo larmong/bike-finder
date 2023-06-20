@@ -43,7 +43,7 @@ export default function Login() {
       setAccessToken(await user.getIdToken());
       console.log(await user.getIdToken());
 
-      router.push("/");
+      router.push("/mypage/userInfo");
     } catch (error) {
       alert("아이디 또는 비밀번호를 확인해주세요!");
       console.error(error);
