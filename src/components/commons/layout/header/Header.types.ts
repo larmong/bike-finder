@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 
 export interface IHeaderUI {
-  accessToken: string;
+  loginCheck: boolean;
   onClickMoveToMenus: (event: MouseEvent<HTMLElement>) => void;
 }

@@ -15,7 +15,7 @@ export default function Header() {
   useEffect(() => {
     const auth = getAuth(firebaseApp);
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user.accessToken) {
+      if (user) {
         setLoginCheck(true);
       }
     });
