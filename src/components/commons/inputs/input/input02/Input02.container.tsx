@@ -10,9 +10,10 @@ export default function Input02(props: IPropsInput02) {
   });
 
   const onChangeInputPhone = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.replace(/\D/g, "");
     setInputPhone({
       ...inputPhone,
-      [event.target.id]: event.target.value,
+      [event.target.id]: value,
     });
   };
 
@@ -27,24 +28,30 @@ export default function Input02(props: IPropsInput02) {
         type="text"
         id="first"
         maxLength={3}
-        defaultValue={inputPhone.first}
+        value={inputPhone.first}
         onChange={onChangeInputPhone}
+        className="bottomBorder"
+        placeholder="010"
       />
       -
       <InputPhone
         type="text"
         id="second"
         maxLength={4}
-        defaultValue={inputPhone.second}
+        value={inputPhone.second}
         onChange={onChangeInputPhone}
+        className="bottomBorder"
+        placeholder="1234"
       />
       -
       <InputPhone
         type="text"
         id="third"
         maxLength={4}
-        defaultValue={inputPhone.third}
+        value={inputPhone.third}
         onChange={onChangeInputPhone}
+        className="bottomBorder"
+        placeholder="5678"
       />
     </InputPhoneWrapper>
   );

@@ -1,14 +1,14 @@
 import styled from "@emotion/styled";
 
-export const InputPhoneWrapper = styled.div`
+export const InputDateWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
-export const InputPhone = styled.input`
-  text-align: center;
-  width: 28%;
+
+export const InputNumber = styled.input`
+  width: 100%;
   height: 40px;
   padding: 14px 16px;
   border: none;
@@ -16,5 +16,9 @@ export const InputPhone = styled.input`
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.5em;
+  text-align: center;
+  &::placeholder {
+    letter-spacing: -1px;
+  }
 `;

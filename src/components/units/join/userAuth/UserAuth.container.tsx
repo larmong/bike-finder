@@ -10,6 +10,7 @@ import {
   IUserInfo,
 } from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.types";
 import Input02 from "../../../commons/inputs/input/input02/Input02.container";
+import Input03 from "../../../commons/inputs/input/input03/input03.container";
 
 export default function UserAuth(props) {
   const router = useRouter();
@@ -33,6 +34,12 @@ export default function UserAuth(props) {
     setUserInfo({
       ...userInfo,
       phone: value,
+    });
+  };
+  const onChangeBirth = (value: string) => {
+    setUserInfo({
+      ...userInfo,
+      birth: value,
     });
   };
 
@@ -87,11 +94,10 @@ export default function UserAuth(props) {
         </S.InputItem>
         <S.InputItem>
           <S.InputTitle>생년월일</S.InputTitle>
-          <Input01
-            inputType="text"
-            onChangeValue={onChangeUserAuth}
+          <Input03
+            onChangeNumber={onChangeBirth}
             valueData={userInfo.birth}
-            inputId="birth"
+            placeholderData="생년월일 8자리를 입력해주세요 (ex.19991010)"
           />
         </S.InputItem>
         <S.InputItem>

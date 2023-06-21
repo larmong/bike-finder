@@ -44,6 +44,11 @@ export const GlobalStyle = css`
   input:focus,
   textarea:focus {
     outline: none;
+    border: 1.3px solid #0d8f68;
+    &.bottomBorder {
+      border: none;
+      border-bottom: 1.3px solid #0d8f68;
+    }
   }
   input::placeholder,
   textarea::placeholder {
