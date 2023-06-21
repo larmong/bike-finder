@@ -18,6 +18,9 @@ export const InputText = styled.input`
     letter-spacing: 0.5em;
     text-align: center;
   }
+  &.left {
+    text-align: left;
+  }
   &.bottomBorder::placeholder {
     letter-spacing: -1px;
   }

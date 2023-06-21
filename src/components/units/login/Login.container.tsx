@@ -1,5 +1,4 @@
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../commons/store";
 import { authService } from "../../../commons/libraries/firebase/firebase.config";
 import {
   signInWithEmailAndPassword,
@@ -15,6 +14,7 @@ import {
   CustomChangeEvent,
   CustomMouseEvent,
 } from "../../../commons/types/global.types";
+import { accessTokenState } from "../../../commons/store/store";
 
 export default function Login() {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);

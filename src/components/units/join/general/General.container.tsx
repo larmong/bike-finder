@@ -4,7 +4,7 @@ import UserAuth from "../userAuth/UserAuth.container";
 import Membership from "../membership/Membership.container";
 import JoinSuccess from "../joinSuccess/JoinSuccess.container";
 
-export default function Minor() {
+export default function General() {
   const [terms, setTerms] = useState<boolean>(false);
   const [userAuth, setUserAuth] = useState<boolean>(false);
   const [joinSuccess, setJoinSuccess] = useState<boolean>(false);

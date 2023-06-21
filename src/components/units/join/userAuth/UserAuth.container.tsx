@@ -1,13 +1,16 @@
 import * as S from "./UserAuth.style";
-import { ChangeEvent, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { MdDoubleArrow } from "react-icons/md";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
-import { MdDoubleArrow } from "react-icons/md";
-import { useRouter } from "next/router";
-import { IUserInfo } from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.types";
 import Input02 from "../../../commons/inputs/input/input02/Input02.container";
 import Input03 from "../../../commons/inputs/input/input03/input03.container";
+import Button03 from "../../../commons/buttons/button03/button03.container";
+import TimerContainer from "../../../commons/utils/timer/Timer.container";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../commons/store/store";
 import {
   CustomChangeEvent,
   CustomMouseEvent,
@@ -16,13 +19,10 @@ import {
 export default function UserAuth(props) {
   const router = useRouter();
 
+  const [authNumState, setAuthNumState] = useState<boolean>(false);
   const [checkBox, setCheckBox] = useState<boolean>(false);
-  const [userInfo, setUserInfo] = useState<IUserInfo>({
-    name: "",
-    birth: "",
-    phone: "",
-    authNum: "",
-  });
+  const [cbState, setCbState] = useState<boolean>(false);
+  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
 
   const onChangeUserName = (event: CustomChangeEvent) => {
     setUserInfo({
@@ -43,13 +43,32 @@ export default function UserAuth(props) {
     setCheckBox(target.checked);
   };
 
-  const onClickButton = () => {
-    // 약관동의 && 인증번호
-    if (checkBox) {
-      console.log(userInfo);
-      // props.setUserAuth(true);
+  const onClickAuthNumBtn = () => {
+    if (String(userInfo.phone).length === 11) {
+      setAuthNumState(true);
+    } else {
+      alert("핸드폰 번호를 확인해주세요.");
     }
   };
+
+  const onClickButton = () => {
+    if (checkBox && cbState) {
+      props.setUserAuth(true);
+    } else {
+      if (!checkBox) {
+        alert("약관에 동의해주세요.");
+      } else if (!cbState) {
+        alert("본인인증을 진행해주세요.");
+      }
+    }
+  };
+
+  useEffect(() => {
+    const isAnyPropertyEmpty = Object.values(userInfo)
+      .map((value) => value === "")
+      .includes(true);
+    setCbState(!isAnyPropertyEmpty);
+  }, [userInfo]);
 
   return (
     <>
@@ -106,17 +125,30 @@ export default function UserAuth(props) {
             onChangePhone={onChangeUserInfo}
             valueData={userInfo.phone}
           />
+          {authNumState ? (
+            <Button03 onClickButton={onClickAuthNumBtn} btnText="재전송" />
+          ) : (
+            <Button03
+              onClickButton={onClickAuthNumBtn}
+              btnText="인증번호전송"
+            />
+          )}
         </S.InputItem>
-        <S.InputItem>
-          <S.InputTitle>인증번호</S.InputTitle>
-          <Input03
-            inputId="authNum"
-            inputMaxLength={6}
-            onChangeNumber={onChangeUserInfo}
-            valueData={userInfo.authNum}
-            placeholderData="인증번호 6자리를 입력해주세요."
-          />
-        </S.InputItem>
+        {authNumState ? (
+          <S.InputItem>
+            <S.InputTitle>인증번호</S.InputTitle>
+            <Input03
+              inputId="authNum"
+              inputMaxLength={6}
+              onChangeNumber={onChangeUserInfo}
+              valueData={userInfo.authNum}
+              placeholderData="인증번호 6자리를 입력해주세요."
+            />
+            <TimerContainer />
+          </S.InputItem>
+        ) : (
+          ""
+        )}
       </S.InputGroup>
       {router.pathname === "/join/minor" ? (
         <Checkbox01 CheckboxCont="만 13세 이하 입니다." onClickCb={onClickCb} />

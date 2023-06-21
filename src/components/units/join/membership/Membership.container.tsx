@@ -1,22 +1,43 @@
 import * as S from "./Membership.style";
 import { useState } from "react";
 import { MdDoubleArrow } from "react-icons/md";
+import { getBirth, getPhone } from "../../../commons/utils/utils";
+import { useRecoilState } from "recoil";
+import { userInfoState } from "../../../../commons/store/store";
+import { CustomChangeEvent } from "../../../../commons/types/global.types";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
+import Input03 from "../../../commons/inputs/input/input03/input03.container";
+import Input04 from "../../../commons/inputs/input/input04/input04.container";
 
 export default function Membership(props) {
-  const [userId, setUserId] = useState<number | undefined>(undefined);
-  const [userPw, setUserPw] = useState<number | undefined>(undefined);
-  const [userPwCheck, setUserPwCheck] = useState<number | undefined>(undefined);
+  const [userInfo, setUserInfo] = useRecoilState(userInfoState);
+  const [userInfo2, setUserInfo2] = useState({
+    ...userInfo,
+    email: "",
+    password: "",
+    passwordCheck: "",
+    rentalPassword: "",
+    rentalPasswordCheck: "",
+    address: {
+      code: "",
+      first: "",
+      second: "",
+    },
+  });
 
-  const onChangeUserId = (event) => {
-    setUserId(event.target.value);
+  const onChangeUserInfo = (event: CustomChangeEvent) => {
+    setUserInfo2({
+      ...userInfo2,
+      [event.target.id]: event.target.value,
+    });
   };
-  const onChangeUserPw = (event) => {
-    setUserPw(event.target.value);
-  };
-  const onChangeUserPwCheck = (event) => {
-    setUserPwCheck(event.target.value);
+
+  const onChangeUserInfo2 = (value: string, id: string) => {
+    setUserInfo2({
+      ...userInfo2,
+      [id]: value,
+    });
   };
 
   const onClickButton = () => {
@@ -35,15 +56,15 @@ export default function Membership(props) {
       </S.Progress>
       <S.Table01>
         <S.TableItem01 className="t-head">이름</S.TableItem01>
-        <S.TableItem01>한루이</S.TableItem01>
+        <S.TableItem01>{userInfo.name}</S.TableItem01>
         <S.TableItem01 className="t-head t-essential">
           <span>아이디</span>
         </S.TableItem01>
         <S.TableItem01>
-          <Input01
-            inputType="text"
-            onChangeValue={onChangeUserId}
-            valueData={setUserId}
+          <Input04
+            inputId="email"
+            onChangeEmail={onChangeUserInfo2}
+            valueData={userInfo2.email}
           />
         </S.TableItem01>
         <S.TableItem01 className="t-head t-essential">
@@ -51,9 +72,12 @@ export default function Membership(props) {
         </S.TableItem01>
         <S.TableItem01>
           <Input01
-            inputType="text"
-            onChangeValue={onChangeUserPw}
-            valueData={setUserPw}
+            inputType="password"
+            onChangeValue={onChangeUserInfo}
+            valueData={userInfo2.password}
+            inputId="password"
+            inputClass="bottomBorder left"
+            placeholderData="비밀번호를 입력해 주세요."
           />
         </S.TableItem01>
         <S.TableItem01 className="t-head t-essential">
@@ -61,31 +85,48 @@ export default function Membership(props) {
         </S.TableItem01>
         <S.TableItem01>
           <Input01
-            inputType="text"
-            onChangeValue={onChangeUserPwCheck}
-            valueData={setUserPwCheck}
+            inputType="password"
+            onChangeValue={onChangeUserInfo}
+            valueData={userInfo2.passwordCheck}
+            inputId="passwordCheck"
+            inputClass="bottomBorder left"
+            placeholderData="비밀번호를 재입력해 주세요."
           />
         </S.TableItem01>
-        <S.TableItem01 className="t-head t-essential">
-          <span>이메일 주소</span>
-        </S.TableItem01>
-        <S.TableItem01>{/* 이메일 주소 인풋 */}</S.TableItem01>
         <S.TableItem01 className="t-head">휴대폰 번호</S.TableItem01>
-        <S.TableItem01>010-1234-5678</S.TableItem01>
+        <S.TableItem01>{getPhone(userInfo.phone)}</S.TableItem01>
         <S.TableItem01 className="t-head t-essential">
           <span>주소</span>
         </S.TableItem01>
         <S.TableItem01>{/* 카카오 주소 검색 api + 주소 인풋 */}</S.TableItem01>
         <S.TableItem01 className="t-head">생년월일</S.TableItem01>
-        <S.TableItem01>1999-11-11</S.TableItem01>
+        <S.TableItem01>{getBirth(userInfo.birth)}</S.TableItem01>
         <S.TableItem01 className="t-head t-essential">
           <span>대여비밀번호</span>
         </S.TableItem01>
-        <S.TableItem01>{/* 대여비밀번호 버튼 + 인풋 */}</S.TableItem01>
+        <S.TableItem01>
+          <Input03
+            inputId="rentalPassword"
+            inputMaxLength={4}
+            onChangeNumber={onChangeUserInfo2}
+            valueData={userInfo2.rentalPassword}
+            placeholderData="대여 비밀번호 4자리를 입력해주세요."
+            inputClass="left"
+          />
+        </S.TableItem01>
         <S.TableItem01 className="t-head t-essential">
           <span>대여비밀번호 확인</span>
         </S.TableItem01>
-        <S.TableItem01>{/* 대여비밀번호 버튼 + 인풋 */}</S.TableItem01>
+        <S.TableItem01>
+          <Input03
+            inputId="rentalPasswordCheck"
+            inputMaxLength={4}
+            onChangeNumber={onChangeUserInfo2}
+            valueData={userInfo2.rentalPasswordCheck}
+            placeholderData="대여 비밀번호 4자리를 재입력해주세요."
+            inputClass="left"
+          />
+        </S.TableItem01>
       </S.Table01>
       <Button01
         onClickButton={onClickButton}

@@ -4,4 +4,5 @@ export interface IPropsInput03 {
   placeholderData?: string;
   inputMaxLength?: number;
   inputId: string;
+  inputClass?: string;
 }

@@ -22,7 +22,7 @@ export default function Input03(props: IPropsInput03) {
       maxLength={props.inputMaxLength}
       value={inputNum}
       onChange={onChangeInput}
-      className="bottomBorder"
+      className={"bottomBorder " + props.inputClass}
       placeholder={props.placeholderData}
     />
   );

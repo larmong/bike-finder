@@ -1,8 +1,8 @@
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../commons/store";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { authService } from "../../../commons/libraries/firebase/firebase.config";
+import { accessTokenState } from "../../../commons/store/store";
 
 export const LoginCheck = (Component) => (props) => {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
