@@ -6,6 +6,7 @@ export default function Input01(props: IPropsInput01) {
     <InputText
       type={props.inputType}
       id={props.inputId}
+      width={props.inputWidth}
       defaultValue={props.valueData || ""}
       onChange={props.onChangeValue}
       placeholder={props.placeholderData}

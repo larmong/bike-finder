@@ -8,7 +8,7 @@ export interface IPropsCheckbox01 {
 }
 export interface IUserInfo {
   name: string;
-  birth: number | undefined;
-  phone: number | undefined;
-  authNum: number | undefined;
+  birth: string | number;
+  phone: string | number;
+  authNum: string | number;
 }

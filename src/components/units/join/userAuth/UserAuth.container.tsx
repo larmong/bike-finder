@@ -9,6 +9,7 @@ import {
   CustomMouseEvent,
   IUserInfo,
 } from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.types";
+import Input02 from "../../../commons/inputs/input/input02/Input02.container";
 
 export default function UserAuth(props) {
   const router = useRouter();
@@ -16,15 +17,22 @@ export default function UserAuth(props) {
   const [checkBox, setCheckBox] = useState<boolean>(false);
   const [userInfo, setUserInfo] = useState<IUserInfo>({
     name: "",
-    birth: undefined,
-    phone: undefined,
-    authNum: undefined,
+    birth: "",
+    phone: "",
+    authNum: "",
   });
 
   const onChangeUserAuth = (event: ChangeEvent<HTMLInputElement>) => {
     setUserInfo({
       ...userInfo,
       [event.target.id]: event.target.value,
+    });
+  };
+
+  const onChangePhone = (value: string) => {
+    setUserInfo({
+      ...userInfo,
+      phone: value,
     });
   };
 
@@ -37,7 +45,7 @@ export default function UserAuth(props) {
     // 약관동의 && 인증번호
     if (checkBox) {
       console.log(userInfo);
-      props.setUserAuth(true);
+      // props.setUserAuth(true);
     }
   };
 
@@ -88,12 +96,7 @@ export default function UserAuth(props) {
         </S.InputItem>
         <S.InputItem>
           <S.InputTitle>휴&nbsp;&nbsp;대&nbsp;&nbsp;폰</S.InputTitle>
-          <Input01
-            inputType="text"
-            onChangeValue={onChangeUserAuth}
-            valueData={userInfo.phone}
-            inputId="phone"
-          />
+          <Input02 onChangePhone={onChangePhone} valueData={userInfo.phone} />
         </S.InputItem>
         <S.InputItem>
           <S.InputTitle>인증번호</S.InputTitle>
