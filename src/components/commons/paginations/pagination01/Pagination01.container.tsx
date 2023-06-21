@@ -1,13 +1,14 @@
 import Pagination01UI from "./Pagination01.presenter";
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import { IPropsPagination01 } from "./Pagination01.types";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export default function Pagination01(props: IPropsPagination01) {
   const [startPage, setStartPage] = useState<number>(1);
   const [nowPage, setNowPage] = useState<number>(1);
   const totalPages: number = Math.ceil(props.noticeLength / props.pageSize);
 
-  const onClickPagination = (event: MouseEvent<HTMLElement>) => {
+  const onClickPagination = (event: CustomMouseEvent) => {
     const selectedPage: number = Number(event.currentTarget.id);
     props.handlePageChange(selectedPage);
     setNowPage(selectedPage);

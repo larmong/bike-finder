@@ -8,9 +8,13 @@ import {
   GithubAuthProvider,
   FacebookAuthProvider,
 } from "firebase/auth";
-import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import LoginUI from "./Login.presenter";
+import {
+  CustomChangeEvent,
+  CustomMouseEvent,
+} from "../../../commons/types/global.types";
 
 export default function Login() {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
@@ -19,14 +23,13 @@ export default function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const onChangeLogin =
-    (name: string) => (event: ChangeEvent<HTMLInputElement>) => {
-      if (name === "email") {
-        setEmail(event.target.value);
-      } else if (name === "password") {
-        setPassword(event.target.value);
-      }
-    };
+  const onChangeLogin = (name: string) => (event: CustomChangeEvent) => {
+    if (name === "email") {
+      setEmail(event.target.value);
+    } else if (name === "password") {
+      setPassword(event.target.value);
+    }
+  };
 
   const onClickLogin = async () => {
     try {
@@ -47,7 +50,7 @@ export default function Login() {
     router.push(`/${route}`);
   };
 
-  const onClickLoginSocial = async (event: MouseEvent<HTMLElement>) => {
+  const onClickLoginSocial = async (event: CustomMouseEvent) => {
     const {
       currentTarget: { id },
     } = event;

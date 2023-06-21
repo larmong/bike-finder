@@ -1,12 +1,12 @@
 import * as S from "./Card01.style";
 import { useRouter } from "next/router";
 import { MdArrowForward, MdConfirmationNumber } from "react-icons/md";
-import { MouseEvent } from "react";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export default function Card01(props) {
   const router = useRouter();
 
-  const onClickMoveToTabMenus = (event: MouseEvent<HTMLElement>) => {
+  const onClickMoveToTabMenus = (event: CustomMouseEvent) => {
     router.push(`${router.pathname}/${event.currentTarget.id}`);
   };
   return (

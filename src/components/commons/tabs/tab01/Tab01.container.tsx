@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
-import { MouseEvent } from "react";
 import Tab01UI from "./Tab01.presenter";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export default function Tab01(props) {
   const router = useRouter();
   const pathname = router.pathname;
 
-  const onClickMoveToTabMenus = (event: MouseEvent<HTMLElement>) => {
+  const onClickMoveToTabMenus = (event: CustomMouseEvent) => {
     router.push(`/${event.currentTarget.id}`);
   };
 

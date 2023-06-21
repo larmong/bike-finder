@@ -1,11 +1,11 @@
 import FooterUI from "./Footer.presenter";
 import { useRouter } from "next/router";
-import { MouseEvent } from "react";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export default function Footer() {
   const router = useRouter();
 
-  const onClickMoveToMenus = (event: MouseEvent<HTMLElement>) => {
+  const onClickMoveToMenus = (event: CustomMouseEvent) => {
     router.push(`${event.currentTarget.id}`);
   };
 

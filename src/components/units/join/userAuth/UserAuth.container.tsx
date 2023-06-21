@@ -5,12 +5,13 @@ import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import { MdDoubleArrow } from "react-icons/md";
 import { useRouter } from "next/router";
-import {
-  CustomMouseEvent,
-  IUserInfo,
-} from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.types";
+import { IUserInfo } from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.types";
 import Input02 from "../../../commons/inputs/input/input02/Input02.container";
 import Input03 from "../../../commons/inputs/input/input03/input03.container";
+import {
+  CustomChangeEvent,
+  CustomMouseEvent,
+} from "../../../../commons/types/global.types";
 
 export default function UserAuth(props) {
   const router = useRouter();
@@ -23,23 +24,17 @@ export default function UserAuth(props) {
     authNum: "",
   });
 
-  const onChangeUserAuth = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeUserName = (event: CustomChangeEvent) => {
     setUserInfo({
       ...userInfo,
       [event.target.id]: event.target.value,
     });
   };
 
-  const onChangePhone = (value: string) => {
+  const onChangeUserInfo = (value: string, id: string) => {
     setUserInfo({
       ...userInfo,
-      phone: value,
-    });
-  };
-  const onChangeBirth = (value: string) => {
-    setUserInfo({
-      ...userInfo,
-      birth: value,
+      [id]: value,
     });
   };
 
@@ -87,30 +82,39 @@ export default function UserAuth(props) {
           </S.InputTitle>
           <Input01
             inputType="text"
-            onChangeValue={onChangeUserAuth}
+            onChangeValue={onChangeUserName}
             valueData={userInfo.name}
             inputId="name"
+            inputClass="bottomBorder"
+            placeholderData="이름을 입력해주세요."
           />
         </S.InputItem>
         <S.InputItem>
           <S.InputTitle>생년월일</S.InputTitle>
           <Input03
-            onChangeNumber={onChangeBirth}
+            inputId="birth"
+            inputMaxLength={8}
+            onChangeNumber={onChangeUserInfo}
             valueData={userInfo.birth}
-            placeholderData="생년월일 8자리를 입력해주세요 (ex.19991010)"
+            placeholderData="생년월일 8자리를 입력해주세요. (ex.19991010)"
           />
         </S.InputItem>
         <S.InputItem>
           <S.InputTitle>휴&nbsp;&nbsp;대&nbsp;&nbsp;폰</S.InputTitle>
-          <Input02 onChangePhone={onChangePhone} valueData={userInfo.phone} />
+          <Input02
+            inputId="phone"
+            onChangePhone={onChangeUserInfo}
+            valueData={userInfo.phone}
+          />
         </S.InputItem>
         <S.InputItem>
           <S.InputTitle>인증번호</S.InputTitle>
-          <Input01
-            inputType="text"
-            onChangeValue={onChangeUserAuth}
-            valueData={userInfo.authNum}
+          <Input03
             inputId="authNum"
+            inputMaxLength={6}
+            onChangeNumber={onChangeUserInfo}
+            valueData={userInfo.authNum}
+            placeholderData="인증번호 6자리를 입력해주세요."
           />
         </S.InputItem>
       </S.InputGroup>

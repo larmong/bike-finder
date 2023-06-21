@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export interface IIsActive {
   isActive?: boolean;
@@ -14,7 +14,7 @@ export interface IPropsPagination01UI {
   nowPage: number;
   startPage: number;
   totalPages: number;
-  onClickPagination: (event: MouseEvent<HTMLElement>) => void;
+  onClickPagination: (event: CustomMouseEvent) => void;
   onClickPrevPage: () => void;
   onClickNextPage: () => void;
 }

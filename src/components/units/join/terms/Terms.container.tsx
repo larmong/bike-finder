@@ -4,7 +4,7 @@ import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.c
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import { MdDoubleArrow } from "react-icons/md";
 import { useState } from "react";
-import { CustomMouseEvent } from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.types";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export default function Terms(props) {
   const [cbState, setCbState] = useState(false);

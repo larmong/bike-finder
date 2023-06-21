@@ -1,6 +1,7 @@
 import { InputPhone, InputPhoneWrapper } from "./Input02.style";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IInputPhone, IPropsInput02 } from "./Input02.types";
+import { CustomChangeEvent } from "../../../../../commons/types/global.types";
 
 export default function Input02(props: IPropsInput02) {
   const [inputPhone, setInputPhone] = useState<IInputPhone>({
@@ -9,7 +10,7 @@ export default function Input02(props: IPropsInput02) {
     third: "",
   });
 
-  const onChangeInputPhone = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeInputPhone = (event: CustomChangeEvent) => {
     const value = event.target.value.replace(/\D/g, "");
     setInputPhone({
       ...inputPhone,
@@ -19,11 +20,11 @@ export default function Input02(props: IPropsInput02) {
 
   useEffect(() => {
     const fullPhoneNum = `${inputPhone.first}${inputPhone.second}${inputPhone.third}`;
-    props.onChangePhone(fullPhoneNum);
+    props.onChangePhone(fullPhoneNum, props.inputId);
   }, [inputPhone]);
 
   return (
-    <InputPhoneWrapper>
+    <InputPhoneWrapper id={props.inputId}>
       <InputPhone
         type="text"
         id="first"

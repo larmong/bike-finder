@@ -1,11 +1,11 @@
 import * as S from "./Mypage.style";
 import { useRouter } from "next/router";
-import { MouseEvent } from "react";
 import Title02 from "../../commons/titles/title02/Title02.container";
 import UserInfo from "./userInfo/UserInfo.container";
 import UserPayment from "./userPayment/UserPayment.container";
 import UserUse from "./userUse/UserUse.container";
 import Tab02 from "../../commons/tabs/tab02/Tab02.container";
+import { CustomMouseEvent } from "../../../commons/types/global.types";
 
 export default function MyPageUI(props) {
   const router = useRouter();
@@ -24,7 +24,7 @@ export default function MyPageUI(props) {
     },
   ];
 
-  const onClickMoveToTabMenus = (event: MouseEvent<HTMLElement>) => {
+  const onClickMoveToTabMenus = (event: CustomMouseEvent) => {
     router.push(`/mypage/${event.currentTarget.id}`);
   };
 

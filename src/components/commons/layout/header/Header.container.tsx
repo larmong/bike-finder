@@ -1,13 +1,14 @@
 import HeaderUI from "./Header.presenter";
 import { useRouter } from "next/router";
-import { MouseEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { authService } from "../../../../commons/libraries/firebase/firebase.config";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export default function Header() {
   const [loginCheck, setLoginCheck] = useState(false);
   const router = useRouter();
 
-  const onClickMoveToMenus = (event: MouseEvent<HTMLElement>) => {
+  const onClickMoveToMenus = (event: CustomMouseEvent) => {
     router.push(`/${event.currentTarget.id}`);
   };
 

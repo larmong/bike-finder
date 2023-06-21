@@ -10,10 +10,15 @@ export const InputText = styled.input`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.07em;
-  &::placeholder {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    color: #999999;
+  &.bottomBorder {
+    height: 40px;
+    border: none;
+    border-bottom: 1.3px solid #e9e9e9;
+    border-radius: 0;
+    letter-spacing: 0.5em;
+    text-align: center;
+  }
+  &.bottomBorder::placeholder {
+    letter-spacing: -1px;
   }
 `;

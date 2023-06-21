@@ -1,10 +1,10 @@
-import { MouseEvent } from "react";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export interface IPropsTab01 {
   TAB_MENUS: ITabMenus[];
   tabWidth: string;
   pathname: string;
-  onClickMoveToTabMenus: (event: MouseEvent<HTMLElement>) => void;
+  onClickMoveToTabMenus: (event: CustomMouseEvent) => void;
 }
 
 export interface ITabMenus {

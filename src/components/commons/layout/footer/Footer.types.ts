@@ -1,5 +1,5 @@
-import { MouseEvent } from "react";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export interface IFooterUI {
-  onClickMoveToMenus: (event: MouseEvent<HTMLElement>) => void;
+  onClickMoveToMenus: (event: CustomMouseEvent) => void;
 }

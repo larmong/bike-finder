@@ -1,6 +1,7 @@
 import Board02UI from "./Board02.presenter";
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export default function Board02(props) {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function Board02(props) {
     setCurrentPage(selectedPage);
   };
 
-  const onClickBoardDetail = (event: MouseEvent<HTMLElement>) => {
+  const onClickBoardDetail = (event: CustomMouseEvent) => {
     router.push(`notice/${event.currentTarget.id}`);
   };
 

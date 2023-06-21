@@ -1,5 +1,4 @@
-import { MouseEvent } from "react";
-export type CustomMouseEvent = MouseEvent<HTMLElement>;
+import { CustomMouseEvent } from "../../../../../commons/types/global.types";
 
 export interface IPropsCheckbox01 {
   onClickCb: (event: CustomMouseEvent) => void;

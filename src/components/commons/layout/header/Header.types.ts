@@ -1,7 +1,7 @@
-import { MouseEvent } from "react";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export interface IHeaderUI {
   loginCheck: boolean;
-  onClickMoveToMenus: (event: MouseEvent<HTMLElement>) => void;
+  onClickMoveToMenus: (event: CustomMouseEvent) => void;
   onClickHeaderBtn: (route: string) => () => void;
 }

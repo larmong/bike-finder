@@ -1,4 +1,4 @@
-import { MouseEvent } from "react";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export interface IPropsBoard03UI {
   BOARD_TABLE_TITLE: IBoardTable[];
@@ -7,7 +7,7 @@ export interface IPropsBoard03UI {
   noticeLength: number;
   pageSize: number;
   handlePageChange: (event: number) => void;
-  onClickBoardDetail: (event: MouseEvent<HTMLElement>) => void;
+  onClickBoardDetail: (event: CustomMouseEvent) => void;
 }
 
 export interface IFetchData {

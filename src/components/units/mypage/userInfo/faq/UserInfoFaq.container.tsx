@@ -1,10 +1,11 @@
 import * as S from "./UserInfoFaq.style";
-import { MouseEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import Search01 from "../../../../commons/searches/search01/Search01.contaienr";
 import Board03 from "../../../../commons/boards/board03/Board03.container";
 import { useRouter } from "next/router";
+import { CustomMouseEvent } from "../../../../../commons/types/global.types";
 
 export default function UserInfoFaq() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function UserInfoFaq() {
 
   const [fetchFaq, setFetchFaq] = useState([]);
 
-  const onClickBoardDetail = (event: MouseEvent<HTMLElement>) => {
+  const onClickBoardDetail = (event: CustomMouseEvent) => {
     router.push(`faq/${event.currentTarget.id}`);
     setFetchFaq(fetchFaq);
   };

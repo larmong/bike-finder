@@ -1,9 +1,9 @@
-import { MouseEvent } from "react";
+import { CustomMouseEvent } from "../../../../../commons/types/global.types";
 
 export interface IPropsRadio01 {
   radioData: IRadioData[];
   radioName: string;
-  onClickRadio: (event: MouseEvent<HTMLElement>) => void;
+  onClickRadio: (event: CustomMouseEvent) => void;
 }
 
 export interface IRadioData {

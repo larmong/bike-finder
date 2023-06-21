@@ -62,11 +62,3 @@ export const InputTitle = styled.p`
   line-height: 18px;
   align-items: center;
 `;
-export const UserBirth = styled.p`
-  width: 100px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 18px;
-  align-items: center;
-  letter-spacing: 0.36em;
-`;

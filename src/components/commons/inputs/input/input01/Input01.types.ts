@@ -1,10 +1,11 @@
-import { ChangeEvent } from "react";
+import { CustomChangeEvent } from "../../../../../commons/types/global.types";
 
 export interface IPropsInput01 {
   inputType: string;
   inputId: string;
   inputWidth?: string;
   valueData: string | number | readonly string[] | undefined;
-  onChangeValue: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChangeValue: (event: CustomChangeEvent) => void;
   placeholderData?: string;
+  inputClass?: string;
 }
