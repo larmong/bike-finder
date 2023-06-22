@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { CustomChangeEvent } from "../../../../commons/types/global.types";
 import { IInputAddress } from "../../../commons/inputs/input/input05/input05.types";
 import { IUserInfoState } from "../userAuth/UserAuth.types";
-import { IUserInfoState2 } from "./Membership.types";
+import { IPropsMembership, IUserInfoState2 } from "./Membership.types";
 import { userInfoState } from "../../../../commons/store/store";
 import MembershipUI from "./Membership.presenter";
 import {
@@ -14,7 +14,7 @@ import { doc, setDoc } from "@firebase/firestore";
 import { collection } from "firebase/firestore";
 import { createUserWithEmailAndPassword } from "@firebase/auth";
 
-export default function Membership(props) {
+export default function Membership(props: IPropsMembership) {
   const [userInfo, setUserInfo] = useRecoilState<IUserInfoState>(userInfoState);
   const { authNum, ...newUserInfo } = userInfo;
   const [userInfo2, setUserInfo2] = useState<IUserInfoState2>({

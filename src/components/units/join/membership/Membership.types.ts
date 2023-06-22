@@ -2,6 +2,10 @@ import { IInputAddress } from "../../../commons/inputs/input/input05/input05.typ
 import { IUserInfoState } from "../userAuth/UserAuth.types";
 import { CustomChangeEvent } from "../../../../commons/types/global.types";
 
+export interface IPropsMembership {
+  setJoinSuccess: (value: boolean) => void;
+}
+
 export interface IPropsMembershipUI {
   userInfo: IUserInfoState;
   userInfo2: IUserInfoState2;
