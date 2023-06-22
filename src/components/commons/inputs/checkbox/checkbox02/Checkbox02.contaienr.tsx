@@ -1,6 +1,7 @@
 import { Checkbox, CheckboxName, Wrapper } from "./Checkbox02.style";
+import { IPropsCheckbox02 } from "./Checkbox02.types";
 
-export default function Checkbox02(props) {
+export default function Checkbox02(props: IPropsCheckbox02) {
   return (
     <>
       {props.checkboxData.map((el, index) => (

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { IIsEssential } from "./Checkbox03.types";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -38,7 +39,8 @@ export const CheckboxName = styled.p`
 export const Essential = styled.em`
   margin: 0 5px 0 0;
   font-weight: 700;
-  color: ${(props) => (props.isEssential ? "#DC1919" : "#333333")};
+  color: ${(props: IIsEssential) =>
+    props.isEssential ? "#DC1919" : "#333333"};
 `;
 
 export const Detail = styled.em`

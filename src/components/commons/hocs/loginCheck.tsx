@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { authService } from "../../../commons/libraries/firebase/firebase.config";
 import { accessTokenState } from "../../../commons/store/store";
 
-export const LoginCheck = (Component) => (props) => {
+export const LoginCheck = (Component: any) => (props: any) => {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const router = useRouter();
 
