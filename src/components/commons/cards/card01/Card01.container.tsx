@@ -2,8 +2,9 @@ import * as S from "./Card01.style";
 import { useRouter } from "next/router";
 import { MdArrowForward, MdConfirmationNumber } from "react-icons/md";
 import { CustomMouseEvent } from "../../../../commons/types/global.types";
+import { IPropsCard01 } from "./Card01.types";
 
-export default function Card01(props) {
+export default function Card01(props: IPropsCard01) {
   const router = useRouter();
 
   const onClickMoveToTabMenus = (event: CustomMouseEvent) => {

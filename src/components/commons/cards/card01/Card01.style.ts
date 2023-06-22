@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { IIsType } from "./Card01.types";
 
 export const MenuCard = styled.div`
   width: calc(50% - 20px);
@@ -9,8 +10,8 @@ export const MenuCard = styled.div`
   justify-content: space-between;
   cursor: pointer;
 
-  border: ${(props) => (props.isType ? "none" : "3px solid #333333")};
-  background: ${(props) => (props.isType ? "#0D8F68" : "#ffffff")};
+  border: ${(props: IIsType) => (props.isType ? "none" : "3px solid #333333")};
+  background: ${(props: IIsType) => (props.isType ? "#0D8F68" : "#ffffff")};
 `;
 
 export const MenuCardIcon = styled.div`
@@ -20,20 +21,20 @@ export const MenuCardIcon = styled.div`
   width: 43px;
   height: 43px;
   border-radius: 50%;
-  border: ${(props) =>
+  border: ${(props: IIsType) =>
     props.isType ? "3px solid #ffffff" : "3px solid #333333"};
 
   svg {
     width: 30px;
     height: 30px;
-    color: ${(props) => (props.isType ? "#ffffff" : "#333333")};
+    color: ${(props: IIsType) => (props.isType ? "#ffffff" : "#333333")};
   }
 `;
 export const MenuCardIconTicket = styled.div`
   svg {
     width: 60px;
     height: 60px;
-    color: ${(props) => (props.isType ? "#ffffff" : "#333333")};
+    color: ${(props: IIsType) => (props.isType ? "#ffffff" : "#333333")};
   }
 `;
 
@@ -47,10 +48,10 @@ export const MenuCardTitle = styled.p`
   font-weight: 700;
   font-size: 26px;
   line-height: 33px;
-  color: ${(props) => (props.isType ? "#ffffff" : "#333333")};
+  color: ${(props: IIsType) => (props.isType ? "#ffffff" : "#333333")};
 `;
 export const MenuCardDsc = styled.p`
   line-height: 20px;
   letter-spacing: -0.1em;
-  color: ${(props) => (props.isType ? "#eeeeee" : "#666666")};
+  color: ${(props: IIsType) => (props.isType ? "#eeeeee" : "#666666")};
 `;
