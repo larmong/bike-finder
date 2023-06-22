@@ -9,6 +9,7 @@ import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Input03 from "../../../commons/inputs/input/input03/input03.container";
 import Input04 from "../../../commons/inputs/input/input04/input04.container";
+import Input05 from "../../../commons/inputs/input/input05/input05.container";
 
 export default function Membership(props) {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
@@ -20,9 +21,9 @@ export default function Membership(props) {
     rentalPassword: "",
     rentalPasswordCheck: "",
     address: {
-      code: "",
-      first: "",
-      second: "",
+      zipcode: "",
+      addressFirst: "",
+      addressSecond: "",
     },
   });
 
@@ -43,6 +44,7 @@ export default function Membership(props) {
   const onClickButton = () => {
     // 회원가입 완료
     props.setJoinSuccess(true);
+    console.log(userInfo2);
   };
 
   return (
@@ -95,10 +97,12 @@ export default function Membership(props) {
         </S.TableItem01>
         <S.TableItem01 className="t-head">휴대폰 번호</S.TableItem01>
         <S.TableItem01>{getPhone(userInfo.phone)}</S.TableItem01>
-        <S.TableItem01 className="t-head t-essential">
+        <S.TableItem01 className="t-head t-essential t-address">
           <span>주소</span>
         </S.TableItem01>
-        <S.TableItem01>{/* 카카오 주소 검색 api + 주소 인풋 */}</S.TableItem01>
+        <S.TableItem01 className="t-address">
+          <Input05 inputId="address" onChangeAddress={onChangeUserInfo2} />
+        </S.TableItem01>
         <S.TableItem01 className="t-head">생년월일</S.TableItem01>
         <S.TableItem01>{getBirth(userInfo.birth)}</S.TableItem01>
         <S.TableItem01 className="t-head t-essential">
