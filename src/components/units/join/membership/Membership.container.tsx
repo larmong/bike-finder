@@ -10,6 +10,7 @@ import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Input03 from "../../../commons/inputs/input/input03/input03.container";
 import Input04 from "../../../commons/inputs/input/input04/input04.container";
 import Input05 from "../../../commons/inputs/input/input05/input05.container";
+import { IInputAddress } from "../../../commons/inputs/input/input05/input05.types";
 
 export default function Membership(props) {
   const [userInfo, setUserInfo] = useRecoilState(userInfoState);
@@ -34,7 +35,7 @@ export default function Membership(props) {
     });
   };
 
-  const onChangeUserInfo2 = (value: string, id: string) => {
+  const onChangeUserInfo2 = (value: string | IInputAddress, id: string) => {
     setUserInfo2({
       ...userInfo2,
       [id]: value,
