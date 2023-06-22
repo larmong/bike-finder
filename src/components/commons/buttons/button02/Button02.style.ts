@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { IPropsBtnWidth } from "./Button02.types";
 
 export const SmallBtn = styled.button`
   margin: 0 auto;
@@ -6,7 +7,7 @@ export const SmallBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${(props) => props.btnWidth};
+  width: ${(props: IPropsBtnWidth) => props.btnWidth};
   height: 30px;
   background: #0d8f68;
   border-radius: 5px;

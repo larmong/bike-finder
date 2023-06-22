@@ -1,6 +1,7 @@
 import { SmallBtn } from "./Button02.style";
+import { IPropsButton02 } from "./Button02.types";
 
-export default function Button02(props) {
+export default function Button02(props: IPropsButton02) {
   return (
     <SmallBtn
       onClick={props.onClickButton}
