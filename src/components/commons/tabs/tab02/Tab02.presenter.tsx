@@ -1,7 +1,7 @@
 import * as S from "./Tab02.style";
-import { IPropsTab01 } from "./Tab02.types";
+import { IPropsTab02UI } from "./Tab02.types";
 
-export default function Tab02UI(props: IPropsTab01) {
+export default function Tab02UI(props: IPropsTab02UI) {
   return (
     <S.Tab>
       {props.TAB_MENUS.map((el: any, index: number) => (

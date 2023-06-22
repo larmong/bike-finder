@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
+import { ITabWidth } from "./Tab01.types";
 
 export const Tab = styled.ul`
   height: 50px;
   display: flex;
 `;
 export const Manus = styled.li`
-  width: ${(props) => props.tabWidth};
+  width: ${(props: ITabWidth) => props.tabWidth};
   display: flex;
   align-items: center;
   justify-content: center;
