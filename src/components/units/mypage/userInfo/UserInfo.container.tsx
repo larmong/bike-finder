@@ -1,17 +1,29 @@
 import * as S from "./UserInfo.style";
+import { useState } from "react";
+import { getBirth, getPhone } from "../../../commons/utils/utils";
+import { sendPasswordResetEmail } from "@firebase/auth";
+import { IInputAddress } from "../../../commons/inputs/input/input05/input05.types";
 import Tab01 from "../../../commons/tabs/tab01/Tab01.container";
 import UserInfoCard from "./card/UserInfoCard.container";
 import UserInfoFaq from "./faq/UserInfoFaq.container";
 import RentalPw from "./rentalPw/RentalPw.container";
 import Secession from "./secession/Secession.container";
-import Input01 from "../../../commons/inputs/input/input01/Input01.container";
-import { useState } from "react";
-import Button01 from "../../../commons/buttons/button01/Button01.container";
 import FaqDetail from "./faq/detail/FaqDetail.container";
-import { getAddress, getBirth, getPhone } from "../../../commons/utils/utils";
 import Input05 from "../../../commons/inputs/input/input05/input05.container";
-import { IInputAddress } from "../../../commons/inputs/input/input05/input05.types";
-import { CustomChangeEvent } from "../../../../commons/types/global.types";
+import Button01 from "../../../commons/buttons/button01/Button01.container";
+import Button04 from "../../../commons/buttons/button04/button04.container";
+import {
+  authService,
+  db,
+} from "../../../../commons/libraries/firebase/firebase.config";
+import {
+  collection,
+  documentId,
+  getDocs,
+  query,
+  where,
+  setDoc,
+} from "firebase/firestore";
 
 export default function UserInfo(props) {
   const TAB_MENUS = [
@@ -36,11 +48,7 @@ export default function UserInfo(props) {
       route: "mypage/userInfo/secession",
     },
   ];
-
   const [userInfo, setUserInfo] = useState({
-    password: "",
-    changePw: "",
-    changePwCheck: "",
     address: {
       zipcode: "",
       addressFirst: "",
@@ -48,22 +56,52 @@ export default function UserInfo(props) {
     },
   });
 
-  const onChangeUserInfo = (event: CustomChangeEvent) => {
-    setUserInfo({
-      ...userInfo,
-      [event.target.id]: event.target.value,
-    });
-  };
   const onChangeUserAddress = (value: string | IInputAddress, id: string) => {
     setUserInfo({
-      ...userInfo,
+      ...props.fetchUser,
       [id]: value,
     });
   };
 
-  const onClickButton = () => {
-    // 개인정보 저장
-    console.log(userInfo);
+  const onClickSendPassword = async () => {
+    await sendPasswordResetEmail(authService, props.fetchUser.email);
+    alert(
+      `회원님의 아이디(${props.fetchUser.email})로 비밀번호 변경 메일이 전송되었습니다!`
+    );
+  };
+
+  const onClickButton = async () => {
+    if (
+      userInfo.address.zipcode === "" &&
+      userInfo.address.addressFirst === "" &&
+      userInfo.address.addressSecond === ""
+    ) {
+      alert("변경된 정보가 없습니다.");
+    } else {
+      if (
+        userInfo.address.zipcode === "" ||
+        userInfo.address.addressFirst === ""
+      ) {
+        userInfo.address.zipcode = props.fetchUser.address.zipcode;
+        userInfo.address.addressFirst = props.fetchUser.address.addressFirst;
+      } else if (userInfo.address.addressSecond === "") {
+        userInfo.address.addressSecond = props.fetchUser.address.addressSecond;
+      } else {
+        try {
+          const data = query(
+            collection(db, "user"),
+            where(documentId(), "==", props.fetchUser.id)
+          );
+          const result = await getDocs(data);
+          result.forEach((doc) => {
+            setDoc(doc.ref, {
+              ...userInfo,
+            });
+          });
+          alert("회원님의 정보가 저장되었습니다.");
+        } catch (error) {}
+      }
+    }
   };
 
   return (
@@ -91,37 +129,16 @@ export default function UserInfo(props) {
               <S.TableItem01>{props.fetchUser?.name}</S.TableItem01>
               <S.TableItem01 className="t-head">아이디</S.TableItem01>
               <S.TableItem01>{props.fetchUser?.email}</S.TableItem01>
-              <S.TableItem01 className="t-head">현재 비밀번호</S.TableItem01>
-              <S.TableItem01>
-                <Input01
-                  inputType="password"
-                  onChangeValue={onChangeUserInfo}
-                  valueData={userInfo.password}
-                  inputId="password"
-                  placeholderData="비밀번호를 8자리 이상 입력해주세요."
+              <S.TableItem01 className="t-head">비밀번호</S.TableItem01>
+              <S.TableItem01 className="t-btn">
+                <Button04
+                  onClickButton={onClickSendPassword}
+                  btnText="비밀번호 변경하기"
                 />
-              </S.TableItem01>
-              <S.TableItem01 className="t-head">변경할 비밀번호</S.TableItem01>
-              <S.TableItem01>
-                <Input01
-                  inputType="password"
-                  onChangeValue={onChangeUserInfo}
-                  valueData={userInfo.changePw}
-                  inputId="changePw"
-                  placeholderData="변경할 비밀번호를 8자리 이상 입력해주세요."
-                />
-              </S.TableItem01>
-              <S.TableItem01 className="t-head">
-                변경할 비밀번호 확인
-              </S.TableItem01>
-              <S.TableItem01>
-                <Input01
-                  inputType="password"
-                  onChangeValue={onChangeUserInfo}
-                  valueData={userInfo.changePwCheck}
-                  inputId="changePwCheck"
-                  placeholderData="변경할 비밀번호를 8자리 이상 재입력해주세요."
-                />
+                <S.PasswordMessage>
+                  * 따릉이 아이디(이메일)로 <strong>비밀번호 변경 메일</strong>
+                  이 전송됩니다.
+                </S.PasswordMessage>
               </S.TableItem01>
               <S.TableItem01 className="t-head">생년월일</S.TableItem01>
               <S.TableItem01>

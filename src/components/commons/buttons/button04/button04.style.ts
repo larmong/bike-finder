@@ -1,14 +1,11 @@
 import styled from "@emotion/styled";
-import { IPropsBtnWidth } from "./Button01.types";
 
-export const DefaultBtn = styled.button`
-  margin: 0 auto;
-  text-align: center;
+export const TableBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: ${(props: IPropsBtnWidth) => props.btnWidth};
-  height: 50px;
+  width: 150px;
+  height: 40px;
   background: #0d8f68;
   border-radius: 5px;
   font-weight: 700;

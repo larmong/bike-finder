@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Message } from "./secession/Secession.style";
 
 export const Wrapper = styled.div``;
 export const Contents = styled.div``;
@@ -34,5 +35,16 @@ export const TableItem01 = styled.div`
   }
   &.t-address {
     height: 180px;
+  }
+`;
+
+export const PasswordMessage = styled.span`
+  color: #999999;
+  font-weight: 400;
+  font-size: 14px;
+  display: inline-block;
+  margin-left: 10px;
+  strong {
+    font-weight: 700;
   }
 `;

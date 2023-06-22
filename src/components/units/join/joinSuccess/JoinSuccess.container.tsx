@@ -1,7 +1,7 @@
 import { BtnGroup, Icon, Message, Wrapper } from "./JoinSuccess.style";
 import { useRouter } from "next/router";
-import Button01 from "../../../commons/buttons/button01/Button01.container";
 import { MdCheckCircle } from "react-icons/md";
+import Button01 from "../../../commons/buttons/button01/Button01.container";
 
 export default function JoinSuccess() {
   const router = useRouter();
@@ -9,8 +9,8 @@ export default function JoinSuccess() {
   const onClickMoveToMain = () => {
     router.push("/");
   };
-  const onClickMoveToLogin = () => {
-    router.push("/login");
+  const onClickMoveToMypage = () => {
+    router.push("/mypage/userInfo");
   };
 
   return (
@@ -27,9 +27,9 @@ export default function JoinSuccess() {
           btnText="메인페이지"
         />
         <Button01
-          onClickButton={onClickMoveToLogin}
+          onClickButton={onClickMoveToMypage}
           btnWidth="200px"
-          btnText="로그인"
+          btnText="마이페이지"
         />
       </BtnGroup>
     </Wrapper>

@@ -18,13 +18,15 @@ export const InputZipcode = styled.input`
   border: 1px solid #e9e9e9;
   border-radius: 5px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
   letter-spacing: 0.1em;
   margin-right: 20px;
   &.bottomBorder {
+    font-size: 14px;
     height: 40px;
     border: none;
+    border-radius: 0;
     border-bottom: 1.3px solid #e9e9e9;
   }
   &.bottomBorder::placeholder {
@@ -55,13 +57,15 @@ export const InputAddress = styled.input`
   border: 1px solid #e9e9e9;
   border-radius: 5px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
   letter-spacing: 0.1em;
   text-align: left;
   &.bottomBorder {
+    font-size: 14px;
     height: 40px;
     border: none;
+    border-radius: 0;
     border-bottom: 1.3px solid #e9e9e9;
   }
   &.bottomBorder::placeholder {
