@@ -9,5 +9,5 @@ export interface IPropsTab01 {
 
 export interface ITabMenus {
   name: string;
-  router: string;
+  route: string;
 }
