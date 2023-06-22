@@ -13,16 +13,24 @@ export const ZipcodeWrapper = styled.div`
 export const InputZipcode = styled.input`
   text-align: center;
   width: 100px;
-  height: 40px;
+  height: 46px;
   padding: 14px 16px;
-  border: none;
-  border-bottom: 1.3px solid #e9e9e9;
+  border: 1px solid #e9e9e9;
+  border-radius: 5px;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.1em;
   margin-right: 20px;
+  &.bottomBorder {
+    height: 40px;
+    border: none;
+    border-bottom: 1.3px solid #e9e9e9;
+  }
   &.bottomBorder::placeholder {
+    letter-spacing: -1px;
+  }
+  &::placeholder {
     letter-spacing: -1px;
   }
 `;
@@ -42,16 +50,24 @@ export const PostCodeBtn = styled.button`
 
 export const InputAddress = styled.input`
   width: 100%;
-  height: 40px;
+  height: 46px;
   padding: 14px 16px;
-  border: none;
-  border-bottom: 1.3px solid #e9e9e9;
+  border: 1px solid #e9e9e9;
+  border-radius: 5px;
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.1em;
   text-align: left;
+  &.bottomBorder {
+    height: 40px;
+    border: none;
+    border-bottom: 1.3px solid #e9e9e9;
+  }
   &.bottomBorder::placeholder {
+    letter-spacing: -1px;
+  }
+  &::placeholder {
     letter-spacing: -1px;
   }
 `;

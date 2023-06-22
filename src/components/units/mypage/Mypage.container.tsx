@@ -54,7 +54,6 @@ export default function MyPageUI(props) {
         }));
 
         setFetchUser(result);
-        console.log(result);
       } catch (error) {
         console.error(error);
       }
@@ -74,11 +73,11 @@ export default function MyPageUI(props) {
         />
         <S.Contents>
           {props.pathname === "userInfo" ? (
-            <UserInfo tab={props.tab} fetchUser={fetchUser} />
+            <UserInfo tab={props.tab} fetchUser={fetchUser[0]} />
           ) : props.pathname === "userPayment" ? (
-            <UserPayment tab={props.tab} />
+            <UserPayment tab={props.tab} fetchUser={fetchUser[0]} />
           ) : props.pathname === "userUse" ? (
-            <UserUse tab={props.tab} />
+            <UserUse tab={props.tab} fetchUser={fetchUser[0]} />
           ) : (
             ""
           )}

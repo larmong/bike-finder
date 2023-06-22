@@ -66,6 +66,7 @@ export default function MembershipUI(props: IPropsMembershipUI) {
           <Input05
             inputId="address"
             onChangeAddress={props.onChangeUserInfo2}
+            inputClass="bottomBorder"
           />
         </S.TableItem01>
         <S.TableItem01 className="t-head">생년월일</S.TableItem01>

@@ -8,6 +8,10 @@ import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import { useState } from "react";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import FaqDetail from "./faq/detail/FaqDetail.container";
+import { getAddress, getBirth, getPhone } from "../../../commons/utils/utils";
+import Input05 from "../../../commons/inputs/input/input05/input05.container";
+import { IInputAddress } from "../../../commons/inputs/input/input05/input05.types";
+import { CustomChangeEvent } from "../../../../commons/types/global.types";
 
 export default function UserInfo(props) {
   const TAB_MENUS = [
@@ -33,18 +37,33 @@ export default function UserInfo(props) {
     },
   ];
 
-  const [userPw, setUserPw] = useState<number | undefined>(undefined);
-  const [userPwCheck, setUserPwCheck] = useState<number | undefined>(undefined);
+  const [userInfo, setUserInfo] = useState({
+    password: "",
+    changePw: "",
+    changePwCheck: "",
+    address: {
+      zipcode: "",
+      addressFirst: "",
+      addressSecond: "",
+    },
+  });
 
-  const onChangeUserPw = (event) => {
-    setUserPw(event.target.value);
+  const onChangeUserInfo = (event: CustomChangeEvent) => {
+    setUserInfo({
+      ...userInfo,
+      [event.target.id]: event.target.value,
+    });
   };
-  const onChangeUserPwCheck = (event) => {
-    setUserPwCheck(event.target.value);
+  const onChangeUserAddress = (value: string | IInputAddress, id: string) => {
+    setUserInfo({
+      ...userInfo,
+      [id]: value,
+    });
   };
 
   const onClickButton = () => {
     // 개인정보 저장
+    console.log(userInfo);
   };
 
   return (
@@ -68,33 +87,58 @@ export default function UserInfo(props) {
         ) : (
           <S.UserInfo>
             <S.Table01>
+              <S.TableItem01 className="t-head">이름</S.TableItem01>
+              <S.TableItem01>{props.fetchUser?.name}</S.TableItem01>
               <S.TableItem01 className="t-head">아이디</S.TableItem01>
-              <S.TableItem01>larmong</S.TableItem01>
-              <S.TableItem01 className="t-head">비밀번호</S.TableItem01>
+              <S.TableItem01>{props.fetchUser?.email}</S.TableItem01>
+              <S.TableItem01 className="t-head">현재 비밀번호</S.TableItem01>
               <S.TableItem01>
                 <Input01
                   inputType="password"
-                  onChangeValue={onChangeUserPw}
-                  valueData={setUserPw}
+                  onChangeValue={onChangeUserInfo}
+                  valueData={userInfo.password}
+                  inputId="password"
+                  placeholderData="비밀번호를 8자리 이상 입력해주세요."
                 />
               </S.TableItem01>
-              <S.TableItem01 className="t-head">비밀번호 확인</S.TableItem01>
+              <S.TableItem01 className="t-head">변경할 비밀번호</S.TableItem01>
               <S.TableItem01>
                 <Input01
                   inputType="password"
-                  onChangeValue={onChangeUserPwCheck}
-                  valueData={setUserPwCheck}
+                  onChangeValue={onChangeUserInfo}
+                  valueData={userInfo.changePw}
+                  inputId="changePw"
+                  placeholderData="변경할 비밀번호를 8자리 이상 입력해주세요."
                 />
               </S.TableItem01>
-              {/* 이메일주소, 휴대폰번호, 주소 등 변경 가능하도록 인풋으로 변경하고 기본 value 값은 user 정보를 불러옴 */}
-              <S.TableItem01 className="t-head">이메일 주소</S.TableItem01>
-              <S.TableItem01>larmong@naver.com</S.TableItem01>
-              <S.TableItem01 className="t-head">휴대폰 번호</S.TableItem01>
-              <S.TableItem01>010-1234-5678</S.TableItem01>
-              <S.TableItem01 className="t-head">주소</S.TableItem01>
-              <S.TableItem01>서울시 강남구 어쩌구 저쩌구</S.TableItem01>
+              <S.TableItem01 className="t-head">
+                변경할 비밀번호 확인
+              </S.TableItem01>
+              <S.TableItem01>
+                <Input01
+                  inputType="password"
+                  onChangeValue={onChangeUserInfo}
+                  valueData={userInfo.changePwCheck}
+                  inputId="changePwCheck"
+                  placeholderData="변경할 비밀번호를 8자리 이상 재입력해주세요."
+                />
+              </S.TableItem01>
               <S.TableItem01 className="t-head">생년월일</S.TableItem01>
-              <S.TableItem01>1999-11-11</S.TableItem01>
+              <S.TableItem01>
+                {props.fetchUser ? getBirth(props.fetchUser.birth) : ""}
+              </S.TableItem01>
+              <S.TableItem01 className="t-head">휴대폰 번호</S.TableItem01>
+              <S.TableItem01>
+                {props.fetchUser ? getPhone(props.fetchUser.phone) : ""}
+              </S.TableItem01>
+              <S.TableItem01 className="t-head t-address">주소</S.TableItem01>
+              <S.TableItem01 className="t-address">
+                <Input05
+                  addressData={props.fetchUser?.address}
+                  inputId="address"
+                  onChangeAddress={onChangeUserAddress}
+                />
+              </S.TableItem01>
             </S.Table01>
             <Button01
               onClickButton={onClickButton}

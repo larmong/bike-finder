@@ -17,4 +17,14 @@ export const getPhone = (phoneNum) => {
   const third = phoneNum.slice(7, 11);
 
   return `${first}-${second}-${third}`;
+
+  console.log(phoneNum);
+};
+
+export const getAddress = (address) => {
+  const zipcode = address.zipcode;
+  const addressFirst = address.addressFirst;
+  const addressSecond = address.addressSecond;
+
+  return `(${zipcode}) ${addressFirst}, ${addressSecond}`;
 };

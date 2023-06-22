@@ -62,26 +62,38 @@ export default function Input05(props: IPropsInput05) {
         <InputZipcode
           type="text"
           readOnly
-          value={inputAddress.zipcode}
+          value={
+            inputAddress.zipcode ||
+            (props.addressData && props.addressData.zipcode) ||
+            ""
+          }
           placeholder="우편번호"
-          className="bottomBorder"
+          className={props.inputClass}
         />
         <PostCodeBtn onClick={modalToggle}>우편번호 검색</PostCodeBtn>
       </ZipcodeWrapper>
       <InputAddress
         type="text"
         readOnly
-        value={inputAddress.addressFirst}
+        value={
+          inputAddress.addressFirst ||
+          (props.addressData && props.addressData.addressFirst) ||
+          ""
+        }
         placeholder="주소를 검색해주세요."
-        className="bottomBorder"
+        className={props.inputClass}
       />
       <InputAddress
         type="text"
         id="addressSecond"
-        value={inputAddress.addressSecond}
+        value={
+          inputAddress.addressSecond ||
+          (props.addressData && props.addressData.addressSecond) ||
+          ""
+        }
         onChange={onChangeInputAddress}
         placeholder="상세주소를 입력해주세요."
-        className="bottomBorder"
+        className={props.inputClass}
       />
       <PostCode
         isModal={isModal}
