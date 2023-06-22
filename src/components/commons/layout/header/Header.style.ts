@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
+import { IIsActive } from "./Header.types";
 
 export const Header = styled.header`
   width: 100%;
   height: 100px;
-  border-bottom: ${(props) => (props.isActive ? "none" : "1px solid #e9e9e9")};
-  background: ${(props) => (props.isActive ? "#f9fafa" : "#ffffff")};
+  border-bottom: ${(props: IIsActive) =>
+    props.isActive ? "none" : "1px solid #e9e9e9"};
+  background: ${(props: IIsActive) => (props.isActive ? "#f9fafa" : "#ffffff")};
 `;
 export const Wrapper = styled.div`
   height: 100px;

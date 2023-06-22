@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
+import { IIsActive } from "./Footer.types";
 
 export const Footer = styled.footer`
   width: 100%;
   height: 361px;
   background: #455062;
   padding: 65px 0;
-  display: ${(props) => (props.isActive ? "none" : "block")};
+  display: ${(props: IIsActive) => (props.isActive ? "none" : "block")};
 `;
 export const Wrapper = styled.div`
   display: flex;
