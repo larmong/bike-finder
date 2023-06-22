@@ -5,8 +5,8 @@ import Membership from "../membership/Membership.container";
 import JoinSuccess from "../joinSuccess/JoinSuccess.container";
 
 export default function General() {
-  const [terms, setTerms] = useState<boolean>(true);
-  const [userAuth, setUserAuth] = useState<boolean>(true);
+  const [terms, setTerms] = useState<boolean>(false);
+  const [userAuth, setUserAuth] = useState<boolean>(false);
   const [joinSuccess, setJoinSuccess] = useState<boolean>(false);
 
   return (

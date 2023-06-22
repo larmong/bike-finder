@@ -3,9 +3,14 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { authService } from "../../../../commons/libraries/firebase/firebase.config";
 import { CustomMouseEvent } from "../../../../commons/types/global.types";
+import { loginUserState } from "../../../../commons/store/store";
+import { useRecoilState } from "recoil";
 
 export default function Header() {
   const [loginCheck, setLoginCheck] = useState(false);
+  const [loginUser, setLoginUser] = useRecoilState<string | null>(
+    loginUserState
+  );
   const router = useRouter();
 
   const onClickMoveToMenus = (event: CustomMouseEvent) => {
@@ -26,6 +31,7 @@ export default function Header() {
     const unsubscribe = authService.onAuthStateChanged((user) => {
       if (user) {
         setLoginCheck(true);
+        setLoginUser(user.email);
       }
     });
 
