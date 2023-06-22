@@ -4,10 +4,21 @@ import {
 } from "../../../commons/types/global.types";
 
 export interface IPropsLoginUI {
-  email: string;
-  password: string;
+  loginInfo: ILoginInfo;
   onClickLogin: () => void;
   onClickLoginSocial: (event: CustomMouseEvent) => void;
-  onChangeLogin: (name: string) => (event: CustomChangeEvent) => void;
+  onChangeLogin: (event: CustomChangeEvent) => void;
   onClickMoveToLoginMenu: (route: string) => () => void;
 }
+
+export interface ILoginInfo {
+  email: string;
+  password: string;
+}
+
+export interface IMenuList {
+  name: string;
+  route: string;
+}
+
+export type IAuthList = string;

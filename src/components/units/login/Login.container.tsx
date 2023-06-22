@@ -1,5 +1,8 @@
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
+import { useRouter } from "next/router";
 import { authService } from "../../../commons/libraries/firebase/firebase.config";
+import { accessTokenState } from "../../../commons/store/store";
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -7,36 +10,33 @@ import {
   GithubAuthProvider,
   FacebookAuthProvider,
 } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import LoginUI from "./Login.presenter";
 import {
   CustomChangeEvent,
   CustomMouseEvent,
 } from "../../../commons/types/global.types";
-import { accessTokenState } from "../../../commons/store/store";
+import LoginUI from "./Login.presenter";
 
 export default function Login() {
-  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   const router = useRouter();
+  const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [loginInfo, setLoginInfo] = useState({
+    email: "",
+    password: "",
+  });
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-
-  const onChangeLogin = (name: string) => (event: CustomChangeEvent) => {
-    if (name === "email") {
-      setEmail(event.target.value);
-    } else if (name === "password") {
-      setPassword(event.target.value);
-    }
+  const onChangeLogin = (event: CustomChangeEvent) => {
+    setLoginInfo({
+      ...loginInfo,
+      [event.target.id]: event.target.value,
+    });
   };
 
   const onClickLogin = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(
         authService,
-        email,
-        password
+        loginInfo.email,
+        loginInfo.password
       );
       const user = userCredential.user;
       setAccessToken(await user.getIdToken());
@@ -86,12 +86,11 @@ export default function Login() {
 
   return (
     <LoginUI
-      email={email}
-      password={password}
+      loginInfo={loginInfo}
       onClickLogin={onClickLogin}
-      onClickMoveToLoginMenu={onClickMoveToLoginMenu}
       onChangeLogin={onChangeLogin}
       onClickLoginSocial={onClickLoginSocial}
+      onClickMoveToLoginMenu={onClickMoveToLoginMenu}
     />
   );
 }
