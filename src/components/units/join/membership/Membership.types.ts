@@ -14,7 +14,6 @@ export interface IUserInfoState2 {
   name: string;
   birth: string;
   phone: string;
-  authNum: string;
   email: string;
   password: string;
   passwordCheck: string;

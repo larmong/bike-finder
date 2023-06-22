@@ -20,4 +20,7 @@ export const InputEmail = styled.input`
   &.left {
     text-align: left;
   }
+  &::placeholder {
+    letter-spacing: -1px;
+  }
 `;

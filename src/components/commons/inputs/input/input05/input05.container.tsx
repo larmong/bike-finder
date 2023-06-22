@@ -85,7 +85,6 @@ export default function Input05(props: IPropsInput05) {
       />
       <PostCode
         isModal={isModal}
-        modalTitle="modalTitle"
         modalCurrentTarget={modalCurrentTarget}
         modalToggle={modalToggle}
         handleComplete={handleComplete}

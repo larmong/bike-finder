@@ -41,7 +41,7 @@ export default function MembershipUI(props: IPropsMembershipUI) {
             valueData={props.userInfo2.password}
             inputId="password"
             inputClass="bottomBorder left"
-            placeholderData="비밀번호를 입력해 주세요."
+            placeholderData="비밀번호를 8자리 이상 입력해주세요."
           />
         </S.TableItem01>
         <S.TableItem01 className="t-head t-essential">
@@ -54,7 +54,7 @@ export default function MembershipUI(props: IPropsMembershipUI) {
             valueData={props.userInfo2.passwordCheck}
             inputId="passwordCheck"
             inputClass="bottomBorder left"
-            placeholderData="비밀번호를 재입력해 주세요."
+            placeholderData="비밀번호를 8자리 이상 입력해주세요."
           />
         </S.TableItem01>
         <S.TableItem01 className="t-head">휴대폰 번호</S.TableItem01>

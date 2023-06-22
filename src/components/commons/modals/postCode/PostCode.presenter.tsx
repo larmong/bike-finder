@@ -10,7 +10,6 @@ export default function PostCodeUI(props: IPostCode) {
           <S.ModalContainer>
             <S.CloseBtn onClick={props.modalToggle}>X</S.CloseBtn>
             <S.ModalContents>
-              <S.InputTitle> {props.modalTitle}</S.InputTitle>
               <DaumPostcodeEmbed
                 onComplete={props.handleComplete}
                 autoClose={false}
