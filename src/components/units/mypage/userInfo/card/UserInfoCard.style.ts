@@ -71,7 +71,7 @@ export const Table02 = styled.div`
   border-top: 1px solid #666666;
   border-bottom: 1px solid #666666;
 `;
-export const TableItem02 = styled.p`
+export const TableItem02 = styled.div`
   height: 70px;
   padding: 20px;
   display: flex;

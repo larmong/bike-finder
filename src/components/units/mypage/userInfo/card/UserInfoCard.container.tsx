@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Checkbox01 from "../../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import Button01 from "../../../../commons/buttons/button01/Button01.container";
+import Select01 from "../../../../commons/inputs/select/select01/Select01.container";
 
 export default function UserInfoCard() {
   const router = useRouter();
@@ -60,7 +61,7 @@ export default function UserInfoCard() {
             <S.Section02>
               <S.Table02>
                 <S.TableItem02 className="t-head">카드유형</S.TableItem02>
-                <S.TableItem02>후불교통카드(선택인풋) 컴포넌트!!!</S.TableItem02>
+                <S.TableItem02><Select01 /></S.TableItem02>
                 <S.TableItem02 className="t-head">카드번호</S.TableItem02>
                 <S.TableItem02>
                   <span>카드번호 16자리를 입력해주세요.</span>
