@@ -29,7 +29,9 @@ export default function Select01(props: IPropsSelect01) {
     };
   }, []);
 
-  const [selectMenu, setSelectMenu] = useState(props.SELECT_LIST[0]);
+  const [selectMenu, setSelectMenu] = useState(
+    props.cardType || props.SELECT_LIST[0]
+  );
   const [isOpen, setIsOpen] = useState(false);
 
   const onClickSelectBox = () => {
@@ -37,11 +39,15 @@ export default function Select01(props: IPropsSelect01) {
   };
   const onClickSelectMenu = (event: CustomMouseEvent) => {
     setSelectMenu(props.SELECT_LIST[Number(event.currentTarget.id)]);
+    props.onClickSelectValue(
+      props.SELECT_LIST[Number(event.currentTarget.id)],
+      props.inputId
+    );
     setIsOpen(false);
   };
 
   return (
-    <Wrapper isSelect={props.isSelect}>
+    <Wrapper isSelect={props.isSelect} id={props.inputId}>
       <SelectBox onClick={onClickSelectBox}>
         <SelectText>{selectMenu}</SelectText>
         <Icon />

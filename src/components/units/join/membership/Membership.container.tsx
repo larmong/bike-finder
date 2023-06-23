@@ -29,6 +29,10 @@ export default function Membership(props: IPropsMembership) {
       addressFirst: "",
       addressSecond: "",
     },
+    cardInfo: {
+      type: "",
+      number: "",
+    },
   });
 
   const onChangeUserInfo = (event: CustomChangeEvent) => {
