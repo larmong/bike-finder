@@ -1,9 +1,9 @@
-import { CustomMouseEvent } from "../../../../../commons/types/global.types";
+import { IRadioDataClick } from "../radio02/Radio02.types";
 
 export interface IPropsRadio01 {
   radioData: IRadioData[];
   radioName: string;
-  onClickRadio: (event: CustomMouseEvent) => void;
+  onClickRadio: IRadioDataClick;
 }
 
 export interface IRadioData {

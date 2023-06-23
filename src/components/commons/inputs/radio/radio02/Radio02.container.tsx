@@ -2,14 +2,14 @@ import * as S from "./Radio02.style";
 import { IPropsRadio02 } from "./Radio02.types";
 
 export default function Radio02(props: IPropsRadio02) {
-  const onClickRadio = (event) => {
-    props.onClickRadio(event.target.value);
+  const onClickRadio = (value: number) => () => {
+    props.onClickRadio(value);
   };
 
   return (
     <S.Radio>
       {props.radioData?.map((el) => (
-        <S.RadioLabel key={el.id} onClick={onClickRadio}>
+        <S.RadioLabel key={el.id} onClick={onClickRadio(el.id)}>
           <S.RadioBtn
             type="radio"
             value={el.id}
