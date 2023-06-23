@@ -29,15 +29,15 @@ export default function Select01(props: IPropsSelect01) {
     };
   }, []);
 
-  const SELECT_LIST = ["후불교통카드", "티머니카드"];
-  const [selectMenu, setSelectMenu] = useState(SELECT_LIST[0]);
+  const [selectMenu, setSelectMenu] = useState(props.SELECT_LIST[0]);
   const [isOpen, setIsOpen] = useState(false);
 
   const onClickSelectBox = () => {
     setIsOpen(true);
   };
   const onClickSelectMenu = (event: CustomMouseEvent) => {
-    setSelectMenu(SELECT_LIST[Number(event.currentTarget.id)]);
+    setSelectMenu(props.SELECT_LIST[Number(event.currentTarget.id)]);
+    setIsOpen(false);
   };
 
   return (
@@ -48,7 +48,7 @@ export default function Select01(props: IPropsSelect01) {
       </SelectBox>
       {isOpen ? (
         <SelectList ref={selectListRef}>
-          {SELECT_LIST.map((el, index) => (
+          {props.SELECT_LIST.map((el, index) => (
             <SelectMenu
               key={index}
               id={String(index)}

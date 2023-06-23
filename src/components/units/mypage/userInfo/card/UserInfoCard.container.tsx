@@ -9,6 +9,8 @@ export default function UserInfoCard() {
   const router = useRouter();
   const [cbValue, setCbValue] = useState(false)
 
+  const SELECT_LIST = ["후불교통카드", "티머니카드"];
+
   const onClickCb = (event) => {
     setCbValue(event.target.checked);
   };
@@ -61,7 +63,7 @@ export default function UserInfoCard() {
             <S.Section02>
               <S.Table02>
                 <S.TableItem02 className="t-head">카드유형</S.TableItem02>
-                <S.TableItem02><Select01 /></S.TableItem02>
+                <S.TableItem02><Select01 SELECT_LIST={SELECT_LIST} /></S.TableItem02>
                 <S.TableItem02 className="t-head">카드번호</S.TableItem02>
                 <S.TableItem02>
                   <span>카드번호 16자리를 입력해주세요.</span>
