@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import { css } from "@emotion/react";
+import { IIsActive } from "./Animation01.types";
 
 const textLoop = keyframes`
   0% {
@@ -26,7 +27,7 @@ export const FlowContents = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: ${(props) =>
+  animation: ${(props: IIsActive) =>
     props.isActive
       ? css`
           ${textLoop} 100s linear infinite

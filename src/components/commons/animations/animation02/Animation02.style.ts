@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import { css } from "@emotion/react";
+import { IIsActive } from "./Animation02.types";
 
 const InstagramLoop = keyframes`
   0% {
@@ -29,7 +30,7 @@ export const InstagramContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
-  animation: ${(props) =>
+  animation: ${(props: IIsActive) =>
     props.isActive
       ? css`
           ${InstagramLoop} 100s linear infinite

@@ -5,7 +5,12 @@ export interface IPropsAnimation02 {
 }
 
 export interface IFetchInstagram {
+  id?: string | undefined;
   favorite: string;
   comment: string;
   image: string;
+}
+
+export interface IIsActive {
+  isActive: boolean;
 }
