@@ -3,14 +3,13 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { authService } from "../../../../commons/libraries/firebase/firebase.config";
-import { loginUserState } from "../../../../commons/store/store";
+import { loginUidState, loginUserState } from "../../../../commons/store/store";
 import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export default function Header() {
   const [loginCheck, setLoginCheck] = useState(false);
-  const [loginUser, setLoginUser] = useRecoilState<string | null>(
-    loginUserState
-  );
+  const [loginUserUid, setLoginUserUid] = useRecoilState(loginUidState);
+  const [loginUser, setLoginUser] = useRecoilState(loginUserState);
   const router = useRouter();
 
   const onClickMoveToMenus = (event: CustomMouseEvent) => {
@@ -20,7 +19,7 @@ export default function Header() {
   const onClickHeaderBtn = (route: string) => () => {
     if (route === "_logout") {
       alert("로그아웃 하시겠습니까?");
-      authService.signOut();
+      void authService.signOut();
       setLoginCheck(false);
     } else {
       router.push(route);
@@ -32,13 +31,14 @@ export default function Header() {
       if (user) {
         setLoginCheck(true);
         setLoginUser(user.email);
+        setLoginUserUid(user.uid);
       }
     });
 
     return () => {
       unsubscribe();
     };
-  }, [loginCheck]);
+  }, [loginUser]);
 
   return (
     <HeaderUI

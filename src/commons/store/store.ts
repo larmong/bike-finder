@@ -10,6 +10,11 @@ export const userInfoState = atom({
   default: { name: "", birth: "", phone: "", authNum: "" },
 });
 
+export const loginUidState = atom<string | null>({
+  key: "loginUidState",
+  default: "",
+});
+
 export const loginUserState = atom<string | null>({
   key: "loginUserState",
   default: "",

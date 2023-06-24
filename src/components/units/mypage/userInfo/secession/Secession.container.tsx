@@ -1,9 +1,42 @@
 import * as S from "./Secession.style";
 import Button01 from "../../../../commons/buttons/button01/Button01.container";
+import Select01 from "../../../../commons/inputs/select/select01/Select01.container";
+import { useState } from "react";
+import { useRecoilState } from "recoil";
+import {
+  loginUidState,
+  loginUserState,
+} from "../../../../../commons/store/store";
+import { db } from "../../../../../commons/libraries/firebase/firebase.config";
+import { collection, doc, deleteDoc } from "firebase/firestore";
+import { useRouter } from "next/router";
 
 export default function Secession() {
-  const onClickButton = () => {
-    // 회원탈퇴 버튼
+  const router = useRouter();
+  const SELECT_LIST = ["기타", "요금정책 불만", "개인정보", "서비스 불만족"];
+  const [loginUserUid, setLoginUserUid] = useRecoilState(loginUidState);
+  const [loginUser, setLoginUser] = useRecoilState(loginUserState);
+  const [selectReason, setSelectReason] = useState({
+    type: "기타",
+  });
+  const onChangeReason = (value: string, id: string) => {
+    setSelectReason({
+      ...selectReason,
+      [id]: value,
+    });
+  };
+
+  const onClickButton = async () => {
+    if (loginUserUid && loginUser) {
+      const user = doc(collection(db, "users"), loginUserUid);
+      const info = doc(collection(db, "user"), loginUser);
+      try {
+        alert("회원탈퇴가 완료되었습니다!");
+        await deleteDoc(user);
+        await deleteDoc(info);
+        void router.push("/");
+      } catch (error) {}
+    }
   };
 
   return (
@@ -29,7 +62,12 @@ export default function Secession() {
             회원탈퇴를 하실 경우 위와 같이 안내드린대로 회원정보가 처리됩니다.
           </span>
         </S.Message>
-        <input type="text" defaultValue="선택(셀렉트 인풋으로 변경해야됨!!!)" />
+        <Select01
+          inputId="type"
+          SELECT_LIST={SELECT_LIST}
+          cardType={selectReason.type}
+          onClickSelectValue={onChangeReason}
+        />
         <Button01
           onClickButton={onClickButton}
           btnWidth="200px"
