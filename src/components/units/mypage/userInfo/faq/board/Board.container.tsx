@@ -1,5 +1,5 @@
 import * as S from "../../../../../commons/boards/board/Board.style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search01 from "../../../../../commons/searches/search01/Search01.contaienr";
 import Pagination01 from "../../../../../commons/paginations/pagination01/Pagination01.container";
 import {
@@ -14,19 +14,34 @@ export default function Board(props: IPropsBoard) {
     title: ["제목", "상태", "날짜"],
     columns: "1fr 185px 185px",
   };
+  const [filteredData, setFilteredData] = useState<IBoardDataType[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
   const noticeLength: number = props.boardData.length;
-  const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
-  const paginatedData = props.boardData.slice(startIndex, endIndex);
+  const paginatedData = filteredData.slice(startIndex, endIndex);
 
   const handlePageChange = (selectedPage: number) => {
     setCurrentPage(selectedPage);
   };
+
+  const handleSearch = (keyword: string) => {
+    const searchData = props.boardData.filter((el) =>
+      el.title.includes(keyword)
+    );
+    setFilteredData(searchData);
+    setCurrentPage(1);
+  };
+
+  useEffect(() => {
+    setFilteredData(props.boardData);
+    setCurrentPage(1);
+  }, [props.boardData]);
+
   return (
     <S.Board>
-      <Search01 />
+      <Search01 handleSearch={handleSearch} />
       <S.BoardHead isColumns={BOARD_DETAIL.columns}>
         {BOARD_DETAIL.title.map((el: IBoardDetailTitleType, index: number) => (
           <S.BoardItem key={index}>{el}</S.BoardItem>

@@ -6,14 +6,19 @@ import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import { loginUserState } from "../../../../../commons/store/store";
 import { CustomMouseEvent } from "../../../../../commons/types/global.types";
-import Board from "./board/Board.container";
 import { IBoardDataType } from "./board/Board.types";
+import Board from "./board/Board.container";
 
 export default function UserInfoFaq() {
   const router = useRouter();
 
   const [fetchBoard, setFetchBoard] = useState<IBoardDataType[]>([]);
   const [loginUser, setLoginUser] = useRecoilState(loginUserState);
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const handleSearch = (keyword: string) => {
+    setSearchKeyword(keyword);
+  };
 
   const onClickBoardDetail = (event: CustomMouseEvent) => {
     void router.push(`faq/${event.currentTarget.id}`);
@@ -24,16 +29,28 @@ export default function UserInfoFaq() {
     if (loginUser) {
       const getBoardData = async () => {
         try {
-          const data = await query(
-            collection(db, "faq"),
+          const boardCollection = collection(db, "faq");
+          let boardQuery = query(
+            boardCollection,
             where("userId", "==", loginUser),
             orderBy("date", "desc")
           );
-          const getData = await getDocs(data);
-          const result = getData.docs.map((doc) => ({
+
+          if (searchKeyword !== "") {
+            boardQuery = query(
+              boardCollection,
+              where("userId", "==", loginUser),
+              where("title", "==", searchKeyword),
+              orderBy("date", "desc")
+            );
+          }
+
+          const data = await getDocs(boardQuery);
+          const result = data.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
           })) as IBoardDataType[];
+
           setFetchBoard(result);
         } catch (error) {}
       };
@@ -43,7 +60,11 @@ export default function UserInfoFaq() {
 
   return (
     <S.Wrapper>
-      <Board onClickBoardDetail={onClickBoardDetail} boardData={fetchBoard} />
+      <Board
+        onClickBoardDetail={onClickBoardDetail}
+        boardData={fetchBoard}
+        handleSearch={handleSearch}
+      />
     </S.Wrapper>
   );
 }

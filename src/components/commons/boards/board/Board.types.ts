@@ -3,6 +3,7 @@ import { IBoardDataType } from "../../../units/mypage/userInfo/faq/board/Board.t
 
 // board commons (props, style, board detail)
 export interface IPropsBoard {
+  handleSearch: (keyword: string) => void;
   onClickBoardDetail: (event: CustomMouseEvent) => void;
   boardData: IBoardDataType[];
 }
