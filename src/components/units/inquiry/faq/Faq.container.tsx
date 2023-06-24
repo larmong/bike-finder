@@ -1,12 +1,13 @@
-import Board01 from "../../../commons/boards/board01/Board01.container";
-import { useEffect, useState } from "react";
-import { db } from "../../../../commons/libraries/firebase/firebase.config";
-import { query, collection, getDocs, where } from "firebase/firestore";
-import { IFetchFaq } from "./Faq.types";
 import * as S from "./Faq.style";
+import { useEffect, useState } from "react";
+import { query, collection, getDocs, where } from "firebase/firestore";
+import { db } from "../../../../commons/libraries/firebase/firebase.config";
+import { ITabMenu } from "./Faq.types";
+import InquiryFaqBoard from "./board/Board.container";
+import { IPropsBoardItem } from "./board/Board.types";
 
 export default function Faq() {
-  const TAB_MENUS = [
+  const TAB_MENUS: ITabMenu[] = [
     {
       num: "0",
       name: "대여 및 반납",
@@ -33,10 +34,10 @@ export default function Faq() {
     },
   ];
 
-  const [tabNum, setTabNum] = useState<string>("0");
-  const [fetchFaq, setFetchFaq] = useState<IFetchFaq[]>([]);
+  const [tabNum, setTabNum] = useState<number>(0);
+  const [fetchFaq, setFetchFaq] = useState<IPropsBoardItem[]>([]);
 
-  const getFaqData = async (index) => {
+  const getFaqData = async (index: number) => {
     try {
       const data = await query(
         collection(db, "inquiry"),
@@ -47,26 +48,25 @@ export default function Faq() {
         ...doc.data(),
         id: doc.id,
       }));
-
       setFetchFaq(result);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const onClickMoveToTabMenus = (index) => {
+  const onClickMoveToTabMenus = (index: number) => {
     setTabNum(index);
-    getFaqData(index);
+    void getFaqData(index);
   };
 
   useEffect(() => {
-    getFaqData(tabNum);
+    void getFaqData(tabNum);
   }, []);
 
   return (
     <>
       <S.Tab>
-        {TAB_MENUS.map((el, index) => (
+        {TAB_MENUS.map((el: ITabMenu, index: number) => (
           <S.Manus
             key={index}
             className={index === Number(tabNum) ? "target" : ""}
@@ -76,7 +76,7 @@ export default function Faq() {
           </S.Manus>
         ))}
       </S.Tab>
-      <Board01 fetchData={fetchFaq} isHead={false} />
+      <InquiryFaqBoard fetchData={fetchFaq} isHead={false} />
     </>
   );
 }

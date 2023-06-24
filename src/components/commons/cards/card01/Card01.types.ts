@@ -6,5 +6,5 @@ export interface IPropsCard01 {
 }
 
 export interface IIsType {
-  isType: string;
+  isType: string | boolean;
 }

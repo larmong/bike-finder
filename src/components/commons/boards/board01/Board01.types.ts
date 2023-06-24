@@ -18,8 +18,8 @@ export interface IFetchData {
 
 export interface IPropsBoardItem01 {
   titleIcon: boolean;
-  title: string | undefined;
-  content: string | undefined;
-  company: string | undefined;
-  date: string | undefined;
+  title: string;
+  content: string;
+  company: string;
+  date: string;
 }

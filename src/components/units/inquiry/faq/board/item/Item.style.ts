@@ -17,7 +17,6 @@ export const BoardItem = styled.span`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
   svg {
     width: 25px;
     height: 25px;
@@ -45,7 +44,6 @@ export const BoardCont = styled.div`
   background: #fafafa;
   display: flex;
   border-bottom: 1px solid #e9e9e9;
-
   svg {
     width: 30px;
     height: 30px;

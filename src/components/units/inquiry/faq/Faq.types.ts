@@ -1,5 +1,4 @@
-export interface IFetchFaq {
-  id: string;
-  title: string;
-  content: string;
+export interface ITabMenu {
+  num: string;
+  name: string;
 }

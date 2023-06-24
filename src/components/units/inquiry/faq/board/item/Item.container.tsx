@@ -1,16 +1,16 @@
-import * as S from "./BoardItem01.style";
+import * as S from "./Item.style";
 import { useState } from "react";
 import {
   MdArrowForwardIos,
   MdQuestionAnswer,
   MdContactSupport,
 } from "react-icons/md";
-import { IPropsBoardItem01 } from "../Board01.types";
+import { IPropsBoardItem } from "../Board.types";
 
-export default function BoardItem01(props: IPropsBoardItem01) {
-  const [item, setItem] = useState(false);
+export default function FaqItem(props: IPropsBoardItem) {
+  const [item, setItem] = useState<boolean>(false);
   const onClickOpenItem = () => {
-    setItem((prev) => !prev);
+    setItem((prev: boolean) => !prev);
   };
 
   return (
@@ -41,7 +41,7 @@ export default function BoardItem01(props: IPropsBoardItem01) {
           )}
         </S.BoardCont>
       ) : (
-        <></>
+        ""
       )}
     </>
   );

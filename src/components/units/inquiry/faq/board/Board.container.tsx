@@ -1,8 +1,8 @@
-import * as S from "./Board01.style";
-import BoardItem01 from "../../../units/inquiry/faq/board/item/BoardItem01.container";
-import { IPropsBoardUI } from "./Board01.types";
+import * as S from "./Board.style";
+import FaqItem from "./item/Item.container";
+import { IPropsBoardItem, IPropsInquiryFaqBoard } from "./Board.types";
 
-export default function Board01UI(props: IPropsBoardUI) {
+export default function InquiryFaqBoard(props: IPropsInquiryFaqBoard) {
   return (
     <S.Board>
       {props.isHead ? (
@@ -10,13 +10,12 @@ export default function Board01UI(props: IPropsBoardUI) {
           <S.BoardItem>제목</S.BoardItem>
         </S.BoardHead>
       ) : (
-        <></>
+        ""
       )}
-
       <S.BoardBodyWrapper isHead={props.isHead}>
-        {props.fetchData.map((el) => (
-          <S.BoardBody key={el.id}>
-            <BoardItem01
+        {props.fetchData.map((el: IPropsBoardItem, index: number) => (
+          <S.BoardBody key={index}>
+            <FaqItem
               titleIcon={props.isHead}
               title={el?.title}
               company={el?.company}

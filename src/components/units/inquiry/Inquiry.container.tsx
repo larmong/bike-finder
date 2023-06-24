@@ -1,5 +1,6 @@
 import * as S from "./Inquiry.style";
 import Card01 from "../../commons/cards/card01/Card01.container";
+import { IPropsCard01 } from "../../commons/cards/card01/Card01.types";
 
 export default function Inquiry() {
   const cardList = [
@@ -19,7 +20,7 @@ export default function Inquiry() {
 
   return (
     <S.Content>
-      {cardList.map((el) => (
+      {cardList.map((el: IPropsCard01) => (
         <Card01
           key={el.route}
           route={el.route}
