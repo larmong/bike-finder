@@ -1,15 +1,15 @@
 import { CustomMouseEvent } from "../../../../../commons/types/global.types";
-import { IFetchNotice } from "../Notice.types";
 
-export interface IPropsBoard {
-  BOARD_DETAIL: IBoardDetailType;
-  boardData: IFetchNotice[];
+export interface IPropsNoticeBoard {
+  handleSearch: (keyword: string) => void;
   onClickBoardDetail: (event: CustomMouseEvent) => void;
+  boardData: IFetchNotice[];
 }
 
-export interface IBoardDetailType {
-  title: IBoardDetailTitleType[];
-  columns: string;
+export interface IFetchNotice {
+  id: string;
+  date: string;
+  title: string;
+  content: string;
+  top: boolean;
 }
-
-export type IBoardDetailTitleType = string;

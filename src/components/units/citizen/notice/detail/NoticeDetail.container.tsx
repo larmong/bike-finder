@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { IFetchNotice } from "../board/Board.types";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import {
   collection,
@@ -8,13 +9,13 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { IFetchBoard } from "../../../../commons/boardDetail/boardDetail01/BoardDetail01.types";
-import BoardDetail01 from "../../../../commons/boardDetail/boardDetail01/BoardDetail01.container";
+import NoticeDetailUI from "./NoticeDetail.presenter";
 
 export default function NoticeDetail() {
   const router = useRouter();
+
   const boardId: string = String(router.query._id);
-  const [fetchBoard, setFetchBoard] = useState<IFetchBoard>();
+  const [fetchBoard, setFetchBoard] = useState<IFetchNotice>();
 
   useEffect(() => {
     if (boardId) {
@@ -28,12 +29,11 @@ export default function NoticeDetail() {
           ...doc.data(),
           id: doc.id,
         }));
-
         setFetchBoard(result[0]);
       };
       void getBoard();
     }
   }, [boardId]);
 
-  return <BoardDetail01 fetchBoard={fetchBoard} />;
+  return <NoticeDetailUI fetchBoard={fetchBoard} />;
 }

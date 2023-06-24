@@ -1,27 +1,28 @@
 import * as S from "./Notice.style";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
-import { IFetchNotice } from "../../../commons/boards/board02/Board02.types";
 import { db } from "../../../../commons/libraries/firebase/firebase.config";
-import Search01 from "../../../commons/searches/search01/Search01.contaienr";
-import Board02 from "../../../commons/boards/board02/Board02.container";
-import Board from "./board/Board.container";
-import { IBoardDetailType } from "./board/Board.types";
+import { IFetchNotice } from "./board/Board.types";
 import { CustomMouseEvent } from "../../../../commons/types/global.types";
+import NoticeBoard from "./board/Board.container";
 
 export default function Notice() {
-  const BOARD_DETAIL: IBoardDetailType = {
-    title: ["제목", "상태", "날짜"],
-    columns: "1fr 185px 185px",
+  const router = useRouter();
+
+  const [fetchBoard, setFetchBoard] = useState<IFetchNotice[]>([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const handleSearch = (keyword: string) => {
+    setSearchKeyword(keyword);
   };
-  const [fetchNotice, setFetchNotice] = useState<IFetchNotice[]>([]);
 
   const onClickBoardDetail = (event: CustomMouseEvent) => {
-    router.push(`notice/${event.currentTarget.id}`);
+    void router.push(`notice/${event.currentTarget.id}`);
   };
 
   useEffect(() => {
-    const getNoticeData = async () => {
+    const getBoardData = async () => {
       try {
         const trueData = await query(
           collection(db, "notice"),
@@ -43,23 +44,20 @@ export default function Notice() {
         const falseResult: any = falseGetData.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
-        }));
-
+        })) as IFetchNotice[];
         const combinedResult = [...trueResult, ...falseResult];
-        setFetchNotice(combinedResult);
-      } catch (error) {
-        console.error(error);
-      }
+        setFetchBoard(combinedResult);
+      } catch (error) {}
     };
-    getNoticeData();
+    void getBoardData();
   }, []);
 
   return (
     <S.Wrapper>
-      <Board
-        BOARD_DETAIL={BOARD_DETAIL}
-        boardData={fetchNotice}
+      <NoticeBoard
         onClickBoardDetail={onClickBoardDetail}
+        handleSearch={handleSearch}
+        boardData={fetchBoard}
       />
     </S.Wrapper>
   );

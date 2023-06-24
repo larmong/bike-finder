@@ -3,32 +3,31 @@ import { useEffect, useState } from "react";
 import Search01 from "../../../../../commons/searches/search01/Search01.contaienr";
 import Pagination01 from "../../../../../commons/paginations/pagination01/Pagination01.container";
 import {
-  IPropsBoard,
   IBoardDetailTitleType,
   IBoardDetailType,
 } from "../../../../../commons/boards/board/Board.types";
-import { IBoardDataType } from "./Board.types";
+import { IFetchFaq, IPropsFaqBoard } from "./Board.types";
 
-export default function Board(props: IPropsBoard) {
+export default function FaqBoard(props: IPropsFaqBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
     title: ["제목", "상태", "날짜"],
     columns: "1fr 185px 185px",
   };
-  const [filteredData, setFilteredData] = useState<IBoardDataType[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const pageSize = 10;
+  const [filteredData, setFilteredData] = useState<IFetchFaq[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const pageSize: number = 10;
   const noticeLength: number = props.boardData.length;
   const startIndex = (currentPage - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  const paginatedData = filteredData.slice(startIndex, endIndex);
+  const endIndex: number = startIndex + pageSize;
+  const paginatedData: IFetchFaq[] = filteredData.slice(startIndex, endIndex);
 
   const handlePageChange = (selectedPage: number) => {
-    setCurrentPage(selectedPage);
+    void setCurrentPage(selectedPage);
   };
 
   const handleSearch = (keyword: string) => {
-    const searchData = props.boardData.filter((el) =>
-      el.title.includes(keyword)
+    const searchData = props.boardData.filter(
+      (el: IFetchFaq) => void el.title.includes(keyword)
     );
     setFilteredData(searchData);
     setCurrentPage(1);
@@ -54,7 +53,7 @@ export default function Board(props: IPropsBoard) {
       ) : (
         <>
           <S.BoardBody>
-            {paginatedData?.map((el: IBoardDataType) => (
+            {paginatedData?.map((el: IFetchFaq) => (
               <S.BoardItemWrapper key={el.id} isColumns={BOARD_DETAIL.columns}>
                 <S.BoardItem className="board-item-left">
                   <span id={el.id} onClick={props.onClickBoardDetail}>

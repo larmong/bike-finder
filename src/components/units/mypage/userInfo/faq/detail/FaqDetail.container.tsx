@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { IBoardDataType } from "../board/Board.types";
+import FaqDetailUI from "./FaqDetail.presenter";
 import { db } from "../../../../../../commons/libraries/firebase/firebase.config";
+import { IFetchFaq } from "../board/Board.types";
 import {
   collection,
   documentId,
@@ -9,12 +10,11 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import FaqDetailUI from "./FaqDetail.presenter";
 
 export default function FaqDetail() {
   const router = useRouter();
   const boardId: string = String(router.query._id);
-  const [fetchBoard, setFetchBoard] = useState<IBoardDataType>();
+  const [fetchBoard, setFetchBoard] = useState<IFetchFaq>();
 
   useEffect(() => {
     if (boardId) {

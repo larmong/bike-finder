@@ -6,18 +6,20 @@ import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import { loginUserState } from "../../../../../commons/store/store";
 import { CustomMouseEvent } from "../../../../../commons/types/global.types";
-import { IBoardDataType } from "./board/Board.types";
-import Board from "./board/Board.container";
+import { IFetchFaq } from "./board/Board.types";
+import FaqBoard from "./board/Board.container";
 
 export default function UserInfoFaq() {
   const router = useRouter();
 
-  const [fetchBoard, setFetchBoard] = useState<IBoardDataType[]>([]);
-  const [loginUser, setLoginUser] = useRecoilState(loginUserState);
-  const [searchKeyword, setSearchKeyword] = useState("");
+  const [fetchBoard, setFetchBoard] = useState<IFetchFaq[]>([]);
+  const [searchKeyword, setSearchKeyword] = useState<string>("");
+  const [loginUser, setLoginUser] = useRecoilState<string | null>(
+    loginUserState
+  );
 
   const handleSearch = (keyword: string) => {
-    setSearchKeyword(keyword);
+    void setSearchKeyword(keyword);
   };
 
   const onClickBoardDetail = (event: CustomMouseEvent) => {
@@ -49,7 +51,7 @@ export default function UserInfoFaq() {
           const result = data.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
-          })) as IBoardDataType[];
+          })) as IFetchFaq[];
 
           setFetchBoard(result);
         } catch (error) {}
@@ -60,7 +62,7 @@ export default function UserInfoFaq() {
 
   return (
     <S.Wrapper>
-      <Board
+      <FaqBoard
         onClickBoardDetail={onClickBoardDetail}
         boardData={fetchBoard}
         handleSearch={handleSearch}

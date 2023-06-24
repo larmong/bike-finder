@@ -46,3 +46,25 @@ export const BoardItem = styled.span`
     }
   }
 `;
+
+export const NoticeBoardItem = styled.span`
+  padding: 0 20px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 700;
+  color: #333333;
+  &.board-item-left {
+    text-align: left;
+  }
+  em {
+    font-size: 17px;
+    display: inline-block;
+    margin-right: 20px;
+    color: #0d8f68;
+  }
+  span {
+    cursor: pointer;
+  }
+`;

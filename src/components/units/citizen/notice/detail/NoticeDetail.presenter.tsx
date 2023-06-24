@@ -1,11 +1,10 @@
+import * as S from "./NoticeDetail.style";
 import { useRouter } from "next/router";
-import * as S from "./BoardDetail01.style";
 import { MdArrowBackIosNew } from "react-icons/md";
-import { IPropsBoardDetail } from "./BoardDetail01.types";
+import { IPropsNoticeDetailUI } from "./NoticeDetail.types";
 
-export default function BoardDetail01(props: IPropsBoardDetail) {
+export default function NoticeDetailUI(props: IPropsNoticeDetailUI) {
   const router = useRouter();
-
   return (
     <S.Detail>
       <S.DetailHead>

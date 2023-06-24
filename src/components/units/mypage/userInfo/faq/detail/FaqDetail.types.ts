@@ -1,5 +1,5 @@
-import { IBoardDataType } from "../board/Board.types";
+import { IFetchFaq } from "../board/Board.types";
 
 export interface IPropsFaqDetailUI {
-  fetchBoard: IBoardDataType | undefined;
+  fetchBoard: IFetchFaq | undefined;
 }
