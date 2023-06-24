@@ -1,9 +1,9 @@
-import * as S from "./BoardDetail02.style";
-import { useRouter } from "next/router";
+import * as S from "./FaqDetail.style";
 import { MdArrowBackIosNew, MdQuestionAnswer } from "react-icons/md";
-import { IPropsBoardDetail02 } from "./BoardDetail02.types";
+import { IPropsFaqDetailUI } from "./FaqDetail.types";
+import { useRouter } from "next/router";
 
-export default function BoardDetail02(props: IPropsBoardDetail02) {
+export default function FaqDetailUI(props: IPropsFaqDetailUI) {
   const router = useRouter();
 
   return (
