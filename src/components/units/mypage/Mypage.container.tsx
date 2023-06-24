@@ -52,12 +52,11 @@ export default function MyPageUI(props: IPropsMyPageUI) {
           ...doc.data(),
           id: doc.id,
         }));
-
         setFetchUser(result);
       } catch (error) {}
     };
 
-    getFaqData();
+    void getFaqData();
   }, [loginUser]);
 
   return (
@@ -73,9 +72,9 @@ export default function MyPageUI(props: IPropsMyPageUI) {
           {props.pathname === "userInfo" ? (
             <UserInfo tab={props.tab} fetchUser={fetchUser[0]} />
           ) : props.pathname === "userPayment" ? (
-            <UserPayment tab={props.tab} fetchUser={fetchUser[0]} />
+            <UserPayment tab={props.tab} />
           ) : props.pathname === "userUse" ? (
-            <UserUse tab={props.tab} fetchUser={fetchUser[0]} />
+            <UserUse tab={props.tab} />
           ) : (
             ""
           )}

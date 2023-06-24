@@ -17,8 +17,6 @@ export const getPhone = (phoneNum) => {
   const third = phoneNum.slice(7, 11);
 
   return `${first}-${second}-${third}`;
-
-  console.log(phoneNum);
 };
 
 export const getAddress = (address) => {

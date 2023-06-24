@@ -1,15 +1,24 @@
 import * as S from "./Notice.style";
+import { useEffect, useState } from "react";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { IFetchNotice } from "../../../commons/boards/board02/Board02.types";
+import { db } from "../../../../commons/libraries/firebase/firebase.config";
 import Search01 from "../../../commons/searches/search01/Search01.contaienr";
 import Board02 from "../../../commons/boards/board02/Board02.container";
-import { useEffect, useState } from "react";
-import { IFetchNotice } from "../../../commons/boards/board02/Board02.types";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
-import { db } from "../../../../commons/libraries/firebase/firebase.config";
+import Board from "./board/Board.container";
+import { IBoardDetailType } from "./board/Board.types";
+import { CustomMouseEvent } from "../../../../commons/types/global.types";
 
 export default function Notice() {
-  const BOARD_TABLE_TITLE = ["제목", "날짜"];
-  const boardTableColumns = "1fr 185px";
+  const BOARD_DETAIL: IBoardDetailType = {
+    title: ["제목", "상태", "날짜"],
+    columns: "1fr 185px 185px",
+  };
   const [fetchNotice, setFetchNotice] = useState<IFetchNotice[]>([]);
+
+  const onClickBoardDetail = (event: CustomMouseEvent) => {
+    router.push(`notice/${event.currentTarget.id}`);
+  };
 
   useEffect(() => {
     const getNoticeData = async () => {
@@ -47,11 +56,10 @@ export default function Notice() {
 
   return (
     <S.Wrapper>
-      <Search01 />
-      <Board02
-        BOARD_TABLE_TITLE={BOARD_TABLE_TITLE}
-        boardTableColumns={boardTableColumns}
+      <Board
+        BOARD_DETAIL={BOARD_DETAIL}
         boardData={fetchNotice}
+        onClickBoardDetail={onClickBoardDetail}
       />
     </S.Wrapper>
   );

@@ -1,6 +1,6 @@
 export interface IPropsCard01 {
   route: string;
-  type: string;
+  type: string | boolean;
   title: string;
   dsc: string;
 }

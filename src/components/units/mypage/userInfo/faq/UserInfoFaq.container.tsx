@@ -1,56 +1,49 @@
 import * as S from "./UserInfoFaq.style";
-import { useEffect, useState } from "react";
-import { db } from "../../../../../commons/libraries/firebase/firebase.config";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
-import Search01 from "../../../../commons/searches/search01/Search01.contaienr";
-import Board03 from "../../../../commons/boards/board03/Board03.container";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { db } from "../../../../../commons/libraries/firebase/firebase.config";
+import { loginUserState } from "../../../../../commons/store/store";
 import { CustomMouseEvent } from "../../../../../commons/types/global.types";
+import Board from "./board/Board.container";
+import { IBoardDataType } from "./board/Board.types";
 
 export default function UserInfoFaq() {
   const router = useRouter();
 
-  const BOARD_TABLE_TITLE = ["제목", "답변상태", "날짜"];
-  const boardTableColumns = "1fr 185px 185px";
-
-  const [fetchFaq, setFetchFaq] = useState([]);
+  const [fetchBoard, setFetchBoard] = useState<IBoardDataType[]>([]);
+  const [loginUser, setLoginUser] = useRecoilState(loginUserState);
 
   const onClickBoardDetail = (event: CustomMouseEvent) => {
-    router.push(`faq/${event.currentTarget.id}`);
-    setFetchFaq(fetchFaq);
+    void router.push(`faq/${event.currentTarget.id}`);
+    setFetchBoard(fetchBoard);
   };
 
   useEffect(() => {
-    const getNoticeData = async () => {
-      try {
-        const data = await query(
-          collection(db, "faq"),
-          where("userId", "==", "larmong"),
-          orderBy("date", "desc")
-        );
-        const getData = await getDocs(data);
-        const result: any = getData.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-
-        setFetchFaq(result);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getNoticeData();
-  }, []);
+    if (loginUser) {
+      const getBoardData = async () => {
+        try {
+          const data = await query(
+            collection(db, "faq"),
+            where("userId", "==", loginUser),
+            orderBy("date", "desc")
+          );
+          const getData = await getDocs(data);
+          const result = getData.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          })) as IBoardDataType[];
+          setFetchBoard(result);
+        } catch (error) {}
+      };
+      void getBoardData();
+    }
+  }, [loginUser]);
 
   return (
     <S.Wrapper>
-      <Search01 />
-      <Board03
-        onClickBoardDetail={onClickBoardDetail}
-        BOARD_TABLE_TITLE={BOARD_TABLE_TITLE}
-        boardTableColumns={boardTableColumns}
-        boardData={fetchFaq}
-      />
+      <Board onClickBoardDetail={onClickBoardDetail} boardData={fetchBoard} />
     </S.Wrapper>
   );
 }
