@@ -26,8 +26,8 @@ export default function FaqBoard(props: IPropsFaqBoard) {
   };
 
   const handleSearch = (keyword: string) => {
-    const searchData = props.boardData.filter(
-      (el: IFetchFaq) => void el.title.includes(keyword)
+    const searchData = props.boardData.filter((el: IFetchFaq) =>
+      el.title.includes(keyword)
     );
     setFilteredData(searchData);
     setCurrentPage(1);
