@@ -62,8 +62,6 @@ export const GlobalStyle = css`
 `;
 
 export const Container = styled.div`
-  min-height: calc(100vh - 625px);
-  height: 100%;
   width: 1080px;
   margin: 0 auto;
 `;
