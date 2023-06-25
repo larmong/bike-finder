@@ -11,7 +11,7 @@ import { IFetchFaq, IPropsFaqBoard } from "./Board.types";
 export default function FaqBoard(props: IPropsFaqBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
     title: ["제목", "상태", "날짜"],
-    columns: "1fr 185px 185px",
+    columns: "1fr 185px 220px",
   };
   const [filteredData, setFilteredData] = useState<IFetchFaq[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);

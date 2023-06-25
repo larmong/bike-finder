@@ -35,7 +35,7 @@ export const BoardTitle = styled.p`
   font-size: 18px;
 `;
 export const BoardDate = styled.p`
-  width: 150px;
+  width: 200px;
   text-align: center;
   font-size: 14px;
   color: #999999;
