@@ -68,3 +68,37 @@ export const NoticeBoardItem = styled.span`
     cursor: pointer;
   }
 `;
+
+export const BoardItemState = styled.span`
+  &.red {
+    color: #dc1919;
+  }
+  &.blue {
+    color: #1938dc;
+  }
+`;
+
+// SearchWrapper
+export const SearchWrapper = styled.div`
+  margin-bottom: 40px;
+`;
+export const Search = styled.div`
+  display: flex;
+  border: 1px solid #e9e9e9;
+  margin-top: -1px;
+`;
+export const SearchHead = styled.div`
+  width: 139px;
+  padding: 18px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #666666;
+  background: #f9f9f9;
+  border-right: 1px solid #e9e9e9;
+`;
+export const SearchBody = styled.div`
+  padding: 18px 30px;
+`;

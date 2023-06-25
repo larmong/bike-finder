@@ -1,5 +1,5 @@
 import * as S from "./Radio02.style";
-import { IPropsRadio02 } from "./Radio02.types";
+import { IPropsRadio02, IRadioData } from "./Radio02.types";
 
 export default function Radio02(props: IPropsRadio02) {
   const onClickRadio = (value: number) => () => {
@@ -8,7 +8,7 @@ export default function Radio02(props: IPropsRadio02) {
 
   return (
     <S.Radio>
-      {props.radioData?.map((el) => (
+      {props.radioData?.map((el: IRadioData) => (
         <S.RadioLabel key={el.id} onClick={onClickRadio(el.id)}>
           <S.RadioBtn
             type="radio"

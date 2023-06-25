@@ -1,13 +1,13 @@
 import * as S from "./Mypage.style";
 import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { useRecoilState } from "recoil";
 import { db } from "../../../commons/libraries/firebase/firebase.config";
 import { loginUserState } from "../../../commons/store/store";
+import { ITabMenus } from "../../commons/tabs/tab01/Tab01.types";
 import { CustomMouseEvent } from "../../../commons/types/global.types";
 import { IFetchUser, IPropsMyPageUI } from "./Mypage.types";
-import { ITabMenus } from "../../commons/tabs/tab01/Tab01.types";
 import Tab02 from "../../commons/tabs/tab02/Tab02.container";
 import Title02 from "../../commons/titles/title02/Title02.container";
 import UserUse from "./userUse/UserUse.container";
@@ -30,15 +30,13 @@ export default function MyPageUI(props: IPropsMyPageUI) {
       name: "이용정보",
     },
   ];
-  const [loginUser, setLoginUser] = useRecoilState<string | null>(
-    loginUserState
-  );
+
+  const [loginUser] = useRecoilState<string | null>(loginUserState);
+  const [fetchUser, setFetchUser] = useState<IFetchUser[]>([]);
 
   const onClickMoveToTabMenus = (event: CustomMouseEvent) => {
-    router.push(`/mypage/${event.currentTarget.id}`);
+    void router.push(`/mypage/${event.currentTarget.id}`);
   };
-
-  const [fetchUser, setFetchUser] = useState<IFetchUser[]>([]);
 
   useEffect(() => {
     const getFaqData = async () => {
@@ -55,7 +53,6 @@ export default function MyPageUI(props: IPropsMyPageUI) {
         setFetchUser(result);
       } catch (error) {}
     };
-
     void getFaqData();
   }, [loginUser]);
 

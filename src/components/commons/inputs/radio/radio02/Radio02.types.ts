@@ -1,4 +1,4 @@
-export type IRadioDataClick = (value: number) => () => void;
+export type IRadioDataClick = (radioNum: number) => void;
 
 export interface IPropsRadio02 {
   radioData: IRadioData[];
