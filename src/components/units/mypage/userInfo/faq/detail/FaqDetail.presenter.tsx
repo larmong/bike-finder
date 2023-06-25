@@ -2,6 +2,7 @@ import * as S from "./FaqDetail.style";
 import { MdArrowBackIosNew, MdQuestionAnswer } from "react-icons/md";
 import { IPropsFaqDetailUI } from "./FaqDetail.types";
 import { useRouter } from "next/router";
+import Button01 from "../../../../../commons/buttons/button01/Button01.container";
 
 export default function FaqDetailUI(props: IPropsFaqDetailUI) {
   const router = useRouter();
@@ -30,6 +31,11 @@ export default function FaqDetailUI(props: IPropsFaqDetailUI) {
           <S.Answer>{props.fetchBoard?.answer}</S.Answer>
         </S.AnswerWrapper>
       </S.DetailBody>
+      <Button01
+        onClickButton={props.onClickFaqDelete}
+        btnWidth="200px"
+        btnText="삭제"
+      />
     </S.Detail>
   );
 }
