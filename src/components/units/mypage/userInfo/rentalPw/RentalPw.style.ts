@@ -27,7 +27,7 @@ export const Table01 = styled.div`
   border-bottom: 1px solid #666666;
 `;
 export const TableItem01 = styled.p`
-  height: 200px;
+  height: 100px;
   padding: 20px;
   display: flex;
   align-items: center;

@@ -17,7 +17,7 @@ export default function Input03(props: IPropsInput03) {
 
   return (
     <InputNumber
-      type="text"
+      type="password"
       id={props.inputId}
       maxLength={props.inputMaxLength}
       value={inputNum}

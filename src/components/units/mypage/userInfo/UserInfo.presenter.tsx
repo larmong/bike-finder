@@ -23,7 +23,7 @@ export default function UserInfoUI(props: IPropsUserInfoUI) {
         {props.tab === "card" ? (
           <UserInfoCard fetchUser={props.fetchUser} />
         ) : props.tab === "rental" ? (
-          <RentalPw />
+          <RentalPw fetchUser={props.fetchUser} />
         ) : props.tab === "faq" ? (
           <UserInfoFaq />
         ) : props.tab === "faqDetail" ? (
