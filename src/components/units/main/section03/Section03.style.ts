@@ -4,12 +4,6 @@ export const Wrapper = styled.div`
   padding: 130px 0;
 `;
 
-export const Container = styled.div`
-  width: 1080px;
-  margin: 0 auto;
-  height: 100%;
-`;
-
 export const Section = styled.div`
   display: flex;
   flex-direction: column;

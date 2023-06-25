@@ -1,4 +1,5 @@
 import * as S from "./Section06.style";
+import { Container } from "../../../../commons/style/global.style";
 import Title01 from "../../../commons/titles/title01/Title01.container";
 import Animation02 from "../../../commons/animations/animation02/Animation02.container";
 
@@ -11,7 +12,7 @@ export default function Section06() {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <S.Section>
           <Title01
             icon={titleData.icon}
@@ -22,7 +23,7 @@ export default function Section06() {
             <Animation02 />
           </S.Contents>
         </S.Section>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

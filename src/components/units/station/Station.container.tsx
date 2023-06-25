@@ -1,6 +1,7 @@
 import * as S from "./Station.style";
-import Title02 from "../../commons/titles/title02/Title02.container";
 import { useEffect } from "react";
+import { Container } from "../../../commons/style/global.style";
+import Title02 from "../../commons/titles/title02/Title02.container";
 
 declare const window: typeof globalThis & {
   kakao: any;
@@ -40,14 +41,14 @@ export default function Station() {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <Title02 title="대여소 조회" />
         <S.Contents>
           <S.Map id="map">
             <S.MapLoading>지도를 로딩중입니다...</S.MapLoading>
           </S.Map>
         </S.Contents>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

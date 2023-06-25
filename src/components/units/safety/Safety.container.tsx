@@ -1,5 +1,6 @@
-import Title02 from "../../commons/titles/title02/Title02.container";
 import * as S from "./Safety.style";
+import { Container } from "../../../commons/style/global.style";
+import Title02 from "../../commons/titles/title02/Title02.container";
 
 export default function Safety() {
   const safety = [
@@ -32,7 +33,7 @@ export default function Safety() {
   ];
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <Title02 title="안전수칙" />
         <S.CardContainer>
           {safety.map((el, index) => (
@@ -46,7 +47,7 @@ export default function Safety() {
             </S.Card>
           ))}
         </S.CardContainer>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

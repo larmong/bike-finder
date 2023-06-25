@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
 export const GlobalStyle = css`
   // 100, 300, 400, 500, 700
@@ -58,4 +59,11 @@ export const GlobalStyle = css`
     line-height: 23px;
     color: #bdbdbd;
   }
+`;
+
+export const Container = styled.div`
+  min-height: calc(100vh - 625px);
+  height: 100%;
+  width: 1080px;
+  margin: 0 auto;
 `;

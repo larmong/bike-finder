@@ -1,7 +1,8 @@
 import * as S from "./Header.style";
+import { useRouter } from "next/router";
+import { Container } from "../../../../commons/style/global.style";
 import { Fragment } from "react";
 import { IHeaderBtn, IHeaderMenus, IHeaderUI } from "./Header.types";
-import { useRouter } from "next/router";
 
 export default function HeaderUI(props: IHeaderUI) {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function HeaderUI(props: IHeaderUI) {
 
   return (
     <S.Header isActive={router.pathname === "/"}>
-      <S.Container>
+      <Container>
         <S.Wrapper>
           <S.Logo onClick={() => router.push("/")}></S.Logo>
           <S.Nav>
@@ -49,7 +50,7 @@ export default function HeaderUI(props: IHeaderUI) {
             ))}
           </S.BtnGroup>
         </S.Wrapper>
-      </S.Container>
+      </Container>
     </S.Header>
   );
 }

@@ -1,7 +1,8 @@
 import * as S from "./Footer.style";
+import { useRouter } from "next/router";
+import { Container } from "../../../../commons/style/global.style";
 import { IFooterMenus, IFooterUI, ISnsMenus } from "./Footer.types";
 import { Fragment } from "react";
-import { useRouter } from "next/router";
 
 export default function FooterUI(props: IFooterUI) {
   const router = useRouter();
@@ -26,7 +27,7 @@ export default function FooterUI(props: IFooterUI) {
 
   return (
     <S.Footer isActive={router.pathname === "/login"}>
-      <S.Container>
+      <Container>
         <S.Wrapper>
           <S.Menus>
             {FOOTER_MENUS.map((el: IFooterMenus, index: number) => (
@@ -64,7 +65,7 @@ export default function FooterUI(props: IFooterUI) {
             <S.Copy>Copyright ⓒ 2023 larmong All rights reserved.</S.Copy>
           </S.Info>
         </S.Wrapper>
-      </S.Container>
+      </Container>
     </S.Footer>
   );
 }

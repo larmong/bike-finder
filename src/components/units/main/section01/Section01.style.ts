@@ -1,10 +1,17 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   height: 600px;
   background: #f9fafa;
   display: flex;
   align-items: center;
+  ${mediaQuery[0]} {
+    height: 600px;
+    background: #f9fafa;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 // 배너
@@ -68,9 +75,4 @@ export const HeaderBtn = styled.button`
 export const HeaderBtnLine = styled.button`
   border: 1px solid #0d8f68;
   color: #0d8f68;
-`;
-
-export const Container = styled.div`
-  width: 1080px;
-  margin: 0 auto;
 `;

@@ -1,14 +1,14 @@
 import * as S from "./Section01.style";
-import Animation01 from "../../../commons/animations/animation01/Animation01.container";
+import { Container } from "../../../../commons/style/global.style";
 import { useRouter } from "next/router";
+import Animation01 from "../../../commons/animations/animation01/Animation01.container";
 
 export default function Section01() {
   const router = useRouter();
-
   return (
     <>
       <S.Wrapper>
-        <S.Container>
+        <Container>
           <S.Banner>
             <S.BannerLeft>
               <S.Text>
@@ -34,8 +34,7 @@ export default function Section01() {
             </S.BannerLeft>
             <S.BannerRight></S.BannerRight>
           </S.Banner>
-          <div></div>
-        </S.Container>
+        </Container>
       </S.Wrapper>
       <Animation01 />
     </>

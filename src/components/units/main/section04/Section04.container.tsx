@@ -1,6 +1,7 @@
 import * as S from "./Section04.style";
 import Title01 from "../../../commons/titles/title01/Title01.container";
 import { MdDock } from "react-icons/md";
+import { Container } from "../../../../commons/style/global.style";
 
 export default function Section04() {
   const contents = [
@@ -25,7 +26,7 @@ export default function Section04() {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <S.Section>
           <Title01
             icon={titleData.icon}
@@ -47,7 +48,7 @@ export default function Section04() {
             ))}
           </S.Contents>
         </S.Section>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

@@ -1,8 +1,9 @@
 import * as S from "../../src/components/units/ticket/Ticket.style";
+import { Container } from "../../src/commons/style/global.style";
+import { useRouter } from "next/router";
 import Title02 from "../../src/components/commons/titles/title02/Title02.container";
 import Ticket from "../../src/components/units/ticket/Ticket.container";
 import Tab01 from "../../src/components/commons/tabs/tab01/Tab01.container";
-import { useRouter } from "next/router";
 import TicketPayment from "../../src/components/units/ticket/ticketPayment/TicketPayment.container";
 
 export default function TicketPage(props) {
@@ -74,7 +75,7 @@ export default function TicketPage(props) {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <Title02 title="이용권 구매" />
         <S.Contents>
           {router.pathname === "/ticket" ? (
@@ -96,7 +97,7 @@ export default function TicketPage(props) {
             <Ticket />
           )}
         </S.Contents>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

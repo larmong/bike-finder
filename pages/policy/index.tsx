@@ -2,10 +2,11 @@ import * as S from "../../src/components/units/policy/Policy.style";
 import Title02 from "../../src/components/commons/titles/title02/Title02.container";
 import Tab01 from "../../src/components/commons/tabs/tab01/Tab01.container";
 import Use from "../../src/components/units/policy/use/Use.container";
-import Privacy from "../../src/components/units/policy/privacy/Privacy.container";
 import Duty from "../../src/components/units/policy/duty/Duty.container";
+import Privacy from "../../src/components/units/policy/privacy/Privacy.container";
 import Insurance from "../../src/components/units/policy/insurance/Insurance.container";
 import Helped from "../../src/components/units/policy/helped/Helped.container";
+import { Container } from "../../src/commons/style/global.style";
 
 export default function Policy(props) {
   const TAB_MENUS = [
@@ -33,7 +34,7 @@ export default function Policy(props) {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <Title02 title={props.title} />
         <S.Contents>
           <Tab01 TAB_MENUS={TAB_MENUS} tabWidth="170px" />
@@ -53,7 +54,7 @@ export default function Policy(props) {
             )}
           </S.Content>
         </S.Contents>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

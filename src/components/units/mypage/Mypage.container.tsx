@@ -1,4 +1,5 @@
 import * as S from "./Mypage.style";
+import { Container } from "../../../commons/style/global.style";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
@@ -58,7 +59,7 @@ export default function MyPageUI(props: IPropsMyPageUI) {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <Title02 title="마이페이지" />
         <Tab02
           TAB_MENUS={TAB_MENUS}
@@ -76,7 +77,7 @@ export default function MyPageUI(props: IPropsMyPageUI) {
             ""
           )}
         </S.Contents>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

@@ -77,9 +77,3 @@ export const HeaderBtn = styled.button`
     color: #0d8f68;
   }
 `;
-
-// TODO: 유지보수 쉽도록 공통 Container 만들기
-export const Container = styled.div`
-  width: 1080px;
-  margin: 0 auto;
-`;

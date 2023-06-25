@@ -1,11 +1,12 @@
 import * as S from "./PwInquiry.style";
+import { Container } from "../../../commons/style/global.style";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { MdCheckCircle } from "react-icons/md";
+import { BtnGroup, Icon, Message } from "../join/joinSuccess/JoinSuccess.style";
 import Title02 from "../../commons/titles/title02/Title02.container";
 import Input01 from "../../commons/inputs/input/input01/Input01.container";
 import Button01 from "../../commons/buttons/button01/Button01.container";
-import { BtnGroup, Icon, Message } from "../join/joinSuccess/JoinSuccess.style";
 
 export default function PwInquiry() {
   const router = useRouter();
@@ -38,7 +39,7 @@ export default function PwInquiry() {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <Title02 title="비밀번호 변경" />
         {!userAuth && !userPwChange ? (
           <S.Contents>
@@ -131,7 +132,7 @@ export default function PwInquiry() {
             </BtnGroup>
           </S.SuccessContents>
         )}
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

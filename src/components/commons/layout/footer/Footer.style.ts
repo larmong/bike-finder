@@ -81,8 +81,3 @@ export const Copy = styled.div`
   font-size: 12px;
   color: #fff;
 `;
-
-export const Container = styled.div`
-  width: 1080px;
-  margin: 0 auto;
-`;

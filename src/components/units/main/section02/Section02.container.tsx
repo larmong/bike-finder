@@ -1,9 +1,10 @@
 import * as S from "./Section02.style";
+import { Container } from "../../../../commons/style/global.style";
 
 export default function Section02() {
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <S.Contents>
           <S.Text>
             <p>자전거와 함께하는 건강한 도시,</p>
@@ -13,7 +14,7 @@ export default function Section02() {
           </S.Text>
           <img src="/images/main/seoul.png" alt="seoul" />
         </S.Contents>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

@@ -1,4 +1,5 @@
 import * as S from "./IdInquiry.style";
+import { Container } from "../../../commons/style/global.style";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { MdCheckCircle } from "react-icons/md";
@@ -33,7 +34,7 @@ export default function IdInquiry() {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <Title02 title="아이디 찾기" />
         {!userAuth ? (
           <S.Contents>
@@ -94,7 +95,7 @@ export default function IdInquiry() {
             </S.BtnGroup>
           </S.SuccessContents>
         )}
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }

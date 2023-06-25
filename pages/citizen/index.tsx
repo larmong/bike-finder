@@ -1,4 +1,5 @@
 import * as S from "../../src/components/units/citizen/Citizen.style";
+import { Container } from "../../src/commons/style/global.style";
 import Title02 from "../../src/components/commons/titles/title02/Title02.container";
 import Tab01 from "../../src/components/commons/tabs/tab01/Tab01.container";
 import Charges from "../../src/components/units/citizen/charges/Charges.container";
@@ -29,7 +30,7 @@ export default function Citizen(props) {
 
   return (
     <S.Wrapper>
-      <S.Container>
+      <Container>
         <Title02 title={props.title} />
         <S.Contents>
           {props.pathname === "noticeDetail" ? (
@@ -53,7 +54,7 @@ export default function Citizen(props) {
             )}
           </S.Content>
         </S.Contents>
-      </S.Container>
+      </Container>
     </S.Wrapper>
   );
 }
