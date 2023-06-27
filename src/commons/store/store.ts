@@ -19,3 +19,8 @@ export const loginUserState = atom<string | null>({
   key: "loginUserState",
   default: "",
 });
+
+export const mobileMenuState = atom<boolean>({
+  key: "mobileMenuState",
+  default: false,
+});

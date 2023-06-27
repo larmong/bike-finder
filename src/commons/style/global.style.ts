@@ -21,6 +21,10 @@ export const GlobalStyle = css`
   * {
     margin: 0;
     box-sizing: border-box;
+    ::-webkit-scrollbar {
+      width: 0;
+      background: transparent;
+    }
   }
   body {
     font-family: "SpoqaHanSansNeo", Arial, sans-serif;

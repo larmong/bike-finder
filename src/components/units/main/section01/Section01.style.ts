@@ -6,12 +6,9 @@ export const Wrapper = styled.div`
   background: #f9fafa;
   display: flex;
   align-items: center;
-  // ${mediaQuery[0]} {
-  //   height: 600px;
-  //   background: #f9fafa;
-  //   display: flex;
-  //   align-items: center;
-  // }
+  ${mediaQuery[0]} {
+    padding-top: 65px;
+  }
 `;
 
 // 배너
