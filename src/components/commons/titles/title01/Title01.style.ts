@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const SectionTitle = styled.div`
   display: flex;
@@ -11,12 +12,22 @@ export const TitleIcon = styled.div`
     height: 50px;
     color: #0d8f68;
   }
+  ${mediaQuery[0]} {
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
 `;
 export const Title = styled.h3`
   margin: 20px 0 10px 0;
   font-weight: 700;
   font-size: 40px;
   line-height: 50px;
+  ${mediaQuery[0]} {
+    margin: 10px 0 0 0;
+    font-size: 30px;
+  }
 `;
 export const TitleDsc = styled.p`
   font-size: 20px;
@@ -24,4 +35,8 @@ export const TitleDsc = styled.p`
   text-align: center;
   color: #979797;
   white-space: pre-wrap;
+  ${mediaQuery[0]} {
+    font-size: 16px;
+    line-height: 22px;
+  }
 `;

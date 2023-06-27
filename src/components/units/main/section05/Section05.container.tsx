@@ -32,10 +32,12 @@ export default function Section05() {
           <S.Contents>
             {contents.map((item, index: number) => (
               <S.Cont key={index}>
-                <S.ContImg
-                  src={`/images/main/Component${index + 1}.png`}
-                  alt="guide"
-                />
+                <S.ContImgContainer>
+                  <S.ContImg
+                    src={`/images/main/Component${index + 1}.png`}
+                    alt="guide"
+                  />
+                </S.ContImgContainer>
                 <S.ContText>
                   <S.ContTitle>{item.title}</S.ContTitle>
                   <S.ContDsc>{item.dsc}</S.ContDsc>

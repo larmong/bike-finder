@@ -70,6 +70,7 @@ export const Container = styled.div`
   width: 1080px;
   margin: 0 auto;
   ${mediaQuery[0]} {
+    padding: 0 30px;
     width: 100%;
   }
 `;

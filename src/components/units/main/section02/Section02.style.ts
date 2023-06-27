@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   background: #fff;
@@ -14,6 +15,11 @@ export const Contents = styled.div`
   img {
     width: 60%;
   }
+  ${mediaQuery[0]} {
+    margin-top: 150px;
+    height: 350px;
+    gap: 20px;
+  }
 `;
 
 export const Text = styled.div`
@@ -21,8 +27,6 @@ export const Text = styled.div`
   flex-direction: column;
   gap: 1px;
   font-size: 30px;
-  p {
-  }
   div {
     display: flex;
     align-items: center;
@@ -33,6 +37,17 @@ export const Text = styled.div`
       font-size: 55px;
       line-height: 60px;
       color: #0d8f68;
+      font-weight: 700;
+    }
+  }
+  ${mediaQuery[0]} {
+    gap: 1px;
+    font-size: 26px;
+    div {
+      gap: 5px;
+      span {
+        font-size: 45px;
+      }
     }
   }
 `;

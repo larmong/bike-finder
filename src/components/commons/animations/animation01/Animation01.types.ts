@@ -10,5 +10,5 @@ export interface ICompanyList {
 }
 
 export interface IIsActive {
-  isActive: string;
+  isActive: boolean;
 }

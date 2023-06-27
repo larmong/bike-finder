@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import { css } from "@emotion/react";
 import { IIsActive } from "./Animation01.types";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 const textLoop = keyframes`
   0% {
@@ -14,6 +15,9 @@ const textLoop = keyframes`
 export const Wrapper = styled.div`
   position: relative;
   height: 122px;
+  ${mediaQuery[0]} {
+    height: 100px;
+  }
 `;
 export const FlowContainer = styled.div`
   height: 100%;
@@ -37,6 +41,9 @@ export const FlowContents = styled.div`
 export const Logo = styled.img`
   padding: 0 50px;
   height: 29px;
+  ${mediaQuery[0]} {
+    height: 22px;
+  }
 `;
 
 export const FlowGradient = styled.div`

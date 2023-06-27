@@ -93,7 +93,7 @@ export const Header_M = styled.header`
     display: flex;
     width: 100%;
     height: 65px;
-    padding: 0 16px;
+    padding: 0 30px;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #e9e9e9;

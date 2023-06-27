@@ -25,7 +25,7 @@ export default function Animation02() {
         setFetchInstagram(data);
       } catch (error) {}
     };
-    getInstagramPosts();
+    void getInstagramPosts();
   }, []);
 
   return (
