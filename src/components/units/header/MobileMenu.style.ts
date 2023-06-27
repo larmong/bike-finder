@@ -1,13 +1,17 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../commons/style/mediaQuery.style";
 
 export const Menu_Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow: scroll;
-  padding: 65px 16px 16px 16px;
+  padding: 65px 30px 0 30px;
   min-height: 100vh;
   max-height: 100vh;
   background: #ffffff;
+  ${mediaQuery[2]} {
+    padding: 65px 16px 0 16px;
+  }
 `;
 
 export const Menu_Content = styled.div`
@@ -16,20 +20,28 @@ export const Menu_Content = styled.div`
   flex-direction: column;
   gap: 10px;
   border-bottom: 1px solid #e9e9e9;
+  ${mediaQuery[2]} {
+    gap: 5px;
+  }
 `;
 export const Menu_UserName = styled.p`
   font-weight: bold;
   letter-spacing: 1.23px;
   font-family: "EnjoyStories", Arial, sans-serif;
   font-size: 50px;
+  ${mediaQuery[2]} {
+    font-size: 44px;
+  }
 `;
 export const Menu_Text = styled.p`
   font-size: 26px;
   letter-spacing: 0.6px;
-
   span {
     color: #0d8f68;
     font-weight: 700;
+  }
+  ${mediaQuery[2]} {
+    font-size: 24px;
   }
 `;
 
@@ -46,6 +58,8 @@ export const Notice_Container = styled.ul`
   gap: 16px;
   border-radius: 5px;
   background: #333333;
+  ${mediaQuery[2]} {
+  }
 `;
 export const Notice = styled.li`
   color: #ffffff;
@@ -70,7 +84,6 @@ export const Notice_Title = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
   span {
     color: #42b794;
     font-weight: 700;
@@ -116,6 +129,9 @@ export const Menu_Card = styled.div`
   background: #fafafa;
   gap: 10px;
   cursor: pointer;
+  ${mediaQuery[2]} {
+    width: calc(33.33% - 10.66px);
+  }
 `;
 export const Menu_Icon = styled.div`
   width: 50px;
@@ -124,6 +140,10 @@ export const Menu_Icon = styled.div`
   svg {
     width: 100%;
     height: 100%;
+  }
+  ${mediaQuery[2]} {
+    width: 40px;
+    height: 40px;
   }
 `;
 export const Menu_Name = styled.div`
@@ -134,12 +154,15 @@ export const Menu_Name = styled.div`
   font-size: 15px;
   white-space: pre-wrap;
   font-weight: 700;
+  ${mediaQuery[2]} {
+    font-size: 14px;
+  }
 `;
 
 // footer
 export const Footer_M = styled.div`
   margin-top: auto;
-  padding: 30px 0 14px 0;
+  padding: 30px 0;
   border-top: 1px solid #e9e9e9;
   display: flex;
   align-items: center;
@@ -148,6 +171,8 @@ export const Footer_M = styled.div`
   svg {
     width: 24px;
     height: 24px;
+  }
+  ${mediaQuery[2]} {
   }
 `;
 export const ServiceCenter = styled.p`

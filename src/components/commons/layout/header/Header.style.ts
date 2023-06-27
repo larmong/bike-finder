@@ -100,12 +100,15 @@ export const Header_M = styled.header`
     background: #fff;
     z-index: 999;
   }
+  ${mediaQuery[2]} {
+    padding: 0 16px;
+  }
 `;
 export const MenuIcon = styled.div`
   cursor: pointer;
   svg {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
   }
 `;
 export const Logo_M = styled.div`
