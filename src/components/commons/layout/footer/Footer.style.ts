@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { IIsActive } from "./Footer.types";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Footer = styled.footer`
   width: 100%;
@@ -7,6 +8,9 @@ export const Footer = styled.footer`
   background: #455062;
   padding: 65px 0;
   display: ${(props: IIsActive) => (props.isActive ? "none" : "block")};
+  ${mediaQuery[1]} {
+    height: auto;
+  }
 `;
 export const Wrapper = styled.div`
   display: flex;
@@ -19,6 +23,13 @@ export const Wrapper = styled.div`
 export const Menus = styled.div`
   display: flex;
   gap: 50px;
+
+  ${mediaQuery[1]} {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 `;
 export const Menu = styled.div`
   position: relative;
@@ -40,6 +51,12 @@ export const Menu = styled.div`
     color: #fff;
     font-weight: 700;
   }
+  ${mediaQuery[1]} {
+    font-size: 14px;
+    &::after {
+      content: none;
+    }
+  }
 `;
 
 // sns
@@ -50,6 +67,11 @@ export const Sns = styled.div`
     width: 30px;
     height: 30px;
     cursor: pointer;
+  }
+  ${mediaQuery[1]} {
+    gap: 15px;
+    width: 100%;
+    justify-content: center;
   }
 `;
 
@@ -64,6 +86,9 @@ export const Info = styled.div`
     align-items: center;
     gap: 6px;
     p {
+      br {
+        display: none;
+      }
       color: rgba(255, 255, 255, 0.8);
       span {
         color: #fff;
@@ -76,8 +101,26 @@ export const Info = styled.div`
       }
     }
   }
+  ${mediaQuery[1]} {
+    gap: 15px;
+    div {
+      gap: 2px;
+      p {
+        font-size: 14px;
+        text-align: center;
+        line-height: 20px;
+        br {
+          display: block;
+        }
+      }
+    }
+  }
 `;
+
 export const Copy = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   color: #fff;
+  ${mediaQuery[1]} {
+    font-size: 12px;
+  }
 `;

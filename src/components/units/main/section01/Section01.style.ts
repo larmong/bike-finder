@@ -11,8 +11,8 @@ export const Wrapper = styled.div`
     height: 800px;
   }
   ${mediaQuery[2]} {
-    padding-top: 100px;
-    height: 650px;
+    padding-top: 80px;
+    height: 100vh;
   }
 `;
 
@@ -27,6 +27,9 @@ export const Banner = styled.div`
     flex-direction: column-reverse;
     justify-content: center;
     gap: 50px;
+  }
+  ${mediaQuery[2]} {
+    gap: 60px;
   }
 `;
 export const BannerLeft = styled.div`

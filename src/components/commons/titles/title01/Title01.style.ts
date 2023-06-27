@@ -17,6 +17,9 @@ export const TitleIcon = styled.div`
       width: 40px;
       height: 40px;
     }
+    img {
+      width: 60px;
+    }
   }
 `;
 export const Title = styled.h3`

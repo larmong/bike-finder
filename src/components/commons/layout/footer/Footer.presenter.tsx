@@ -53,8 +53,8 @@ export default function FooterUI(props: IFooterUI) {
           <S.Info>
             <div>
               <p>
-                <span>주소</span>서울특별시 중구 세종대로 110 (지하철 1, 2호선
-                시청역 5번 출구)
+                <span>주소</span>서울특별시 중구 세종대로 110 <br />
+                (지하철 1, 2호선 시청역 5번 출구)
                 <span>우편번호</span>04524
               </p>
               <p>
