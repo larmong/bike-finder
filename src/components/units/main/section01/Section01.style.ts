@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   align-items: center;
   ${mediaQuery[0]} {
     padding-top: 65px;
+    height: 800px;
   }
 `;
 
@@ -17,18 +18,31 @@ export const Banner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mediaQuery[0]} {
+    height: 800px;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 50px;
+  }
 `;
 export const BannerLeft = styled.div`
   width: auto;
   display: flex;
   flex-direction: column;
   gap: 35px;
+  ${mediaQuery[0]} {
+    text-align: center;
+  }
 `;
 export const BannerRight = styled.div`
   width: 550px;
   height: 100%;
   background-image: url("/images/main/banner.png");
   background-size: cover;
+  ${mediaQuery[0]} {
+    width: 400px;
+    height: 320px;
+  }
 `;
 export const Text = styled.div`
   display: flex;
@@ -48,6 +62,12 @@ export const Text = styled.div`
     font-size: 25px;
     line-height: 28px;
   }
+  ${mediaQuery[0]} {
+    p {
+      font-size: 32px;
+      line-height: 42px;
+    }
+  }
 `;
 
 // 버튼
@@ -64,6 +84,9 @@ export const BtnGroup = styled.div`
     letter-spacing: 0.02em;
     font-size: 16px;
   }
+  ${mediaQuery[0]} {
+    margin: 0 auto;
+  }
 `;
 export const HeaderBtn = styled.button`
   background: #0d8f68;
@@ -72,9 +95,4 @@ export const HeaderBtn = styled.button`
 export const HeaderBtnLine = styled.button`
   border: 1px solid #0d8f68;
   color: #0d8f68;
-`;
-
-export const Container = styled.div`
-  width: 1080px;
-  margin: 0 auto;
 `;

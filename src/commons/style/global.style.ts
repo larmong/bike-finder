@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { mediaQuery } from "./mediaQuery.style";
 
 export const GlobalStyle = css`
   // 100, 300, 400, 500, 700
@@ -68,4 +69,8 @@ export const GlobalStyle = css`
 export const Container = styled.div`
   width: 1080px;
   margin: 0 auto;
+  ${mediaQuery[0]} {
+    width: 100%;
+  }
 `;
+// ${mediaQuery[0]} {}
