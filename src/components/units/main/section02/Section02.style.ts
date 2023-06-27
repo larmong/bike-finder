@@ -20,6 +20,13 @@ export const Contents = styled.div`
     height: 350px;
     gap: 20px;
   }
+  ${mediaQuery[2]} {
+    margin-top: 100px;
+    height: 300px;
+    img {
+      width: 90%;
+    }
+  }
 `;
 
 export const Text = styled.div`
@@ -47,6 +54,16 @@ export const Text = styled.div`
       gap: 5px;
       span {
         font-size: 45px;
+      }
+    }
+  }
+  ${mediaQuery[2]} {
+    gap: -1px;
+    font-size: 24px;
+    div {
+      margin-top: -5px;
+      span {
+        font-size: 40px;
       }
     }
   }

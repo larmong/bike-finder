@@ -3,6 +3,9 @@ import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   padding: 130px 0;
+  ${mediaQuery[2]} {
+    padding: 100px 0;
+  }
 `;
 
 export const Section = styled.div`
@@ -69,6 +72,9 @@ export const ContText = styled.div`
     flex-direction: column;
     width: calc(100% - 80px);
   }
+  ${mediaQuery[2]} {
+    gap: 7px;
+  }
 `;
 export const ContTitle = styled.p`
   font-weight: 700;
@@ -77,6 +83,10 @@ export const ContTitle = styled.p`
   ${mediaQuery[0]} {
     font-size: 20px;
     line-height: 20px;
+  }
+  ${mediaQuery[2]} {
+    font-size: 16px;
+    line-height: 18px;
   }
 `;
 export const ContDsc = styled.span`
@@ -87,6 +97,10 @@ export const ContDsc = styled.span`
     font-size: 18px;
     line-height: 24px;
   }
+  ${mediaQuery[2]} {
+    font-size: 15px;
+    line-height: 20px;
+  }
 `;
 
 export const ContRight = styled.div`
@@ -94,4 +108,8 @@ export const ContRight = styled.div`
   height: 341px;
   background-image: url("/images/main/graph.png");
   background-size: cover;
+  ${mediaQuery[2]} {
+    width: 320px;
+    height: 230px;
+  }
 `;

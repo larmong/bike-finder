@@ -18,7 +18,8 @@ export default function Section01() {
                   서울을 누빌 준비 되셨나요?
                 </p>
                 <span>
-                  누구나 쉽고 편리하게 이용할 수 있는 저탄소 이동수단 따릉이!
+                  누구나 쉽고 편리하게 이용할 수 있는
+                  <br /> 저탄소 이동수단 따릉이!
                 </span>
               </S.Text>
               <S.BtnGroup>

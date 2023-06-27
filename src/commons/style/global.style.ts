@@ -73,5 +73,7 @@ export const Container = styled.div`
     padding: 0 30px;
     width: 100%;
   }
+  ${mediaQuery[2]} {
+    padding: 0 16px;
+  }
 `;
-// ${mediaQuery[0]} {}

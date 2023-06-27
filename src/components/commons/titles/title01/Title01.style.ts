@@ -28,6 +28,10 @@ export const Title = styled.h3`
     margin: 10px 0 0 0;
     font-size: 30px;
   }
+  ${mediaQuery[2]} {
+    margin: 5px 0 0 0;
+    font-size: 26px;
+  }
 `;
 export const TitleDsc = styled.p`
   font-size: 20px;
@@ -38,5 +42,10 @@ export const TitleDsc = styled.p`
   ${mediaQuery[0]} {
     font-size: 16px;
     line-height: 22px;
+  }
+  ${mediaQuery[2]} {
+    font-size: 14px;
+    line-height: 20px;
+    white-space: initial;
   }
 `;

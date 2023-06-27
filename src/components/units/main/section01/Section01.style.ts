@@ -10,6 +10,10 @@ export const Wrapper = styled.div`
     padding-top: 65px;
     height: 800px;
   }
+  ${mediaQuery[2]} {
+    padding-top: 100px;
+    height: 650px;
+  }
 `;
 
 // 배너
@@ -43,6 +47,10 @@ export const BannerRight = styled.div`
     width: 400px;
     height: 320px;
   }
+  ${mediaQuery[2]} {
+    width: 250px;
+    height: 200px;
+  }
 `;
 export const Text = styled.div`
   display: flex;
@@ -61,11 +69,27 @@ export const Text = styled.div`
     font-family: "EnjoyStories", Arial, sans-serif;
     font-size: 25px;
     line-height: 28px;
+    br {
+      display: none;
+    }
   }
   ${mediaQuery[0]} {
     p {
       font-size: 32px;
       line-height: 42px;
+    }
+  }
+  ${mediaQuery[2]} {
+    p {
+      font-size: 28px;
+      line-height: 36px;
+    }
+    span {
+      font-size: 25px;
+      line-height: 24px;
+      br {
+        display: block;
+      }
     }
   }
 `;
@@ -86,6 +110,9 @@ export const BtnGroup = styled.div`
   }
   ${mediaQuery[0]} {
     margin: 0 auto;
+  }
+  ${mediaQuery[2]} {
+    gap: 10px;
   }
 `;
 export const HeaderBtn = styled.button`

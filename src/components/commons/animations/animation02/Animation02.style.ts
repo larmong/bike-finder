@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
 import { css } from "@emotion/react";
 import { IIsActive } from "./Animation02.types";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 const InstagramLoop = keyframes`
   0% {
@@ -22,6 +23,9 @@ export const FlowContainer = styled.div`
   overflow: hidden;
   transition: 0.3s;
   gap: 30px;
+  ${mediaQuery[2]} {
+    margin-top: 40px;
+  }
 `;
 
 export const InstagramContainer = styled.div`
@@ -36,11 +40,18 @@ export const InstagramContainer = styled.div`
           ${InstagramLoop} 100s linear infinite
         `
       : "none"};
+  ${mediaQuery[2]} {
+    gap: 15px;
+  }
 `;
 export const Instagram = styled.div`
   position: relative;
   width: 200px;
   height: 200px;
+  ${mediaQuery[2]} {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 export const InstagramImage = styled.img`
