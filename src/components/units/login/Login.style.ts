@@ -1,9 +1,16 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   background: #f9fafa;
   padding: 100px 0;
   min-height: calc(100vh - 100px);
+  ${mediaQuery[0]} {
+    min-height: calc(100vh - 65px);
+  }
+  ${mediaQuery[2]} {
+    padding: 0;
+  }
 `;
 export const LoginWrapper = styled.div`
   display: flex;
@@ -13,10 +20,17 @@ export const LoginWrapper = styled.div`
   width: 450px;
   padding: 50px 30px;
   margin: 0 auto;
-
   background: #ffffff;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
   border-radius: 15px;
+  ${mediaQuery[2]} {
+    gap: 25px;
+    width: 100%;
+    height: 100vh;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 60px 20px;
+  }
 `;
 
 export const Logo = styled.div`

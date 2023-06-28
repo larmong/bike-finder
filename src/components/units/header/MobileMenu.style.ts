@@ -21,7 +21,7 @@ export const Menu_Content = styled.div`
   flex-direction: column;
   gap: 10px;
   border-bottom: 1px solid #e9e9e9;
-  ${mediaQuery[3]} {
+  ${mediaQuery[2]} {
     gap: 5px;
   }
 `;
@@ -30,7 +30,7 @@ export const Menu_UserName = styled.p`
   letter-spacing: 1.23px;
   font-family: "EnjoyStories", Arial, sans-serif;
   font-size: 50px;
-  ${mediaQuery[3]} {
+  ${mediaQuery[2]} {
     font-size: 44px;
   }
 `;
@@ -41,7 +41,7 @@ export const Menu_Text = styled.p`
     color: #0d8f68;
     font-weight: 700;
   }
-  ${mediaQuery[3]} {
+  ${mediaQuery[2]} {
     font-size: 24px;
   }
 `;
@@ -59,7 +59,7 @@ export const Notice_Container = styled.ul`
   gap: 16px;
   border-radius: 5px;
   background: #333333;
-  ${mediaQuery[3]} {
+  ${mediaQuery[2]} {
   }
 `;
 export const Notice = styled.li`
@@ -130,7 +130,7 @@ export const Menu_Card = styled.div`
   background: #fafafa;
   gap: 10px;
   cursor: pointer;
-  ${mediaQuery[3]} {
+  ${mediaQuery[2]} {
     width: calc(33.33% - 10.66px);
   }
 `;
@@ -142,7 +142,7 @@ export const Menu_Icon = styled.div`
     width: 100%;
     height: 100%;
   }
-  ${mediaQuery[3]} {
+  ${mediaQuery[2]} {
     width: 40px;
     height: 40px;
   }
@@ -155,7 +155,7 @@ export const Menu_Name = styled.div`
   font-size: 15px;
   white-space: pre-wrap;
   font-weight: 700;
-  ${mediaQuery[3]} {
+  ${mediaQuery[2]} {
     font-size: 14px;
   }
 `;
@@ -173,7 +173,11 @@ export const Footer_M = styled.div`
     width: 24px;
     height: 24px;
   }
-  ${mediaQuery[3]} {
+  ${mediaQuery[2]} {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
 export const ServiceCenter = styled.p`
@@ -181,4 +185,7 @@ export const ServiceCenter = styled.p`
   margin-top: 5px;
   font-weight: 700;
   letter-spacing: 1px;
+  ${mediaQuery[2]} {
+    font-size: 14px;
+  }
 `;

@@ -11,8 +11,9 @@ export const Wrapper = styled.div`
     height: 800px;
   }
   ${mediaQuery[3]} {
-    padding-top: 80px;
-    height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: 610px;
   }
 `;
 
@@ -84,11 +85,11 @@ export const Text = styled.div`
   }
   ${mediaQuery[3]} {
     p {
-      font-size: 28px;
-      line-height: 36px;
+      font-size: 26px;
+      line-height: 34px;
     }
     span {
-      font-size: 25px;
+      font-size: 24px;
       line-height: 24px;
       br {
         display: block;
