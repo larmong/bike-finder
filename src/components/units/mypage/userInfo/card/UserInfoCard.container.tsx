@@ -119,24 +119,28 @@ export default function UserInfoCard(props: IPropsUserInfoCard) {
           <S.TableItem01 className="t-head">
             개인정보를 제공 받는 자
           </S.TableItem01>
-          <S.TableItem01>티머니</S.TableItem01>
+          <S.TableItem01 className="t-left">티머니</S.TableItem01>
           <S.TableItem01 className="t-head">
             개인정보를 제공 받는 자의 개인정보 이용 목적
           </S.TableItem01>
-          <S.TableItem01>대중교통 간 환승에 따른 마일리지 적립</S.TableItem01>
+          <S.TableItem01 className="t-left">
+            대중교통 간 환승에 따른 마일리지 적립
+          </S.TableItem01>
           <S.TableItem01 className="t-head">
             제공되는 개인정보 항목
           </S.TableItem01>
-          <S.TableItem01>환승카드정보</S.TableItem01>
+          <S.TableItem01 className="t-left">환승카드정보</S.TableItem01>
           <S.TableItem01 className="t-head">
             개인정보를 제공받는 자의 개인정보 보유 및 이용기간
           </S.TableItem01>
-          <S.TableItem01>사용자 해지 요청 시까지</S.TableItem01>
+          <S.TableItem01 className="t-left">
+            사용자 해지 요청 시까지
+          </S.TableItem01>
           <S.TableItem01 className="t-head">
             개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익 내용 또는
             제한 사항
           </S.TableItem01>
-          <S.TableItem01>
+          <S.TableItem01 className="t-left">
             귀하는 개인정보 제공 동의를 거부할 권리가 있으며, 동의거부 시
             마일리지 적립을 진행할 수 없습니다.
           </S.TableItem01>

@@ -1,11 +1,22 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const InputCardWrapper = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
-  //justify-content: space-between;
+  ${mediaQuery[0]} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+export const InputCardContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  ${mediaQuery[0]} {
+    width: 100%;
+  }
 `;
 export const InputCard = styled.input`
   text-align: center;
@@ -18,6 +29,11 @@ export const InputCard = styled.input`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.1em;
+  ${mediaQuery[0]} {
+    padding: 10px 12px;
+    width: calc(33.33% - 17px);
+    height: 38px;
+  }
 `;
 export const CardMessage = styled.span`
   color: #999999;
@@ -28,5 +44,9 @@ export const CardMessage = styled.span`
   margin-top: 10px;
   strong {
     font-weight: 700;
+  }
+  ${mediaQuery[0]} {
+    margin-left: 5px;
+    margin-top: 0;
   }
 `;

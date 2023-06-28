@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
+  width: calc(100% - 4px);
   display: flex;
   flex-direction: column;
   gap: 60px;
@@ -26,6 +28,9 @@ export const Notice = styled.div`
     color: #fff;
     font-weight: 700;
   }
+  ${mediaQuery[0]} {
+    padding: 16px;
+  }
 `;
 
 export const Section01 = styled.div`
@@ -46,6 +51,14 @@ export const Table01 = styled.div`
   letter-spacing: -0.05em;
   border-top: 1px solid #666666;
   border-bottom: 1px solid #666666;
+  ${mediaQuery[0]} {
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    line-height: 16px;
+    .t-left {
+      text-align: left;
+    }
+  }
 `;
 export const TableItem01 = styled.p`
   height: 70px;
@@ -70,6 +83,9 @@ export const Table02 = styled.div`
   letter-spacing: -0.05em;
   border-top: 1px solid #666666;
   border-bottom: 1px solid #666666;
+  ${mediaQuery[0]} {
+    grid-template-columns: 170px 1fr;
+  }
 `;
 export const TableItem02 = styled.div`
   height: 70px;
@@ -86,5 +102,8 @@ export const TableItem02 = styled.div`
   span {
     display: block;
     margin-bottom: 8px;
+  }
+  ${mediaQuery[0]} {
+    height: auto;
   }
 `;

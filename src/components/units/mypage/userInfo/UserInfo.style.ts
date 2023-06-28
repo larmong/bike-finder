@@ -9,6 +9,9 @@ export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  ${mediaQuery[0]} {
+    margin-top: 30px;
+  }
 `;
 
 // Table01

@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { CardMessage, InputCard, InputCardWrapper } from "./input06.style";
+import {
+  CardMessage,
+  InputCard,
+  InputCardContainer,
+  InputCardWrapper,
+} from "./input06.style";
 import { CustomChangeEvent } from "../../../../../commons/types/global.types";
 import { IInputCard, IPropsInput06 } from "./input06.types";
 
@@ -35,32 +40,34 @@ export default function Input06(props: IPropsInput06) {
 
   return (
     <InputCardWrapper id={props.inputId}>
-      <InputCard
-        type="text"
-        id="first"
-        maxLength={4}
-        value={inputCard.first}
-        onChange={onChangeInputCard}
-        placeholder="1234"
-      />
-      -
-      <InputCard
-        type="text"
-        id="second"
-        maxLength={4}
-        value={inputCard.second}
-        onChange={onChangeInputCard}
-        placeholder="1234"
-      />
-      -
-      <InputCard
-        type="text"
-        id="third"
-        maxLength={4}
-        value={inputCard.third}
-        onChange={onChangeInputCard}
-        placeholder="1234"
-      />
+      <InputCardContainer>
+        <InputCard
+          type="text"
+          id="first"
+          maxLength={4}
+          value={inputCard.first}
+          onChange={onChangeInputCard}
+          placeholder="1234"
+        />
+        -
+        <InputCard
+          type="text"
+          id="second"
+          maxLength={4}
+          value={inputCard.second}
+          onChange={onChangeInputCard}
+          placeholder="1234"
+        />
+        -
+        <InputCard
+          type="text"
+          id="third"
+          maxLength={4}
+          value={inputCard.third}
+          onChange={onChangeInputCard}
+          placeholder="1234"
+        />
+      </InputCardContainer>
       <CardMessage>
         * 카드번호 <strong>16자리를</strong> 입력해주세요.
       </CardMessage>

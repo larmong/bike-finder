@@ -1,10 +1,14 @@
 import styled from "@emotion/styled";
 import { MdArrowForwardIos, MdStar } from "react-icons/md";
 import { IIsSelect } from "./Select01.types";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   position: relative;
   width: ${(props: IIsSelect) => props.isSelect || "500px"};
+  ${mediaQuery[0]} {
+    width: 100%;
+  }
 `;
 
 export const SelectBox = styled.div`
@@ -18,6 +22,9 @@ export const SelectBox = styled.div`
   padding: 14px 16px;
   font-size: 14px;
   cursor: pointer;
+  ${mediaQuery[0]} {
+    height: 38px;
+  }
 `;
 
 export const SelectText = styled.p`
@@ -59,5 +66,8 @@ export const SelectMenu = styled.li`
   &.active {
     font-weight: 700;
     color: #0d8f68;
+  }
+  ${mediaQuery[0]} {
+    height: 38px;
   }
 `;
