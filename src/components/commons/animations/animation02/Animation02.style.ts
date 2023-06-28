@@ -23,7 +23,7 @@ export const FlowContainer = styled.div`
   overflow: hidden;
   transition: 0.3s;
   gap: 30px;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     margin-top: 40px;
   }
 `;
@@ -40,7 +40,7 @@ export const InstagramContainer = styled.div`
           ${InstagramLoop} 100s linear infinite
         `
       : "none"};
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     gap: 15px;
   }
 `;
@@ -48,7 +48,7 @@ export const Instagram = styled.div`
   position: relative;
   width: 200px;
   height: 200px;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     width: 150px;
     height: 150px;
   }

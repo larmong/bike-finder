@@ -3,7 +3,7 @@ import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   padding: 130px 0;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     padding: 100px 0;
   }
 `;
@@ -72,7 +72,7 @@ export const ContText = styled.div`
     flex-direction: column;
     width: calc(100% - 80px);
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     gap: 7px;
   }
 `;
@@ -84,7 +84,7 @@ export const ContTitle = styled.p`
     font-size: 20px;
     line-height: 20px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     font-size: 16px;
     line-height: 18px;
   }
@@ -97,7 +97,7 @@ export const ContDsc = styled.span`
     font-size: 18px;
     line-height: 24px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     font-size: 15px;
     line-height: 20px;
   }
@@ -108,7 +108,7 @@ export const ContRight = styled.div`
   height: 341px;
   background-image: url("/images/main/graph.png");
   background-size: cover;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     width: 320px;
     height: 230px;
   }

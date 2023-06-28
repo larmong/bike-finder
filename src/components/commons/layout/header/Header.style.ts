@@ -101,7 +101,7 @@ export const Header_M = styled.header`
     z-index: 999;
   }
   ${mediaQuery[2]} {
-    padding: 0 16px;
+    padding: 0 20px;
   }
 `;
 export const MenuIcon = styled.div`

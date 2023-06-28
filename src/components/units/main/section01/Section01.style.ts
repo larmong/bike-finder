@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
     padding-top: 65px;
     height: 800px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     padding-top: 80px;
     height: 100vh;
   }
@@ -28,7 +28,7 @@ export const Banner = styled.div`
     justify-content: center;
     gap: 50px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     gap: 60px;
   }
 `;
@@ -50,7 +50,7 @@ export const BannerRight = styled.div`
     width: 400px;
     height: 320px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     width: 250px;
     height: 200px;
   }
@@ -82,7 +82,7 @@ export const Text = styled.div`
       line-height: 42px;
     }
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     p {
       font-size: 28px;
       line-height: 36px;
@@ -114,7 +114,7 @@ export const BtnGroup = styled.div`
   ${mediaQuery[0]} {
     margin: 0 auto;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     gap: 10px;
   }
 `;

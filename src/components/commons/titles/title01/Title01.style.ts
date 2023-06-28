@@ -31,7 +31,7 @@ export const Title = styled.h3`
     margin: 10px 0 0 0;
     font-size: 30px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     margin: 5px 0 0 0;
     font-size: 26px;
   }
@@ -46,7 +46,7 @@ export const TitleDsc = styled.p`
     font-size: 16px;
     line-height: 22px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     font-size: 14px;
     line-height: 20px;
     white-space: initial;

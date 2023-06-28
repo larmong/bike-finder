@@ -20,7 +20,7 @@ export const Contents = styled.div`
     height: 350px;
     gap: 20px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     margin-top: 100px;
     height: 300px;
     img {
@@ -57,7 +57,7 @@ export const Text = styled.div`
       }
     }
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     gap: -1px;
     font-size: 24px;
     div {

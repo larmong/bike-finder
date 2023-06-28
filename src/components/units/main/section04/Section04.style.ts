@@ -4,7 +4,7 @@ import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 export const Wrapper = styled.div`
   padding: 130px 0;
   background: #f9fafa;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     padding: 100px 0;
   }
 `;
@@ -28,7 +28,7 @@ export const Contents = styled.div`
     align-items: center;
     gap: 25px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     margin-top: 40px;
     gap: 20px;
   }
@@ -54,7 +54,7 @@ export const Cont = styled.div`
     height: 180px;
     border-radius: 15px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     height: 120px;
     border-radius: 10px;
   }
@@ -71,7 +71,7 @@ export const ContImgContainer = styled.div`
   ${mediaQuery[1]} {
     width: 180px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     width: 120px;
   }
 `;
@@ -81,7 +81,7 @@ export const ContImg = styled.img`
   ${mediaQuery[1]} {
     width: 200px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     width: 130px;
   }
 `;
@@ -99,7 +99,7 @@ export const ContText = styled.div`
     gap: 4px;
     width: calc(100% - 180px);
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     padding: 10px 15px;
     gap: 4px;
     width: calc(100% - 120px);
@@ -112,7 +112,7 @@ export const ContTitle = styled.p`
   ${mediaQuery[1]} {
     font-size: 18px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     font-size: 16px;
   }
 `;
@@ -125,7 +125,7 @@ export const ContDsc = styled.span`
     font-size: 14px;
     line-height: 18px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     font-size: 12px;
     line-height: 16px;
   }

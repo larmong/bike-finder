@@ -7,10 +7,11 @@ export const Menu_Wrapper = styled.div`
   overflow: scroll;
   padding: 65px 30px 0 30px;
   min-height: 100vh;
-  max-height: 100vh;
+  max-height: calc(100vh + 30px);
   background: #ffffff;
   ${mediaQuery[2]} {
-    padding: 65px 16px 0 16px;
+    padding: 65px 20px 0 20px;
+    max-height: calc(100vh + 20px);
   }
 `;
 
@@ -20,7 +21,7 @@ export const Menu_Content = styled.div`
   flex-direction: column;
   gap: 10px;
   border-bottom: 1px solid #e9e9e9;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     gap: 5px;
   }
 `;
@@ -29,7 +30,7 @@ export const Menu_UserName = styled.p`
   letter-spacing: 1.23px;
   font-family: "EnjoyStories", Arial, sans-serif;
   font-size: 50px;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     font-size: 44px;
   }
 `;
@@ -40,7 +41,7 @@ export const Menu_Text = styled.p`
     color: #0d8f68;
     font-weight: 700;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     font-size: 24px;
   }
 `;
@@ -58,7 +59,7 @@ export const Notice_Container = styled.ul`
   gap: 16px;
   border-radius: 5px;
   background: #333333;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
   }
 `;
 export const Notice = styled.li`
@@ -129,7 +130,7 @@ export const Menu_Card = styled.div`
   background: #fafafa;
   gap: 10px;
   cursor: pointer;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     width: calc(33.33% - 10.66px);
   }
 `;
@@ -141,7 +142,7 @@ export const Menu_Icon = styled.div`
     width: 100%;
     height: 100%;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     width: 40px;
     height: 40px;
   }
@@ -154,7 +155,7 @@ export const Menu_Name = styled.div`
   font-size: 15px;
   white-space: pre-wrap;
   font-weight: 700;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     font-size: 14px;
   }
 `;
@@ -172,7 +173,7 @@ export const Footer_M = styled.div`
     width: 24px;
     height: 24px;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
   }
 `;
 export const ServiceCenter = styled.p`

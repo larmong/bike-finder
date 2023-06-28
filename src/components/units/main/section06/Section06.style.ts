@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   padding: 130px 0;
   background: #f9fafa;
   overflow: hidden;
-  ${mediaQuery[2]} {
+  ${mediaQuery[3]} {
     padding: 100px 0;
   }
 `;
