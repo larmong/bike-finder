@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Tab = styled.ul`
   display: flex;
@@ -28,5 +29,14 @@ export const Manus = styled.li`
   }
   &.target::before {
     background: #0d8f68;
+  }
+  ${mediaQuery[0]} {
+    width: 68px;
+    font-size: 18px;
+    line-height: 22px;
+    &::before {
+      width: 70px;
+      height: 3px;
+    }
   }
 `;

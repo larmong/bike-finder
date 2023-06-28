@@ -1,11 +1,15 @@
 import styled from "@emotion/styled";
-import { ITabWidth } from "./Tab01.types";
+import { IIsLength, ITabWidth } from "./Tab01.types";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Tab = styled.ul`
   height: 50px;
   display: flex;
+  ${mediaQuery[0]} {
+    height: 45px;
+  }
 `;
-export const Manus = styled.li`
+export const Manus = styled.li<ITabWidth & { isLength: number }>`
   width: ${(props: ITabWidth) => props.tabWidth};
   display: flex;
   align-items: center;
@@ -22,5 +26,10 @@ export const Manus = styled.li`
   &.target {
     background: #0d8f68;
     color: #ffffff;
+  }
+  ${mediaQuery[0]} {
+    width: calc(100% / ${(props) => props.isLength});
+    font-size: 14px;
+    padding: 0 30px;
   }
 `;

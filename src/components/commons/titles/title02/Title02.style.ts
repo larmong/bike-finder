@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const PagesTitle = styled.div`
   width: 100%;
@@ -25,6 +26,14 @@ export const Circle = styled.div`
     border-radius: 50%;
     background: #0d8f68;
   }
+  ${mediaQuery[0]} {
+    width: 30px;
+    height: 30px;
+    &::after {
+      width: 9px;
+      height: 9px;
+    }
+  }
 `;
 
 export const Title = styled.h2`
@@ -32,4 +41,8 @@ export const Title = styled.h2`
   font-size: 34px;
   line-height: 43px;
   letter-spacing: -0.1em;
+  ${mediaQuery[0]} {
+    font-size: 28px;
+    line-height: 43px;
+  }
 `;

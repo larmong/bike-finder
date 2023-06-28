@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Message } from "./secession/Secession.style";
 
 export const Wrapper = styled.div``;
 export const Contents = styled.div``;

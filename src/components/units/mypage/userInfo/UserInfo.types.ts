@@ -14,6 +14,7 @@ export interface IPropsUserInfoUI {
   onClickSendPassword: () => void;
   onChangeUserAddress: (value: string | IInputAddress, id: string) => void;
   onClickButton: () => void;
+  tabLength: number;
 }
 
 export interface IAddress {

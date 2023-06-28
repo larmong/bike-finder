@@ -117,6 +117,11 @@ export const BtnGroup = styled.div`
   }
   ${mediaQuery[3]} {
     gap: 10px;
+    button {
+      width: 110px;
+      height: 40px;
+      font-size: 14px;
+    }
   }
 `;
 export const HeaderBtn = styled.button`

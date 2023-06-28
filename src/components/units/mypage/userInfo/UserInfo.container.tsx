@@ -104,6 +104,7 @@ export default function UserInfo(props: IPropsUserInfo) {
       onClickSendPassword={onClickSendPassword}
       onChangeUserAddress={onChangeUserAddress}
       onClickButton={onClickButton}
+      tabLength={TAB_MENUS.length}
     />
   );
 }

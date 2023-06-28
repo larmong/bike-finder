@@ -13,6 +13,7 @@ export default function Tab01(props: IPropsTab01) {
 
   return (
     <Tab01UI
+      isLength={props.isLength}
       TAB_MENUS={props.TAB_MENUS}
       tabWidth={props.tabWidth}
       pathname={pathname}

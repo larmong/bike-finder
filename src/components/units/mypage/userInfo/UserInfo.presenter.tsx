@@ -17,7 +17,11 @@ export default function UserInfoUI(props: IPropsUserInfoUI) {
       {props.tab === "faqDetail" ? (
         ""
       ) : (
-        <Tab01 TAB_MENUS={props.TAB_MENUS} tabWidth="140px" />
+        <Tab01
+          isLength={props.tabLength}
+          TAB_MENUS={props.TAB_MENUS}
+          tabWidth="140px"
+        />
       )}
       <S.Contents>
         {props.tab === "card" ? (
