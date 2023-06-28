@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const InputWrapper = styled.div`
   width: 100%;
@@ -9,6 +10,7 @@ export const InputWrapper = styled.div`
 export const ZipcodeWrapper = styled.div`
   width: 100%;
   display: flex;
+  align-items: center;
 `;
 export const InputZipcode = styled.input`
   text-align: center;
@@ -35,6 +37,13 @@ export const InputZipcode = styled.input`
   &::placeholder {
     letter-spacing: -1px;
   }
+  ${mediaQuery[0]} {
+    width: 95px;
+    height: 42px;
+    padding: 14px 16px;
+    font-size: 15px;
+    margin-right: 10px;
+  }
 `;
 export const PostCodeBtn = styled.button`
   display: flex;
@@ -48,6 +57,13 @@ export const PostCodeBtn = styled.button`
   font-size: 14px;
   letter-spacing: -0.07em;
   color: #ffffff;
+  ${mediaQuery[0]} {
+    width: auto;
+    padding: 0 14px;
+    height: 38px;
+    font-weight: 500;
+    font-size: 15px;
+  }
 `;
 
 export const InputAddress = styled.input`
@@ -73,5 +89,11 @@ export const InputAddress = styled.input`
   }
   &::placeholder {
     letter-spacing: -1px;
+  }
+  ${mediaQuery[0]} {
+    height: 42px;
+    padding: 14px 16px;
+    font-size: 15px;
+    margin-right: 10px;
   }
 `;

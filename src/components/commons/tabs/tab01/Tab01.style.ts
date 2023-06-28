@@ -29,7 +29,7 @@ export const Manus = styled.li<ITabWidth & { isLength: number }>`
   }
   ${mediaQuery[0]} {
     width: calc(100% / ${(props) => props.isLength});
-    font-size: 14px;
+    font-size: 15px;
     padding: 0 30px;
   }
 `;
