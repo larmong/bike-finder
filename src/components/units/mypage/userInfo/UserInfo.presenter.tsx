@@ -10,6 +10,11 @@ import Input05 from "../../../commons/inputs/input/input05/input05.container";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Button04 from "../../../commons/buttons/button04/button04.container";
 import { IPropsUserInfoUI } from "./UserInfo.types";
+import {
+  Message,
+  Table01,
+  TableItem01,
+} from "../../../commons/tables/table/Table.style";
 
 export default function UserInfoUI(props: IPropsUserInfoUI) {
   return (
@@ -36,39 +41,39 @@ export default function UserInfoUI(props: IPropsUserInfoUI) {
           <Secession />
         ) : (
           <S.UserInfo>
-            <S.Table01>
-              <S.TableItem01 className="t-head">이름</S.TableItem01>
-              <S.TableItem01>{props.fetchUser?.name}</S.TableItem01>
-              <S.TableItem01 className="t-head">아이디</S.TableItem01>
-              <S.TableItem01>{props.fetchUser?.email}</S.TableItem01>
-              <S.TableItem01 className="t-head">비밀번호</S.TableItem01>
-              <S.TableItem01 className="t-btn">
+            <Table01 className="userInfo">
+              <TableItem01 className="t-head">이름</TableItem01>
+              <TableItem01>{props.fetchUser?.name}</TableItem01>
+              <TableItem01 className="t-head">아이디</TableItem01>
+              <TableItem01>{props.fetchUser?.email}</TableItem01>
+              <TableItem01 className="t-head">비밀번호</TableItem01>
+              <TableItem01 className="t-btn">
                 <Button04
                   onClickButton={props.onClickSendPassword}
                   btnText="비밀번호 변경하기"
                 />
-                <S.PasswordMessage>
+                <Message>
                   * 따릉이 아이디(이메일)로 <strong>비밀번호 변경 메일</strong>
                   이 전송됩니다.
-                </S.PasswordMessage>
-              </S.TableItem01>
-              <S.TableItem01 className="t-head">생년월일</S.TableItem01>
-              <S.TableItem01>
+                </Message>
+              </TableItem01>
+              <TableItem01 className="t-head">생년월일</TableItem01>
+              <TableItem01>
                 {props.fetchUser ? getBirth(props.fetchUser.birth) : ""}
-              </S.TableItem01>
-              <S.TableItem01 className="t-head">휴대폰 번호</S.TableItem01>
-              <S.TableItem01>
+              </TableItem01>
+              <TableItem01 className="t-head">휴대폰 번호</TableItem01>
+              <TableItem01>
                 {props.fetchUser ? getPhone(props.fetchUser.phone) : ""}
-              </S.TableItem01>
-              <S.TableItem01 className="t-head t-address">주소</S.TableItem01>
-              <S.TableItem01 className="t-address">
+              </TableItem01>
+              <TableItem01 className="t-head t-address">주소</TableItem01>
+              <TableItem01 className="t-address">
                 <Input05
                   addressData={props.fetchUser?.address}
                   inputId="address"
                   onChangeAddress={props.onChangeUserAddress}
                 />
-              </S.TableItem01>
-            </S.Table01>
+              </TableItem01>
+            </Table01>
             <Button01
               onClickButton={props.onClickButton}
               btnWidth="200px"

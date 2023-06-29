@@ -11,8 +11,12 @@ interface ILayoutProps {
 const Page = styled.div`
   min-height: calc(100vh - 461px);
   height: 100%;
+  margin: 40px 0 130px 0;
   ${mediaQuery[0]} {
-    padding-top: 65px;
+    margin: 100px 0 110px 0;
+  }
+  ${mediaQuery[2]} {
+    margin: 85px 0;
   }
 `;
 

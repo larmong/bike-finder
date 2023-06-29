@@ -1,11 +1,5 @@
 import styled from "@emotion/styled";
-
-export const InputDateWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const InputNumber = styled.input`
   width: 100%;
@@ -23,5 +17,11 @@ export const InputNumber = styled.input`
   }
   &::placeholder {
     letter-spacing: -1px;
+  }
+  ${mediaQuery[2]} {
+    padding: 0;
+    &::placeholder {
+      letter-spacing: -2px;
+    }
   }
 `;

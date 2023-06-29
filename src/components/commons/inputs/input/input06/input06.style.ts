@@ -34,19 +34,8 @@ export const InputCard = styled.input`
     width: calc(33.33% - 17px);
     height: 38px;
   }
-`;
-export const CardMessage = styled.span`
-  color: #999999;
-  font-weight: 400;
-  font-size: 14px;
-  display: inline-block;
-  margin-left: 10px;
-  margin-top: 10px;
-  strong {
-    font-weight: 700;
-  }
-  ${mediaQuery[0]} {
-    margin-left: 5px;
-    margin-top: 0;
+  ${mediaQuery[2]} {
+    padding: 0;
+    letter-spacing: 0;
   }
 `;

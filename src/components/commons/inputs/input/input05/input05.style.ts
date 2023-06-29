@@ -11,6 +11,9 @@ export const ZipcodeWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  ${mediaQuery[2]} {
+    gap: 10px;
+  }
 `;
 export const InputZipcode = styled.input`
   text-align: center;
@@ -44,6 +47,13 @@ export const InputZipcode = styled.input`
     font-size: 15px;
     margin-right: 10px;
   }
+  ${mediaQuery[2]} {
+    width: 50%;
+    height: 38px;
+    padding: 0;
+    font-size: 14px;
+    margin-right: 0;
+  }
 `;
 export const PostCodeBtn = styled.button`
   display: flex;
@@ -64,6 +74,12 @@ export const PostCodeBtn = styled.button`
     font-weight: 500;
     font-size: 15px;
   }
+  ${mediaQuery[2]} {
+    width: 50%;
+    height: 38px;
+    padding: 0;
+    font-size: 14px;
+  }
 `;
 
 export const InputAddress = styled.input`
@@ -75,7 +91,7 @@ export const InputAddress = styled.input`
   font-weight: 400;
   font-size: 16px;
   line-height: 18px;
-  letter-spacing: 0.1em;
+  letter-spacing: -1px;
   text-align: left;
   &.bottomBorder {
     font-size: 14px;
@@ -95,5 +111,8 @@ export const InputAddress = styled.input`
     padding: 14px 16px;
     font-size: 15px;
     margin-right: 10px;
+  }
+  ${mediaQuery[2]} {
+    font-size: 14px;
   }
 `;

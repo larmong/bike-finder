@@ -26,4 +26,9 @@ export const TableBtn = styled.button`
     font-weight: 500;
     font-size: 15px;
   }
+  ${mediaQuery[2]} {
+    width: 100%;
+    height: 38px;
+    font-size: 14px;
+  }
 `;

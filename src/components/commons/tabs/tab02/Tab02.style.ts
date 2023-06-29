@@ -5,6 +5,9 @@ export const Tab = styled.ul`
   display: flex;
   gap: 30px;
   justify-content: center;
+  ${mediaQuery[0]} {
+    gap: 20px;
+  }
 `;
 export const Manus = styled.li`
   position: relative;
@@ -37,6 +40,15 @@ export const Manus = styled.li`
     &::before {
       width: 70px;
       height: 3px;
+    }
+  }
+  ${mediaQuery[2]} {
+    width: 61px;
+    font-size: 16px;
+    line-height: 18px;
+    &::before {
+      width: 63px;
+      height: 2.5px;
     }
   }
 `;

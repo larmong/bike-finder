@@ -12,6 +12,10 @@ import {
   where,
 } from "firebase/firestore";
 import { IPropsRentalPw } from "./RentalPw.types";
+import {
+  Table01,
+  TableItem01,
+} from "../../../../commons/tables/table/Table.style";
 
 export default function RentalPw(props: IPropsRentalPw) {
   const [rentalPw, setRentalPw] = useState({
@@ -62,12 +66,12 @@ export default function RentalPw(props: IPropsRentalPw) {
   return (
     <S.Wrapper>
       <S.Message>
-        대여 비밀번호는 자전거 대여시 단말기에 입력하는 정보입니다. 연속된 4개의
-        숫자는 피해주세요.
+        대여 비밀번호는 자전거 대여시 단말기에 입력하는 정보입니다.
+        <br /> 연속된 4개의 숫자는 피해주세요.
       </S.Message>
-      <S.Table01>
-        <S.TableItem01 className="t-head">기존 대여 비밀번호</S.TableItem01>
-        <S.TableItem01>
+      <Table01 className="rentalPw">
+        <TableItem01 className="t-head">기존 대여 비밀번호</TableItem01>
+        <TableItem01>
           <Input03
             inputId="rentalPassword"
             inputMaxLength={4}
@@ -75,9 +79,9 @@ export default function RentalPw(props: IPropsRentalPw) {
             valueData={rentalPw.rentalPassword}
             placeholderData="기존 대여 비밀번호 4자리를 입력해주세요."
           />
-        </S.TableItem01>
-        <S.TableItem01 className="t-head">변경할 대여 비밀번호</S.TableItem01>
-        <S.TableItem01>
+        </TableItem01>
+        <TableItem01 className="t-head">변경할 대여 비밀번호</TableItem01>
+        <TableItem01>
           <Input03
             inputId="changeRentalPw"
             inputMaxLength={4}
@@ -85,11 +89,9 @@ export default function RentalPw(props: IPropsRentalPw) {
             valueData={rentalPw.changeRentalPw}
             placeholderData="변경할 대여 비밀번호 4자리를 입력해주세요."
           />
-        </S.TableItem01>
-        <S.TableItem01 className="t-head">
-          변경할 대여 비밀번호 확인
-        </S.TableItem01>
-        <S.TableItem01>
+        </TableItem01>
+        <TableItem01 className="t-head">변경할 대여 비밀번호 확인</TableItem01>
+        <TableItem01>
           <Input03
             inputId="changeRentalPwCheck"
             inputMaxLength={4}
@@ -97,8 +99,8 @@ export default function RentalPw(props: IPropsRentalPw) {
             valueData={rentalPw.changeRentalPwCheck}
             placeholderData="변경할 대여 비밀번호 4자리를 재입력해주세요."
           />
-        </S.TableItem01>
-      </S.Table01>
+        </TableItem01>
+      </Table01>
       <Button01
         onClickButton={onClickButton}
         btnWidth="200px"

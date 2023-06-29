@@ -1,7 +1,14 @@
 import styled from "@emotion/styled";
 import { IIsColumns } from "./Board.types";
 
-export const Board = styled.div``;
+export const BoardWrapper = styled.div`
+  //width: 1000px;
+  overflow: hidden;
+`;
+export const Board = styled.div`
+  width: 1000px;
+  overflow: scroll;
+`;
 
 export const BoardHead = styled.div`
   height: 58px;

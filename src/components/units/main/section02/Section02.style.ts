@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
 import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
-export const Wrapper = styled.div`
-  background: #fff;
-`;
+export const Wrapper = styled.div``;
 
 export const Contents = styled.div`
   height: 720px;

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  CardMessage,
   InputCard,
   InputCardContainer,
   InputCardWrapper,
@@ -68,9 +67,6 @@ export default function Input06(props: IPropsInput06) {
           placeholder="1234"
         />
       </InputCardContainer>
-      <CardMessage>
-        * 카드번호 <strong>16자리를</strong> 입력해주세요.
-      </CardMessage>
     </InputCardWrapper>
   );
 }

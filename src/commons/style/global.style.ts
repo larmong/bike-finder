@@ -64,6 +64,13 @@ export const GlobalStyle = css`
     line-height: 23px;
     color: #bdbdbd;
   }
+  ${mediaQuery[3]} {
+    input::placeholder,
+    textarea::placeholder {
+      font-size: 14px;
+      line-height: 23px;
+    }
+  }
 `;
 
 export const Container = styled.div`

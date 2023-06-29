@@ -11,7 +11,7 @@ import { IFetchFaq, IPropsFaqBoard } from "./Board.types";
 export default function FaqBoard(props: IPropsFaqBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
     title: ["제목", "상태", "날짜"],
-    columns: "1fr 185px 220px",
+    columns: "3fr 0.7fr 1fr",
   };
   const [filteredData, setFilteredData] = useState<IFetchFaq[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -39,45 +39,52 @@ export default function FaqBoard(props: IPropsFaqBoard) {
   }, [props.boardData]);
 
   return (
-    <S.Board>
-      <Search01 handleSearch={handleSearch} />
-      <S.BoardHead isColumns={BOARD_DETAIL.columns}>
-        {BOARD_DETAIL.title.map((el: IBoardDetailTitleType, index: number) => (
-          <S.BoardItem key={index}>{el}</S.BoardItem>
-        ))}
-      </S.BoardHead>
-      {paginatedData.length === 0 ? (
-        <S.BoardBody>
-          <S.BoardItemWrapper>문의내역이 없습니다.</S.BoardItemWrapper>
-        </S.BoardBody>
-      ) : (
-        <>
+    <S.BoardWrapper>
+      <S.Board>
+        <Search01 handleSearch={handleSearch} />
+        <S.BoardHead isColumns={BOARD_DETAIL.columns}>
+          {BOARD_DETAIL.title.map(
+            (el: IBoardDetailTitleType, index: number) => (
+              <S.BoardItem key={index}>{el}</S.BoardItem>
+            )
+          )}
+        </S.BoardHead>
+        {paginatedData.length === 0 ? (
           <S.BoardBody>
-            {paginatedData?.map((el: IFetchFaq) => (
-              <S.BoardItemWrapper key={el.id} isColumns={BOARD_DETAIL.columns}>
-                <S.BoardItem className="board-item-left">
-                  <span id={el.id} onClick={props.onClickBoardDetail}>
-                    {el.title}
-                  </span>
-                </S.BoardItem>
-                <S.BoardItem>
-                  {el.state ? (
-                    <strong className="on">답변완료</strong>
-                  ) : (
-                    <strong>미답변</strong>
-                  )}
-                </S.BoardItem>
-                <S.BoardItem>{el.date}</S.BoardItem>
-              </S.BoardItemWrapper>
-            ))}
+            <S.BoardItemWrapper>문의내역이 없습니다.</S.BoardItemWrapper>
           </S.BoardBody>
-          <Pagination01
-            noticeLength={noticeLength}
-            pageSize={pageSize}
-            handlePageChange={handlePageChange}
-          />
-        </>
-      )}
-    </S.Board>
+        ) : (
+          <>
+            <S.BoardBody>
+              {paginatedData?.map((el: IFetchFaq) => (
+                <S.BoardItemWrapper
+                  key={el.id}
+                  isColumns={BOARD_DETAIL.columns}
+                >
+                  <S.BoardItem className="board-item-left">
+                    <span id={el.id} onClick={props.onClickBoardDetail}>
+                      {el.title}
+                    </span>
+                  </S.BoardItem>
+                  <S.BoardItem>
+                    {el.state ? (
+                      <strong className="on">답변완료</strong>
+                    ) : (
+                      <strong>미답변</strong>
+                    )}
+                  </S.BoardItem>
+                  <S.BoardItem>{el.date}</S.BoardItem>
+                </S.BoardItemWrapper>
+              ))}
+            </S.BoardBody>
+            <Pagination01
+              noticeLength={noticeLength}
+              pageSize={pageSize}
+              handlePageChange={handlePageChange}
+            />
+          </>
+        )}
+      </S.Board>
+    </S.BoardWrapper>
   );
 }

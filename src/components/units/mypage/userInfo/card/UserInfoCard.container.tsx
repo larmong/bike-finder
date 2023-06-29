@@ -16,6 +16,12 @@ import {
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import { IPropsUserInfoCard } from "./UserInfoCard.types";
 import { CustomMouseEvent } from "../../../../../commons/types/global.types";
+import { Notice } from "../../../../commons/notices/notice/Notice.style";
+import {
+  Message,
+  Table01,
+  TableItem01,
+} from "../../../../commons/tables/table/Table.style";
 
 export default function UserInfoCard(props: IPropsUserInfoCard) {
   const router = useRouter();
@@ -69,7 +75,7 @@ export default function UserInfoCard(props: IPropsUserInfoCard) {
 
   return (
     <S.Wrapper>
-      <S.Notice>
+      <Notice>
         · 서울자전거와 대중교통을 30분 이내에 환승하여 이용한 경우에는
         마일리지를 적립해 드립니다.
         <br />
@@ -113,38 +119,32 @@ export default function UserInfoCard(props: IPropsUserInfoCard) {
         <br />· 대중교통에 이용하시는 교통카드의 번호를 입력하셔야만
         환승마일리지가 적립됩니다. 대중교통에서 이용하시는 교통카드가 변경되는
         경우 즉시 재등록하셔야 합니다.
-      </S.Notice>
+      </Notice>
       <S.Section01>
-        <S.Table01>
-          <S.TableItem01 className="t-head">
-            개인정보를 제공 받는 자
-          </S.TableItem01>
-          <S.TableItem01 className="t-left">티머니</S.TableItem01>
-          <S.TableItem01 className="t-head">
+        <Table01 className="userCard1">
+          <TableItem01 className="t-head">개인정보를 제공 받는 자</TableItem01>
+          <TableItem01 className="t-left">티머니</TableItem01>
+          <TableItem01 className="t-head">
             개인정보를 제공 받는 자의 개인정보 이용 목적
-          </S.TableItem01>
-          <S.TableItem01 className="t-left">
+          </TableItem01>
+          <TableItem01 className="t-left">
             대중교통 간 환승에 따른 마일리지 적립
-          </S.TableItem01>
-          <S.TableItem01 className="t-head">
-            제공되는 개인정보 항목
-          </S.TableItem01>
-          <S.TableItem01 className="t-left">환승카드정보</S.TableItem01>
-          <S.TableItem01 className="t-head">
+          </TableItem01>
+          <TableItem01 className="t-head">제공되는 개인정보 항목</TableItem01>
+          <TableItem01 className="t-left">환승카드정보</TableItem01>
+          <TableItem01 className="t-head">
             개인정보를 제공받는 자의 개인정보 보유 및 이용기간
-          </S.TableItem01>
-          <S.TableItem01 className="t-left">
-            사용자 해지 요청 시까지
-          </S.TableItem01>
-          <S.TableItem01 className="t-head">
+          </TableItem01>
+          <TableItem01 className="t-left">사용자 해지 요청 시까지</TableItem01>
+          <TableItem01 className="t-head">
             개인정보 제공 동의 거부 권리 및 동의 거부에 따른 불이익 내용 또는
             제한 사항
-          </S.TableItem01>
-          <S.TableItem01 className="t-left">
+          </TableItem01>
+          <TableItem01 className="t-left">
             귀하는 개인정보 제공 동의를 거부할 권리가 있으며, 동의거부 시
             마일리지 적립을 진행할 수 없습니다.
-          </S.TableItem01>
-        </S.Table01>
+          </TableItem01>
+        </Table01>
         <Checkbox01
           onClickCb={onClickCb}
           CheckboxCont="환승마일리지 서비스 신청과 ㈜티머니의 정보제공에 동의합니다."
@@ -153,25 +153,28 @@ export default function UserInfoCard(props: IPropsUserInfoCard) {
       {cbValue ? (
         <>
           <S.Section02>
-            <S.Table02>
-              <S.TableItem02 className="t-head">카드유형</S.TableItem02>
-              <S.TableItem02>
+            <Table01 className="userCard2">
+              <TableItem01 className="t-head">카드유형</TableItem01>
+              <TableItem01>
                 <Select01
                   inputId="type"
                   SELECT_LIST={SELECT_LIST}
                   cardType={props.fetchUser?.cardInfo.type}
                   onClickSelectValue={onChangeCardInfo}
                 />
-              </S.TableItem02>
-              <S.TableItem02 className="t-head">카드번호</S.TableItem02>
-              <S.TableItem02>
+              </TableItem01>
+              <TableItem01 className="t-head">카드번호</TableItem01>
+              <TableItem01>
                 <Input06
                   inputId="number"
                   onChangeCard={onChangeCardInfo}
                   cardNum={props.fetchUser?.cardInfo.number}
                 />
-              </S.TableItem02>
-            </S.Table02>
+                <Message>
+                  * 카드번호 <strong>16자리를</strong> 입력해주세요.
+                </Message>
+              </TableItem01>
+            </Table01>
           </S.Section02>
           <Button01
             onClickButton={onClickButton}
