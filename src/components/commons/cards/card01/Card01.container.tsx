@@ -8,7 +8,7 @@ export default function Card01(props: IPropsCard01) {
   const router = useRouter();
 
   const onClickMoveToTabMenus = (event: CustomMouseEvent) => {
-    router.push(`${router.pathname}/${event.currentTarget.id}`);
+    void router.push(`${router.pathname}/${event.currentTarget.id}`);
   };
   return (
     <S.MenuCard

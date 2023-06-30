@@ -8,6 +8,7 @@ import PaymentInfo from "../item/paymentInfo/PaymentInfo.container";
 import { MdError } from "react-icons/md";
 import { useRouter } from "next/router";
 import { LoginCheck } from "../../../commons/hocs/loginCheck";
+import { Notice } from "../../../commons/notices/notice/Notice.style";
 
 function TicketPayment(props) {
   const router = useRouter();
@@ -38,21 +39,20 @@ function TicketPayment(props) {
         <MdError />
         <span>이용권 사용안내</span>
       </S.PassGuide>
-      <S.Notice>
+      <Notice>
         · 1회 1매씩 구매가 가능합니다.
         <br />
         · 대여시간은 1시간이며, 정해진 기간동안, 대여 반납이 가능합니다.
         <br />
         · 초과시 5분마다 추가요금(200원)과금됩니다.
         <br />
-        <strong>
+        <em>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;예시) 기본 초과 1분 ~ 5분 : 200원, 6분 ~
           10분 : 400원
-        </strong>
-        <br />
+        </em>
         · 추가요금은 이용권 결제수단으로 자동결제됩니다.
         <br />
-      </S.Notice>
+      </Notice>
       <S.Contents>
         <S.ContentLeft>
           <S.SectionGroup>
@@ -75,6 +75,7 @@ function TicketPayment(props) {
                 inputType="text"
                 onChangeValue={onChangeMileageValue}
                 valueData={value}
+                inputId="mileageValue"
                 placeholderData="최소 100마일리지 부터 사용 가능합니다."
               />
               <S.MileageGroup>

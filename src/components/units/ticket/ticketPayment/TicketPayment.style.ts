@@ -1,10 +1,14 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  ${mediaQuery[2]} {
+    width: calc(100% - 3px);
+  }
 `;
 
 export const PassGuide = styled.div`
@@ -24,18 +28,11 @@ export const PassGuide = styled.div`
     font-size: 14px;
     letter-spacing: -0.07em;
   }
-`;
-
-export const Notice = styled.div`
-  margin-top: -1px;
-  padding: 30px 20px;
-  border: 1px solid #e9e9e9;
-  font-size: 14px;
-  line-height: 23px;
-  letter-spacing: -0.07em;
-  strong {
-    font-weight: 700;
-    color: #dc1919;
+  ${mediaQuery[1]} {
+    top: -113px;
+  }
+  ${mediaQuery[2]} {
+    top: -126px;
   }
 `;
 
@@ -46,18 +43,33 @@ export const Contents = styled.div`
     padding: 30px 20px;
     width: 50%;
   }
+  ${mediaQuery[1]} {
+    flex-direction: column;
+    gap: 50px;
+    > div {
+      padding: 0;
+      width: 100%;
+    }
+  }
 `;
 
 export const SectionGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  ${mediaQuery[2]} {
+    gap: 12px;
+  }
 `;
 export const SectionTitle = styled.p`
   font-weight: 700;
   font-size: 20px;
   line-height: 25px;
   letter-spacing: -0.07em;
+  ${mediaQuery[2]} {
+    font-size: 17px;
+    line-height: 20px;
+  }
 `;
 
 export const MileageGroup = styled.p`
@@ -77,6 +89,9 @@ export const ContentLeft = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+  ${mediaQuery[1]} {
+    border-right: none;
+  }
 `;
 
 export const ContentRight = styled.div`
@@ -97,5 +112,9 @@ export const TotalWrapper = styled.div`
   padding: 12px 20px;
   span {
     color: #0d8f68;
+  }
+  ${mediaQuery[2]} {
+    padding: 12px;
+    font-size: 17px;
   }
 `;

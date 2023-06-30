@@ -1,15 +1,22 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const Radio = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  ${mediaQuery[2]} {
+    gap: 12px;
+  }
 `;
 
 export const RadioLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 6px;
+  ${mediaQuery[2]} {
+    gap: 4px;
+  }
 `;
 
 export const RadioName = styled.span`
@@ -18,6 +25,10 @@ export const RadioName = styled.span`
   line-height: 20px;
   letter-spacing: -0.07em;
   color: #666666;
+  ${mediaQuery[2]} {
+    font-size: 14px;
+    line-height: 10px;
+  }
 `;
 
 export const RadioBtn = styled.input`
@@ -29,6 +40,10 @@ export const RadioBtn = styled.input`
     height: 19px;
     border-radius: 50%;
     border: 2px solid #e9e9e9;
+    ${mediaQuery[2]} {
+      width: 17px;
+      height: 17px;
+    }
   }
   &[type="radio"]:checked {
     position: relative;
@@ -44,5 +59,9 @@ export const RadioBtn = styled.input`
     height: 11px;
     border-radius: 50%;
     background: #0d8f68;
+    ${mediaQuery[2]} {
+      width: 8px;
+      height: 8px;
+    }
   }
 `;

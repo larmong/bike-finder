@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const PaymentList = styled.ul`
   display: flex;
@@ -10,7 +11,6 @@ export const ListItem = styled.li`
   line-height: 18px;
   display: flex;
   align-items: center;
-
   p {
     position: relative;
     display: inline-block;
@@ -31,6 +31,10 @@ export const ListItem = styled.li`
   }
   span {
     font-weight: 400;
+  }
+  ${mediaQuery[2]} {
+    font-size: 15px;
+    line-height: 16px;
   }
 `;
 

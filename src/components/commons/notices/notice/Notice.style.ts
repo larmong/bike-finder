@@ -21,6 +21,11 @@ export const Notice = styled.div`
     color: #fff;
     font-weight: 700;
   }
+  em {
+    display: block;
+    font-weight: 700;
+    color: #dc1919;
+  }
   ${mediaQuery[1]} {
     padding: 20px 15px;
     font-size: 14px;
