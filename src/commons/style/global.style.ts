@@ -64,7 +64,7 @@ export const GlobalStyle = css`
     line-height: 23px;
     color: #bdbdbd;
   }
-  ${mediaQuery[3]} {
+  ${mediaQuery[1]} {
     input::placeholder,
     textarea::placeholder {
       font-size: 14px;

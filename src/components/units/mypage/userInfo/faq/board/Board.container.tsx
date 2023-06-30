@@ -7,11 +7,12 @@ import {
   IBoardDetailType,
 } from "../../../../../commons/boards/board/Board.types";
 import { IFetchFaq, IPropsFaqBoard } from "./Board.types";
+import { getDate } from "../../../../../commons/utils/utils";
 
 export default function FaqBoard(props: IPropsFaqBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
     title: ["제목", "상태", "날짜"],
-    columns: "3fr 0.7fr 1fr",
+    columns: "3fr 1.5fr 2fr",
   };
   const [filteredData, setFilteredData] = useState<IFetchFaq[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -73,7 +74,7 @@ export default function FaqBoard(props: IPropsFaqBoard) {
                       <strong>미답변</strong>
                     )}
                   </S.BoardItem>
-                  <S.BoardItem>{el.date}</S.BoardItem>
+                  <S.BoardItem>{getDate(el.date)}</S.BoardItem>
                 </S.BoardItemWrapper>
               ))}
             </S.BoardBody>

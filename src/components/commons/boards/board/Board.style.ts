@@ -1,12 +1,14 @@
 import styled from "@emotion/styled";
 import { IIsColumns } from "./Board.types";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const BoardWrapper = styled.div`
-  //width: 1000px;
   overflow: hidden;
+  ${mediaQuery[1]} {
+    font-size: 14px;
+  }
 `;
 export const Board = styled.div`
-  width: 1000px;
   overflow: scroll;
 `;
 
@@ -20,6 +22,9 @@ export const BoardHead = styled.div`
   font-weight: 700;
   border-top: 1px solid #999999;
   border-bottom: 1px solid #999999;
+  ${mediaQuery[1]} {
+    height: 50px;
+  }
 `;
 export const BoardBody = styled.div``;
 
@@ -31,6 +36,9 @@ export const BoardItemWrapper = styled.div`
   align-items: center;
   border-bottom: 1px solid #e9e9e9;
   color: #666666;
+  ${mediaQuery[1]} {
+    height: 42px;
+  }
 `;
 
 export const BoardItem = styled.span`
@@ -51,6 +59,10 @@ export const BoardItem = styled.span`
       font-weight: 700;
       color: #0d8f68;
     }
+  }
+  ${mediaQuery[1]} {
+    padding: 0 10px;
+    font-size: 14px;
   }
 `;
 
@@ -73,6 +85,17 @@ export const NoticeBoardItem = styled.span`
   }
   span {
     cursor: pointer;
+  }
+  ${mediaQuery[1]} {
+    padding: 0 10px;
+    font-size: 14px;
+    &.board-item-left {
+      font-size: 14px;
+    }
+    em {
+      font-size: 15px;
+      margin-right: 10px;
+    }
   }
 `;
 

@@ -6,8 +6,10 @@ import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 export const Wrapper = styled.div`
   position: relative;
   width: ${(props: IIsSelect) => props.isSelect || "500px"};
+  font-size: 16px;
   ${mediaQuery[0]} {
     width: 100%;
+    font-size: 14px;
   }
 `;
 
@@ -20,7 +22,6 @@ export const SelectBox = styled.div`
   border-radius: 5px;
   border: 1.5px solid #e9e9e9;
   padding: 14px 16px;
-  font-size: 14px;
   cursor: pointer;
   ${mediaQuery[0]} {
     height: 38px;

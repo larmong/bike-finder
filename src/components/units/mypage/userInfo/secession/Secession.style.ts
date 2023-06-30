@@ -1,16 +1,7 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div``;
-
-export const Notice = styled.div`
-  margin-top: -1px;
-  padding: 30px 20px;
-  border: 1px solid #e9e9e9;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: -0.07em;
-  line-height: 23px;
-`;
 
 export const Contents = styled.div`
   margin-top: 80px;
@@ -18,10 +9,9 @@ export const Contents = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 50px;
-  input {
-    padding: 12px 16px;
-    width: 330px;
-    height: 44px;
+  ${mediaQuery[1]} {
+    margin-top: 50px;
+    gap: 30px;
   }
 `;
 export const Message = styled.div`
@@ -39,5 +29,27 @@ export const Message = styled.div`
     font-size: 20px;
     line-height: 30px;
     color: #666666;
+    br {
+      &:last-of-type {
+        display: none;
+      }
+    }
+  }
+  ${mediaQuery[1]} {
+    p {
+      margin-bottom: 10px;
+      font-size: 24px;
+      line-height: 20px;
+    }
+    span {
+      font-size: 14px;
+      line-height: 14px;
+      letter-spacing: -1px;
+      br {
+        &:last-of-type {
+          display: block;
+        }
+      }
+    }
   }
 `;

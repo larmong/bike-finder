@@ -11,7 +11,7 @@ import Pagination01 from "../../../../commons/paginations/pagination01/Paginatio
 export default function NoticeBoard(props: IPropsNoticeBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
     title: ["제목", "날짜"],
-    columns: "1fr 185px",
+    columns: "1fr 140px",
   };
   const [filteredData, setFilteredData] = useState<IFetchNotice[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);

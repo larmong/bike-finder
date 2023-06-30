@@ -10,6 +10,7 @@ import {
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import { collection, doc, deleteDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
+import { Notice } from "../../../../commons/notices/notice/Notice.style";
 
 export default function Secession() {
   const router = useRouter();
@@ -41,7 +42,7 @@ export default function Secession() {
 
   return (
     <S.Wrapper>
-      <S.Notice>
+      <Notice>
         · 탈퇴 신청 즉시 회원탈퇴 처리되며, 해당 아이디의 회원정보 및 마일리지는
         삭제처리되며, 복원할 수 없습니다.
         <br />
@@ -50,7 +51,7 @@ export default function Secession() {
         · 이용권 기간이 남아있는 경우 즉시 탈퇴가 불가능 하오니 고객센터에 문의
         바랍니다.
         <br />
-      </S.Notice>
+      </Notice>
       <S.Contents>
         <S.Message>
           <p>
@@ -59,7 +60,8 @@ export default function Secession() {
           <span>
             서울자전거를 이용해 주셔서 감사합니다.
             <br />
-            회원탈퇴를 하실 경우 위와 같이 안내드린대로 회원정보가 처리됩니다.
+            회원탈퇴를 하실 경우 위와 같이 안내드린대로 <br />
+            회원정보가 처리됩니다.
           </span>
         </S.Message>
         <Select01
