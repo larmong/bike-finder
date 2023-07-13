@@ -35,6 +35,7 @@ export const CheckboxName = styled.span`
     line-height: 24px;
     letter-spacing: -0.05em;
     color: #999999;
+    background: #000;
   }
   ${mediaQuery[1]} {
   }
