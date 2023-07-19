@@ -110,7 +110,13 @@ export const BoardItemState = styled.span`
 
 // SearchWrapper
 export const SearchWrapper = styled.div`
+  position: relative;
   margin-bottom: 40px;
+  border-top: 1px solid #e9e9e9;
+  ${mediaQuery[2]} {
+    width: calc(100% - 2px);
+    margin-top: -1px;
+  }
 `;
 export const Search = styled.div`
   display: flex;
@@ -128,7 +134,15 @@ export const SearchHead = styled.div`
   color: #666666;
   background: #f9f9f9;
   border-right: 1px solid #e9e9e9;
+  ${mediaQuery[0]} {
+    width: 130px;
+  }
 `;
 export const SearchBody = styled.div`
+  width: calc(100% - 139px);
   padding: 18px 30px;
+  ${mediaQuery[0]} {
+    width: calc(100% - 130px);
+    padding: 18px;
+  }
 `;

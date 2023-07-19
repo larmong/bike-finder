@@ -21,7 +21,7 @@ export default function PaymentBoard(props: IPropsPaymentBoard) {
       "상태",
       "환불/취소",
     ],
-    columns: "150px 120px 1fr 120px 150px 120px 120px",
+    columns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
   };
 
   const [filteredData, setFilteredData] = useState<IFetchPayment[]>([]);

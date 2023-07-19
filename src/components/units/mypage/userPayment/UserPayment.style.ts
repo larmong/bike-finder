@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -23,5 +24,10 @@ export const RefundGuide = styled.div`
     font-weight: 700;
     font-size: 14px;
     letter-spacing: -0.07em;
+  }
+  ${mediaQuery[2]} {
+    top: -120px;
+    right: 2px;
+    gap: 2px;
   }
 `;
