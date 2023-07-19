@@ -1,14 +1,14 @@
-import * as S from "../../../../commons/boards/board/Board.style";
-import { getPrice } from "../../../../commons/utils/utils";
+import * as S from "../../../../../commons/boards/board/Board.style";
 import { useEffect, useState } from "react";
-import Radio02 from "../../../../commons/inputs/radio/radio02/Radio02.container";
-import Button02 from "../../../../commons/buttons/button02/Button02.container";
-import Pagination01 from "../../../../commons/paginations/pagination01/Pagination01.container";
-import { IFetchPayment, IPropsPaymentBoard } from "./Board.types";
+import Pagination01 from "../../../../../commons/paginations/pagination01/Pagination01.container";
 import {
   IBoardDetailTitleType,
   IBoardDetailType,
-} from "../../../../commons/boards/board/Board.types";
+} from "../../../../../commons/boards/board/Board.types";
+import { IFetchPayment, IPropsPaymentBoard } from "./Board.types";
+import Radio02 from "../../../../../commons/inputs/radio/radio02/Radio02.container";
+import Button02 from "../../../../../commons/buttons/button02/Button02.container";
+import { getPrice } from "../../../../../commons/utils/utils";
 
 export default function PaymentBoard(props: IPropsPaymentBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
@@ -128,11 +128,15 @@ export default function PaymentBoard(props: IPropsPaymentBoard) {
             ))
           )}
         </S.BoardBody>
-        <Pagination01
-          noticeLength={noticeLength}
-          pageSize={pageSize}
-          handlePageChange={handlePageChange}
-        />
+        {paginatedData.length === 0 ? (
+          ""
+        ) : (
+          <Pagination01
+            noticeLength={noticeLength}
+            pageSize={pageSize}
+            handlePageChange={handlePageChange}
+          />
+        )}
       </S.Board>
     </>
   );

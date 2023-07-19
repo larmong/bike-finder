@@ -8,7 +8,7 @@ export default function Tab01(props: IPropsTab01) {
   const pathname = router.pathname;
 
   const onClickMoveToTabMenus = (event: CustomMouseEvent) => {
-    router.push(`/${event.currentTarget.id}`);
+    void router.push(`/${event.currentTarget.id}`);
   };
 
   return (

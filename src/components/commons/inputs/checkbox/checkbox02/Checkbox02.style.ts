@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -34,5 +35,7 @@ export const CheckboxName = styled.span`
     line-height: 24px;
     letter-spacing: -0.05em;
     color: #999999;
+  }
+  ${mediaQuery[1]} {
   }
 `;

@@ -3,7 +3,7 @@ import { CustomMouseEvent } from "../../../../commons/types/global.types";
 export interface IPropsTab01 {
   TAB_MENUS: ITabMenus[];
   tabWidth: string;
-  isLength: number;
+  isLength?: any;
 }
 
 export interface IPropsTab01UI {
@@ -15,7 +15,7 @@ export interface IPropsTab01UI {
 }
 
 export interface IIsLength {
-  isLength: number | undefined;
+  isLength?: number | undefined;
 }
 
 export interface ITabMenus {
