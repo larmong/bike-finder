@@ -25,7 +25,7 @@ export const RefundGuide = styled.div`
     font-size: 14px;
     letter-spacing: -0.07em;
   }
-  ${mediaQuery[2]} {
+  ${mediaQuery[1]} {
     top: -120px;
     right: 2px;
     gap: 2px;

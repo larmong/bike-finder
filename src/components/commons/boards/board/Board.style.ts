@@ -146,3 +146,79 @@ export const SearchBody = styled.div`
     padding: 18px;
   }
 `;
+
+export const BoardTitle = styled.p`
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  color: #444444;
+  margin-bottom: 20px;
+`;
+
+// Billing
+export const BillingContainer = styled.div``;
+export const Billing = styled.div`
+  display: flex;
+  border: 1px solid #e9e9e9;
+  margin-top: -1px;
+`;
+export const BillingHead = styled.div`
+  width: 139px;
+  padding: 18px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #666666;
+  background: #f9f9f9;
+  border-right: 1px solid #e9e9e9;
+`;
+export const BillingBody = styled.div`
+  padding: 18px 30px;
+  font-weight: 400;
+  color: #666666;
+  > span {
+    color: #0d8f68;
+  }
+`;
+export const TotalPayment = styled.div`
+  margin-top: -1px;
+  width: 100%;
+  height: 85px;
+  padding: 30px;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.07em;
+  display: flex;
+  justify-content: space-between;
+  background: #f9f9f9;
+  border-top: 1px solid #999999;
+  border-bottom: 1px solid #999999;
+  p:last-of-type {
+    span {
+      color: #0d8f68;
+    }
+  }
+`;
+export const BillingBottom = styled.div`
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+`;
+export const BillingWrapper = styled.div`
+  position: relative;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #999999;
+  }
+`;

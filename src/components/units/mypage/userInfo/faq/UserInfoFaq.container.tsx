@@ -14,9 +14,7 @@ export default function UserInfoFaq() {
 
   const [fetchBoard, setFetchBoard] = useState<IFetchFaq[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>("");
-  const [loginUser, setLoginUser] = useRecoilState<string | null>(
-    loginUserState
-  );
+  const [loginUser] = useRecoilState<string | null>(loginUserState);
 
   const handleSearch = (keyword: string) => {
     void setSearchKeyword(keyword);

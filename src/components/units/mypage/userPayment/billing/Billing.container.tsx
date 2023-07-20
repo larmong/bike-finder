@@ -1,22 +1,27 @@
 import * as S from "./Billing.style";
+import BillingBoard from "./board/Board.container";
+import { Notice } from "../../../../commons/notices/notice/Notice.style";
+import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
-import { IFetchBoard } from "../../../../commons/boards/board05/Board05.types";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
-import Board05 from "../../../../commons/boards/board05/Board05.container";
+import { loginUserState } from "../../../../../commons/store/store";
+import { IFetchBilling } from "./board/Board.types";
+import { CustomMouseEvent } from "../../../../../commons/types/global.types";
 
 export default function Billing() {
-  const [fetchBoard, setFetchBoard] = useState<IFetchBoard[]>([]);
+  const [loginUser] = useRecoilState<string | null>(loginUserState);
+  const [fetchBoard, setFetchBoard] = useState<IFetchBilling[]>([]);
+  const [paymentMethodType, setPaymentMethodType] = useState<number>(0);
   const [nonPaymentLength, setNonPaymentLength] = useState<number>(0);
   const [nonTotalPayment, setNonTotalPayment] = useState<number>(0);
+  const [cbValue, setCbValue] = useState(false);
 
-  const BOARD_HEAD = ["대여일시", "미납내역", "미납금액", "상태"];
-  const BOARD_COLUMNS = "120px 1fr 120px 120px";
   const PAYMENT_METHOD_TYPE = [
     {
       id: 0,
       name: "신용카드",
-      checkedState: false,
+      checkedState: true,
     },
     {
       id: 1,
@@ -45,14 +50,20 @@ export default function Billing() {
     },
   ];
 
-  const [paymentMethodType, setPaymentMethodType] = useState<number>(0);
-
-  const onClickPaymentMethodType = (radioNum) => {
-    setPaymentMethodType(Number(radioNum));
+  const onClickCb = (event: CustomMouseEvent) => {
+    const target = event.target as HTMLInputElement;
+    setCbValue(target.checked);
   };
-
   const onClickPaymentButton = () => {
-    // 초과 이용 내역 결제 버튼
+    if (cbValue) {
+      if (nonPaymentLength === 0) {
+        alert("결제할 금액이 없습니다!");
+      } else {
+        // 결제페이지 이동
+      }
+    } else {
+      alert("추가 요금 약관에 동의해주세요!");
+    }
   };
 
   useEffect(() => {
@@ -60,7 +71,7 @@ export default function Billing() {
       try {
         const data = await query(
           collection(db, "billing"),
-          where("userId", "==", "larmong"),
+          where("userId", "==", loginUser),
           orderBy("date", "desc")
         );
         const getData = await getDocs(data);
@@ -71,10 +82,12 @@ export default function Billing() {
 
         setFetchBoard(result);
 
-        const getNonPaymentData = (fetchBoard) => {
-          const nonPaymentData = fetchBoard.filter((el) => el.state === false);
+        const getNonPaymentData = (fetchBoard: IFetchBilling[]) => {
+          const nonPaymentData = fetchBoard.filter(
+            (el: IFetchBilling) => !el.state
+          );
           const totalPrice = nonPaymentData.reduce(
-            (total, el) => total + el.price,
+            (total: number, el: IFetchBilling) => total + el.price,
             0
           );
           setNonPaymentLength(nonPaymentData.length);
@@ -86,27 +99,26 @@ export default function Billing() {
         console.error(error);
       }
     };
-    getFetchBoardData();
-  }, []);
+    void getFetchBoardData();
+  }, [loginUser]);
 
   return (
     <S.Wrapper>
-      <S.Notice>
+      <Notice>
         · 이용 가능시간은 첫 회 대여시점을 기준으로 계산합니다.
         <br />· 서울자전거 모든 대여소에서 사용이 가능합니다.
-        <strong>· 서울자전거 환불규정에 따릅니다.</strong>· 이용권을 다른
-        사람에게 양도할 수 없으며,양도로 인해 발생하는 불이익은 구매자가
-        책임지셔야 합니다.
-      </S.Notice>
-      <Board05
+        <span>· 서울자전거 환불규정에 따릅니다.</span>· 이용권을 다른 사람에게
+        양도할 수 없으며,양도로 인해 발생하는 불이익은 구매자가 책임지셔야
+        합니다.
+      </Notice>
+      <BillingBoard
+        boardData={fetchBoard}
+        setPaymentMethodType={setPaymentMethodType}
         PAYMENT_METHOD_TYPE={PAYMENT_METHOD_TYPE}
-        onClickPaymentMethodType={onClickPaymentMethodType}
-        BOARD_COLUMNS={BOARD_COLUMNS}
-        BOARD_HEAD={BOARD_HEAD}
-        fetchBoard={fetchBoard}
-        onClickPaymentButton={onClickPaymentButton}
-        nonPaymentLength={nonPaymentLength}
         nonTotalPayment={nonTotalPayment}
+        nonPaymentLength={nonPaymentLength}
+        onClickPaymentButton={onClickPaymentButton}
+        onClickCb={onClickCb}
       />
     </S.Wrapper>
   );
