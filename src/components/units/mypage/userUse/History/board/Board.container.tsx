@@ -1,15 +1,13 @@
 import * as S from "../../../../../commons/boards/board/Board.style";
 import { useEffect, useState } from "react";
+import { MdFilterDrama, MdSchedule, MdStraighten } from "react-icons/md";
+import Radio02 from "../../../../../commons/inputs/radio/radio02/Radio02.container";
 import Pagination01 from "../../../../../commons/paginations/pagination01/Pagination01.container";
+import { IFetchHistory, IPropsHistoryBoard } from "./Board.types";
 import {
   IBoardDetailTitleType,
   IBoardDetailType,
 } from "../../../../../commons/boards/board/Board.types";
-import { IFetchHistory, IPropsHistoryBoard } from "./Board.types";
-import Radio02 from "../../../../../commons/inputs/radio/radio02/Radio02.container";
-import Button02 from "../../../../../commons/buttons/button02/Button02.container";
-import { getPrice } from "../../../../../commons/utils/utils";
-import { MdFilterDrama, MdSchedule, MdStraighten } from "react-icons/md";
 
 export default function HistoryBoard(props: IPropsHistoryBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
@@ -88,7 +86,7 @@ export default function HistoryBoard(props: IPropsHistoryBoard) {
         <S.BoardBody>
           {paginatedData.length === 0 ? (
             <S.BoardBody>
-              <S.BoardItemWrapper>결제내역이 없습니다.</S.BoardItemWrapper>
+              <S.BoardItemWrapper>대여이력이 없습니다.</S.BoardItemWrapper>
             </S.BoardBody>
           ) : (
             paginatedData?.map((el: IFetchHistory) => (

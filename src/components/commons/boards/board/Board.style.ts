@@ -252,15 +252,18 @@ export const AllUse = styled.div`
   font-size: 21px;
   letter-spacing: -0.1em;
   color: #444444;
+
   svg {
     width: 30px;
     height: 30px;
     color: #0d8f68;
   }
+
   > div {
     display: flex;
     align-items: center;
     gap: 5px;
+
     p {
       span {
         display: inline-block;
@@ -269,6 +272,33 @@ export const AllUse = styled.div`
         color: #0d8f68;
         letter-spacing: 0;
       }
+    }
+  }
+
+  ${mediaQuery[1]} {
+    margin: 40px 0;
+    font-size: 14px;
+
+    svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    > div {
+      display: initial;
+      text-align: center;
+
+      p {
+        span {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  ${mediaQuery[3]} {
+    > div:last-of-type {
+      display: none;
     }
   }
 `;
