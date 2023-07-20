@@ -1,16 +1,14 @@
 import * as S from "./Refund.style";
+import RefundBoard from "./board/Board.container";
+import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
-import { IFetchBoard } from "../../../../commons/boards/board05/Board05.types";
-import Board06 from "../../../../commons/boards/board06/Board06.container";
+import { loginUserState } from "../../../../../commons/store/store";
+import { IFetchRefund } from "./board/Board.types";
 
 export default function Refund() {
-  const [fetchBoard, setFetchBoard] = useState<IFetchBoard[]>([]);
-
-  const BOARD_HEAD = ["신청일자", "환불금액", "결제상품", "상태", "비고"];
-  const BOARD_COLUMNS = "120px 120px 200px 120px 1fr";
-  const SEARCH_TYPE = [
+  const PAYMENT_DATE_TYPE = [
     {
       id: 0,
       name: "전체",
@@ -43,18 +41,17 @@ export default function Refund() {
     },
   ];
 
-  const [searchType, setSearchType] = useState<number>(0);
-
-  const onClickSearchType = (radioNum) => {
-    setSearchType(Number(radioNum));
-  };
+  const [loginUser] = useRecoilState<string | null>(loginUserState);
+  const [fetchBoard, setFetchBoard] = useState<IFetchRefund[]>([]);
+  const [filteredBoard, setFilteredBoard] = useState<IFetchRefund[]>([]);
+  const [paymentDateType, setPaymentDateType] = useState<number>(0);
 
   useEffect(() => {
     const getFetchBoardData = async () => {
       try {
         const data = await query(
           collection(db, "refund"),
-          where("userId", "==", "larmong"),
+          where("userId", "==", loginUser),
           orderBy("date", "desc")
         );
         const getData = await getDocs(data);
@@ -68,17 +65,41 @@ export default function Refund() {
         console.error(error);
       }
     };
-    getFetchBoardData();
-  }, []);
+    void getFetchBoardData();
+  }, [loginUser]);
+
+  useEffect(() => {
+    let filteredData = fetchBoard;
+
+    if (paymentDateType !== 0) {
+      const currentDate = new Date();
+      let startDate = new Date();
+
+      if (paymentDateType === 1) {
+        startDate.setDate(currentDate.getDate() - 7);
+      } else if (paymentDateType === 2) {
+        startDate.setMonth(currentDate.getMonth() - 1);
+      } else if (paymentDateType === 3) {
+        startDate.setMonth(currentDate.getMonth() - 3);
+      } else if (paymentDateType === 4) {
+        startDate.setMonth(currentDate.getMonth() - 6);
+      } else if (paymentDateType === 5) {
+        startDate.setFullYear(currentDate.getFullYear() - 1);
+      }
+      filteredData = filteredData.filter((item: IFetchRefund) => {
+        const paymentDate = new Date(item.date);
+        return paymentDate >= startDate && paymentDate <= currentDate;
+      });
+    }
+    setFilteredBoard(filteredData);
+  }, [fetchBoard, paymentDateType]);
 
   return (
     <S.Wrapper>
-      <Board06
-        BOARD_COLUMNS={BOARD_COLUMNS}
-        BOARD_HEAD={BOARD_HEAD}
-        fetchBoard={fetchBoard}
-        SEARCH_TYPE={SEARCH_TYPE}
-        onClickSearchType={onClickSearchType}
+      <RefundBoard
+        boardData={filteredBoard}
+        PAYMENT_DATE_TYPE={PAYMENT_DATE_TYPE}
+        setPaymentDateType={setPaymentDateType}
       />
     </S.Wrapper>
   );
