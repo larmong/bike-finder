@@ -43,7 +43,7 @@ export const Manus = styled.li<ITabWidth & { isLength: number }>`
     &:first-of-type {
       margin-left: -1px;
     }
-    &:nth-child(2n) {
+    &:nth-of-type(2n) {
       margin-left: -1px;
     }
   }

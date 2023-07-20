@@ -242,3 +242,36 @@ export const BillingWrapper = styled.div`
     background: #999999;
   }
 `;
+
+export const AllUse = styled.div`
+  margin: 50px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: -0.1em;
+  color: #444444;
+  svg {
+    width: 30px;
+    height: 30px;
+    color: #0d8f68;
+  }
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    p {
+      span {
+        display: inline-block;
+        margin: 0 6px;
+        font-size: 28px;
+        color: #0d8f68;
+        letter-spacing: 0;
+      }
+    }
+  }
+`;
+export const Hours = styled.div``;
+export const Distance = styled.div``;
+export const Effect = styled.div``;
