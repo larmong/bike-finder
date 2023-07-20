@@ -4,15 +4,14 @@ import { IFetchBoard } from "../../../../commons/boards/board05/Board05.types";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import Board08 from "../../../../commons/boards/board08/board08.container";
+import HistoryBoard from "./board/Board.container";
+import { IFetchPass } from "./board/Board.types";
 
 export default function Pass() {
   const [fetchBoard, setFetchBoard] = useState<IFetchBoard[]>([]);
   const [userPass, setUserPass] = useState<IFetchBoard[]>([]);
   const [receivedPass, setReceivedPass] = useState<IFetchBoard[]>([]);
   const [sentPass, setSentPass] = useState<IFetchBoard[]>([]);
-
-  const BOARD_HEAD = ["등록일자", "이용권", "사용기한", "상태"];
-  const BOARD_COLUMNS = "200px 200px 1fr 200px";
 
   const PASS_TYPE = [
     {
@@ -33,10 +32,6 @@ export default function Pass() {
   ];
   const [passType, setPassType] = useState<number>(0);
 
-  const onClickPassType = (radioNum) => {
-    setPassType(Number(radioNum));
-  };
-
   useEffect(() => {
     const getFetchBoardData = async () => {
       try {
@@ -53,10 +48,16 @@ export default function Pass() {
 
         setFetchBoard(result);
 
-        const getFilterData = (fetchBoard) => {
-          const userPassData = fetchBoard.filter((el) => el.type === 0);
-          const receivedPassData = fetchBoard.filter((el) => el.type === 1);
-          const sentPassData = fetchBoard.filter((el) => el.type === 2);
+        const getFilterData = (fetchBoard: IFetchPass[]) => {
+          const userPassData = fetchBoard.filter(
+            (el: IFetchPass) => el.type === 0
+          );
+          const receivedPassData = fetchBoard.filter(
+            (el: IFetchPass) => el.type === 1
+          );
+          const sentPassData = fetchBoard.filter(
+            (el: IFetchPass) => el.type === 2
+          );
           setUserPass(userPassData);
           setReceivedPass(receivedPassData);
           setSentPass(sentPassData);
@@ -66,26 +67,22 @@ export default function Pass() {
         console.error(error);
       }
     };
-    getFetchBoardData();
+    void getFetchBoardData();
   }, []);
 
   return (
-    <S.Wrapper>
-      <Board08
-        fetchBoard={
-          passType === 0
-            ? userPass
-            : passType === 1
-            ? receivedPass
-            : passType === 2
-            ? sentPass
-            : userPass
-        }
-        BOARD_HEAD={BOARD_HEAD}
-        BOARD_COLUMNS={BOARD_COLUMNS}
-        SEARCH_TYPE={PASS_TYPE}
-        onClickSearchType={onClickPassType}
-      />
-    </S.Wrapper>
+    <HistoryBoard
+      boardData={
+        passType === 0
+          ? userPass
+          : passType === 1
+          ? receivedPass
+          : passType === 2
+          ? sentPass
+          : userPass
+      }
+      setPassType={setPassType}
+      PASS_TYPE={PASS_TYPE}
+    />
   );
 }

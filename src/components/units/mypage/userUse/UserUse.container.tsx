@@ -3,7 +3,7 @@ import { IPropsUserUse } from "./UserUse.types";
 import Pass from "./pass/Pass.container";
 import Tab01 from "../../../commons/tabs/tab01/Tab01.container";
 import Mileage from "./mileage/Mileage.container";
-import History from "./History/History.container";
+import History from "./history/History.container";
 
 export default function UserUse(props: IPropsUserUse) {
   const TAB_MENUS = [
