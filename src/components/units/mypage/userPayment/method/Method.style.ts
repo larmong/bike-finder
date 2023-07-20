@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div``;
 
@@ -31,6 +32,15 @@ export const Message = styled.p`
   color: #444444;
   span {
     color: #0d8f68;
+  }
+  ${mediaQuery[1]} {
+    font-size: 20px;
+  }
+  ${mediaQuery[2]} {
+    font-size: 16px;
+  }
+  ${mediaQuery[3]} {
+    font-size: 14px;
   }
 `;
 
