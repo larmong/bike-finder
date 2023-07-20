@@ -35,11 +35,6 @@ export default function Mileage() {
       name: "6개월",
       checkedState: false,
     },
-    {
-      id: 5,
-      name: "직접입력",
-      checkedState: false,
-    },
   ];
 
   const [loginUser] = useRecoilState<string | null>(loginUserState);

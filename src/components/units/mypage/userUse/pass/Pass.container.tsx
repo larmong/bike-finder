@@ -1,18 +1,12 @@
-import * as S from "./Pass.style";
+import HistoryBoard from "./board/Board.container";
+import { useRecoilState } from "recoil";
 import { useEffect, useState } from "react";
-import { IFetchBoard } from "../../../../commons/boards/board05/Board05.types";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
-import Board08 from "../../../../commons/boards/board08/board08.container";
-import HistoryBoard from "./board/Board.container";
+import { loginUserState } from "../../../../../commons/store/store";
 import { IFetchPass } from "./board/Board.types";
 
 export default function Pass() {
-  const [fetchBoard, setFetchBoard] = useState<IFetchBoard[]>([]);
-  const [userPass, setUserPass] = useState<IFetchBoard[]>([]);
-  const [receivedPass, setReceivedPass] = useState<IFetchBoard[]>([]);
-  const [sentPass, setSentPass] = useState<IFetchBoard[]>([]);
-
   const PASS_TYPE = [
     {
       id: 0,
@@ -30,6 +24,12 @@ export default function Pass() {
       checkedState: false,
     },
   ];
+
+  const [loginUser] = useRecoilState<string | null>(loginUserState);
+  const [fetchBoard, setFetchBoard] = useState<IFetchPass[]>([]);
+  const [userPass, setUserPass] = useState<IFetchPass[]>([]);
+  const [receivedPass, setReceivedPass] = useState<IFetchPass[]>([]);
+  const [sentPass, setSentPass] = useState<IFetchPass[]>([]);
   const [passType, setPassType] = useState<number>(0);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function Pass() {
       try {
         const data = await query(
           collection(db, "pass"),
-          where("userId", "==", "larmong"),
+          where("userId", "==", loginUser),
           orderBy("date", "desc")
         );
         const getData = await getDocs(data);
@@ -68,7 +68,7 @@ export default function Pass() {
       }
     };
     void getFetchBoardData();
-  }, []);
+  }, [loginUser]);
 
   return (
     <HistoryBoard
