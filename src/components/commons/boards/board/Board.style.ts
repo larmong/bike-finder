@@ -305,3 +305,14 @@ export const AllUse = styled.div`
 export const Hours = styled.div``;
 export const Distance = styled.div``;
 export const Effect = styled.div``;
+
+export const AllMileage = styled.div`
+  margin-bottom: 15px;
+  text-align: right;
+  font-size: 15px;
+  color: #555555;
+  span {
+    font-weight: 700;
+    color: #0d8f68;
+  }
+`;
