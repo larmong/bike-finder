@@ -75,7 +75,7 @@ export default function BillingBoard(props: IPropsBillingBoard) {
         <S.BillingBottom>
           <Checkbox01
             onClickCb={props.onClickCb}
-            CheckboxCont="추가요금자동결제, 환불규정, 이용약관에 동의하며 결제를 진행합니다."
+            CheckboxCont="초과이용결제에 관한 약관에 동의하며 결제를 진행합니다."
           />
           <Button01
             onClickButton={props.onClickPaymentButton}

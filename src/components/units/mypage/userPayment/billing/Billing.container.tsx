@@ -62,7 +62,7 @@ export default function Billing() {
         // 결제페이지 이동
       }
     } else {
-      alert("추가 요금 약관에 동의해주세요!");
+      alert("초과 이용 결제 약관에 동의해주세요!");
     }
   };
 

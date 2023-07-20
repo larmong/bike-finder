@@ -38,6 +38,7 @@ export const Notice = styled.div`
     }
   }
   ${mediaQuery[2]} {
+    width: calc(100% - 1px);
     margin: -1px;
     padding: 12px;
   }

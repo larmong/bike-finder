@@ -26,7 +26,11 @@ export const BoardHead = styled.div`
     height: 50px;
   }
 `;
-export const BoardBody = styled.div``;
+export const BoardBody = styled.div`
+  ${mediaQuery[2]} {
+    font-size: 14px;
+  }
+`;
 
 export const BoardItemWrapper = styled.div`
   height: 50px;
@@ -161,6 +165,9 @@ export const Billing = styled.div`
   display: flex;
   border: 1px solid #e9e9e9;
   margin-top: -1px;
+  ${mediaQuery[2]} {
+    margin-top: -1px;
+  }
 `;
 export const BillingHead = styled.div`
   width: 139px;
@@ -173,6 +180,9 @@ export const BillingHead = styled.div`
   color: #666666;
   background: #f9f9f9;
   border-right: 1px solid #e9e9e9;
+  ${mediaQuery[0]} {
+    width: 130px;
+  }
 `;
 export const BillingBody = styled.div`
   padding: 18px 30px;
@@ -180,6 +190,13 @@ export const BillingBody = styled.div`
   color: #666666;
   > span {
     color: #0d8f68;
+  }
+  ${mediaQuery[0]} {
+    width: calc(100% - 130px);
+    padding: 18px;
+  }
+  ${mediaQuery[2]} {
+    font-size: 14px;
   }
 `;
 export const TotalPayment = styled.div`
@@ -199,6 +216,9 @@ export const TotalPayment = styled.div`
     span {
       color: #0d8f68;
     }
+  }
+  ${mediaQuery[2]} {
+    font-size: 18px;
   }
 `;
 export const BillingBottom = styled.div`
