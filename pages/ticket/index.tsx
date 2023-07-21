@@ -6,7 +6,11 @@ import Ticket from "../../src/components/units/ticket/Ticket.container";
 import Tab01 from "../../src/components/commons/tabs/tab01/Tab01.container";
 import TicketPayment from "../../src/components/units/ticket/ticketPayment/TicketPayment.container";
 
-export default function TicketPage(props) {
+export interface IPropsTicketPage {
+  pathname: string;
+}
+
+export default function TicketPage(props: IPropsTicketPage) {
   const router = useRouter();
 
   const TAB_MENUS = [
@@ -61,7 +65,6 @@ export default function TicketPage(props) {
       price: 40000,
     },
   ];
-
   const DAY_TICKET_TYPE = [
     {
       name: "일일 회원(1시간권)",

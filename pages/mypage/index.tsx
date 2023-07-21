@@ -1,7 +1,11 @@
 import MyPageUI from "../../src/components/units/mypage/Mypage.container";
 import { LoginCheck } from "../../src/components/commons/hocs/loginCheck";
 
-function MyPage(props) {
+export interface IPropsMyPage {
+  pathname: string;
+}
+
+function MyPage(props: IPropsMyPage) {
   return <MyPageUI pathname={props.pathname} />;
 }
 

@@ -3,9 +3,8 @@ import { ITabMenus } from "../../commons/tabs/tab01/Tab01.types";
 import { ICardInfoType } from "./userInfo/card/UserInfoCard.types";
 
 export interface IPropsMyPageUI {
-  TAB_MENUS: ITabMenus[];
   pathname: string;
-  tab: string | undefined;
+  tab?: string | undefined;
 }
 
 export interface IFetchUser {

@@ -5,7 +5,11 @@ import Faq from "../../src/components/units/inquiry/faq/Faq.container";
 import Inquiry from "../../src/components/units/inquiry/Inquiry.container";
 import Contact from "../../src/components/units/inquiry/contact/Contact.container";
 
-export default function InquiryPage(props) {
+export interface IPropsInquiryPage {
+  pathname: string;
+}
+
+export default function InquiryPage(props: IPropsInquiryPage) {
   return (
     <S.Wrapper>
       <Container>

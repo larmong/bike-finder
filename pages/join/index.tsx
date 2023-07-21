@@ -5,7 +5,11 @@ import Minor from "../../src/components/units/join/minor/Minor.container";
 import General from "../../src/components/units/join/general/General.container";
 import Title02 from "../../src/components/commons/titles/title02/Title02.container";
 
-export default function JoinPage(props) {
+export interface IPropsJoinPage {
+  pathname: string;
+}
+
+export default function JoinPage(props: IPropsJoinPage) {
   return (
     <S.Wrapper>
       <Container>

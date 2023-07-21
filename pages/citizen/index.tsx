@@ -8,7 +8,12 @@ import Notice from "../../src/components/units/citizen/notice/Notice.container";
 import Ranking from "../../src/components/units/citizen/ranking/Ranking.container";
 import NoticeDetail from "../../src/components/units/citizen/notice/detail/NoticeDetail.container";
 
-export default function Citizen(props) {
+export interface IPropsCitizen {
+  pathname: string;
+  title: string;
+}
+
+export default function Citizen(props: IPropsCitizen) {
   const TAB_MENUS = [
     {
       name: "공지사항",
