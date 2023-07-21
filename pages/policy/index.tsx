@@ -8,7 +8,12 @@ import Insurance from "../../src/components/units/policy/insurance/Insurance.con
 import Helped from "../../src/components/units/policy/helped/Helped.container";
 import { Container } from "../../src/commons/style/global.style";
 
-export default function Policy(props) {
+export interface IPropsPolicy {
+  title: string;
+  pathname: string;
+}
+
+export default function Policy(props: IPropsPolicy) {
   const TAB_MENUS = [
     {
       name: "이용약관",

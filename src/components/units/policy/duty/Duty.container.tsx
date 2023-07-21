@@ -21,14 +21,13 @@ export default function Duty() {
         const getData = await getDocs(data);
         const result = getData.docs.map((doc) => ({
           ...doc.data(),
-          id: doc.id,
         }));
         setFetchDuty(result[0].data);
       } catch (error) {
         console.error(error);
       }
     };
-    getDutyData();
+    void getDutyData();
   }, []);
 
   return <Text>{fetchDuty}</Text>;

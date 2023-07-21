@@ -1,13 +1,16 @@
-import * as S from "./Helped.style";
-import Search01 from "../../../commons/searches/search01/Search01.contaienr";
-import Board01 from "../../../commons/boards/board01/Board01.container";
+import HelpedBoard from "./board/Board.container";
 import { useEffect, useState } from "react";
-import { db } from "../../../../commons/libraries/firebase/firebase.config";
 import { query, collection, getDocs, orderBy } from "firebase/firestore";
+import { db } from "../../../../commons/libraries/firebase/firebase.config";
 import { IFetchData } from "./Helped.types";
 
 export default function Helped() {
-  const [fetchHelped, setFetchHelped] = useState<IFetchData[]>([]);
+  const [fetchBoard, setFetchBoard] = useState<IFetchData[]>([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  const handleSearch = (keyword: string) => {
+    setSearchKeyword(keyword);
+  };
 
   useEffect(() => {
     const getHelpedData = async () => {
@@ -22,18 +25,13 @@ export default function Helped() {
           id: doc.id,
         }));
 
-        setFetchHelped(result);
+        void setFetchBoard(result);
       } catch (error) {
         console.error(error);
       }
     };
-    getHelpedData();
+    void getHelpedData();
   }, []);
 
-  return (
-    <S.Wrapper>
-      <Search01 />
-      <Board01 fetchData={fetchHelped} isHead={true} />
-    </S.Wrapper>
-  );
+  return <HelpedBoard handleSearch={handleSearch} boardData={fetchBoard} />;
 }

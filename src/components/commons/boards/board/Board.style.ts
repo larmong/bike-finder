@@ -33,16 +33,12 @@ export const BoardBody = styled.div`
 `;
 
 export const BoardItemWrapper = styled.div`
-  height: 50px;
+  height: auto;
   display: grid;
   grid-template-columns: ${(props: IIsColumns) => props.isColumns};
-  text-align: center;
   align-items: center;
   border-bottom: 1px solid #e9e9e9;
   color: #666666;
-  ${mediaQuery[1]} {
-    height: 42px;
-  }
 `;
 
 export const BoardItem = styled.span`
