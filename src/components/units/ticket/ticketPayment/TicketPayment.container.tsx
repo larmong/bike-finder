@@ -21,7 +21,7 @@ function TicketPayment(props) {
     setValue(event.target.value);
   };
 
-  const onClickTicketType = (ticketNum) => {
+  const onClickTicketType = (ticketNum: number) => {
     setTicketPrice(Number(ticketNum));
   };
 

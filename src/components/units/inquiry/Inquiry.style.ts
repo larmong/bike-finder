@@ -3,9 +3,7 @@ import { mediaQuery } from "../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div``;
 
-export const Contents = styled.div`
-  padding: 0 20px;
-`;
+export const Contents = styled.div``;
 
 export const Content = styled.div`
   display: flex;

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../../commons/style/mediaQuery.style";
 
 export const BoardTitle = styled.div`
   display: grid;
@@ -7,6 +8,14 @@ export const BoardTitle = styled.div`
   grid-template-rows: 50px;
   border-bottom: 1px solid #e9e9e9;
   cursor: pointer;
+  ${mediaQuery[1]} {
+    grid-template-columns: 1fr 75px;
+  }
+  ${mediaQuery[2]} {
+    font-size: 14px;
+    grid-template-columns: 1fr 55px;
+    grid-template-rows: 45px;
+  }
 `;
 
 export const BoardItem = styled.span`
@@ -22,6 +31,15 @@ export const BoardItem = styled.span`
     height: 25px;
     padding-bottom: 2px;
   }
+  ${mediaQuery[1]} {
+    padding: 0 20px;
+    svg {
+      display: none;
+    }
+  }
+  ${mediaQuery[2]} {
+    padding: 0 10px;
+  }
 `;
 
 export const BoardIcon = styled.div`
@@ -35,6 +53,12 @@ export const BoardIcon = styled.div`
     svg {
       rotate: -90deg;
     }
+  }
+  ${mediaQuery[1]} {
+    padding: 0 20px;
+  }
+  ${mediaQuery[2]} {
+    padding: 0 10px;
   }
 `;
 
@@ -52,6 +76,9 @@ export const BoardCont = styled.div`
   svg.true {
     rotate: 90deg;
   }
+  ${mediaQuery[2]} {
+    padding: 16px 10px;
+  }
 `;
 
 export const BoardContText = styled.div`
@@ -68,5 +95,9 @@ export const BoardContText = styled.div`
     font-weight: 700;
     color: #333;
     margin-right: 5px;
+  }
+  ${mediaQuery[2]} {
+    font-size: 14px;
+    line-height: 20px;
   }
 `;
