@@ -21,14 +21,13 @@ export default function Use() {
         const getData = await getDocs(data);
         const result = getData.docs.map((doc) => ({
           ...doc.data(),
-          id: doc.id,
         }));
         setFetchUse(result[0].data);
       } catch (error) {
         console.error(error);
       }
     };
-    getUseData();
+    void getUseData();
   }, []);
 
   return <Text>{fetchUse}</Text>;

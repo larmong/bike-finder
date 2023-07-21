@@ -21,7 +21,6 @@ export default function Insurance() {
         const getData = await getDocs(data);
         const result = getData.docs.map((doc) => ({
           ...doc.data(),
-          id: doc.id,
         }));
 
         setFetchInsurance(result[0].data);
@@ -29,7 +28,7 @@ export default function Insurance() {
         console.error(error);
       }
     };
-    getInsuranceData();
+    void getInsuranceData();
   }, []);
 
   return (

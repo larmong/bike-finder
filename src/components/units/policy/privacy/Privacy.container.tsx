@@ -21,7 +21,6 @@ export default function Privacy() {
         const getData = await getDocs(data);
         const result = getData.docs.map((doc) => ({
           ...doc.data(),
-          id: doc.id,
         }));
 
         setFetchPrivacy(result[0].data);
@@ -29,7 +28,7 @@ export default function Privacy() {
         console.error(error);
       }
     };
-    getPrivacyData();
+    void getPrivacyData();
   }, []);
 
   return (
