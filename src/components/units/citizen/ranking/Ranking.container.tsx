@@ -1,8 +1,13 @@
 import * as S from "./Ranking.style";
-import { Fragment, useState } from "react";
-import { IAllUserRanking } from "./Ranking.types";
 import Radio02 from "../../../commons/inputs/radio/radio02/Radio02.container";
+import { Notice } from "../../../commons/notices/notice/Notice.style";
 import { getPrice } from "../../../commons/utils/utils";
+import { useRecoilState } from "recoil";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { Fragment, useEffect, useState } from "react";
+import { db } from "../../../../commons/libraries/firebase/firebase.config";
+import { loginUserState } from "../../../../commons/store/store";
+import { IAllUserRanking } from "./Ranking.types";
 
 export default function Ranking() {
   // 주간 랭킹 이용 정보 (10등까지)
@@ -44,23 +49,43 @@ export default function Ranking() {
       checkedState: false,
     },
   ];
+
   const [rankingNum, setRankingNum] = useState(0);
+
   const onClickTicketType = (radioNum: number) => {
     setRankingNum(Number(radioNum));
   };
 
   // 나의 정보(주간/월간)
-  const [userRanking, setUserRanking] = useState(0);
-  const [userKm, setUserKm] = useState(0);
-  const [userId, setUserId] = useState("larmong");
+  const [loginUser] = useRecoilState<string | null>(loginUserState);
+  const [userKm, setUserKm] = useState<string>("0");
+  const [userRanking, setUserRanking] = useState<number>(0);
+
+  useEffect(() => {
+    const getFaqData = async () => {
+      try {
+        const data = await query(
+          collection(db, "user"),
+          where("email", "==", loginUser)
+        );
+        const getData = await getDocs(data);
+        const result: any = getData.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setUserKm(result[0].use.distance);
+      } catch (error) {}
+    };
+    void getFaqData();
+  }, [loginUser]);
 
   return (
     <S.Wrapper>
-      <S.Notice>
+      <Notice>
         · {rankingNum === 0 ? "전 주 월요일 ~ 일요일" : "전 월 1일 ~ 말일"}
         까지의 이용거리 실적입니다.
         <br />· 랭킹서비스 이용 거리는 실제 이용 거리와 다를 수 있습니다.
-      </S.Notice>
+      </Notice>
       <Radio02
         onClickRadio={onClickTicketType}
         radioData={RANKING_TYPE}
@@ -74,7 +99,7 @@ export default function Ranking() {
               <S.TableItem01 className="t-head">
                 {userRanking === 0 ? "-" : userRanking} 등
               </S.TableItem01>
-              <S.TableItem01 className="t-head">{userId}</S.TableItem01>
+              <S.TableItem01 className="t-head">{loginUser}</S.TableItem01>
               <S.TableItem01 className="t-head">{userKm} km</S.TableItem01>
             </S.UserRankingTable>
           </S.RankingGroup>
@@ -104,7 +129,7 @@ export default function Ranking() {
               <S.TableItem01 className="t-head">
                 {userRanking === 0 ? "-" : userRanking} 등
               </S.TableItem01>
-              <S.TableItem01 className="t-head">{userId}</S.TableItem01>
+              <S.TableItem01 className="t-head">{loginUser}</S.TableItem01>
               <S.TableItem01 className="t-head">{userKm} km</S.TableItem01>
             </S.UserRankingTable>
           </S.RankingGroup>

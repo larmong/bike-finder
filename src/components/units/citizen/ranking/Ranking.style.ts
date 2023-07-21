@@ -1,10 +1,13 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 50px;
+  ${mediaQuery[2]} {
+  }
 `;
 
 export const Notice = styled.div`
