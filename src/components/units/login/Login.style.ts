@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   background: #f9fafa;
   padding: 100px 0;
   min-height: calc(100vh - 100px);
+  margin-top: -40px;
   ${mediaQuery[0]} {
     min-height: calc(100vh - 65px);
   }
