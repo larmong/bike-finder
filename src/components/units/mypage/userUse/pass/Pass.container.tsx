@@ -5,6 +5,7 @@ import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import { loginUserState } from "../../../../../commons/store/store";
 import { IFetchPass } from "./board/Board.types";
+import PassBoard from "./board/Board.container";
 
 export default function Pass() {
   const PASS_TYPE = [
@@ -71,7 +72,7 @@ export default function Pass() {
   }, [loginUser]);
 
   return (
-    <HistoryBoard
+    <PassBoard
       boardData={
         passType === 0
           ? userPass

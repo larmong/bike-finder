@@ -8,7 +8,7 @@ import {
   IBoardDetailType,
 } from "../../../../../commons/boards/board/Board.types";
 
-export default function HistoryBoard(props: IPropsPassBoard) {
+export default function PassBoard(props: IPropsPassBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
     title: ["등록일자", "이용권", "사용기한", "상태"],
     columns: "1fr 1fr 1fr 1fr",
