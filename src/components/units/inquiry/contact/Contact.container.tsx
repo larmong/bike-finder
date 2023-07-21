@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 export default function Contact() {
   const router = useRouter();
   const [loginUser] = useRecoilState<string | null>(loginUserState);
-  const [checkBox, setCheckBox] = useState<boolean>(false);
+  const [cbValue, setCbValue] = useState(false);
   const [contactData, setContactData] = useState({
     title: "",
     content: "",
@@ -38,12 +38,12 @@ export default function Contact() {
   };
 
   const onClickCb = (event: CustomMouseEvent) => {
-    const target = event.currentTarget as HTMLInputElement;
-    setCheckBox(target.checked);
+    const target = event.target as HTMLInputElement;
+    setCbValue(target.checked);
   };
 
   const onClickSubmit = async () => {
-    if (checkBox && contactData.title !== "" && contactData.content !== "") {
+    if (cbValue && contactData.title !== "" && contactData.content !== "") {
       try {
         const docRef = doc(collection(db, "faq"));
         await setDoc(docRef, {

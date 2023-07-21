@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -27,6 +28,19 @@ export const ContactItem = styled.div`
     line-height: 25px;
     background: #fafafa;
   }
+  ${mediaQuery[1]} {
+    span {
+      width: 180px;
+      min-height: 60px;
+      font-size: 16px;
+    }
+  }
+  ${mediaQuery[2]} {
+    span {
+      width: 100px;
+      font-size: 14px;
+    }
+  }
 `;
 
 export const InputItem = styled.div`
@@ -42,6 +56,13 @@ export const InputItem = styled.div`
     line-height: 18px;
     padding: 14px 16px;
   }
+  ${mediaQuery[1]} {
+    padding: 12px;
+    input {
+      height: 40px;
+      padding: 12px;
+    }
+  }
 `;
 
 export const TextItem = styled.div`
@@ -52,6 +73,9 @@ export const TextItem = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
+  ${mediaQuery[1]} {
+    font-size: 14px;
+  }
 `;
 
 export const ContItem = styled.div`
@@ -60,26 +84,6 @@ export const ContItem = styled.div`
   gap: 15px;
   width: 100%;
   padding: 15px 20px;
-`;
-
-export const CbItem = styled.div`
-  > div {
-    height: 40px;
-  }
-  span {
-    width: 100%;
-    background: none;
-    font-size: 14px;
-    display: flex;
-    justify-content: left;
-  }
-`;
-
-export const FileItem = styled.div`
-  width: 100%;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
 `;
 
 export const Notice = styled.div`
@@ -94,16 +98,15 @@ export const Notice = styled.div`
   span {
     color: #dc1919;
   }
-`;
-
-export const ContactBtn = styled.button`
-  width: 200px;
-  height: 50px;
-  background: #0d8f68;
-  border-radius: 5px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 25px;
-  letter-spacing: -0.07em;
-  color: #ffffff;
+  ${mediaQuery[1]} {
+    padding: 26px;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+  }
+  ${mediaQuery[2]} {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 18px;
+  }
 `;

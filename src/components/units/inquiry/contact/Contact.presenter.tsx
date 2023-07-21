@@ -3,6 +3,7 @@ import { IPropsContactUI } from "./Contact.types";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Textarea01 from "../../../commons/inputs/textarea/textarea01/textarea01.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
+import Button01 from "../../../commons/buttons/button01/Button01.container";
 
 export default function ContactUI(props: IPropsContactUI) {
   return (
@@ -27,12 +28,6 @@ export default function ContactUI(props: IPropsContactUI) {
         <S.ContactItem>
           <span>내용</span>
           <S.ContItem>
-            <S.CbItem>
-              <Checkbox01
-                CheckboxCont="반복 작성, 비문, 반말, 욕설, 비난, 상업광고 게재 시 해당 글이 답변없이 삭제됨을 동의합니다."
-                onClickCb={props.onClickCb}
-              />
-            </S.CbItem>
             <Textarea01
               inputId="content"
               valueData={props.contactData.content}
@@ -40,12 +35,6 @@ export default function ContactUI(props: IPropsContactUI) {
             />
           </S.ContItem>
         </S.ContactItem>
-        {/*<S.ContactItem>*/}
-        {/*  <span>사진첨부</span>*/}
-        {/*  <S.FileItem>*/}
-        {/*    <input type="file" />*/}
-        {/*  </S.FileItem>*/}
-        {/*</S.ContactItem>*/}
       </S.ContactWrapper>
       <S.Notice>
         시민의견 수렴 게시판은 회원
@@ -59,7 +48,15 @@ export default function ContactUI(props: IPropsContactUI) {
         이용촉진 및 정보보호 등에 대한 관한 법률 제 74조에 의거 1년 이하 징역
         또는 1천만원 이하의 벌금에 처해질 수 있습니다.
       </S.Notice>
-      <S.ContactBtn onClick={props.onClickSubmit}>문의하기</S.ContactBtn>
+      <Checkbox01
+        onClickCb={props.onClickCb}
+        CheckboxCont="욕설, 비난, 상업광고 게재 시 해당 글이 답변없이 삭제됨을 동의합니다."
+      />
+      <Button01
+        onClickButton={props.onClickSubmit}
+        btnWidth="100%"
+        btnText="문의하기"
+      />
     </S.Wrapper>
   );
 }
