@@ -3,9 +3,6 @@ import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   width: 100%;
-  ${mediaQuery[2]} {
-    overflow: hidden;
-  }
 `;
 
 export const Text = styled.p`
