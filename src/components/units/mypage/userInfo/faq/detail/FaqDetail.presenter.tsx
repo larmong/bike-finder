@@ -3,6 +3,7 @@ import { MdArrowBackIosNew, MdQuestionAnswer } from "react-icons/md";
 import { IPropsFaqDetailUI } from "./FaqDetail.types";
 import { useRouter } from "next/router";
 import Button01 from "../../../../../commons/buttons/button01/Button01.container";
+import { getDate } from "../../../../../commons/utils/utils";
 
 export default function FaqDetailUI(props: IPropsFaqDetailUI) {
   const router = useRouter();
@@ -16,7 +17,7 @@ export default function FaqDetailUI(props: IPropsFaqDetailUI) {
         <S.BoardTitle>{props.fetchBoard?.title}</S.BoardTitle>
         <S.BoardDate>
           <span>Date: </span>
-          {props.fetchBoard?.date}
+          {getDate(String(props.fetchBoard?.date))}
         </S.BoardDate>
       </S.DetailHead>
       <S.DetailBody>

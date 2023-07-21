@@ -87,9 +87,6 @@ export const DetailBody = styled.div`
   color: #666666;
   ${mediaQuery[2]} {
     font-size: 14px;
-  }
-  ${mediaQuery[2]} {
-    font-size: 14px;
     padding: 25px 5px;
     line-height: 18px;
   }
