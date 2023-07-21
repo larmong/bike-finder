@@ -58,6 +58,7 @@ export const MenuCardText = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   gap: 2px;
+  width: calc(100% - 60px);
 `;
 export const MenuCardTitle = styled.p`
   font-weight: 700;
