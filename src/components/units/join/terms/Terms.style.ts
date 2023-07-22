@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Notice = styled.div`
+export const CbList = styled.div`
   margin-top: -1px;
   padding: 30px 20px;
   border: 1px solid #e9e9e9;

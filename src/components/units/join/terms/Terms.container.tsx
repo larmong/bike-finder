@@ -1,4 +1,4 @@
-import * as S from "./Terms.style";
+import { CbList } from "./Terms.style";
 import { useState } from "react";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
@@ -90,9 +90,9 @@ export default function Terms(props: IPropsTerms) {
   return (
     <>
       <Progress progress="terms" />
-      <S.Notice>
+      <CbList>
         <Checkbox03 checkboxData={cbList} onChangeCheckbox={onChangeCheckbox} />
-      </S.Notice>
+      </CbList>
       <Checkbox01
         CheckboxCont="위 약관을 모두 읽었으며, 모든 약관에 동의합니다."
         onClickCb={onClickCb}
