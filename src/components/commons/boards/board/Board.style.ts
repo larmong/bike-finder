@@ -42,6 +42,15 @@ export const BoardItemWrapper = styled.div`
   border-bottom: 1px solid #e9e9e9;
   color: #666666;
 `;
+export const BoardItemWrapperHelped = styled.div`
+  height: auto;
+  min-height: 50px;
+  display: grid;
+  grid-template-columns: ${(props: IIsColumns) => props.isColumns};
+  align-items: center;
+  border-bottom: 1px solid #e9e9e9;
+  color: #666666;
+`;
 
 export const BoardItem = styled.span`
   padding: 0 20px;

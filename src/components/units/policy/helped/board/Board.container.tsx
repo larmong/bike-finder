@@ -8,12 +8,8 @@ import {
 import Search01 from "../../../../commons/searches/search01/Search01.contaienr";
 import Pagination01 from "../../../../commons/paginations/pagination01/Pagination01.container";
 import {
-  Board,
   BoardBody,
-  BoardHead,
-  BoardItem,
-  BoardItemWrapper,
-  BoardWrapper,
+  BoardItemWrapperHelped,
 } from "../../../../commons/boards/board/Board.style";
 import BoardItem01 from "./item/Item.container";
 
@@ -50,8 +46,6 @@ export default function HelpedBoard(props: IPropsHelpedBoard) {
     setCurrentPage(1);
   }, [props.boardData]);
 
-  console.log(filteredData);
-
   return (
     <S.Board>
       <Search01 handleSearch={handleSearch} />
@@ -60,7 +54,7 @@ export default function HelpedBoard(props: IPropsHelpedBoard) {
           <S.BoardItem key={index}>{el}</S.BoardItem>
         ))}
       </S.BoardHead>
-      <BoardItemWrapper>
+      <BoardItemWrapperHelped>
         {filteredData.map((el: IFetchHelped) => (
           <BoardBody key={el?.id}>
             <BoardItem01
@@ -71,7 +65,7 @@ export default function HelpedBoard(props: IPropsHelpedBoard) {
             />
           </BoardBody>
         ))}
-      </BoardItemWrapper>
+      </BoardItemWrapperHelped>
       <Pagination01
         noticeLength={noticeLength}
         pageSize={pageSize}

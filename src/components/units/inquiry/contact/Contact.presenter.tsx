@@ -1,16 +1,19 @@
 import * as S from "./Contact.style";
 import { IPropsContactUI } from "./Contact.types";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
-import Textarea01 from "../../../commons/inputs/textarea/textarea01/textarea01.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 
 export default function ContactUI(props: IPropsContactUI) {
+  const handleChange = (value: string) => {
+    console.log(value);
+  };
+
   return (
     <S.Wrapper>
       <S.ContactWrapper>
         <S.ContactItem>
-          <span>제목</span>
+          <S.Title>제목</S.Title>
           <S.InputItem>
             <Input01
               inputType="text"
@@ -22,18 +25,16 @@ export default function ContactUI(props: IPropsContactUI) {
           </S.InputItem>
         </S.ContactItem>
         <S.ContactItem>
-          <span>아이디</span>
-          <S.TextItem>{props.loginUser}</S.TextItem>
+          <S.Title>아이디</S.Title>
+          <S.InputItem>
+            <S.TextItem>{props.loginUser}</S.TextItem>
+          </S.InputItem>
         </S.ContactItem>
         <S.ContactItem>
-          <span>내용</span>
-          <S.ContItem>
-            <Textarea01
-              inputId="content"
-              valueData={props.contactData.content}
-              onChangeContent={props.onChangeContent}
-            />
-          </S.ContItem>
+          <S.Title>내용</S.Title>
+          <S.InputItem className="editor">
+            <S.Editor onChange={handleChange} />
+          </S.InputItem>
         </S.ContactItem>
       </S.ContactWrapper>
       <S.Notice>
@@ -52,9 +53,10 @@ export default function ContactUI(props: IPropsContactUI) {
         onClickCb={props.onClickCb}
         CheckboxCont="욕설, 비난, 상업광고 게재 시 해당 글이 답변없이 삭제됨을 동의합니다."
       />
+
       <Button01
         onClickButton={props.onClickSubmit}
-        btnWidth="100%"
+        btnWidth="200px"
         btnText="문의하기"
       />
     </S.Wrapper>

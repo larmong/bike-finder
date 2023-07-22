@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   width: 100%;
 `;
 
-export const Text = styled.p`
+export const Text = styled.div`
   margin-top: -1px;
   border: 1px solid #e9e9e9;
   padding: 30px 20px;

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
+import dynamic from "next/dynamic";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,39 +14,35 @@ export const ContactWrapper = styled.div`
   border-top: 1px solid #666666;
   border-bottom: 1px solid #666666;
 `;
-
 export const ContactItem = styled.div`
+  width: 100%;
   display: flex;
   border-bottom: 1px solid #e9e9e9;
-  span {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 240px;
-    min-height: 65px;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 25px;
-    background: #fafafa;
-  }
+`;
+export const Title = styled.div`
+  width: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  background: #fafafa;
   ${mediaQuery[1]} {
-    span {
-      width: 180px;
-      min-height: 60px;
-      font-size: 16px;
-    }
+    width: 180px;
+    font-size: 16px;
   }
   ${mediaQuery[2]} {
-    span {
-      width: 100px;
-      font-size: 14px;
-    }
+    display: none;
   }
 `;
 
 export const InputItem = styled.div`
   width: 100%;
-  padding: 10px 20px;
+  padding: 16px 20px;
+  height: auto;
+  &.editor {
+    height: 574px;
+  }
   input {
     width: 100%;
     height: 45px;
@@ -58,32 +55,31 @@ export const InputItem = styled.div`
   }
   ${mediaQuery[1]} {
     padding: 12px;
+    &.editor {
+      height: 465px;
+    }
     input {
       height: 40px;
       padding: 12px;
     }
   }
-`;
-
-export const TextItem = styled.div`
-  width: 100%;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-  ${mediaQuery[1]} {
-    font-size: 14px;
+  ${mediaQuery[2]} {
+    &.editor {
+      height: 390px;
+    }
   }
 `;
 
-export const ContItem = styled.div`
+export const TextItem = styled.p`
+  font-size: 16px;
+  height: 45px;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
-  padding: 15px 20px;
+  align-items: center;
+  margin-left: 5px;
+  ${mediaQuery[1]} {
+    font-size: 14px;
+    height: 40px;
+  }
 `;
 
 export const Notice = styled.div`
@@ -108,5 +104,20 @@ export const Notice = styled.div`
     padding: 20px;
     font-size: 14px;
     line-height: 18px;
+  }
+`;
+
+import "react-quill/dist/quill.snow.css";
+const ReactQuill = dynamic(async () => await import("react-quill"), {
+  ssr: false,
+});
+export const Editor = styled(ReactQuill)`
+  width: 100%;
+  height: 500px;
+  ${mediaQuery[1]} {
+    height: 400px;
+  }
+  ${mediaQuery[2]} {
+    height: 300px;
   }
 `;

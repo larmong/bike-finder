@@ -48,7 +48,6 @@ export default function Station() {
         const map = new window.kakao.maps.Map(container, options);
         setIsLoading(false);
 
-        // 데이터를 받아온 후에 마커를 그리도록 이동
         if (bikeStations.length > 0) {
           bikeStations.forEach((station: any) => {
             const latitude = Number(station.stationLatitude);
@@ -73,7 +72,7 @@ export default function Station() {
         }
       });
     };
-  }, [bikeStations, position]); // bikeStations와 position 변수를 의존성 배열에 추가
+  }, [bikeStations, position]);
 
   useEffect(() => {
     const apiUrl =
