@@ -8,17 +8,12 @@ import Button03 from "../../../commons/buttons/button03/button03.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import TimerContainer from "../../../commons/utils/timer/Timer.container";
 import { IPropsUserAuthUI } from "./UserAuth.types";
+import Progress from "../progress/Progress.container";
 
 export default function UserAuthUI(props: IPropsUserAuthUI) {
   return (
     <>
-      <S.Progress>
-        <span>약관동의</span>
-        <MdDoubleArrow />
-        <span className="target">본인인증</span>
-        <MdDoubleArrow />
-        <span>정보입력</span>
-      </S.Progress>
+      <Progress progress="auth" />
       {props.pathname === "/join/minor" ? (
         <S.Notice>
           · 만 13세는 새싹 따릉이 회원가입 후 이용하실 수 있습니다.

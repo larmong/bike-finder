@@ -1,24 +1,5 @@
 import styled from "@emotion/styled";
 
-export const Progress = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  font-weight: 700;
-  font-size: 25px;
-  line-height: 31px;
-  text-align: center;
-  color: #999999;
-  svg {
-    width: 31px;
-    height: 31px;
-  }
-  span.target {
-    color: #0d8f68;
-  }
-`;
-
 export const Notice = styled.div`
   margin-top: -1px;
   padding: 30px 20px;

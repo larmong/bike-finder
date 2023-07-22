@@ -6,6 +6,7 @@ import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.c
 import Checkbox03 from "../../../commons/inputs/checkbox/checkbox03/Checkbox03.contaienr";
 import { CustomMouseEvent } from "../../../../commons/types/global.types";
 import { IPropsTerms } from "./Terms.types";
+import Progress from "../progress/Progress.container";
 
 export default function Terms(props: IPropsTerms) {
   const [cbState, setCbState] = useState(false);
@@ -89,13 +90,7 @@ export default function Terms(props: IPropsTerms) {
 
   return (
     <>
-      <S.Progress>
-        <span className="target">약관동의</span>
-        <MdDoubleArrow />
-        <span>본인인증</span>
-        <MdDoubleArrow />
-        <span>정보입력</span>
-      </S.Progress>
+      <Progress progress="terms" />
       <S.Notice>
         <Checkbox03 checkboxData={cbList} onChangeCheckbox={onChangeCheckbox} />
       </S.Notice>

@@ -7,17 +7,12 @@ import Input03 from "../../../commons/inputs/input/input03/input03.container";
 import Input04 from "../../../commons/inputs/input/input04/input04.container";
 import Input05 from "../../../commons/inputs/input/input05/input05.container";
 import { IPropsMembershipUI } from "./Membership.types";
+import Progress from "../progress/Progress.container";
 
 export default function MembershipUI(props: IPropsMembershipUI) {
   return (
     <>
-      <S.Progress>
-        <span>약관동의</span>
-        <MdDoubleArrow />
-        <span>본인인증</span>
-        <MdDoubleArrow />
-        <span className="target">정보입력</span>
-      </S.Progress>
+      <Progress progress="membership" />
       <S.Table01>
         <S.TableItem01 className="t-head">이름</S.TableItem01>
         <S.TableItem01>{props.userInfo.name}</S.TableItem01>
