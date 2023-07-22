@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const AuthNumBtn = styled.button`
   position: absolute;
@@ -15,4 +16,10 @@ export const AuthNumBtn = styled.button`
   background: #333333;
   border-radius: 5px;
   z-index: 1;
+  ${mediaQuery[2]} {
+    width: 60px;
+    position: initial;
+    font-size: 11px;
+    margin-left: 10px;
+  }
 `;

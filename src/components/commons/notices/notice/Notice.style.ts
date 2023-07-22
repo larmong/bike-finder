@@ -57,5 +57,6 @@ export const Notice = styled.div`
     width: calc(100% - 1px);
     margin: -1px;
     padding: 12px;
+    font-size: 13px;
   }
 `;

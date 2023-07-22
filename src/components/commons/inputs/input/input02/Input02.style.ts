@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../../commons/style/mediaQuery.style";
 
 export const InputPhoneWrapper = styled.div`
   width: 100%;
@@ -17,4 +18,10 @@ export const InputPhone = styled.input`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.1em;
+  &::placeholder {
+    letter-spacing: -1px;
+  }
+  ${mediaQuery[2]} {
+    padding: 14px 10px;
+  }
 `;

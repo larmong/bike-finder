@@ -1,28 +1,5 @@
 import styled from "@emotion/styled";
-
-export const Notice = styled.div`
-  margin-top: -1px;
-  padding: 30px 20px;
-  border: 1px solid #e9e9e9;
-  font-size: 14px;
-  line-height: 23px;
-  letter-spacing: -0.07em;
-  span {
-    text-align: center;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 21px;
-    display: block;
-    margin-bottom: 20px;
-  }
-  strong {
-    display: block;
-    font-weight: 700;
-    em {
-      color: #dc1919;
-    }
-  }
-`;
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const InputGroup = styled.div`
   margin: 0 auto;
@@ -30,6 +7,9 @@ export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  ${mediaQuery[2]} {
+    width: 100%;
+  }
 `;
 export const InputItem = styled.div`
   position: relative;
@@ -37,10 +17,22 @@ export const InputItem = styled.div`
   align-items: center;
 `;
 
+export const InputCont = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+`;
 export const InputTitle = styled.p`
-  width: 100px;
+  width: 80px;
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
   align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+  ${mediaQuery[1]} {
+    width: 60px;
+    margin-right: 10px;
+  }
 `;
