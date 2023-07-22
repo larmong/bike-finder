@@ -11,6 +11,8 @@ export interface IPropsContactUI {
   onChangeContent: (value: string) => void;
   onClickSubmit: () => void;
   onClickCb: (event: CustomMouseEvent) => void;
+  fileUrls: string[];
+  onChangeFileUrls: (fileUrls: string, index: number) => void;
 }
 
 export interface IContactDataType {

@@ -121,3 +121,7 @@ export const Editor = styled(ReactQuill)`
     height: 300px;
   }
 `;
+
+export const UploadList = styled.ul`
+  display: flex;
+`;

@@ -1,6 +1,6 @@
 import ContactUI from "./Contact.presenter";
 import { useRecoilState } from "recoil";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "../../../../commons/libraries/firebase/firebase.config";
 import { loginUserState } from "../../../../commons/store/store";
@@ -15,6 +15,7 @@ export default function Contact() {
   const router = useRouter();
   const [loginUser] = useRecoilState<string | null>(loginUserState);
   const [cbValue, setCbValue] = useState(false);
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
   const [contactData, setContactData] = useState({
     title: "",
     content: "",
@@ -39,6 +40,12 @@ export default function Contact() {
   const onClickCb = (event: CustomMouseEvent) => {
     const target = event.target as HTMLInputElement;
     setCbValue(target.checked);
+  };
+
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
   };
 
   const onClickSubmit = async () => {
@@ -69,6 +76,8 @@ export default function Contact() {
       onChangeContent={onChangeContent}
       onClickSubmit={onClickSubmit}
       onClickCb={onClickCb}
+      fileUrls={fileUrls}
+      onChangeFileUrls={onChangeFileUrls}
     />
   );
 }

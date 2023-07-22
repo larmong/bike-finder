@@ -3,6 +3,7 @@ import { IPropsContactUI } from "./Contact.types";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
+import Uploads01 from "../../../commons/inputs/uploads/upload01/upload01.container";
 
 export default function ContactUI(props: IPropsContactUI) {
   return (
@@ -30,6 +31,21 @@ export default function ContactUI(props: IPropsContactUI) {
           <S.Title>내용</S.Title>
           <S.InputItem className="editor">
             <S.Editor onChange={props.onChangeContent} />
+          </S.InputItem>
+        </S.ContactItem>
+        <S.ContactItem>
+          <S.Title>사진 첨부</S.Title>
+          <S.InputItem>
+            <S.UploadList>
+              {props.fileUrls.map((el: string, index: number) => (
+                <Uploads01
+                  key={index}
+                  index={index}
+                  fileUrl={el}
+                  onChangeFileUrls={props.onChangeFileUrls}
+                />
+              ))}
+            </S.UploadList>
           </S.InputItem>
         </S.ContactItem>
       </S.ContactWrapper>
