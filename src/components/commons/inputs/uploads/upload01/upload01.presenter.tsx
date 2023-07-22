@@ -10,10 +10,10 @@ export default function Uploads01UI(props: IUploads01UI) {
           src={`https://storage.googleapis.com/${props.fileUrl}`}
           alt="업로드이미지"
         />
-      ) : props.imgFile ? ( // 이미지 미리보기가 있을 경우 미리보기 이미지를 표시합니다
+      ) : props.imgFile ? (
         <S.UploadImg
           onClick={props.onClickUpload}
-          src={props.imgFile} // 이미지 미리보기 URL 사용
+          src={props.imgFile}
           alt="미리보기이미지"
         />
       ) : (
