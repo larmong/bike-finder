@@ -7,7 +7,6 @@ import { getDate } from "../../../../../commons/utils/utils";
 
 export default function FaqDetailUI(props: IPropsFaqDetailUI) {
   const router = useRouter();
-
   return (
     <S.Detail>
       <S.DetailHead>
@@ -21,7 +20,11 @@ export default function FaqDetailUI(props: IPropsFaqDetailUI) {
         </S.BoardDate>
       </S.DetailHead>
       <S.DetailBody>
-        {props.fetchBoard?.content}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: String(props.fetchBoard?.content),
+          }}
+        />
         <S.AnswerWrapper>
           <S.AnswerIcon>
             <MdQuestionAnswer />
