@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 // Table01
 export const Table01 = styled.div`
@@ -10,6 +11,9 @@ export const Table01 = styled.div`
   letter-spacing: -0.05em;
   border-top: 1px solid #666666;
   border-bottom: 1px solid #666666;
+  ${mediaQuery[1]} {
+    grid-template-columns: 1fr 2.1fr;
+  }
 `;
 
 export const TableItem01 = styled.div`
@@ -39,5 +43,21 @@ export const TableItem01 = styled.div`
 
   &.t-address {
     height: 170px;
+  }
+
+  ${mediaQuery[2]} {
+    font-size: 14px;
+    height: 65px;
+    padding: 12px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e9e9e9;
+    &.t-head {
+      word-break: break-all;
+    }
+    &.t-address {
+      height: 170px;
+    }
   }
 `;

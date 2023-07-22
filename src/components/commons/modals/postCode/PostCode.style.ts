@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Modal = styled.div`
   position: fixed;
@@ -8,6 +9,9 @@ export const Modal = styled.div`
   height: 100vh;
   background: rgba(0, 0, 0, 0.3);
   z-index: 999;
+  ${mediaQuery[2]} {
+    background: #ffffff;
+  }
 `;
 export const ModalContainer = styled.div`
   display: flex;
@@ -22,6 +26,16 @@ export const ModalContainer = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
+  ${mediaQuery[2]} {
+    padding: 55px 20px 20px 20px;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: translate(0);
+    border-radius: 0;
+  }
 `;
 export const CloseBtn = styled.button`
   transition: all ease-in 0.2s;
