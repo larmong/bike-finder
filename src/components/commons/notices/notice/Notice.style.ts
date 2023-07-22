@@ -30,6 +30,18 @@ export const Notice = styled.div`
     font-weight: 700;
     color: #dc1919;
   }
+  div {
+    font-weight: 700;
+  }
+  i {
+    font-style: normal;
+    text-align: center;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 21px;
+    display: block;
+    margin-bottom: 20px;
+  }
   ${mediaQuery[1]} {
     padding: 20px 15px;
     font-size: 14px;
