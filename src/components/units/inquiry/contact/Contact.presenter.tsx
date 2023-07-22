@@ -5,10 +5,6 @@ import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.c
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 
 export default function ContactUI(props: IPropsContactUI) {
-  const handleChange = (value: string) => {
-    console.log(value);
-  };
-
   return (
     <S.Wrapper>
       <S.ContactWrapper>
@@ -33,7 +29,7 @@ export default function ContactUI(props: IPropsContactUI) {
         <S.ContactItem>
           <S.Title>내용</S.Title>
           <S.InputItem className="editor">
-            <S.Editor onChange={handleChange} />
+            <S.Editor onChange={props.onChangeContent} />
           </S.InputItem>
         </S.ContactItem>
       </S.ContactWrapper>

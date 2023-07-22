@@ -6,7 +6,6 @@ import { db } from "../../../../commons/libraries/firebase/firebase.config";
 import { loginUserState } from "../../../../commons/store/store";
 import {
   CustomChangeEvent,
-  CustomChangeEventTextArea,
   CustomMouseEvent,
 } from "../../../../commons/types/global.types";
 import moment from "moment";
@@ -30,10 +29,10 @@ export default function Contact() {
     }
   };
 
-  const onChangeContent = (event: CustomChangeEventTextArea) => {
+  const onChangeContent = (value: string) => {
     setContactData({
       ...contactData,
-      content: event.target.value,
+      content: value,
     });
   };
 
