@@ -8,6 +8,11 @@ import { db } from "../../../../../commons/libraries/firebase/firebase.config";
 import { loginUserState } from "../../../../../commons/store/store";
 import { IFetchBilling } from "./board/Board.types";
 import { CustomMouseEvent } from "../../../../../commons/types/global.types";
+import Head from "next/head";
+
+declare const window: typeof globalThis & {
+  IMP: any;
+};
 
 export default function Billing() {
   const [loginUser] = useRecoilState<string | null>(loginUserState);
@@ -59,7 +64,6 @@ export default function Billing() {
       if (nonPaymentLength === 0) {
         alert("결제할 금액이 없습니다!");
       } else {
-        // 결제페이지 이동
       }
     } else {
       alert("초과 이용 결제 약관에 동의해주세요!");
@@ -103,23 +107,28 @@ export default function Billing() {
   }, [loginUser]);
 
   return (
-    <S.Wrapper>
-      <Notice>
-        · 이용 가능시간은 첫 회 대여시점을 기준으로 계산합니다.
-        <br />· 서울자전거 모든 대여소에서 사용이 가능합니다.
-        <em>· 서울자전거 환불규정에 따릅니다.</em>· 이용권을 다른 사람에게
-        양도할 수 없으며,양도로 인해 발생하는 불이익은 구매자가 책임지셔야
-        합니다.
-      </Notice>
-      <BillingBoard
-        boardData={fetchBoard}
-        setPaymentMethodType={setPaymentMethodType}
-        PAYMENT_METHOD_TYPE={PAYMENT_METHOD_TYPE}
-        nonTotalPayment={nonTotalPayment}
-        nonPaymentLength={nonPaymentLength}
-        onClickPaymentButton={onClickPaymentButton}
-        onClickCb={onClickCb}
-      />
-    </S.Wrapper>
+    <>
+      <Head>
+        <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+      </Head>
+      <S.Wrapper>
+        <Notice>
+          · 이용 가능시간은 첫 회 대여시점을 기준으로 계산합니다.
+          <br />· 서울자전거 모든 대여소에서 사용이 가능합니다.
+          <em>· 서울자전거 환불규정에 따릅니다.</em>· 이용권을 다른 사람에게
+          양도할 수 없으며,양도로 인해 발생하는 불이익은 구매자가 책임지셔야
+          합니다.
+        </Notice>
+        <BillingBoard
+          boardData={fetchBoard}
+          setPaymentMethodType={setPaymentMethodType}
+          PAYMENT_METHOD_TYPE={PAYMENT_METHOD_TYPE}
+          nonTotalPayment={nonTotalPayment}
+          nonPaymentLength={nonPaymentLength}
+          onClickPaymentButton={onClickPaymentButton}
+          onClickCb={onClickCb}
+        />
+      </S.Wrapper>
+    </>
   );
 }

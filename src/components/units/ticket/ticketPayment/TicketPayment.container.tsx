@@ -12,6 +12,8 @@ import Button01 from "../../../commons/buttons/button01/Button01.container";
 import PaymentInfo from "../item/paymentInfo/PaymentInfo.container";
 import { CustomChangeEvent } from "../../../../commons/types/global.types";
 import { IPropsTicketPayment } from "./TicketPayment.types";
+import { useRecoilState } from "recoil";
+import { loginUserState } from "../../../../commons/store/store";
 
 declare const window: typeof globalThis & {
   IMP: any;
@@ -20,6 +22,7 @@ declare const window: typeof globalThis & {
 function TicketPayment(props: IPropsTicketPayment) {
   const router = useRouter();
 
+  const [loginUser] = useRecoilState<string | null>(loginUserState);
   const [userMileage, setUserMileage] = useState(1000);
   const [value, setValue] = useState<number | string>("");
   const [ticketPrice, setTicketPrice] = useState(0);
@@ -32,6 +35,8 @@ function TicketPayment(props: IPropsTicketPayment) {
   const onClickTicketType = (ticketNum: number) => {
     setTicketPrice(Number(ticketNum));
   };
+
+  console.log(loginUser);
 
   const onClickButton = () => {
     if (ticketPrice !== 0) {
@@ -49,13 +54,9 @@ function TicketPayment(props: IPropsTicketPayment) {
               {
                 pg: "nice",
                 pay_method: "card",
-                name: "노르웨이 회전 의자",
-                amount: 100,
-                buyer_email: "larmong@naver.com",
-                buyer_name: "이루이",
-                buyer_tel: "010-4242-4242",
-                buyer_addr: "서울특별시 강남구 신사동",
-                buyer_postcode: "01181",
+                name: "따릉이 이용권",
+                amount: ticketPrice,
+                buyer_email: loginUser,
                 m_redirect_url: "http://localhost:3000/mypage/userPayment",
               },
               (rsp: any) => {
