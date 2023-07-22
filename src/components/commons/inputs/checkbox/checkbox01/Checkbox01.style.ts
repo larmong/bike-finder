@@ -9,6 +9,7 @@ export const CheckboxLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 6px;
+  cursor: pointer;
 `;
 
 export const CheckboxBtn = styled.input`

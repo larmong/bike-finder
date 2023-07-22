@@ -1,15 +1,12 @@
 import { CbList } from "./Terms.style";
 import { useState } from "react";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
-import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import Checkbox03 from "../../../commons/inputs/checkbox/checkbox03/Checkbox03.contaienr";
 import Progress from "../progress/Progress.container";
-import { CustomMouseEvent } from "../../../../commons/types/global.types";
 import { IPropsTerms } from "./Terms.types";
 
 export default function Terms(props: IPropsTerms) {
   const [cbState, setCbState] = useState(false);
-  const [bottomCbState, setBottomCbState] = useState(false);
   const [cbList, setCbList] = useState([
     {
       essential: true,
@@ -41,33 +38,6 @@ export default function Terms(props: IPropsTerms) {
     },
   ]);
 
-  const onClickCb = (event: CustomMouseEvent) => {
-    const target = event.currentTarget as HTMLInputElement;
-
-    setBottomCbState(target.checked);
-    setCbState(target.checked);
-
-    if (!bottomCbState) {
-      const updatedCbList = cbList.map((item) => {
-        if (!item.state) {
-          return { ...item, state: true };
-        }
-        return item;
-      });
-
-      setCbList(updatedCbList);
-    } else {
-      const updatedCbList = cbList.map((item) => {
-        if (item.state) {
-          return { ...item, state: false };
-        }
-        return item;
-      });
-
-      setCbList(updatedCbList);
-    }
-  };
-
   const onChangeCheckbox = (index: number) => () => {
     const newCbList = [...cbList];
     cbList[index].state = !cbList[index].state;
@@ -93,10 +63,6 @@ export default function Terms(props: IPropsTerms) {
       <CbList>
         <Checkbox03 checkboxData={cbList} onChangeCheckbox={onChangeCheckbox} />
       </CbList>
-      <Checkbox01
-        CheckboxCont="위 약관을 모두 읽었으며, 모든 약관에 동의합니다."
-        onClickCb={onClickCb}
-      />
       <Button01 onClickButton={onClickButton} btnWidth="200px" btnText="다음" />
     </>
   );

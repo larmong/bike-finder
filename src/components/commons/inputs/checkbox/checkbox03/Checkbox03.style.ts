@@ -8,22 +8,26 @@ export const Wrapper = styled.div`
   gap: 10px;
 `;
 
-export const CheckboxWrapper = styled.div`
+export const Checkbox = styled.div``;
+
+export const CheckboxLabel = styled.label`
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 6px;
+  cursor: pointer;
 `;
 
-export const Checkbox = styled.input`
-  display: none;
-  & + label {
+export const CheckboxBtn = styled.input`
+  &[type="checkbox"] {
+    position: relative;
     cursor: pointer;
+    appearance: none;
     width: 16px;
     height: 16px;
     background-size: cover;
     border: 1px solid #d6d6d6;
   }
-  &:checked + label {
+  &[type="checkbox"]:checked {
     width: 16px;
     height: 16px;
     background-image: url("/images/input/cb-on.svg");
@@ -31,16 +35,50 @@ export const Checkbox = styled.input`
     border: 2px solid #0d8f68;
   }
   ${mediaQuery[2]} {
-    & + label {
-      width: 14px;
-      height: 14px;
+    &[type="checkbox"] {
+      width: 13px;
+      height: 13px;
     }
-    &:checked + label {
-      width: 14px;
-      height: 14px;
+    &[type="checkbox"]:checked {
+      width: 13px;
+      height: 13px;
     }
   }
 `;
+
+// export const CheckboxWrapper = styled.div`
+//   display: flex;
+//   gap: 8px;
+//   align-items: center;
+// `;
+
+// export const Checkbox = styled.input`
+//   display: none;
+//   & + label {
+//     cursor: pointer;
+//     width: 16px;
+//     height: 16px;
+//     background-size: cover;
+//     border: 1px solid #d6d6d6;
+//   }
+//   &:checked + label {
+//     width: 16px;
+//     height: 16px;
+//     background-image: url("/images/input/cb-on.svg");
+//     background-size: cover;
+//     border: 2px solid #0d8f68;
+//   }
+//   ${mediaQuery[2]} {
+//     & + label {
+//       width: 14px;
+//       height: 14px;
+//     }
+//     &:checked + label {
+//       width: 14px;
+//       height: 14px;
+//     }
+//   }
+// `;
 export const CheckboxName = styled.p`
   display: flex;
   align-items: center;
