@@ -1,13 +1,12 @@
 import * as S from "./Membership.style";
-import { MdDoubleArrow } from "react-icons/md";
 import { getBirth, getPhone } from "../../../commons/utils/utils";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Input03 from "../../../commons/inputs/input/input03/input03.container";
 import Input04 from "../../../commons/inputs/input/input04/input04.container";
 import Input05 from "../../../commons/inputs/input/input05/input05.container";
-import { IPropsMembershipUI } from "./Membership.types";
 import Progress from "../progress/Progress.container";
+import { IPropsMembershipUI } from "./Membership.types";
 
 export default function MembershipUI(props: IPropsMembershipUI) {
   return (

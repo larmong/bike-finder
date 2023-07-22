@@ -1,5 +1,4 @@
 import * as S from "./UserAuth.style";
-import { MdDoubleArrow } from "react-icons/md";
 import Input01 from "../../../commons/inputs/input/input01/Input01.container";
 import Input02 from "../../../commons/inputs/input/input02/Input02.container";
 import Input03 from "../../../commons/inputs/input/input03/input03.container";
@@ -7,8 +6,8 @@ import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Button03 from "../../../commons/buttons/button03/button03.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import TimerContainer from "../../../commons/utils/timer/Timer.container";
-import { IPropsUserAuthUI } from "./UserAuth.types";
 import Progress from "../progress/Progress.container";
+import { IPropsUserAuthUI } from "./UserAuth.types";
 
 export default function UserAuthUI(props: IPropsUserAuthUI) {
   return (

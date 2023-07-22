@@ -1,12 +1,11 @@
 import * as S from "./Terms.style";
 import { useState } from "react";
-import { MdDoubleArrow } from "react-icons/md";
 import Button01 from "../../../commons/buttons/button01/Button01.container";
 import Checkbox01 from "../../../commons/inputs/checkbox/checkbox01/Checkbox01.contaienr";
 import Checkbox03 from "../../../commons/inputs/checkbox/checkbox03/Checkbox03.contaienr";
+import Progress from "../progress/Progress.container";
 import { CustomMouseEvent } from "../../../../commons/types/global.types";
 import { IPropsTerms } from "./Terms.types";
-import Progress from "../progress/Progress.container";
 
 export default function Terms(props: IPropsTerms) {
   const [cbState, setCbState] = useState(false);

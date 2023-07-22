@@ -19,5 +19,21 @@ export const Wrapper = styled.div`
     color: #0d8f68;
   }
   ${mediaQuery[2]} {
+    gap: 20px;
+    font-size: 20px;
+    line-height: 25px;
+    svg {
+      width: 27px;
+      height: 27px;
+    }
+  }
+  ${mediaQuery[3]} {
+    gap: 12px;
+    font-size: 18px;
+    line-height: 20px;
+    svg {
+      width: 25px;
+      height: 25px;
+    }
   }
 `;
