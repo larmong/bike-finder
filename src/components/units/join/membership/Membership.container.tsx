@@ -30,8 +30,8 @@ export default function Membership(props: IPropsMembership) {
       addressSecond: "",
     },
     cardInfo: {
-      type: "",
-      number: "",
+      type: "-",
+      number: "-",
     },
   });
 

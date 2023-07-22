@@ -34,6 +34,8 @@ export const BoardBody = styled.div`
 
 export const BoardItemWrapper = styled.div`
   height: auto;
+  min-height: 50px;
+  text-align: center;
   display: grid;
   grid-template-columns: ${(props: IIsColumns) => props.isColumns};
   align-items: center;

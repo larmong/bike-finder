@@ -4,18 +4,13 @@ import { TbTicket } from "react-icons/tb";
 import { FaHeadphonesAlt } from "react-icons/fa";
 import { AiOutlineTrophy } from "react-icons/ai";
 import { BsGeoAlt, BsHeadset } from "react-icons/bs";
-import {
-  MdArrowForwardIos,
-  MdDirectionsBike,
-  MdOutlineSignpost,
-} from "react-icons/md";
+import { MdArrowForwardIos, MdDirectionsBike } from "react-icons/md";
 import { IMobileMenus, IPropsMobileMenu } from "./MobileMenu.types";
 
 export default function MobileMenu(props: IPropsMobileMenu) {
   const MOBILE_MENUS: IMobileMenus[] = [
     { name: "마이페이지", route: "mypage/userInfo", icon: <FiUser /> },
     { name: "대여소조회", route: "station", icon: <BsGeoAlt /> },
-    { name: "즐겨찾는\n대여소", route: "", icon: <MdOutlineSignpost /> },
     { name: "이용권구매", route: "ticket", icon: <TbTicket /> },
     { name: "문의하기", route: "inquiry", icon: <BsHeadset /> },
     { name: "안전수칙", route: "safety", icon: <MdDirectionsBike /> },

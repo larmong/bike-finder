@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
 export const Wrapper = styled.div`
   margin-top: 50px;
@@ -19,9 +20,15 @@ export const Message = styled.p`
   margin-bottom: 50px;
   font-weight: 700;
   font-size: 28px;
+  ${mediaQuery[2]} {
+    font-size: 20px;
+  }
 `;
 
 export const BtnGroup = styled.div`
   display: flex;
   gap: 15px;
+  ${mediaQuery[2]} {
+    width: 100%;
+  }
 `;

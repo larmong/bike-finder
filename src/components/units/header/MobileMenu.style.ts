@@ -2,13 +2,16 @@ import styled from "@emotion/styled";
 import { mediaQuery } from "../../../commons/style/mediaQuery.style";
 
 export const Menu_Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  overflow: scroll;
-  padding: 65px 30px 0 30px;
-  min-height: 100vh;
-  max-height: calc(100vh + 30px);
-  background: #ffffff;
+  display: none;
+  ${mediaQuery[0]} {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    padding: 65px 30px 0 30px;
+    min-height: 100vh;
+    max-height: calc(100vh + 30px);
+    background: #ffffff;
+  }
   ${mediaQuery[2]} {
     padding: 65px 20px 0 20px;
     max-height: calc(100vh + 20px);
