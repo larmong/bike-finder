@@ -106,7 +106,7 @@ export const ContDsc = styled.span`
 export const ContRight = styled.div`
   width: 464px;
   height: 341px;
-  background-image: url("/images/main/graph.png");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Fmain%2Fgraph.png?alt=media&token=2e3ee264-7202-4237-9a58-3de9312d4372");
   background-size: cover;
   ${mediaQuery[3]} {
     width: 320px;

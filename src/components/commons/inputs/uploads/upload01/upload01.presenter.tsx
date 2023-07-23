@@ -18,7 +18,10 @@ export default function Uploads01UI(props: IUploads01UI) {
         />
       ) : (
         <S.UploadFile onClick={props.onClickUpload}>
-          <img src="/images/input/upload.svg" alt="플러스" />
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Finput%2Fupload.svg?alt=media&token=87399236-665d-4082-a597-6f8581d8da4c"
+            alt="플러스"
+          />
           <span>Upload</span>
         </S.UploadFile>
       )}

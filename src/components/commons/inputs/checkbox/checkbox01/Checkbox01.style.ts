@@ -25,7 +25,7 @@ export const CheckboxBtn = styled.input`
   &[type="checkbox"]:checked {
     width: 16px;
     height: 16px;
-    background-image: url("/images/input/cb-on.svg");
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Finput%2Fcb-on.svg?alt=media&token=63cf0414-4af0-4377-a4d1-d22b42b00bc0");
     background-size: cover;
     border: 2px solid #0d8f68;
   }

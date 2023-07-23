@@ -5,7 +5,12 @@ import Animation02 from "../../../commons/animations/animation02/Animation02.con
 
 export default function Section06() {
   const titleData = {
-    icon: <img src="/images/main/logo-icon.svg" alt="아이콘" />,
+    icon: (
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Fmain%2Flogo-icon.svg?alt=media&token=b580745a-dd3a-43ff-aa1a-847eecf832f1"
+        alt="아이콘"
+      />
+    ),
     title: "# 따릉이와 함께",
     dsc: "Instagram에 따릉이와 함께하는 서울을 공유해주세요! 😎",
   };

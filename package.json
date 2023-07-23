@@ -2,11 +2,13 @@
   "name": "bike-finder",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://larmong.github.io/bike-finder/",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "build": "next build && next export",
+    "predeploy": "npm run build",
+    "deploy": "touch out/.nojekyll && gh-pages -d out --dotfiles"
   },
   "dependencies": {
     "@apollo/client": "^3.7.14",
@@ -14,6 +16,7 @@
     "@emotion/styled": "^11.11.0",
     "axios": "^1.4.0",
     "firebase": "^9.18.0",
+    "gh-pages": "^5.0.0",
     "graphql": "^16.6.0",
     "moment": "^2.29.4",
     "next": "12.1.0",

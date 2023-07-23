@@ -6,7 +6,7 @@ export default function Footer() {
   const router = useRouter();
 
   const onClickMoveToMenus = (event: CustomMouseEvent) => {
-    router.push(`${event.currentTarget.id}`);
+    void router.push(`${event.currentTarget.id}`);
   };
 
   return <FooterUI onClickMoveToMenus={onClickMoveToMenus} />;

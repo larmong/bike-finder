@@ -17,11 +17,20 @@ export default function FooterUI(props: IFooterUI) {
     {
       name: "youtube",
       link: "https://youtube.com/@user-ql9nk6ds1t",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Ffooter%2Fyoutube.svg?alt=media&token=d0e64b02-f7d3-47c5-b152-7fedb5a212d1",
     },
-    { name: "insta", link: "https://www.instagram.com/seoulbike_/" },
+    {
+      name: "insta",
+      link: "https://www.instagram.com/seoulbike_/",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Ffooter%2Finsta.svg?alt=media&token=a0a9cbdb-9b6d-494d-8ae4-136a1f006812",
+    },
     {
       name: "facebook",
       link: "https://www.facebook.com/seoulbike/?locale=ko_KR",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Ffooter%2Ffacebook.svg?alt=media&token=c446c508-863c-4de0-ac88-e269f08e49ff",
     },
   ];
 
@@ -43,7 +52,7 @@ export default function FooterUI(props: IFooterUI) {
               <Fragment key={index}>
                 <img
                   id={el.link}
-                  src={`/images/footer/${el.name}.svg`}
+                  src={`${el.image}`}
                   onClick={props.onClickMoveToMenus}
                   alt={el.name}
                 />

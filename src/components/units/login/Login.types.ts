@@ -21,4 +21,7 @@ export interface IMenuList {
   route: string;
 }
 
-export type IAuthList = string;
+export interface IAuthList {
+  name: string;
+  image: string;
+}

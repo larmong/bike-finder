@@ -45,7 +45,7 @@ export const BannerLeft = styled.div`
 export const BannerRight = styled.div`
   width: 550px;
   height: 100%;
-  background-image: url("/images/main/banner.png");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Fmain%2Fbanner.png?alt=media&token=c6499f19-bd6f-4a15-a673-16c2fb3bfb9c");
   background-size: cover;
   ${mediaQuery[0]} {
     width: 400px;

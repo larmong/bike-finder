@@ -53,7 +53,7 @@ export default function Station() {
             const latitude = Number(station.stationLatitude);
             const longitude = Number(station.stationLongitude);
             const bikeImage = new window.kakao.maps.MarkerImage(
-              "https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Fmarker.svg?alt=media&token=b255d980-98f0-45c1-aff4-0d4f0f367af7",
+              "https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Fstation%2Fmarker.svg?alt=media&token=cadd0535-382e-47c8-acaf-c15e75108b63",
               new window.kakao.maps.Size(40, 40),
               {
                 offset: new window.kakao.maps.Point(20, 40),

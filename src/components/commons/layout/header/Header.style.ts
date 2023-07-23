@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
 export const Logo = styled.div`
   width: 147px;
   height: 32.32px;
-  background-image: url("/images/logo.svg");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Flogo.svg?alt=media&token=15320587-3973-4f3f-bd08-7d8fe714ac7e");
   background-size: cover;
   cursor: pointer;
 `;
@@ -114,7 +114,7 @@ export const MenuIcon = styled.div`
 export const Logo_M = styled.div`
   width: 123px;
   height: 27px;
-  background-image: url("/images/logo.svg");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Flogo.svg?alt=media&token=15320587-3973-4f3f-bd08-7d8fe714ac7e");
   background-size: cover;
   cursor: pointer;
 `;

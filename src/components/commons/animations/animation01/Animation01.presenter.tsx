@@ -16,10 +16,7 @@ export default function Animation01UI(props: IPropsAnimation01) {
               <Fragment key={index}>
                 {props.COMPANY_LIST.map((el: any, companyIndex: any) => (
                   <Fragment key={companyIndex}>
-                    <S.Logo
-                      src={`/images/company/${el.name_en}.svg`}
-                      alt={el.name_en}
-                    />
+                    <S.Logo src={`${el.image}`} alt={el.name_en} />
                   </Fragment>
                 ))}
               </Fragment>

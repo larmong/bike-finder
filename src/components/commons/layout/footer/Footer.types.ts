@@ -11,6 +11,7 @@ export interface IFooterMenus {
 export interface ISnsMenus {
   name: string;
   link: string;
+  image: string;
 }
 
 export interface IIsActive {

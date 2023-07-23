@@ -37,7 +37,7 @@ export const LoginWrapper = styled.div`
 export const Logo = styled.div`
   width: 200px;
   height: 43.97px;
-  background-image: url("/images/logo.svg");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Flogo.svg?alt=media&token=15320587-3973-4f3f-bd08-7d8fe714ac7e");
   background-size: cover;
   cursor: pointer;
   margin: 10px 0 40px 0;

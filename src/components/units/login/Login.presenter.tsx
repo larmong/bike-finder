@@ -4,7 +4,23 @@ import Button01 from "../../commons/buttons/button01/Button01.container";
 import { IAuthList, IMenuList, IPropsLoginUI } from "./Login.types";
 
 export default function LoginUI(props: IPropsLoginUI) {
-  const AUTH_LIST: IAuthList[] = ["google", "github", "facebook"];
+  const AUTH_LIST: IAuthList[] = [
+    {
+      name: "google",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Flogin%2Fgoogle.svg?alt=media&token=9fbc8cf7-4895-4498-b9a8-9f116523c1b0",
+    },
+    {
+      name: "github",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Flogin%2Fgithub.svg?alt=media&token=8dade062-379d-4ec2-b796-d8b298238135",
+    },
+    {
+      name: "facebook",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Flogin%2Ffacebook.svg?alt=media&token=675c6186-5a76-4507-9342-61eed1db66ea",
+    },
+  ];
   const MENU_LIST: IMenuList[] = [
     { name: "회원가입", route: "join" },
     { name: "아이디 찾기", route: "idInquiry" },
@@ -32,9 +48,9 @@ export default function LoginUI(props: IPropsLoginUI) {
           />
         </S.InputGroup>
         <S.AuthGroup>
-          {AUTH_LIST.map((el: string, index: number) => (
-            <S.Auth key={index} onClick={props.onClickLoginSocial} id={el}>
-              <img src={`images/login/${el}.svg`} alt={el} />
+          {AUTH_LIST.map((el: IAuthList, index: number) => (
+            <S.Auth key={index} onClick={props.onClickLoginSocial} id={el.name}>
+              <img src={`${el.image}`} alt={el.name} />
             </S.Auth>
           ))}
         </S.AuthGroup>

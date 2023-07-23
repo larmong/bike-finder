@@ -90,11 +90,11 @@ export const InstagramDataComment = styled.div``;
 export const Favorite = styled.div`
   width: 20px;
   height: 20px;
-  background-image: url("/images/main/favorite.svg");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Fmain%2Ffavorite.svg?alt=media&token=f560fc37-151a-477b-a2f7-6529af0d8ecc");
 `;
 
 export const Comment = styled.div`
   width: 20px;
   height: 20px;
-  background-image: url("/images/main/comment.svg");
+  background-image: url("https://firebasestorage.googleapis.com/v0/b/bike-finder-1121a.appspot.com/o/bikefinder%2Fmain%2Fcomment.svg?alt=media&token=fd34f29c-d278-4378-9211-7c05cff4d5ed");
 `;
