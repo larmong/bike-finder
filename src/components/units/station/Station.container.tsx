@@ -1,16 +1,16 @@
 import * as S from "./Station.style";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useQuery } from "@apollo/client";
+import { FETCH_BIKE_STATIONS } from "./Station.queries";
 import { Container } from "../../../commons/style/global.style";
 import Title02 from "../../commons/titles/title02/Title02.container";
-import Head from "next/head";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
 
 export default function Station() {
-  const [bikeStations, setBikeStations] = useState<any[]>([]);
+  const { data } = useQuery(FETCH_BIKE_STATIONS);
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -49,6 +49,7 @@ export default function Station() {
         const map = new window.kakao.maps.Map(container, options);
         setIsLoading(false);
 
+        const bikeStations = data?.allBikeList || [];
         if (bikeStations.length > 0) {
           bikeStations.forEach((station: any) => {
             const latitude = Number(station.stationLatitude);
@@ -73,44 +74,20 @@ export default function Station() {
         }
       });
     };
-  }, [bikeStations, position]);
-
-  useEffect(() => {
-    const apiUrl =
-      "http://openapi.seoul.go.kr:8088/77447a58706c617237364d6a694774/json/bikeList/1/1000/";
-    axios
-      .get(apiUrl)
-      .then((response) => {
-        const bikeStations = response.data?.rentBikeStatus?.row;
-        if (bikeStations) {
-          setBikeStations(bikeStations);
-        }
-      })
-      .catch((error) => {
-        console.error("따릉이 정류장 데이터를 가져오는 중 에러 발생:", error);
-      });
-  }, []);
+  }, [data, position]);
 
   return (
-    <>
-      <Head>
-        <meta
-          http-equiv="Content-Security-Policy"
-          content="upgrade-insecure-requests"
-        />
-      </Head>
-      <S.Wrapper>
-        <Container>
-          <Title02 title="대여소 조회" />
-          <S.Contents>
-            <S.Map id="map">
-              {isLoading ? (
-                <S.MapLoading>지도를 로딩중입니다...</S.MapLoading>
-              ) : null}
-            </S.Map>
-          </S.Contents>
-        </Container>
-      </S.Wrapper>
-    </>
+    <S.Wrapper>
+      <Container>
+        <Title02 title="대여소 조회" />
+        <S.Contents>
+          <S.Map id="map">
+            {isLoading ? (
+              <S.MapLoading>지도를 로딩중입니다...</S.MapLoading>
+            ) : null}
+          </S.Map>
+        </S.Contents>
+      </Container>
+    </S.Wrapper>
   );
 }
