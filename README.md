@@ -3,7 +3,7 @@
 
 ###### 따릉이 파인더는 서울시 공공자전거 대여 서비스인 따릉이 웹사이트를 기반으로 리디자인한 반응형 웹사이트이며, 서울시 공공자전거 대여소 정보 API를 활용하여 따릉이 스테이션의 위치를 지도에 표시하여 언제든지 웹사이트에서도 스테이션의 위치를 볼 수 있습니다!
 
-🔗 https://bike-finder-larmong.netlify.app/station
+🔗 https://bike-finder-larmong.netlify.app
 
 ### 개발 스택
     - Front-end: Next.js, React.js, TypeScript
