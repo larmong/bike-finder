@@ -22,29 +22,12 @@ export default function Station() {
   useEffect(() => {
     if ("geolocation" in navigator) {
       // 위치정보 사용 가능
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setPosition({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-            isAvailable: true,
-          });
-        },
-        () => {
-          // 위치정보 사용 불가능
-          setPosition({
-            latitude: 37.5556488,
-            longitude: 126.91062927,
-            isAvailable: false,
-          });
-        }
-      );
-    } else {
-      // 위치정보 사용 불가능
-      setPosition({
-        latitude: 37.5556488,
-        longitude: 126.91062927,
-        isAvailable: false,
+      navigator.geolocation.getCurrentPosition((position) => {
+        setPosition({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          isAvailable: true,
+        });
       });
     }
   }, []);
