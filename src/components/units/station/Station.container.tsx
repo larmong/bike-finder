@@ -4,13 +4,14 @@ import { useQuery } from "@apollo/client";
 import { FETCH_BIKE_STATIONS } from "./Station.queries";
 import { Container } from "../../../commons/style/global.style";
 import Title02 from "../../commons/titles/title02/Title02.container";
+import { allStations } from "./Station.types";
 
 declare const window: typeof globalThis & {
   kakao: any;
 };
 
 export default function Station() {
-  const { data } = useQuery(FETCH_BIKE_STATIONS);
+  const { data } = useQuery<allStations>(FETCH_BIKE_STATIONS);
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -49,7 +50,7 @@ export default function Station() {
         const map = new window.kakao.maps.Map(container, options);
         setIsLoading(false);
 
-        const bikeStations = data?.allBikeList || [];
+        const bikeStations = data?.allStations || [];
         if (bikeStations.length > 0) {
           bikeStations.forEach((station: any) => {
             const latitude = Number(station.stationLatitude);
