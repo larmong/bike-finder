@@ -15,3 +15,7 @@ export interface IFetchFaq {
   state: boolean;
   id: string;
 }
+
+export interface IWidthValue {
+  widthValue: string;
+}

@@ -1,28 +1,30 @@
 import styled from "@emotion/styled";
 import { IIsColumns } from "./Board.types";
 import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
+import { IWidthValue } from "../../../units/mypage/userInfo/faq/board/Board.types";
 
 export const Wrapper = styled.div`
   ${mediaQuery[1]} {
     font-size: 14px;
   }
 `;
-export const Board = styled.div`
-  width: 100%;
-`;
 
 export const BoardWrapper = styled.div`
   width: 100%;
-  overflow-x: scroll;
+`;
+
+export const BoardContainer = styled.div`
+  width: 100%;
   ${mediaQuery[2]} {
     overflow-x: scroll;
   }
 `;
-export const BoardContainer = styled.div`
+
+export const Board = styled.div`
   width: 100%;
   overflow-x: hidden;
   ${mediaQuery[2]} {
-    width: 550px;
+    width: ${(props: IWidthValue) => props.widthValue};
   }
 `;
 

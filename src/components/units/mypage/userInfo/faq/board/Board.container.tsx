@@ -41,10 +41,10 @@ export default function FaqBoard(props: IPropsFaqBoard) {
 
   return (
     <S.Wrapper>
-      <S.Board>
+      <S.BoardWrapper>
         <Search01 handleSearch={handleSearch} />
-        <S.BoardWrapper>
-          <S.BoardContainer>
+        <S.BoardContainer>
+          <S.Board widthValue="550px">
             <S.BoardHead isColumns={BOARD_DETAIL.columns}>
               {BOARD_DETAIL.title.map(
                 (el: IBoardDetailTitleType, index: number) => (
@@ -80,8 +80,8 @@ export default function FaqBoard(props: IPropsFaqBoard) {
                 ))}
               </S.BoardBody>
             )}
-          </S.BoardContainer>
-        </S.BoardWrapper>
+          </S.Board>
+        </S.BoardContainer>
         {paginatedData.length === 0 ? (
           ""
         ) : (
@@ -91,7 +91,7 @@ export default function FaqBoard(props: IPropsFaqBoard) {
             handlePageChange={handlePageChange}
           />
         )}
-      </S.Board>
+      </S.BoardWrapper>
     </S.Wrapper>
   );
 }

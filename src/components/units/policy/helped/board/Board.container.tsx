@@ -1,23 +1,20 @@
 import * as S from "../../../../commons/boards/board/Board.style";
 import { useEffect, useState } from "react";
+import Search01 from "../../../../commons/searches/search01/Search01.contaienr";
+import Pagination01 from "../../../../commons/paginations/pagination01/Pagination01.container";
+import BoardItem01 from "./item/Item.container";
 import { IFetchHelped, IPropsHelpedBoard } from "./Board.types";
 import {
   IBoardDetailTitleType,
   IBoardDetailType,
 } from "../../../../commons/boards/board/Board.types";
-import Search01 from "../../../../commons/searches/search01/Search01.contaienr";
-import Pagination01 from "../../../../commons/paginations/pagination01/Pagination01.container";
-import {
-  BoardBody,
-  BoardItemWrapperHelped,
-} from "../../../../commons/boards/board/Board.style";
-import BoardItem01 from "./item/Item.container";
 
 export default function HelpedBoard(props: IPropsHelpedBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
-    title: ["제목", "날짜"],
-    columns: "1fr 140px",
+    title: ["제목"],
+    columns: "1fr",
   };
+
   const [filteredData, setFilteredData] = useState<IFetchHelped[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize: number = 10;
@@ -47,30 +44,38 @@ export default function HelpedBoard(props: IPropsHelpedBoard) {
   }, [props.boardData]);
 
   return (
-    <S.Board>
-      <Search01 handleSearch={handleSearch} />
-      <S.BoardHead isColumns={BOARD_DETAIL.columns}>
-        {BOARD_DETAIL.title.map((el: IBoardDetailTitleType, index: number) => (
-          <S.BoardItem key={index}>{el}</S.BoardItem>
-        ))}
-      </S.BoardHead>
-      <BoardItemWrapperHelped>
-        {filteredData.map((el: IFetchHelped) => (
-          <BoardBody key={el?.id}>
-            <BoardItem01
-              title={el?.title}
-              company={el?.company}
-              date={el?.date}
-              content={el?.content}
-            />
-          </BoardBody>
-        ))}
-      </BoardItemWrapperHelped>
-      <Pagination01
-        noticeLength={noticeLength}
-        pageSize={pageSize}
-        handlePageChange={handlePageChange}
-      />
-    </S.Board>
+    <S.Wrapper>
+      <S.BoardWrapper>
+        <Search01 handleSearch={handleSearch} />
+        <S.BoardContainer>
+          <S.Board widthValue="auto">
+            <S.BoardHead isColumns={BOARD_DETAIL.columns}>
+              {BOARD_DETAIL.title.map(
+                (el: IBoardDetailTitleType, index: number) => (
+                  <S.BoardItem key={index}>{el}</S.BoardItem>
+                )
+              )}
+            </S.BoardHead>
+            <S.BoardItemWrapperHelped>
+              {filteredData.map((el: IFetchHelped) => (
+                <S.BoardBody key={el?.id}>
+                  <BoardItem01
+                    title={el?.title}
+                    company={el?.company}
+                    date={el?.date}
+                    content={el?.content}
+                  />
+                </S.BoardBody>
+              ))}
+            </S.BoardItemWrapperHelped>
+          </S.Board>
+        </S.BoardContainer>
+        <Pagination01
+          noticeLength={noticeLength}
+          pageSize={pageSize}
+          handlePageChange={handlePageChange}
+        />
+      </S.BoardWrapper>
+    </S.Wrapper>
   );
 }
