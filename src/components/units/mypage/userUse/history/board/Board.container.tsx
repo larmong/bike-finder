@@ -8,11 +8,15 @@ import {
   IBoardDetailTitleType,
   IBoardDetailType,
 } from "../../../../../commons/boards/board/Board.types";
+import {
+  BoardContainer,
+  BoardWrapper,
+} from "../../../../../commons/boards/board/Board.style";
 
 export default function HistoryBoard(props: IPropsHistoryBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
     title: ["자전거", "대여일시", "대여소", "반납일시", "반납대여소"],
-    columns: "1fr 1fr 1fr 1fr 1fr",
+    columns: "1fr 1.5fr 1.2fr 1.5fr 1.2fr",
   };
 
   const [minute, setMinute] = useState(120);
@@ -42,8 +46,8 @@ export default function HistoryBoard(props: IPropsHistoryBoard) {
   }, [props.boardData]);
 
   return (
-    <>
-      <S.Board>
+    <S.Wrapper>
+      <S.BoardWrapper>
         <S.SearchWrapper>
           <S.Search>
             <S.SearchHead>이용날짜</S.SearchHead>
@@ -76,30 +80,37 @@ export default function HistoryBoard(props: IPropsHistoryBoard) {
             </p>
           </S.Effect>
         </S.AllUse>
-        <S.BoardHead isColumns={BOARD_DETAIL.columns}>
-          {BOARD_DETAIL.title.map(
-            (el: IBoardDetailTitleType, index: number) => (
-              <S.BoardItem key={index}>{el}</S.BoardItem>
-            )
-          )}
-        </S.BoardHead>
-        <S.BoardBody>
-          {paginatedData.length === 0 ? (
+        <S.BoardContainer>
+          <S.Board widthValue="700px">
+            <S.BoardHead isColumns={BOARD_DETAIL.columns}>
+              {BOARD_DETAIL.title.map(
+                (el: IBoardDetailTitleType, index: number) => (
+                  <S.BoardItem key={index}>{el}</S.BoardItem>
+                )
+              )}
+            </S.BoardHead>
             <S.BoardBody>
-              <S.BoardItemWrapper>대여이력이 없습니다.</S.BoardItemWrapper>
+              {paginatedData.length === 0 ? (
+                <S.BoardBody>
+                  <S.BoardItemWrapper>대여이력이 없습니다.</S.BoardItemWrapper>
+                </S.BoardBody>
+              ) : (
+                paginatedData?.map((el: IFetchHistory) => (
+                  <S.BoardItemWrapper
+                    key={el.id}
+                    isColumns={BOARD_DETAIL.columns}
+                  >
+                    <S.BoardItem>{el.bikeId}</S.BoardItem>
+                    <S.BoardItem>{el.rental_date}</S.BoardItem>
+                    <S.BoardItem>{el.rental_office}</S.BoardItem>
+                    <S.BoardItem>{el.return_date}</S.BoardItem>
+                    <S.BoardItem>{el.return_office}</S.BoardItem>
+                  </S.BoardItemWrapper>
+                ))
+              )}
             </S.BoardBody>
-          ) : (
-            paginatedData?.map((el: IFetchHistory) => (
-              <S.BoardItemWrapper key={el.id} isColumns={BOARD_DETAIL.columns}>
-                <S.BoardItem>{el.bikeId}</S.BoardItem>
-                <S.BoardItem>{el.rental_date}</S.BoardItem>
-                <S.BoardItem>{el.rental_office}</S.BoardItem>
-                <S.BoardItem>{el.return_date}</S.BoardItem>
-                <S.BoardItem>{el.return_office}</S.BoardItem>
-              </S.BoardItemWrapper>
-            ))
-          )}
-        </S.BoardBody>
+          </S.Board>
+        </S.BoardContainer>
         {paginatedData.length === 0 ? (
           ""
         ) : (
@@ -109,7 +120,7 @@ export default function HistoryBoard(props: IPropsHistoryBoard) {
             handlePageChange={handlePageChange}
           />
         )}
-      </S.Board>
-    </>
+      </S.BoardWrapper>
+    </S.Wrapper>
   );
 }
