@@ -21,7 +21,7 @@ export default function PaymentBoard(props: IPropsPaymentBoard) {
       "상태",
       "환불/취소",
     ],
-    columns: "1fr 1fr 1fr 1fr 1fr 1fr 1fr",
+    columns: "1.2fr 1fr 1.3fr 1fr 1.3fr 1fr 1.2fr",
   };
 
   const [filteredData, setFilteredData] = useState<IFetchPayment[]>([]);
@@ -51,8 +51,8 @@ export default function PaymentBoard(props: IPropsPaymentBoard) {
   }, [props.boardData]);
 
   return (
-    <>
-      <S.Board>
+    <S.Wrapper>
+      <S.BoardWrapper>
         <S.SearchWrapper>
           <S.Search>
             <S.SearchHead>결제수단</S.SearchHead>
@@ -75,59 +75,66 @@ export default function PaymentBoard(props: IPropsPaymentBoard) {
             </S.SearchBody>
           </S.Search>
         </S.SearchWrapper>
-        <S.BoardHead isColumns={BOARD_DETAIL.columns}>
-          {BOARD_DETAIL.title.map(
-            (el: IBoardDetailTitleType, index: number) => (
-              <S.BoardItem key={index}>{el}</S.BoardItem>
-            )
-          )}
-        </S.BoardHead>
-        <S.BoardBody>
-          {paginatedData.length === 0 ? (
+        <S.BoardContainer>
+          <S.Board widthValue="700px">
+            <S.BoardHead isColumns={BOARD_DETAIL.columns}>
+              {BOARD_DETAIL.title.map(
+                (el: IBoardDetailTitleType, index: number) => (
+                  <S.BoardItem key={index}>{el}</S.BoardItem>
+                )
+              )}
+            </S.BoardHead>
             <S.BoardBody>
-              <S.BoardItemWrapper>결제내역이 없습니다.</S.BoardItemWrapper>
+              {paginatedData.length === 0 ? (
+                <S.BoardBody>
+                  <S.BoardItemWrapper>결제내역이 없습니다.</S.BoardItemWrapper>
+                </S.BoardBody>
+              ) : (
+                paginatedData?.map((el: IFetchPayment) => (
+                  <S.BoardItemWrapper
+                    key={el.id}
+                    isColumns={BOARD_DETAIL.columns}
+                  >
+                    <S.BoardItem>{el.payment_date}</S.BoardItem>
+                    <S.BoardItem>{el.method}</S.BoardItem>
+                    <S.BoardItem className="board-item-left">
+                      {el.product}
+                    </S.BoardItem>
+                    <S.BoardItem>{getPrice(el.price)}원</S.BoardItem>
+                    <S.BoardItem>{el.use_date}</S.BoardItem>
+                    <S.BoardItem>
+                      <S.BoardItemState>
+                        {el.state === 0
+                          ? "정상"
+                          : el.state === 1
+                          ? "환불중"
+                          : el.state === 2
+                          ? "취소완료"
+                          : ""}
+                      </S.BoardItemState>
+                    </S.BoardItem>
+                    <S.BoardItem>
+                      {el.state === 0 ? (
+                        <Button02
+                          btnId={el.id}
+                          onClickButton={props.onClickRefundBtn}
+                          btnWidth="82px"
+                          btnText="환불신청"
+                        />
+                      ) : (
+                        <Button02
+                          btnWidth="82px"
+                          btnText="환불신청"
+                          btnClass="disabled"
+                        />
+                      )}
+                    </S.BoardItem>
+                  </S.BoardItemWrapper>
+                ))
+              )}
             </S.BoardBody>
-          ) : (
-            paginatedData?.map((el: IFetchPayment) => (
-              <S.BoardItemWrapper key={el.id} isColumns={BOARD_DETAIL.columns}>
-                <S.BoardItem>{el.payment_date}</S.BoardItem>
-                <S.BoardItem>{el.method}</S.BoardItem>
-                <S.BoardItem className="board-item-left">
-                  {el.product}
-                </S.BoardItem>
-                <S.BoardItem>{getPrice(el.price)}원</S.BoardItem>
-                <S.BoardItem>{el.use_date}</S.BoardItem>
-                <S.BoardItem>
-                  <S.BoardItemState>
-                    {el.state === 0
-                      ? "정상"
-                      : el.state === 1
-                      ? "환불중"
-                      : el.state === 2
-                      ? "취소완료"
-                      : ""}
-                  </S.BoardItemState>
-                </S.BoardItem>
-                <S.BoardItem>
-                  {el.state === 0 ? (
-                    <Button02
-                      btnId={el.id}
-                      onClickButton={props.onClickRefundBtn}
-                      btnWidth="82px"
-                      btnText="환불신청"
-                    />
-                  ) : (
-                    <Button02
-                      btnWidth="82px"
-                      btnText="환불신청"
-                      btnClass="disabled"
-                    />
-                  )}
-                </S.BoardItem>
-              </S.BoardItemWrapper>
-            ))
-          )}
-        </S.BoardBody>
+          </S.Board>
+        </S.BoardContainer>
         {paginatedData.length === 0 ? (
           ""
         ) : (
@@ -137,7 +144,7 @@ export default function PaymentBoard(props: IPropsPaymentBoard) {
             handlePageChange={handlePageChange}
           />
         )}
-      </S.Board>
-    </>
+      </S.BoardWrapper>
+    </S.Wrapper>
   );
 }

@@ -83,11 +83,6 @@ export default function Payment(props: IPropsUserPayment) {
       name: "6개월",
       checkedState: false,
     },
-    {
-      id: 5,
-      name: "1년",
-      checkedState: false,
-    },
   ];
 
   const [loginUser] = useRecoilState<string | null>(loginUserState);
