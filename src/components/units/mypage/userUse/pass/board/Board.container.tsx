@@ -11,11 +11,8 @@ import {
 export default function PassBoard(props: IPropsPassBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
     title: ["등록일자", "이용권", "사용기한", "상태"],
-    columns: "1fr 1fr 1fr 1fr",
+    columns: "1.2fr 1.2fr 3fr 1fr",
   };
-
-  const [minute, setMinute] = useState(120);
-  const [distance, setDistance] = useState(1.1);
 
   const [filteredData, setFilteredData] = useState<IFetchPass[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -39,51 +36,64 @@ export default function PassBoard(props: IPropsPassBoard) {
   }, [props.boardData]);
 
   return (
-    <S.Board>
-      <S.SearchWrapper>
-        <S.Search>
-          <S.SearchHead>종류</S.SearchHead>
-          <S.SearchBody>
-            <Radio02
-              onClickRadio={onClickPassType}
-              radioData={props.PASS_TYPE}
-              radioName="paymentMethodType"
-            />
-          </S.SearchBody>
-        </S.Search>
-      </S.SearchWrapper>
-      <S.BoardHead isColumns={BOARD_DETAIL.columns}>
-        {BOARD_DETAIL.title.map((el: IBoardDetailTitleType, index: number) => (
-          <S.BoardItem key={index}>{el}</S.BoardItem>
-        ))}
-      </S.BoardHead>
-      <S.BoardBody>
+    <S.Wrapper>
+      <S.BoardWrapper>
+        <S.SearchWrapper>
+          <S.Search>
+            <S.SearchHead>종류</S.SearchHead>
+            <S.SearchBody>
+              <Radio02
+                onClickRadio={onClickPassType}
+                radioData={props.PASS_TYPE}
+                radioName="paymentMethodType"
+              />
+            </S.SearchBody>
+          </S.Search>
+        </S.SearchWrapper>
+        <S.BoardContainer>
+          <S.Board widthValue="700px">
+            <S.BoardHead isColumns={BOARD_DETAIL.columns}>
+              {BOARD_DETAIL.title.map(
+                (el: IBoardDetailTitleType, index: number) => (
+                  <S.BoardItem key={index}>{el}</S.BoardItem>
+                )
+              )}
+            </S.BoardHead>
+            <S.BoardBody>
+              {paginatedData.length === 0 ? (
+                <S.BoardBody>
+                  <S.BoardItemWrapper>
+                    이용권 내역이 없습니다.
+                  </S.BoardItemWrapper>
+                </S.BoardBody>
+              ) : (
+                paginatedData?.map((el: IFetchPass) => (
+                  <S.BoardItemWrapper
+                    key={el.id}
+                    isColumns={BOARD_DETAIL.columns}
+                  >
+                    <S.BoardItem>{el.date}</S.BoardItem>
+                    <S.BoardItem>{el.product}</S.BoardItem>
+                    <S.BoardItem>{`${el.rental_date} ~ ${el.return_date}`}</S.BoardItem>
+                    <S.BoardItem>
+                      {el.state ? <span></span> : <span>사용완료</span>}
+                    </S.BoardItem>
+                  </S.BoardItemWrapper>
+                ))
+              )}
+            </S.BoardBody>
+          </S.Board>
+        </S.BoardContainer>
         {paginatedData.length === 0 ? (
-          <S.BoardBody>
-            <S.BoardItemWrapper>이용권 내역이 없습니다.</S.BoardItemWrapper>
-          </S.BoardBody>
+          ""
         ) : (
-          paginatedData?.map((el: IFetchPass) => (
-            <S.BoardItemWrapper key={el.id} isColumns={BOARD_DETAIL.columns}>
-              <S.BoardItem>{el.date}</S.BoardItem>
-              <S.BoardItem>{el.product}</S.BoardItem>
-              <S.BoardItem>{`${el.rental_date} ~ ${el.return_date}`}</S.BoardItem>
-              <S.BoardItem>
-                {el.state ? <span></span> : <span>사용완료</span>}
-              </S.BoardItem>
-            </S.BoardItemWrapper>
-          ))
+          <Pagination01
+            noticeLength={noticeLength}
+            pageSize={pageSize}
+            handlePageChange={handlePageChange}
+          />
         )}
-      </S.BoardBody>
-      {paginatedData.length === 0 ? (
-        ""
-      ) : (
-        <Pagination01
-          noticeLength={noticeLength}
-          pageSize={pageSize}
-          handlePageChange={handlePageChange}
-        />
-      )}
-    </S.Board>
+      </S.BoardWrapper>
+    </S.Wrapper>
   );
 }
