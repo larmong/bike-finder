@@ -183,7 +183,6 @@ export const BoardTitle = styled.p`
 `;
 
 // Billing
-export const BillingContainer = styled.div``;
 export const Billing = styled.div`
   display: flex;
   border: 1px solid #e9e9e9;
