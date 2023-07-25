@@ -5,15 +5,19 @@
 
 🔗 https://bike-finder-larmong.netlify.app
 
+### 테스트 계정
+    - ID: admin@gmail.com
+    - PW: 12341234
+
 ### 개발 스택
-    - Front-end: Next.js, React.js, TypeScript
-    - Back-end: Node.js
+    - Front-end: Nextjs, Reactjs, TypeScript, Javascript
+    - Back-end: Nodejs
     - Database: Firebase
 
 ### 프로젝트 목표
+    - 모바일 및 데스크톱에서 쉽게 접근할 수 있는 반응형 웹
     - 지도를 통해 서울시 자전거 대여소 정보 확인
     - 자전거 대여/반납을 위한 결제 기능
-    - 모바일 및 데스크톱에서 쉽게 접근할 수 있는 반응형 웹
     - Firebase를 사용하여 데이터베이스를 구축
 
 ### 프로젝트 페이지, 기능 설명

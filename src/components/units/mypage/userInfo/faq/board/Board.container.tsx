@@ -1,5 +1,6 @@
 import * as S from "../../../../../commons/boards/board/Board.style";
 import { useEffect, useState } from "react";
+import { getDate } from "../../../../../commons/utils/utils";
 import Search01 from "../../../../../commons/searches/search01/Search01.contaienr";
 import Pagination01 from "../../../../../commons/paginations/pagination01/Pagination01.container";
 import {
@@ -7,7 +8,6 @@ import {
   IBoardDetailType,
 } from "../../../../../commons/boards/board/Board.types";
 import { IFetchFaq, IPropsFaqBoard } from "./Board.types";
-import { getDate } from "../../../../../commons/utils/utils";
 
 export default function FaqBoard(props: IPropsFaqBoard) {
   const BOARD_DETAIL: IBoardDetailType = {
@@ -40,52 +40,58 @@ export default function FaqBoard(props: IPropsFaqBoard) {
   }, [props.boardData]);
 
   return (
-    <S.BoardWrapper>
+    <S.Wrapper>
       <S.Board>
         <Search01 handleSearch={handleSearch} />
-        <S.BoardHead isColumns={BOARD_DETAIL.columns}>
-          {BOARD_DETAIL.title.map(
-            (el: IBoardDetailTitleType, index: number) => (
-              <S.BoardItem key={index}>{el}</S.BoardItem>
-            )
-          )}
-        </S.BoardHead>
+        <S.BoardWrapper>
+          <S.BoardContainer>
+            <S.BoardHead isColumns={BOARD_DETAIL.columns}>
+              {BOARD_DETAIL.title.map(
+                (el: IBoardDetailTitleType, index: number) => (
+                  <S.BoardItem key={index}>{el}</S.BoardItem>
+                )
+              )}
+            </S.BoardHead>
+            {paginatedData.length === 0 ? (
+              <S.BoardBody>
+                <S.BoardItemWrapper>문의내역이 없습니다.</S.BoardItemWrapper>
+              </S.BoardBody>
+            ) : (
+              <S.BoardBody>
+                {paginatedData?.map((el: IFetchFaq) => (
+                  <S.BoardItemWrapper
+                    key={el.id}
+                    isColumns={BOARD_DETAIL.columns}
+                  >
+                    <S.BoardItem className="board-item-left">
+                      <span id={el.id} onClick={props.onClickBoardDetail}>
+                        {el.title}
+                      </span>
+                    </S.BoardItem>
+                    <S.BoardItem>
+                      {el.state ? (
+                        <strong className="on">답변완료</strong>
+                      ) : (
+                        <strong>미답변</strong>
+                      )}
+                    </S.BoardItem>
+                    <S.BoardItem>{getDate(el.date)}</S.BoardItem>
+                  </S.BoardItemWrapper>
+                ))}
+              </S.BoardBody>
+            )}
+          </S.BoardContainer>
+        </S.BoardWrapper>
         {paginatedData.length === 0 ? (
-          <S.BoardBody>
-            <S.BoardItemWrapper>문의내역이 없습니다.</S.BoardItemWrapper>
-          </S.BoardBody>
+          ""
         ) : (
-          <>
-            <S.BoardBody>
-              {paginatedData?.map((el: IFetchFaq) => (
-                <S.BoardItemWrapper
-                  key={el.id}
-                  isColumns={BOARD_DETAIL.columns}
-                >
-                  <S.BoardItem className="board-item-left">
-                    <span id={el.id} onClick={props.onClickBoardDetail}>
-                      {el.title}
-                    </span>
-                  </S.BoardItem>
-                  <S.BoardItem>
-                    {el.state ? (
-                      <strong className="on">답변완료</strong>
-                    ) : (
-                      <strong>미답변</strong>
-                    )}
-                  </S.BoardItem>
-                  <S.BoardItem>{getDate(el.date)}</S.BoardItem>
-                </S.BoardItemWrapper>
-              ))}
-            </S.BoardBody>
-            <Pagination01
-              noticeLength={noticeLength}
-              pageSize={pageSize}
-              handlePageChange={handlePageChange}
-            />
-          </>
+          <Pagination01
+            noticeLength={noticeLength}
+            pageSize={pageSize}
+            handlePageChange={handlePageChange}
+          />
         )}
       </S.Board>
-    </S.BoardWrapper>
+    </S.Wrapper>
   );
 }

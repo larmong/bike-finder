@@ -2,14 +2,28 @@ import styled from "@emotion/styled";
 import { IIsColumns } from "./Board.types";
 import { mediaQuery } from "../../../../commons/style/mediaQuery.style";
 
-export const BoardWrapper = styled.div`
-  overflow: hidden;
+export const Wrapper = styled.div`
   ${mediaQuery[1]} {
     font-size: 14px;
   }
 `;
 export const Board = styled.div`
-  overflow: scroll;
+  width: 100%;
+`;
+
+export const BoardWrapper = styled.div`
+  width: 100%;
+  overflow-x: scroll;
+  ${mediaQuery[2]} {
+    overflow-x: scroll;
+  }
+`;
+export const BoardContainer = styled.div`
+  width: 100%;
+  overflow-x: hidden;
+  ${mediaQuery[2]} {
+    width: 550px;
+  }
 `;
 
 export const BoardHead = styled.div`
