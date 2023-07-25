@@ -6,6 +6,14 @@ import { AiOutlineTrophy } from "react-icons/ai";
 import { BsGeoAlt, BsHeadset } from "react-icons/bs";
 import { MdArrowForwardIos, MdDirectionsBike } from "react-icons/md";
 import { IMobileMenus, IPropsMobileMenu } from "./MobileMenu.types";
+import { useEffect, useState } from "react";
+import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
+import { db } from "../../../commons/libraries/firebase/firebase.config";
+import { IFetchNotice } from "../citizen/notice/board/Board.types";
+import { CustomMouseEvent } from "../../../commons/types/global.types";
+import { useRouter } from "next/router";
+import { useRecoilState } from "recoil";
+import { mobileMenuState } from "../../../commons/store/store";
 
 export default function MobileMenu(props: IPropsMobileMenu) {
   const MOBILE_MENUS: IMobileMenus[] = [
@@ -16,6 +24,35 @@ export default function MobileMenu(props: IPropsMobileMenu) {
     { name: "안전수칙", route: "safety", icon: <MdDirectionsBike /> },
     { name: "시민센터", route: "citizen/notice", icon: <AiOutlineTrophy /> },
   ];
+
+  const router = useRouter();
+  const [fetchBoard, setFetchBoard] = useState<IFetchNotice[]>([]);
+  const [, setMobileMenu] = useRecoilState<boolean>(mobileMenuState);
+
+  const onClickMoveToNoticeDetail = (event: CustomMouseEvent) => {
+    setMobileMenu(false);
+    void router.push(`citizen/notice/${event.currentTarget.id}`);
+  };
+
+  useEffect(() => {
+    const getBoardData = async () => {
+      try {
+        const data = await query(
+          collection(db, "notice"),
+          orderBy("date", "desc"),
+          limit(3)
+        );
+        const getData = await getDocs(data);
+        const result: any = getData.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+
+        setFetchBoard(result);
+      } catch (error) {}
+    };
+    void getBoardData();
+  }, []);
 
   return (
     <S.Menu_Wrapper>
@@ -34,28 +71,19 @@ export default function MobileMenu(props: IPropsMobileMenu) {
       </S.Menu_Content>
       <S.Notice_M>
         <S.Notice_Container>
-          <S.Notice>
-            <S.Notice_Title>
-              <span>[ 업데이트 ]&nbsp;&nbsp;&nbsp;</span>
-              공지 지도앱 업데이트 - 네비게이션 편 (v5.22.0) 네비게이션이
-              업데이트 되었어요!
-            </S.Notice_Title>
-            <MdArrowForwardIos />
-          </S.Notice>
-          <S.Notice>
-            <S.Notice_Title>
-              <span>[ 안내 ]&nbsp;&nbsp;&nbsp;</span>
-              따릉이 안전표어 공모전 안내
-            </S.Notice_Title>
-            <MdArrowForwardIos />
-          </S.Notice>
-          <S.Notice>
-            <S.Notice_Title>
-              <span>[ 폐쇄 ]&nbsp;&nbsp;&nbsp;</span>
-              843. 이태원관광특구B(용산구청쪽) 대여소 임시 폐쇄(예정) 안내
-            </S.Notice_Title>
-            <MdArrowForwardIos />
-          </S.Notice>
+          {fetchBoard?.map((el: IFetchNotice) => (
+            <S.Notice
+              key={el.id}
+              id={el.id}
+              onClick={onClickMoveToNoticeDetail}
+            >
+              <S.Notice_Title>
+                <span>[ 공지 ]&nbsp;&nbsp;&nbsp;</span>
+                {el.title}
+              </S.Notice_Title>
+              <MdArrowForwardIos />
+            </S.Notice>
+          ))}
         </S.Notice_Container>
       </S.Notice_M>
       <S.Menu_Title>따릉이 메뉴</S.Menu_Title>
