@@ -40,62 +40,75 @@ export default function RefundBoard(props: IPropsRefundBoard) {
   }, [props.boardData]);
 
   return (
-    <S.Board>
-      <S.SearchWrapper>
-        <S.Search>
-          <S.SearchHead>신청일자</S.SearchHead>
-          <S.SearchBody>
-            <Radio02
-              onClickRadio={onClickPaymentDateType}
-              radioData={props.PAYMENT_DATE_TYPE}
-              radioName="paymentMethodType"
-            />
-          </S.SearchBody>
-        </S.Search>
-      </S.SearchWrapper>
-      <S.BoardHead isColumns={BOARD_DETAIL.columns}>
-        {BOARD_DETAIL.title.map((el: IBoardDetailTitleType, index: number) => (
-          <S.BoardItem key={index}>{el}</S.BoardItem>
-        ))}
-      </S.BoardHead>
-      <S.BoardBody>
+    <S.Wrapper>
+      <S.BoardWrapper>
+        <S.SearchWrapper>
+          <S.Search>
+            <S.SearchHead>신청일자</S.SearchHead>
+            <S.SearchBody>
+              <Radio02
+                onClickRadio={onClickPaymentDateType}
+                radioData={props.PAYMENT_DATE_TYPE}
+                radioName="paymentMethodType"
+              />
+            </S.SearchBody>
+          </S.Search>
+        </S.SearchWrapper>
+        <S.BoardContainer>
+          <S.Board widthValue="700px">
+            <S.BoardHead isColumns={BOARD_DETAIL.columns}>
+              {BOARD_DETAIL.title.map(
+                (el: IBoardDetailTitleType, index: number) => (
+                  <S.BoardItem key={index}>{el}</S.BoardItem>
+                )
+              )}
+            </S.BoardHead>
+            <S.BoardBody>
+              {paginatedData.length === 0 ? (
+                <S.BoardBody>
+                  <S.BoardItemWrapper>환불내역이 없습니다.</S.BoardItemWrapper>
+                </S.BoardBody>
+              ) : (
+                paginatedData?.map((el: IFetchRefund) => (
+                  <S.BoardItemWrapper
+                    key={el.id}
+                    isColumns={BOARD_DETAIL.columns}
+                  >
+                    <S.BoardItem>{el.date}</S.BoardItem>
+                    <S.BoardItem>{getPrice(el.price)}원</S.BoardItem>
+                    <S.BoardItem>{el.product}</S.BoardItem>
+                    <S.BoardItem>
+                      {el.state ? (
+                        <S.BoardItemState>환불완료</S.BoardItemState>
+                      ) : (
+                        <S.BoardItemState className="red">
+                          환불거절
+                        </S.BoardItemState>
+                      )}
+                    </S.BoardItem>
+                    <S.BoardItem className="board-item-left">
+                      {el.note === 0
+                        ? ""
+                        : el.note === 1
+                        ? "환불 기간이 지났습니다."
+                        : ""}
+                    </S.BoardItem>
+                  </S.BoardItemWrapper>
+                ))
+              )}
+            </S.BoardBody>
+          </S.Board>
+        </S.BoardContainer>
         {paginatedData.length === 0 ? (
-          <S.BoardBody>
-            <S.BoardItemWrapper>환불내역이 없습니다.</S.BoardItemWrapper>
-          </S.BoardBody>
+          ""
         ) : (
-          paginatedData?.map((el: IFetchRefund) => (
-            <S.BoardItemWrapper key={el.id} isColumns={BOARD_DETAIL.columns}>
-              <S.BoardItem>{el.date}</S.BoardItem>
-              <S.BoardItem>{getPrice(el.price)}원</S.BoardItem>
-              <S.BoardItem>{el.product}</S.BoardItem>
-              <S.BoardItem>
-                {el.state ? (
-                  <S.BoardItemState>환불완료</S.BoardItemState>
-                ) : (
-                  <S.BoardItemState className="red">환불거절</S.BoardItemState>
-                )}
-              </S.BoardItem>
-              <S.BoardItem className="board-item-left">
-                {el.note === 0
-                  ? ""
-                  : el.note === 1
-                  ? "환불 기간이 지났습니다."
-                  : ""}
-              </S.BoardItem>
-            </S.BoardItemWrapper>
-          ))
+          <Pagination01
+            noticeLength={noticeLength}
+            pageSize={pageSize}
+            handlePageChange={handlePageChange}
+          />
         )}
-      </S.BoardBody>
-      {paginatedData.length === 0 ? (
-        ""
-      ) : (
-        <Pagination01
-          noticeLength={noticeLength}
-          pageSize={pageSize}
-          handlePageChange={handlePageChange}
-        />
-      )}
-    </S.Board>
+      </S.BoardWrapper>
+    </S.Wrapper>
   );
 }
